@@ -5,7 +5,7 @@ namespace BoringRPG
   internal class Archer : Archetype
   {
     private static Random random = new Random();
-    public bool lastHitWasCrit;
+    public bool LastHitWasCrit;
 
     public Archer(string name, int hp = 80, int mp = 30, int ammo = 20, int dmg = 20, double crit = 0.25) : base(name, hp, mp, ammo, dmg, crit)
     {
@@ -38,11 +38,12 @@ namespace BoringRPG
       int damage;
       damage = Damage;
 
-      lastHitWasCrit = random.NextDouble() < CritChance;
+      LastHitWasCrit = random.NextDouble() < CritChance;
 
-      if (lastHitWasCrit)
+      if (LastHitWasCrit)
       {
         damage *= 2;
+
       }
 
       if (Ammo > 0)
@@ -52,6 +53,7 @@ namespace BoringRPG
       }
       else
       {
+        damage = 0;
         Console.WriteLine($"{Name} has no arrows. Damage = 0");
       }
 
@@ -66,17 +68,8 @@ namespace BoringRPG
     }
 
     public override string GetInfo()
-    {
-      string status;
-      if (this)
-      {
-        status = "alive";
-      }
-      else
-      {
-        status = "defeated";
-      }
-      return $"{Name} (Archer): HP: {HP}, MP: {MP}, Ammo: {Ammo}, Crit chance: {CritChance * 100}%, Status: {status}";
+    { 
+      return $"{Name} (Archer): HP: {HP}, MP: {MP}, Ammo: {Ammo}, Crit chance: {CritChance * 100}%";
     }
   }
 }
