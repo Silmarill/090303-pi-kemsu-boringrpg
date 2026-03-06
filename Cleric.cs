@@ -20,9 +20,14 @@ namespace BoringRPG
         public static Cleric operator +(Cleric cleric, int value)
         {
             cleric.HP += value;
-
+            return cleric;
         }
 
+        public static Cleric operator -(Cleric cleric, int value)
+        {
+            cleric.HP -= value;
+            return cleric;
+        }
 
         public override void Hit(Archetype target)
         {
