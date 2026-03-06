@@ -22,9 +22,26 @@ namespace BoringRPG {
         necro.Hit(target);
 
         int damageDealt = beforeHP - target.HP;
+        Console.WriteLine("--- ТЕСТ УРОНА ---");
         Console.WriteLine($"Нанесено урона: {damageDealt}");
         Console.WriteLine(necro.GetInfo());
         Console.WriteLine($"HP цели: {target.HP}\n");
+      Console.WriteLine("--------------------\n");
+
+      // Перегрузка операторов + и -
+      Console.WriteLine("--- ТЕСТ ПЕРЕГРУЗКИ ---");
+      Console.WriteLine($"Было HP: {necro.HP}");
+      
+      // Хилл на 20 хп
+      necro = necro + 20;
+      Console.WriteLine($"После +20 HP: {necro.HP}");
+
+        // Урон 10 хп
+        necro = necro - 10;
+      Console.WriteLine($"После -10 HP: {necro.HP}");
+
+      Console.WriteLine("\nТест завершен. Нажми любую клавишу...");
+      Console.ReadKey();
       }
     }
   }
