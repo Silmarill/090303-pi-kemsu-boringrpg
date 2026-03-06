@@ -7,11 +7,11 @@ namespace BoringRPG {
     private static Random random = new Random();
     public bool LastHitWasCrit;
 
-    public DummyClass(string name, int hp, int mp, int ammo, int dmg, double crit) : base(name, 80, 30, 20, 20, 0.25) {
+    public DummyClass(string name, int hp, int mp, int ammo, int dmg, double crit) : base(name, 100, 50, 10, 20, 0.3) {
       // HP=100, MP=50, Ammo=10, Damage=20, CritChance=0.3 (30%)
     }
-   
-    public DummyClass(string name) : base(name, 80, 30, 20, 20, 0.25) {
+    
+    public DummyClass(string name) : base(name, 100, 50, 10, 20, 0.3) {
     }
 
     public override void Hit(Archetype target) {
@@ -24,7 +24,6 @@ namespace BoringRPG {
         damage *= 2;
       }
 
-      Ammo--;
       target.HP -= damage;
     }
 
