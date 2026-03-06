@@ -5,7 +5,7 @@ namespace BoringRPG {
     private static Random random = new Random();
     private bool LastHitWasCrit;
 
-    public BerserkerClass(string name, int hp, int mp, int ammo, int dmg, double crit) : base(name, 100, 50, 10, 20, 0.3) {
+    public BerserkerClass(string name, int hp, int mp, int ammo, int dmg, double crit) : base(name, 140, 0, 0, 30, 0.15) {
      }
 
     public BerserkerClass(string name) : base(name, 100, 50, 10, 20, 0.3) {
