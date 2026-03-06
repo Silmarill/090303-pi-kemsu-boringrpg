@@ -29,6 +29,16 @@ namespace BoringRPG
             return cleric;
         }
 
+        public static bool operator true(Cleric cleric)
+        {
+            return cleric.HP > 0;
+        }
+
+        public static bool operator false(Cleric cleric)
+        {
+            return cleric.HP < 0;
+        }
+
         public override void Hit(Archetype target)
         {
             if (this.MP >= 10)
