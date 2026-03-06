@@ -9,12 +9,18 @@ namespace BoringRPG {
     public Necromancer(string name) : base(name, 55, 90, 0, 30, 0.1) {
     }
 
-    // Проверка: жив ли герой (HP > 0)
+    // Перегрузка оператора "!"
+    public static bool operator !(Necromancer hero) {
+      // true (мертв), если HP <= 0
+      return hero.HP <= 0;
+    }
+
+    // Жив ли герой (HP > 0)
     public static bool operator true(Necromancer hero) {
       return hero.HP > 0;
     }
 
-    // Проверка: мертв ли герой (HP <= 0)
+    // Мертв ли герой (HP <= 0)
     public static bool operator false(Necromancer hero) {
       return hero.HP <= 0;
     }

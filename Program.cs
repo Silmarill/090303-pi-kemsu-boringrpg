@@ -41,7 +41,7 @@ namespace BoringRPG {
       Console.WriteLine("--- ПРОВЕРКА СТАТУСА (ЖИВ/МЕРТВ) ---");
 
       // Используем перегруженный оператор true
-      if (!necro) {
+      if (necro) {
         Console.WriteLine($"{necro.Name} еще жив, продолжаем бой!");
       }
 
@@ -51,7 +51,7 @@ namespace BoringRPG {
       necro = necro - 200;
 
       // Перегруженный оператор false
-      if (necro) {
+      if (!necro) {
         Console.WriteLine($"{necro.Name} пал в бою. Конец игры.");
       }
 
