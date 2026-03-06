@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace BoringRPG
 {
-  internal class berserkerClass : Archetype {
+  internal class BerserkerClass : Archetype {
     private static Random random = new Random();
     private bool LastHitWasCrit;
 
-    public berserkerClass(string name, int hp, int mp, int ammo, int dmg, double crit) : base(name, 100, 50, 10, 20, 0.3) {
+    public BerserkerClass(string name, int hp, int mp, int ammo, int dmg, double crit) : base(name, 100, 50, 10, 20, 0.3) {
      }
 
-    public berserkerClass(string name) : base(name, 100, 50, 10, 20, 0.3) {
+    public BerserkerClass(string name) : base(name, 100, 50, 10, 20, 0.3) {
      }
     public override void Hit(Archetype target) {
       int damage = Damage;
