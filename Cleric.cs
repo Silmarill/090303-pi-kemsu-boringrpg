@@ -56,7 +56,7 @@ namespace BoringRPG
 
                 if (target.HP <= 0)
                 {
-                    Cleric self = this + 10;
+                    HP += 10;
                 }
             }
         }
