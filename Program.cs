@@ -24,6 +24,18 @@ namespace BoringRPG {
 
       Console.WriteLine($"Нанесено {damage} урона{critText}\n");
 
+      if (name) {
+        Console.WriteLine($"{name.Name} жив\n");
+      } else {
+        Console.WriteLine($"{name.Name} мёртв\n");
+      }
+
+      if (artur) {
+        Console.WriteLine($"{artur.Name} жив\n");
+      } else {
+        Console.WriteLine($"{artur.Name} мёрт\n");
+      }
+
       Console.WriteLine("ИТОГОВОЕ СОСТОЯНИЕ:");
       Console.WriteLine("======================");
       Console.WriteLine(name.GetInfo());
