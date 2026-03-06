@@ -34,7 +34,43 @@ namespace BoringRPG {
 
     public override void Hit(Archetype target)
     {
+      int baseDamage;
+      int manaPoint;
+
+      baseDamage = Damage;
+      manaPoint = 5;
+
+      LastHitWasCrit = random.NextDouble() < CritChance;
+
+      if (LastHitWasCrit)
+      {
+        baseDamage *= 2;
+      }
+      else if (MP >= manaPoint)
+      {
+        MP -= manaPoint;
+      }
+      else if (target.HP > 45)
+      {
+        baseDamage *= 2;
+      }
+      else
+      {
+        baseDamage = 0;
+      }
+
+      target.HP -= baseDamage;
 
     }
 
-  
+    public override string GetInfo()
+    {
+      return $"{Name} (Druid): HP {HP}, MP {MP}, Ammo {Ammo}, Урон {Damage}, Шанс крита {CritChance * 100}%";
+
+    }
+  }
+}  
+
+
+
+
