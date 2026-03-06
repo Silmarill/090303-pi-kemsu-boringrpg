@@ -7,16 +7,20 @@ namespace BoringRPG {
       int beforeHP, damage;
       
       DummyClass lancelot = new DummyClass("Ланселот Ловкий");
-      DummyClass artur =    new DummyClass("Артур Пендрагон");
+      DummyClass artur = new DummyClass("Артур Пендрагон");
+      Rogue torfin = new Rogue("Торфин Безопасный");
+      
             
       Console.WriteLine($"НАЧАЛО БИТВЫ. Исходное состояние: \n" +
                         $"==================\n" +
                         $"{lancelot.GetInfo()}\n" +
-                        $"{artur.GetInfo()}\n");
+                        $"{artur.GetInfo()}\n" +
+                        $"{torfin.GetInfo()}\n");
            
       Console.WriteLine($"{lancelot.Name} атакует {artur.Name}!");
 
       beforeHP = artur.HP;
+      torfin += 4;
       lancelot.Hit(artur);
       damage = beforeHP - artur.HP;
 
@@ -28,6 +32,7 @@ namespace BoringRPG {
       Console.WriteLine("======================");
       Console.WriteLine(lancelot.GetInfo());
       Console.WriteLine(artur.GetInfo());
+      Console.WriteLine(torfin.GetInfo());
       Console.ReadKey();
     }
   }
