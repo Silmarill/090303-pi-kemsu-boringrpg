@@ -8,17 +8,18 @@ namespace BoringRPG {
       
       DummyClass lancelot = new DummyClass("Ланселот Ловкий");
       DummyClass artur =    new DummyClass("Артур Пендрагон");
+      Cleric danila = new Cleric("Данила Нестеров");
             
       Console.WriteLine($"НАЧАЛО БИТВЫ. Исходное состояние: \n" +
                         $"==================\n" +
                         $"{lancelot.GetInfo()}\n" +
-                        $"{artur.GetInfo()}\n");
+                        $"{danila.GetInfo()}\n");
            
-      Console.WriteLine($"{lancelot.Name} атакует {artur.Name}!");
+      Console.WriteLine($"{lancelot.Name} атакует {danila.Name}!");
 
-      beforeHP = artur.HP;
-      lancelot.Hit(artur);
-      damage = beforeHP - artur.HP;
+      beforeHP = danila.HP;
+      lancelot.Hit(danila);
+      damage = beforeHP - danila.HP;
 
       critText = lancelot.LastHitWasCrit ? " - КРИТИЧЕСКИЙ УДАР!" : "";
 
@@ -27,7 +28,7 @@ namespace BoringRPG {
       Console.WriteLine("ИТОГОВОЕ СОСТОЯНИЕ:");
       Console.WriteLine("======================");
       Console.WriteLine(lancelot.GetInfo());
-      Console.WriteLine(artur.GetInfo());
+      Console.WriteLine(danila.GetInfo());
       Console.ReadKey();
     }
   }
