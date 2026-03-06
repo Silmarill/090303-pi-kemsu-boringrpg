@@ -13,8 +13,6 @@ namespace BoringRPG
         //пример для работы со случайными числами
         private static Random random = new Random();
         public bool LastHitWasCrit;
-        public int myHP;
-        public int damage;
 
         public Mage(string name, int hp, int mp, int ammo, int dmg, double crit) : base(name, 60, 100, 0, 35, 0.05)
         {
@@ -36,12 +34,14 @@ namespace BoringRPG
             return mage;
         }
 
-        /*public static bool operator true(Mage mage) {
-            if (mage.HP > 0)
-                return true;
-        }*/
+        public static bool operator true(Mage mage) {
+            return mage.HP>0;
+        }
 
-
+        public static bool operator false(Mage mage)
+        {
+            return mage.HP<0;
+        }
 
         public override void Hit(Archetype target) {
             int damage = Damage;

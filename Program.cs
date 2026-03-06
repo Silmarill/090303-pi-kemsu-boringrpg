@@ -31,6 +31,7 @@ namespace BoringRPG {
       Console.WriteLine(skibidist.GetInfo());
       Console.WriteLine(artur.GetInfo());
       //Console.WriteLine(skibidist.GetInfo());
+      //Показать убило персонажа или нет
 
       Console.ReadKey();
     }
