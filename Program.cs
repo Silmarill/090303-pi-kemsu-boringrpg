@@ -9,7 +9,7 @@ namespace BoringRPG {
       DummyClass lancelot = new DummyClass("Ланселот Ловкий");
       DummyClass artur =    new DummyClass("Артур Пендрагон");
             
-      Console.WriteLine($"НАЧАЛО БИТВЫ. Исходное состояние: \n" +
+      Console.WriteLine($"НАЧАЛО БИТВЫ1. Исходное состояние: \n" +
                         $"==================\n" +
                         $"{lancelot.GetInfo()}\n" +
                         $"{artur.GetInfo()}\n");
