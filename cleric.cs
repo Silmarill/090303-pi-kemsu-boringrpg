@@ -13,6 +13,17 @@ namespace BoringRPG
         {
             // HP=100, MP=50, Ammo=10, Damage=20, CritChance=0.3 (30%)
         }
+        public static Cleric operator +(Cleric cleric, int plusHP)
+        {
+            cleric.HP += plusHP;
+            return cleric;
+        }
+
+        public static Cleric operator -(Cleric cleric, int minusHP)
+        {
+            cleric.HP -= minusHP;
+            return cleric;
+        }
 
         public Cleric(string name) : base(name, 75, 80, 0, 15, 0.05)
         {
