@@ -17,6 +17,16 @@ namespace BoringRPG {
       druid.HP -= damage;
       return druid;
     }
+    
+    // true
+    public static bool operator true(Druid druid) {
+      return druid.HP > 0;
+    }
+
+    // false
+    public static bool operator false(Druid druid) {
+      return druid.HP <= 0;
+    }
 
     public override void Hit(Archetype target) {
       int damage = Damage;
