@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace BoringRPG
-{
+namespace BoringRPG {
   internal class BerserkerClass : Archetype {
     private static Random random = new Random();
     private bool LastHitWasCrit;
