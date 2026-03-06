@@ -19,6 +19,11 @@ namespace BoringRPG {
       return rogue;
     }
 
+    public static Rogue operator -(Rogue rogue, int health) {
+      rogue.HP -= health;
+      return rogue;
+    }
+
     public override string GetInfo() {
       return $"{Name} (Dummy): HP {HP}, MP {MP}, Ammo {Ammo}, Шанс крита {CritChance * 100}%";
     }

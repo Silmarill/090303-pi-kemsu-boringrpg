@@ -18,6 +18,7 @@ namespace BoringRPG {
                         $"{torfin.GetInfo()}\n");
            
       Console.WriteLine($"{lancelot.Name} атакует {artur.Name}!");
+      Console.WriteLine($"\n{torfin.Name} хилится");
 
       beforeHP = artur.HP;
       torfin += 4;
@@ -26,7 +27,7 @@ namespace BoringRPG {
 
       critText = lancelot.LastHitWasCrit ? " - КРИТИЧЕСКИЙ УДАР!" : "";
 
-      Console.WriteLine($"Нанесено {damage} урона{critText}\n");
+      Console.WriteLine($"\nНанесено {damage} урона{critText}\n");
                         
       Console.WriteLine("ИТОГОВОЕ СОСТОЯНИЕ:");
       Console.WriteLine("======================");
