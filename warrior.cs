@@ -8,7 +8,7 @@ namespace work
   internal class Warrior : Archetype
   {
     private static Random random = new Random();
-    public bool LastHitWasCrit { get; private set; }
+    public bool LastHitWasCrit;
 
     public Warrior(string name) : base(name, 120, 20, 0, 25, 0.10)
     {

@@ -6,8 +6,8 @@ namespace work {
       string critText;
       int beforeHP, damage;
       
-      Warrior lancelot = new Warrior ("Ланселот Ловкий");
-      Warrior artur = new Warrior ("Артур Пендрагон");
+      Warrior lancelot = new Warrior("Ланселот Ловкий");
+      Warrior artur = new Warrior("Артур Пендрагон");
             
       Console.WriteLine($"НАЧАЛО БИТВЫ. Исходное состояние: \n" +
                         $"==================\n" +
