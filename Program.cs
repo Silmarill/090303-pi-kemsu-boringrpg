@@ -3,32 +3,29 @@
 namespace BoringRPG {
   internal class Program {
     static void Main(string[] args) {
-      string critText;
-      int beforeHP, damage;
-      
-      DummyClass lancelot = new DummyClass("Ланселот Ловкий");
-      DummyClass artur =    new DummyClass("Артур Пендрагон");
-            
-      Console.WriteLine($"НАЧАЛО БИТВЫ. Исходное состояние: \n" +
-                        $"==================\n" +
-                        $"{lancelot.GetInfo()}\n" +
-                        $"{artur.GetInfo()}\n");
-           
-      Console.WriteLine($"{lancelot.Name} атакует {artur.Name}!");
+      // Создание персонажа и цели для битвы
+      Necromancer necro = new Necromancer("Артур");
+      DummyClass target = new DummyClass("Кузьмин Слава");
 
-      beforeHP = artur.HP;
-      lancelot.Hit(artur);
-      damage = beforeHP - artur.HP;
+      Console.WriteLine("--- НАЧАЛО ТЕСТА ---");
+      Console.WriteLine(necro.GetInfo());
+      Console.WriteLine(target.GetInfo());
+      Console.WriteLine("--------------------\n");
 
-      critText = lancelot.LastHitWasCrit ? " - КРИТИЧЕСКИЙ УДАР!" : "";
+      // Удары для урона
+      for (int hitInFight = 1; hitInFight <= 3; ++hitInFight) {
+        int beforeHP = target.HP;
 
-      Console.WriteLine($"Нанесено {damage} урона{critText}\n");
-                        
-      Console.WriteLine("ИТОГОВОЕ СОСТОЯНИЕ:");
-      Console.WriteLine("======================");
-      Console.WriteLine(lancelot.GetInfo());
-      Console.WriteLine(artur.GetInfo());
-      Console.ReadKey();
+        Console.WriteLine($"Удар №{hitInFight}: {necro.Name} атакует!");
+
+        // -15 маны, и если некромант попадает, то получает бонус
+        necro.Hit(target);
+
+        int damageDealt = beforeHP - target.HP;
+        Console.WriteLine($"Нанесено урона: {damageDealt}");
+        Console.WriteLine(necro.GetInfo());
+        Console.WriteLine($"HP цели: {target.HP}\n");
+      }
     }
   }
 }
