@@ -6,6 +6,7 @@ using static System.Net.Mime.MediaTypeNames;
 namespace BoringRPG {
     internal class Nekromaster : Archetype {
         private static Random random = new Random();
+        private int _skeletonBonus = 0;
         public bool LastHitWasCrit;
 
         public Nekromaster(string name, int hp, int mp, int ammo, int dmg, double crit) : base (name, 55, 90, 0, 30, 0.1) {
@@ -14,6 +15,18 @@ namespace BoringRPG {
 
         public Nekromaster(string name) : base(name,55, 90, 0, 30, 0.1){
         
+        }
+        public static Nekromaster operator +(Nekromaster necromancer, int amount)
+        {
+            necromancer.HP += amount;
+            return necromancer;
+        }
+
+        // Перегрузка оператора -
+        public static Nekromaster operator -(Nekromaster necromancer, int amount)
+        {
+            necromancer.HP -= amount;
+            return necromancer;
         }
         public override void Hit(Archetype target)
         {
