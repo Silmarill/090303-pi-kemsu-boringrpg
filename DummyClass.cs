@@ -5,7 +5,7 @@ namespace BoringRPG
   internal class DummyClass : Archetype
   {
     private static Random random = new Random();
-    public bool LastHitWasCrit;
+    public bool lastHitWasCrit;
 
     public DummyClass(string name, int hp, int mp, int ammo, int dmg, double crit) : base(name, 100, 50, 10, 20, 0.3)
     {
@@ -19,13 +19,12 @@ namespace BoringRPG
     {
       int damage = Damage;
 
-      LastHitWasCrit = random.NextDouble() < CritChance;
+      lastHitWasCrit = random.NextDouble() < CritChance;
 
-      if (LastHitWasCrit)
+      if (lastHitWasCrit)
       {
         damage *= 2;
       }
-
       target.HP -= damage;
     }
 

@@ -5,7 +5,7 @@ namespace BoringRPG
   internal class Archer : Archetype
   {
     private static Random random = new Random();
-    public bool LastHitWasCrit;
+    public bool lastHitWasCrit;
 
     public Archer(string name, int hp = 80, int mp = 30, int ammo = 20, int dmg = 20, double crit = 0.25) : base(name, hp, mp, ammo, dmg, crit)
     {
@@ -64,9 +64,9 @@ namespace BoringRPG
       int damage;
       damage = Damage;
 
-      LastHitWasCrit = random.NextDouble() < CritChance;
+      lastHitWasCrit = random.NextDouble() < CritChance;
 
-      if (LastHitWasCrit)
+      if (lastHitWasCrit)
       {
         damage *= 2;
       }

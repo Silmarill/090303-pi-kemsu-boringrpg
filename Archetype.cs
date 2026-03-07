@@ -5,7 +5,6 @@ namespace BoringRPG
 {
   internal abstract class Archetype
   {
-
     public string Name;
     public int HP;
     public int MP;

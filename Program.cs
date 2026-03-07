@@ -55,7 +55,7 @@ namespace BoringRPG
         lancelot.Hit(archer);
         damageLancelot = beforeHPInkoromi - archer.HP;
 
-        critTextLancelot = lancelot.LastHitWasCrit ? " - CRITICAL HIT!" : "";
+        critTextLancelot = lancelot.lastHitWasCrit ? " - CRITICAL HIT!" : "";
 
         Console.WriteLine($"Damage dealt {damageLancelot} {critTextLancelot}\n");
 
@@ -82,7 +82,7 @@ namespace BoringRPG
           Console.WriteLine($"{archer.Name} has no arrows. Damage = 0");
         }
 
-        critTextInkoromi = archer.LastHitWasCrit ? " - CRITICAL HIT!" : "";
+        critTextInkoromi = archer.lastHitWasCrit ? " - CRITICAL HIT!" : "";
 
         Console.WriteLine($"Damage dealt {damageInkoromi} {critTextInkoromi}\n");
 
