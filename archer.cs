@@ -36,16 +36,14 @@ namespace BoringRPG {
     public override string GetInfo() {
       return $"{Name} (Archer): HP {HP}, MP {MP}, Ammo {Ammo}, Шанс крита {CritChance * 100}%";
     }
-    public static archerClass operator+ (archerClass left, int Value) {
-      if (left.HP > 0) { 
-        left.HP = Math.Min(left.HP + Value, 100);
-      }
-      return left;
+    public static archerClass operator + (archerClass archer, int healing) {
+      archer.HP += healing;
+      return archer;
     }
     
-    public static archerClass operator- (archerClass left, int Value) {
-      left.HP = Math.Min(left.HP - Value, 0);
-      return left;
+    public static archerClass operator - (archerClass archer, int damage) {
+      archer.HP = Math.Max(archer.HP - damage,0);
+      return archer;
     }
   }
 }
