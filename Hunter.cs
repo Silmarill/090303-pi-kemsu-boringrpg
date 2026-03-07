@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 namespace BoringRPG {
   internal class Hunter : Archetype {
 
+    private static Random random = new Random();
+    private bool LastHitWasCrit;
+
     protected Hunter(string name, int hp, int mp, int ammo, int dmg, double crit)
         : base("Divad", 85, 20, 15, 25, 0.2) { }
 
@@ -26,7 +29,7 @@ namespace BoringRPG {
     public static Hunter operator -(Hunter man, int damage) {
 
       if (man.HP > 0) {
-        man.HP = man.HP - (damage - man.Ammo);
+        man.HP = man.HP - (damage - man.Ammo/2);
         if (man.HP < 0) {
           man.HP = 0;
           return man;
@@ -36,7 +39,25 @@ namespace BoringRPG {
 
     }
 
+    public override void Hit(Archetype target) {
 
+      int damage = Damage;
+      if (this.Ammo > 0) {
+        this.Ammo -= 1;
+      }
+
+      LastHitWasCrit = random.NextDouble() < 0.2;
+
+      if (this.HP < target.HP) {
+        damage += 10; 
+      }
+      if (LastHitWasCrit) {
+        damage *= 2;
+      }
+
+      target.HP -= damage;
+
+    }
 
     public override string GetInfo() {
       return $"{Name} (Hunter): HP {HP}, MP {MP}, Ammo {Ammo}, Crit Chance: {CritChance * 100}%";
