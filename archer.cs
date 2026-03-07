@@ -6,12 +6,30 @@ namespace BoringRPG {
     //пример для работы со случайными числами
     private static Random random = new Random();
     public bool LastHitWasCrit;
-
+    public bool IsAlive => HP >0;
     public archerClass(string name, int hp, int mp, int ammo, int dmg, double crit) : base(name, 80, 30, 20, 20, 0.25) {
       // HP=100, MP=50, Ammo=10, Damage=20, CritChance=0.3 (30%)
     }
     
     public archerClass(string name) : base(name, 80, 30, 20, 20, 0.25) {
+    }
+
+    public static bool operator true (archerClass archer) {
+      return archer.HP > 0;
+    }
+
+    public static bool operator false (archerClass archer) {
+      return archer.HP <= 0;
+    } 
+
+    public static archerClass operator+ (archerClass archer, int healing) {
+      archer.HP += healing;
+      return archer;
+    }
+    
+    public static archerClass operator- (archerClass archer, int damage) {
+      archer.HP = Math.Max(archer.HP - damage,0);
+      return archer;
     }
 
     public override void Hit(Archetype target) {
@@ -31,19 +49,10 @@ namespace BoringRPG {
         } else {
           Console.WriteLine("нет патронов");
         }
-    }
+      }
 
     public override string GetInfo() {
       return $"{Name} (Archer): HP {HP}, MP {MP}, Ammo {Ammo}, Шанс крита {CritChance * 100}%";
-    }
-    public static archerClass operator + (archerClass archer, int healing) {
-      archer.HP += healing;
-      return archer;
-    }
-    
-    public static archerClass operator - (archerClass archer, int damage) {
-      archer.HP = Math.Max(archer.HP - damage,0);
-      return archer;
     }
   }
 }
