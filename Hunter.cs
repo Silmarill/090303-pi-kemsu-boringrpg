@@ -14,11 +14,12 @@ namespace BoringRPG {
         : base("Divad", 85, 20, 15, 25, 0.2) { }
 
     public static Hunter operator +(Hunter man, int regain) {
+      int maxHP = 85;
 
-      if (man.HP < 85) {
+      if (man.HP < maxHP) {
         man.HP = man.HP + regain;
-        if (man.HP > 85) {
-          man.HP = 85;
+        if (man.HP > maxHP) {
+          man.HP = maxHP;
           return man;
         }
       }
@@ -27,11 +28,12 @@ namespace BoringRPG {
     }
 
     public static Hunter operator -(Hunter man, int damage) {
+      int minHP = 0;
 
-      if (man.HP > 0) {
-        man.HP = man.HP - (damage - man.Ammo/2);
-        if (man.HP < 0) {
-          man.HP = 0;
+      if (man.HP > minHP) {
+        man.HP -= damage;
+        if (man.HP < minHP) {
+          man.HP = minHP;
           return man;
         }
       }
@@ -40,19 +42,24 @@ namespace BoringRPG {
     }
 
     public override void Hit(Archetype target) {
+      int minAmmo = 0;
+      int lostAmmo = 1;
+      int damageBonus = 10;
+      int critDamageBonus = 2;
+      double critСhanse = 0.2;
 
       int damage = Damage;
-      if (this.Ammo > 0) {
-        this.Ammo -= 1;
+      if (this.Ammo > minAmmo) {
+        this.Ammo -= lostAmmo;
       }
 
-      LastHitWasCrit = random.NextDouble() < 0.2;
+      LastHitWasCrit = random.NextDouble() < critСhanse;
 
       if (this.HP < target.HP) {
-        damage += 10; 
+        damage += damageBonus; 
       }
       if (LastHitWasCrit) {
-        damage *= 2;
+        damage *= critDamageBonus;
       }
 
       target.HP -= damage;
