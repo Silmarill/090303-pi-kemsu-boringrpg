@@ -144,7 +144,7 @@ namespace BoringRPG {
 
       critText = lancelot.LastHitWasCrit ? " - КРИТИЧЕСКИЙ УДАР!" : "";
 
-      Console.WriteLine($"Нанесено {damage} урона от спецприема!{critText}\n");
+      Console.WriteLine($"Нанесено {damage} урона{critText}\n");
 
       if (rapfael) { 
         Console.WriteLine($"{rapfael.Name} чудом выжил!\n");
