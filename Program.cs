@@ -25,11 +25,36 @@ namespace BoringRPG {
       critText = lancelot.LastHitWasCrit ? "- CRITICAL HIT!" : "";
 
       Console.WriteLine($"Damage {damage} dealt {critText}\n");
-                        
+
+
+      Console.WriteLine($"{paladin.Name} attacks {lancelot.Name}!");
+
+      beforeHP = lancelot.HP;
+      paladin.Hit(lancelot);
+      damage = beforeHP - lancelot.HP;
+
+      critText = paladin.LastHitWasCrit ? "- CRITICAL HIT!" : "";
+
+      Console.WriteLine($"Damage {damage} dealt {critText}\n");
+
+
+      Console.WriteLine($"{artur.Name} attacks {paladin.Name}!");
+
+      beforeHP = paladin.HP;
+      artur.Hit(paladin);
+      damage = beforeHP - paladin.HP;
+
+      critText = artur.LastHitWasCrit ? "- CRITICAL HIT!" : "";
+
+      Console.WriteLine($"Damage {damage} dealt {critText}\n");
+
+
+
       Console.WriteLine("FINAL STATUS:");
       Console.WriteLine("======================");
       Console.WriteLine(lancelot.GetInfo());
       Console.WriteLine(artur.GetInfo());
+      Console.WriteLine(paladin.GetInfo());
       Console.ReadKey();
     }
   }

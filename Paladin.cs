@@ -32,7 +32,7 @@ namespace BoringRPG
       return paladin.HP <= 0;
     }
 
-    public void hit(Archetype target)
+    public override void Hit(Archetype target)
     {
       int damage = Damage;
 
@@ -66,9 +66,9 @@ namespace BoringRPG
       }
     }
 
-    public string getInfo()
+    public override string GetInfo()
     {
-      return $"{Name} (Mateus Paladinov): HP {HP}, MP {MP}, Ammo {Ammo}, Damage {Damage}, CritChance {CritChance * 100}%";
+      return $"{Name} (Mateus Paladinov): HP {HP}, MP {MP}, Ammo {Ammo}, CritChance {CritChance * 100}%";
     }
 
     public bool LastHitWasCrit { get; private set; }
