@@ -8,10 +8,15 @@ namespace BoringRPG {
   internal class Hunter : Archetype {
 
     private static Random random = new Random();
-    private bool LastHitWasCrit;
+    public bool LastHitWasCrit;
 
     protected Hunter(string name, int hp, int mp, int ammo, int dmg, double crit)
-        : base("Divad", 85, 20, 15, 25, 0.2) { }
+        : base(name, 85, 20, 15, 25, 0.2) { 
+    }
+
+    public Hunter(string name) 
+      : base(name, 85, 20, 15, 25, 0.2) {
+    }
 
     public static Hunter operator +(Hunter man, int regain) {
       int maxHP = 85;
