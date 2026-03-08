@@ -39,6 +39,24 @@ namespace BoringRPG {
                         $"{lancelot.Name} выбывает!\n\n" +
                         $"Поздравляем {rapfael.Name} с победой!\n");
 
+        Console.WriteLine($"{optimus.Name} попал в смертельную ловушку!");
+        optimus.HP -= optimus.HP;
+
+        if (optimus) { 
+          Console.WriteLine($"{optimus.Name} чудом выжил!\n");
+        } else {
+          Console.WriteLine($"{optimus.Name} пал смертью храбрых!\n");
+        }
+                        
+        Console.WriteLine("ИТОГОВОЕ СОСТОЯНИЕ:\n" +
+                          "======================\n" +
+                          $"{lancelot.GetInfo()}\n" +
+                          $"{rapfael.GetInfo()}\n" +
+                          $"{optimus.GetInfo()}\n\n" +
+                          $"{lancelot.Name} выбывает!\n" +
+                          $"{optimus.Name} выбывает!\n\n" +
+                          $"Поздравляем {rapfael.Name} с победой!\n");
+
         return;
       }
 
