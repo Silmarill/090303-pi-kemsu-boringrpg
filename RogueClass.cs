@@ -9,7 +9,7 @@ namespace BoringRPG {
     public RogueClass(string name, int hp, int mp, int ammo, int dmg, double crit) : base(name, 70, 20, 10, 30, 0.3) {
     }
 
-    public RogueClass(string name) : base(name, 100, 50, 10, 20, 0.3) {
+    public RogueClass(string name) : base(name, 70, 20, 10, 30, 0.3) {
     }
 
     public static RogueClass operator +(RogueClass rogue, int amount) {

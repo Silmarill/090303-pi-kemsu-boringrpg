@@ -29,7 +29,7 @@ namespace BoringRPG {
 
       Console.WriteLine($"{lancelot.Name} использовал лечение!");
       lancelot.HP = lancelot.HP + healing;
-      Console.WriteLine($"{lancelot.Name} вылечился на {healing}!\n");
+      Console.WriteLine($"{lancelot.Name} вылечился на {healing} HP!\n");
 
       Console.WriteLine($"{optimus.Name} попал в смертельную ловушку!");
       optimus.HP -= optimus.HP;
