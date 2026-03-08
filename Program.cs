@@ -35,13 +35,15 @@ namespace BoringRPG {
       optimus.HP -= optimus.HP;
 
       if (optimus) { 
+        Console.WriteLine($"{optimus.Name} чудом выжил!\n");
+      } else {
         Console.WriteLine($"{optimus.Name} пал смертью храбрых!\n");
       }
                         
       Console.WriteLine("ИТОГОВОЕ СОСТОЯНИЕ:\n" +
                         "======================\n" +
-                        $"{lancelot.GetInfo()}" +
-                        $"{rapfael.GetInfo()}" +
+                        $"{lancelot.GetInfo()}\n" +
+                        $"{rapfael.GetInfo()}\n" +
                         $"{optimus.GetInfo()}");
       Console.ReadKey();
     }
