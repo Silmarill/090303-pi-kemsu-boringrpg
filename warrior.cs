@@ -39,8 +39,7 @@ namespace work
 
     public override void Hit(Archetype target)
     {
-      if (HP <= 5)
-      {
+      if (HP <= 5) {
         LastHitWasCrit = false;
         return;
       }
@@ -49,8 +48,7 @@ namespace work
       int damage = Damage + 5;
       LastHitWasCrit = random.NextDouble() < CritChance;
 
-      if (LastHitWasCrit)
-      {
+      if (LastHitWasCrit) {
         damage *= 2;
       }
 
