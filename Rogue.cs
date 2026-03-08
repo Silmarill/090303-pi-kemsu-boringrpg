@@ -12,9 +12,15 @@ namespace BoringRPG {
 
     public override void Hit(Archetype target) {
       int damage = Damage;
-    }
 
-    public static Rogue operator +(Rogue rogue, int health ) {
+      if (Ammo < 0) {
+        damage /= 2;
+      } else {
+        Ammo -= 1;
+      }
+      target.HP -= damage;
+    }
+    public static Rogue operator +(Rogue rogue, int health) {
       rogue.HP += health;
       return rogue;
     }
@@ -24,8 +30,10 @@ namespace BoringRPG {
       return rogue;
     }
 
+
+
     public override string GetInfo() {
-      return $"{Name} (Dummy): HP {HP}, MP {MP}, Ammo {Ammo}, Шанс крита {CritChance * 100}%";
+      return $"{Name} (Hero): HP {HP}, MP {MP}, Ammo {Ammo}, Шанс крита {CritChance * 100}%";
     }
 
 
