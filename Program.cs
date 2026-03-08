@@ -4,13 +4,13 @@ namespace BoringRPG {
   internal class Program {
     static void Main(string[] args) {
       string critText;
-      int beforeHP, damage;
+      int beforeHP, damage, heal = 10;
 
       DummyClass artur = new DummyClass("Артур Пендрагон");
       Mage skibidist = new Mage("Скибидист Вапапапич");
 
-      Console.WriteLine($"НАЧАЛО БИТВЫ\n" + $"ПЕРВЫЙ РАУНД\n"+
-                        $"Исходное состояние: \n" +
+      Console.WriteLine($"НАЧАЛО БИТВЫ. " + $"ПЕРВЫЙ ХОД.\n"+
+                        $" Исходное состояние: \n" +
                         $"==================\n" +
                         $"{skibidist.GetInfo()}\n" +
                         $"{artur.GetInfo()}\n");
@@ -30,17 +30,32 @@ namespace BoringRPG {
       Console.WriteLine("======================");
       Console.WriteLine(skibidist.GetInfo());
       Console.WriteLine(artur.GetInfo());
+      if (skibidist) {
+      } else {
+        Console.WriteLine($"{skibidist.Name} умирает");
+        Console.WriteLine($"{artur.Name} ПОБЕЖДАЕТ!");
+        return;
+      }
+
+      if (artur.HP >= 0) {
+      } else {
+        Console.WriteLine($"{artur.Name} умирает");
+        Console.WriteLine($"{skibidist.Name} ПОБЕЖДАЕТ!");
+        return;
+      }
+
       Console.ReadKey();
+
 
       /////////////////////////////////////////
 
-      Console.WriteLine($"\nВТОРОЙ РАУНД.");
+      Console.WriteLine($"\nВТОРОЙ ХОД.");
 
       Console.WriteLine($"{artur.Name} атакует {skibidist.Name}!");
 
       beforeHP = skibidist.HP;
       artur.Hit(skibidist);
-      damage = beforeHP - artur.HP;
+      damage = beforeHP - skibidist.HP;
 
       critText = artur.LastHitWasCrit ? " - КРИТИЧЕСКИЙ УДАР!" : "";
 
@@ -50,11 +65,90 @@ namespace BoringRPG {
       Console.WriteLine("======================");
       Console.WriteLine(skibidist.GetInfo());
       Console.WriteLine(artur.GetInfo());
+      if (skibidist) {
+      } else {
+        Console.WriteLine($"{skibidist.Name} умирает");
+        Console.WriteLine($"{artur.Name} ПОБЕЖДАЕТ!");
+        return;
+      }
+
+      if (artur.HP >= 0) {
+      } else {
+        Console.WriteLine($"{artur.Name} умирает");
+        Console.WriteLine($"{skibidist.Name} ПОБЕЖДАЕТ!");
+        return;
+      }
+
       Console.ReadKey();
 
-      /////////////////////////////////////////////////////
 
-      Console.WriteLine($"\nТРЕТИЙ РАУНД.");
+      //////////////////////////////////////////////////////
+
+      Console.WriteLine($"\nТРЕТИЙ ХОД.");
+
+      Console.WriteLine($"{skibidist.Name} пропускает ход и хилится!");
+
+      beforeHP = skibidist.HP;
+      skibidist += heal;
+      Console.WriteLine($"ХП восстановленно до {skibidist.HP}\n");
+
+      Console.WriteLine("ИТОГОВОЕ СОСТОЯНИЕ:");
+      Console.WriteLine("======================");
+      Console.WriteLine(skibidist.GetInfo());
+      Console.WriteLine(artur.GetInfo());
+      if (skibidist) {
+      } else {
+        Console.WriteLine($"{skibidist.Name} умирает");
+        Console.WriteLine($"{artur.Name} ПОБЕЖДАЕТ!");
+        return;
+      }
+
+      if (artur.HP >= 0) {
+      } else {
+        Console.WriteLine($"{artur.Name} умирает");
+        Console.WriteLine($"{skibidist.Name} ПОБЕЖДАЕТ!");
+        return;
+      }
+
+      Console.ReadKey();
+
+      /////////////////////////////////////////
+
+      Console.WriteLine($"\nЧЕТВЕРТЫЙ ХОД.");
+
+      Console.WriteLine($"{artur.Name} атакует {skibidist.Name}!");
+
+      beforeHP = skibidist.HP;
+      artur.Hit(skibidist);
+      damage = beforeHP - skibidist.HP;
+
+      critText = artur.LastHitWasCrit ? " - КРИТИЧЕСКИЙ УДАР!" : "";
+
+      Console.WriteLine($"Нанесено {damage} урона{critText}\n");
+
+      Console.WriteLine("ИТОГОВОЕ СОСТОЯНИЕ:");
+      Console.WriteLine("======================");
+      Console.WriteLine(skibidist.GetInfo());
+      Console.WriteLine(artur.GetInfo());
+      if (skibidist) {
+      } else {
+        Console.WriteLine($"{skibidist.Name} умирает");
+        Console.WriteLine($"{artur.Name} ПОБЕЖДАЕТ!");
+        return;
+      }
+
+      if (artur.HP >= 0) {
+      } else {
+        Console.WriteLine($"{artur.Name} умирает");
+        Console.WriteLine($"{skibidist.Name} ПОБЕЖДАЕТ!");
+        return;
+      }
+
+      Console.ReadKey();
+
+      /////////////////////////////////////////
+      ///
+      Console.WriteLine($"\nПЯТЫЙ ХОД.");
 
       Console.WriteLine($"{skibidist.Name} атакует {artur.Name}!");
 
@@ -70,8 +164,59 @@ namespace BoringRPG {
       Console.WriteLine("======================");
       Console.WriteLine(skibidist.GetInfo());
       Console.WriteLine(artur.GetInfo());
+      if (skibidist) {
+      } else {
+        Console.WriteLine($"{skibidist.Name} умирает");
+        Console.WriteLine($"{artur.Name} ПОБЕЖДАЕТ!");
+        return;
+      }
+
+      if (artur.HP >= 0) {
+      } else {
+        Console.WriteLine($"{artur.Name} умирает");
+        Console.WriteLine($"{skibidist.Name} ПОБЕЖДАЕТ!");
+        return;
+      }
+
       Console.ReadKey();
 
+      /////////////////////////////////////////
+
+      Console.WriteLine($"\nШЕСТОЙ ХОД.");
+
+      Console.WriteLine($"{artur.Name} атакует {skibidist.Name}!");
+
+      beforeHP = skibidist.HP;
+      artur.Hit(skibidist);
+      damage = beforeHP - skibidist.HP;
+
+      critText = artur.LastHitWasCrit ? " - КРИТИЧЕСКИЙ УДАР!" : "";
+
+      Console.WriteLine($"Нанесено {damage} урона{critText}\n");
+
+      Console.WriteLine("ИТОГОВОЕ СОСТОЯНИЕ:");
+      Console.WriteLine("======================");
+      Console.WriteLine(skibidist.GetInfo());
+      Console.WriteLine(artur.GetInfo());
+      if (skibidist) {
+        Console.WriteLine("БИТВА ОКОНЧЕНА, НИКТО НЕ ПОБЕДИЛ. НИЧЬЯ.");
+      } else {
+        Console.WriteLine($"{skibidist.Name} умирает");
+        Console.WriteLine($"{artur.Name} ПОБЕЖДАЕТ!");
+        return;
+      }
+
+      if (artur.HP >= 0) {
+      } else {
+        Console.WriteLine($"{artur.Name} умирает");
+        Console.WriteLine($"{skibidist.Name} ПОБЕЖДАЕТ!");
+        return;
+      }
+
+      Console.ReadKey();
+
+      /////////////////////////////////////////
+      ///
 
 
     }
