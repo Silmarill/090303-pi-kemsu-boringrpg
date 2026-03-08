@@ -3,7 +3,7 @@
 namespace BoringRPG {
   internal class DummyClass : Archetype {
 
-    //пример для работы со случайными числами
+    // Пример для работы со случайными числами
     private static Random random = new Random();
     public bool LastHitWasCrit;
 
@@ -28,7 +28,7 @@ namespace BoringRPG {
     }
 
     public override string GetInfo() {
-      return $"{Name} (Dummy): HP {HP}, MP {MP}, Ammo {Ammo}, Шанс крита {CritChance * 100}%";
+      return $"{Name} (Dummy): HP {HP}, MP {MP}, Ammo {Ammo}, Crit Chance {CritChance * 100}%";
     }
   }
 }
