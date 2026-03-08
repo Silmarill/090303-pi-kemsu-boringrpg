@@ -32,13 +32,6 @@ namespace BoringRPG {
       } else {
         Console.WriteLine($"{lancelot.Name} пал смертью храбрых!\n");
 
-        Console.WriteLine("ИТОГОВОЕ СОСТОЯНИЕ:\n" +
-                        "======================\n" +
-                        $"{lancelot.GetInfo()}\n" +
-                        $"{rapfael.GetInfo()}\n" +
-                        $"{lancelot.Name} выбывает!\n\n" +
-                        $"Поздравляем {rapfael.Name} с победой!\n");
-
         Console.WriteLine($"{optimus.Name} попал в смертельную ловушку!");
         optimus.HP -= optimus.HP;
 
@@ -89,7 +82,7 @@ namespace BoringRPG {
                         $"{rapfael.GetInfo()}\n");
       
       Console.WriteLine($"Кто-то выкрал все патроны у {rapfael.Name}: -{rapfael.Ammo} патронов! " + 
-                        "Осталось патронов: 0!");
+                        "Осталось патронов: 0!\n");
       rapfael.Ammo = 0;
 
       Console.WriteLine($"{rapfael.Name} использовал щит здоровья! Потрачено маны: 15");
@@ -115,7 +108,7 @@ namespace BoringRPG {
         Console.WriteLine("ИТОГОВОЕ СОСТОЯНИЕ:\n" +
                         "======================\n" +
                         $"{lancelot.GetInfo()}\n" +
-                        $"{rapfael.GetInfo()}\n" +
+                        $"{rapfael.GetInfo()}\n\n" +
                         $"{rapfael.Name} выбывает!\n\n" +
                         $"Поздравляем {lancelot.Name} с победой!\n");
 
@@ -148,7 +141,7 @@ namespace BoringRPG {
         Console.WriteLine("ИТОГОВОЕ СОСТОЯНИЕ:\n" +
                         "======================\n" +
                         $"{lancelot.GetInfo()}\n" +
-                        $"{rapfael.GetInfo()}\n" +
+                        $"{rapfael.GetInfo()}\n\n" +
                         $"{lancelot.Name} выбывает!\n\n" +
                         $"Поздравляем {rapfael.Name} с победой!\n");
 
@@ -172,7 +165,7 @@ namespace BoringRPG {
         Console.WriteLine("ИТОГОВОЕ СОСТОЯНИЕ:\n" +
                         "======================\n" +
                         $"{lancelot.GetInfo()}\n" +
-                        $"{rapfael.GetInfo()}\n" +
+                        $"{rapfael.GetInfo()}\n\n" +
                         $"{rapfael.Name} выбывает!\n\n" +
                         $"Поздравляем {lancelot.Name} с победой!\n");
 
