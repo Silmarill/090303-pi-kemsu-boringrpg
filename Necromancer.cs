@@ -9,11 +9,12 @@ namespace BoringRPG {
 
     private int _skeletonBonus;
 
-    public Necromancer(string name, int hp, int mp, int ammo, int dmg, double crit) : base("necromancer", 55, 90, 0, 30, 0.1) {
+    public Necromancer(string name, int hp, int mp, int ammo, int dmg, double crit) : base(name, 55, 90, 0, 30, 0.1) {
       _skeletonBonus = 0;
     }
 
-    public Necromancer(string name) : base("necromancer", 55, 90, 0, 30, 0.1) {
+    public Necromancer(string name) : base(name, 55, 90, 0, 30, 0.1) {
+      _skeletonBonus = 0;
     }
 
     public static Necromancer operator +(Necromancer necromancer, int amount) {
@@ -45,7 +46,7 @@ namespace BoringRPG {
       
         if (LastHitWasCrit) {
           damage *= 2;
-          Console.WriteLine($"{Name}:Critical hit!");
+          Console.WriteLine($"{Name}:Критический удар!");
         }
 
         int targetHpBefore = target.HP;
@@ -57,17 +58,18 @@ namespace BoringRPG {
         if (targetHpBefore > target.HP) {
                     
           _skeletonBonus += 5;
-          Console.WriteLine($"{Name}:Skeleton Summoned! Current Bonus:+{_skeletonBonus}");
+          Console.WriteLine($"{Name}:Скелет призван! Текущий бонус:+{_skeletonBonus}");
         }
                 
-        Console.WriteLine($"{Name} attacks {target.Name} and applies {damage} damage!");
+        Console.WriteLine($"{Name} атаки {target.Name} и наносит  {damage} урона!");
       } else {
-        Console.WriteLine($"{Name}:Not enough mana to attack! (15 MP needed)");
+        Console.WriteLine($"{Name}:Недостаточно маны для атаки! (15 MP needed)");
       }
     }  
 
     public override string GetInfo() {
-      return $"{Name} (necromancer): HP {HP}, MP {MP}, Ammo {Ammo}, Crit chance {CritChance * 100}%";
+      string bonusInfo = _skeletonBonus > 0 ? $" | Skeleton bonus: +{_skeletonBonus}" : "";
+      return $"{Name} (necromancer): HP {HP}, MP {MP}, Ammo {Ammo}, Damage {Damage}{bonusInfo},  Crit chance {CritChance * 100}%";
     }
   }
 }

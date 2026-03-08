@@ -6,27 +6,33 @@ namespace BoringRPG {
       string critText;
       int beforeHP, damage;
       
-      DummyClass lancelot = new DummyClass("Ланселот Ловкий");
+      Necromancer necro = new Necromancer("Дэвид Харрис");
       DummyClass artur =    new DummyClass("Артур Пендрагон");
             
       Console.WriteLine($"НАЧАЛО БИТВЫ. Исходное состояние: \n" +
                         $"==================\n" +
-                        $"{lancelot.GetInfo()}\n" +
+                        $"{necro.GetInfo()}\n" +
                         $"{artur.GetInfo()}\n");
            
-      Console.WriteLine($"{lancelot.Name} атакует {artur.Name}!");
+      Console.WriteLine($"{necro.Name} атакует {artur.Name}!");
 
       beforeHP = artur.HP;
-      lancelot.Hit(artur);
+      necro.Hit(artur);
       damage = beforeHP - artur.HP;
 
-      critText = lancelot.LastHitWasCrit ? " - КРИТИЧЕСКИЙ УДАР!" : "";
+      critText = necro.LastHitWasCrit ? " - КРИТИЧЕСКИЙ УДАР!" : "";
 
       Console.WriteLine($"Нанесено {damage} урона{critText}\n");
+
+      if (necro) {  
+        Console.WriteLine($"{necro.Name} жив и может быть исцелен!");
+        necro += 10;  
+        Console.WriteLine($"После исцеления: {necro.GetInfo()}");
+    }
                         
       Console.WriteLine("ИТОГОВОЕ СОСТОЯНИЕ:");
       Console.WriteLine("======================");
-      Console.WriteLine(lancelot.GetInfo());
+      Console.WriteLine(necro.GetInfo());
       Console.WriteLine(artur.GetInfo());
       Console.ReadKey();
     }
