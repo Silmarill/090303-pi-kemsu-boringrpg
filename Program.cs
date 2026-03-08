@@ -1,34 +1,83 @@
 ﻿using System;
+using static System.Net.Mime.MediaTypeNames;
 
-namespace BoringRPG {
-  internal class Program {
-    static void Main(string[] args) {
+namespace BoringRPG
+{
+  internal class Program
+  {
+    static void Main(string[] args)
+    {
       string critText;
       int beforeHP, damage;
-      
-      DummyClass lancelot = new DummyClass("Ланселот Ловкий");
-      DummyClass artur =    new DummyClass("Артур Пендрагон");
-            
-      Console.WriteLine($"НАЧАЛО БИТВЫ. Исходное состояние: \n" +
+
+      DummyClass artur = new DummyClass("Артур Пендрагон");
+      Nekromaster dungeonMaster = new Nekromaster("Данжен Мастер");
+
+      Console.WriteLine($"НАЧАЛО БИТВЫ\n" + $"ПЕРВЫЙ РАУНД\n" +
+                        $"Исходное состояние: \n" +
                         $"==================\n" +
-                        $"{lancelot.GetInfo()}\n" +
+                        $"{dungeonMaster.GetInfo()}\n" +
                         $"{artur.GetInfo()}\n");
-           
-      Console.WriteLine($"{lancelot.Name} атакует {artur.Name}!");
+
+
+      Console.WriteLine($"{dungeonMaster.Name} атакует {artur.Name}!");
 
       beforeHP = artur.HP;
-      lancelot.Hit(artur);
+      dungeonMaster.Hit(artur);
       damage = beforeHP - artur.HP;
 
-      critText = lancelot.LastHitWasCrit ? " - КРИТИЧЕСКИЙ УДАР!" : "";
+      critText = dungeonMaster.LastHitWasCrit ? " - КРИТИЧЕСКИЙ УДАР!" : "";
 
       Console.WriteLine($"Нанесено {damage} урона{critText}\n");
-                        
+
       Console.WriteLine("ИТОГОВОЕ СОСТОЯНИЕ:");
       Console.WriteLine("======================");
-      Console.WriteLine(lancelot.GetInfo());
+      Console.WriteLine(dungeonMaster.GetInfo());
       Console.WriteLine(artur.GetInfo());
       Console.ReadKey();
+
+      /////////////////////////////////////////
+
+      Console.WriteLine($"\nВТОРОЙ РАУНД.");
+
+      Console.WriteLine($"{artur.Name} атакует {dungeonMaster.Name}!");
+
+      beforeHP = dungeonMaster.HP;
+      artur.Hit(dungeonMaster);
+      damage = beforeHP - artur.HP;
+
+      critText = artur.LastHitWasCrit ? " - КРИТИЧЕСКИЙ УДАР!" : "";
+
+      Console.WriteLine($"Нанесено {damage} урона{critText}\n");
+
+      Console.WriteLine("ИТОГОВОЕ СОСТОЯНИЕ:");
+      Console.WriteLine("======================");
+      Console.WriteLine(dungeonMaster.GetInfo());
+      Console.WriteLine(artur.GetInfo());
+      Console.ReadKey();
+
+      /////////////////////////////////////////////////////
+
+      Console.WriteLine($"\nТРЕТИЙ РАУНД.");
+
+      Console.WriteLine($"{dungeonMaster.Name} атакует {artur.Name}!");
+
+      beforeHP = artur.HP;
+      dungeonMaster.Hit(artur);
+      damage = beforeHP - artur.HP;
+
+      critText = dungeonMaster.LastHitWasCrit ? " - КРИТИЧЕСКИЙ УДАР!" : "";
+
+      Console.WriteLine($"Нанесено {damage} урона{critText}\n");
+
+      Console.WriteLine("ИТОГОВОЕ СОСТОЯНИЕ:");
+      Console.WriteLine("======================");
+      Console.WriteLine(dungeonMaster.GetInfo());
+      Console.WriteLine(artur.GetInfo());
+      Console.ReadKey();
+
+
+
     }
   }
 }
