@@ -27,6 +27,21 @@ namespace BoringRPG {
 
       Console.WriteLine($"Нанесено {damage} урона{critText}\n");
 
+      if (lancelot) { 
+        Console.WriteLine($"{lancelot.Name} чудом выжил!\n");
+      } else {
+        Console.WriteLine($"{lancelot.Name} пал смертью храбрых!\n");
+
+        Console.WriteLine("ИТОГОВОЕ СОСТОЯНИЕ:\n" +
+                        "======================\n" +
+                        $"{lancelot.GetInfo()}\n" +
+                        $"{rapfael.GetInfo()}\n" +
+                        $"{lancelot.Name} выбывает!\n\n" +
+                        $"Поздравляем {rapfael.Name} с победой!\n");
+
+        return;
+      }
+
       Console.WriteLine($"{lancelot.Name} использовал лечение!");
       lancelot.HP = lancelot.HP + healing;
       Console.WriteLine($"{lancelot.Name} вылечился на {healing} HP!\n");
@@ -59,30 +74,10 @@ namespace BoringRPG {
                         "Осталось патронов: 0!");
       rapfael.Ammo = 0;
 
-      Console.WriteLine($"{rapfael.Name} атакует {lancelot.Name}!");
-
-      beforeHP = lancelot.HP;
-      rapfael.Hit(lancelot);
-      damage = beforeHP - lancelot.HP;
-
-      critText = rapfael.LastHitWasCrit ? " - КРИТИЧЕСКИЙ УДАР!" : "";
-
-      Console.WriteLine($"Нанесено {damage} урона{critText}\n");
-
-      if (lancelot) { 
-        Console.WriteLine($"{lancelot.Name} чудом выжил!\n");
-      } else {
-        Console.WriteLine($"{lancelot.Name} пал смертью храбрых!\n");
-
-        Console.WriteLine("ИТОГОВОЕ СОСТОЯНИЕ:\n" +
-                        "======================\n" +
-                        $"{lancelot.GetInfo()}\n" +
-                        $"{rapfael.GetInfo()}\n" +
-                        $"{lancelot.Name} выбывает!\n\n" +
-                        $"Поздравляем {rapfael.Name} с победой!\n");
-
-        return;
-      }
+      Console.WriteLine($"{rapfael.Name} использовал щит здоровья! Потрачено маны: 15");
+      rapfael.MP -= 15;
+      rapfael.HP += rapfael.HP;
+      Console.WriteLine($"Текущее здоровье {rapfael.Name}: {rapfael.HP}\n");
 
       Console.WriteLine($"{lancelot.Name} использует прием \"Левый коронный, правый похоронный\"!");
       beforeHP = rapfael.HP;
