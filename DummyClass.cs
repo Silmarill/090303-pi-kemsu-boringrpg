@@ -26,7 +26,7 @@ namespace BoringRPG {
 
       target.HP -= damage;
     }
-
+    
     public override string GetInfo() {
       return $"{Name} (Dummy): HP {HP}, MP {MP}, Ammo {Ammo}, Шанс крита {CritChance * 100}%";
     }
