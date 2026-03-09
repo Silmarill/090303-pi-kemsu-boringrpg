@@ -48,7 +48,7 @@ namespace BoringRPG {
     }
 
     public override string GetInfo() {
-      return $"{Name} (Mage): HP {HP}, MP {MP}, Ammo {Ammo}, Damage {Damage}, CritChance {CritChance * 100}%";
+      return $"{Name} (Mage): HP {HP}, MP {MP}, Ammo {Ammo}, Crit Chance {CritChance * 100}%";
     }
   }
 }
