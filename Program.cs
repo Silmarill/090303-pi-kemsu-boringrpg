@@ -66,12 +66,11 @@ namespace BoringRPG {
         }
 
         // Лечение после раунда (используем перегрузку +)
-        Console.WriteLine("\n$--- Лечение после раунда ---$");
-        Console.WriteLine($"{druid.Name} до лечения: HP {druid.HP}");
+        Console.WriteLine($"\n$--- Лечение после раунда ---$\n" +
+                          $"{druid.Name} до лечения: HP {druid.HP}");
         druid += 10;
-        Console.WriteLine($"{druid.Name} после +10: HP {druid.HP}");
-        
-        Console.WriteLine($"{artur.Name} до лечения: HP {artur.HP}");
+        Console.WriteLine($"{druid.Name} после +10: HP {druid.HP}\n" +
+                          $"{artur.Name} до лечения: HP {artur.HP}");
         artur += 10;
         Console.WriteLine($"{artur.Name} после +10: HP {artur.HP}");
         
@@ -80,13 +79,13 @@ namespace BoringRPG {
         Console.WriteLine("\nНажмите любую клавишу для следующего раунда...");
         Console.ReadKey();
       }
-      
-      Console.WriteLine($"\n$=== БИТВА ОКОНЧЕНА ===$");
-      Console.WriteLine("ИТОГОВОЕ СОСТОЯНИЕ:");
-      Console.WriteLine("======================");
-      Console.WriteLine(druid.GetInfo());
-      Console.WriteLine(artur.GetInfo());
-      
+
+      Console.WriteLine($"\n$=== БИТВА ОКОНЧЕНА ===$\n" +
+                        $"ИТОГОВОЕ СОСТОЯНИЕ:\n" +
+                        $"======================\n" +
+                        $"{druid.GetInfo()}\n" +
+                        $"{artur.GetInfo()}\n");
+
       // использование перегрузки true и false
       if (druid) {
         if (artur) {
