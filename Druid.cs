@@ -8,22 +8,20 @@ namespace BoringRPG {
     public Druid(string name) : base(name, 90, 60, 0, 20, 0.10) {
     }
 
-    public static Druid operator +(Druid druid, int healing) {
+    public static Druid operator+ (Druid druid, int healing) {
       druid.HP += healing;
       return druid;
     }
 
-    public static Druid operator -(Druid druid, int damage) {
+    public static Druid operator- (Druid druid, int damage) {
       druid.HP -= damage;
       return druid;
     }
     
-    // true
     public static bool operator true(Druid druid) {
       return druid.HP > 0;
     }
 
-    // false
     public static bool operator false(Druid druid) {
       return druid.HP <= 0;
     }
@@ -41,12 +39,16 @@ namespace BoringRPG {
       // eсли цель имеет больше 50% HP - урон удваивается
       if (MP >= 5) {
         MP -= 5;
-        if (target.HP < 45) {
+        if (target.HP > 45) {
           damage *= 2;
         }
       }
 
-      target.HP -= damage;
+      if (target is Druid druidTarget) {
+        druidTarget = druidTarget - damage;
+      } else {
+        target.HP -= damage;
+      }
     }
 
     public override string GetInfo() {
