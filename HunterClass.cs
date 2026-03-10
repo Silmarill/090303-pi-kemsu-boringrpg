@@ -17,11 +17,33 @@ namespace BoringRPG
         {
         }
 
+    
+        public static HunterClass operator +(HunterClass hunter, int amount)
+        {
+          hunter.HP += amount;
+          return hunter;
+        }
+
+        public static HunterClass operator -(HunterClass hunter, int amount)
+        {
+          hunter.HP -= amount;
+          return hunter;
+        }
+
+        public static bool operator true(HunterClass hunter)
+        {
+          return hunter.HP > 0;
+        }
+
+        public static bool operator false(HunterClass hunter)
+        {
+          return hunter.HP <= 0;
+        }
+
         public override void Hit(Archetype target)
         {
             int damage = Damage;
 
-            // Метод NextDouble() - возвращает double в диапазоне [0.0; 1.0)
             LastHitWasCrit = random.NextDouble() < CritChance;
 
             if (LastHitWasCrit)
