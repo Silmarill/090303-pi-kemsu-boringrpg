@@ -12,6 +12,13 @@ namespace BoringRPG {
     public override void Hit(Archetype target) {
       int damage = Damage;
 
+      if (HP <= 5) {
+        return;
+      }
+
+      HP -= 5;
+      damage = Damage + 5;
+
       LastHitWasCrit = random.NextDouble() < CritChance;
 
       if (LastHitWasCrit) {
@@ -22,7 +29,7 @@ namespace BoringRPG {
     }
 
     public override string GetInfo() {
-      return $"{Name} (Dummy): HP {HP}, MP {MP}, Ammo {Ammo}, Шанс крита {CritChance * 100}%";
+      return $"{Name} (Warrior): HP {HP}, MP {MP}, Ammo {Ammo}, Шанс крита {CritChance * 100}%";
     }
   }
 }
