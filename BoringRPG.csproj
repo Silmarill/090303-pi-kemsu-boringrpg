@@ -59,7 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Archetype.cs" />
-    <Compile Include="berserkerClass.cs" />
+    <Compile Include="BerserkerClass.cs" />
     <Compile Include="DummyClass.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
