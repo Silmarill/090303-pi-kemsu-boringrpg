@@ -25,6 +25,16 @@ namespace BoringRPG
             return cleric;
         }
 
+        public static bool operator true(Cleric cleric)
+        {
+            return cleric.HP > 0;
+        }
+
+        public static bool operator false(Cleric cleric)
+        {
+            return cleric.HP <= 0;
+        }
+
         public Cleric(string name) : base(name, 75, 80, 0, 15, 0.05)
         {
         }
@@ -59,7 +69,7 @@ namespace BoringRPG
 
         public override string GetInfo()
         {
-            return $"{Name} (Хилятор3000): HP {HP}, MP {MP}, Ammo {Ammo}, Шанс крита {CritChance * 100}, Удары стоят 10 MP - при убийстве цели восстанавливает 10 HP%";
+            return $"{Name} (Хилятор3000): HP {HP}, MP {MP}, Ammo {Ammo}, Шанс крита {CritChance * 100}, Удары стоят 10 MP - при убийстве цели восстанавливает себе 10 HP";
         }
     }
 }
