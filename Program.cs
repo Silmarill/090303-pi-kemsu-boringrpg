@@ -4,7 +4,7 @@ namespace BoringRPG {
   internal class Program {
     static void Main(string[] args) {
       string critText;
-      int beforeHP, damage;
+      int beforeHP, damage, hil;
 
       DummyClass lancelot = new DummyClass("Ланселот Ловкий");
       Hunter killian = new Hunter("Киллиан - древнее зло");
@@ -23,6 +23,29 @@ namespace BoringRPG {
       critText = killian.LastHitWasCrit ? " - КРИТИЧЕСКИЙ УДАР!" : "";
 
       Console.WriteLine($"Нанесено {damage} урона{critText}\n");
+
+      Console.WriteLine($"{lancelot.Name} атакует {killian.Name}!");
+
+      beforeHP = killian.HP;
+      lancelot.Hit(killian);
+      damage = beforeHP - killian.HP;
+
+      critText = lancelot.LastHitWasCrit ? " - КРИТИЧЕСКИЙ УДАР!" : "";
+
+      Console.WriteLine($"Нанесено {damage} урона{critText}\n");
+
+      Console.WriteLine("Нынешнее состояние: \n");
+      Console.WriteLine("======================");
+      Console.WriteLine(lancelot.GetInfo());
+      Console.WriteLine(killian.GetInfo());
+
+      Console.WriteLine("Киллиан - древнее зло использует лечение \n");
+      beforeHP = killian.HP;
+      killian.HP = ++killian.HP;
+      hil = killian.HP - beforeHP;
+
+      Console.WriteLine($"{killian.Name} лечится на {hil} \n");
+        
 
       Console.WriteLine("ИТОГОВОЕ СОСТОЯНИЕ:");
       Console.WriteLine("======================");

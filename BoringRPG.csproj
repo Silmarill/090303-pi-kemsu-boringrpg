@@ -59,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Archetype.cs" />
+    <Compile Include="ConsumableItem.cs" />
     <Compile Include="Hunter.cs" />
     <Compile Include="DummyClass.cs" />
     <Compile Include="Program.cs" />
