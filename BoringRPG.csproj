@@ -58,9 +58,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AmmoPack.cs" />
     <Compile Include="Archetype.cs" />
+    <Compile Include="ConsumableItem.cs" />
+    <Compile Include="Crazy items.cs" />
     <Compile Include="Druid.cs" />
     <Compile Include="DummyClass.cs" />
+    <Compile Include="HealthPotion.cs" />
+    <Compile Include="ManaPotion.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -1,7 +1,7 @@
 ﻿using System;
 
 namespace BoringRPG {
-  internal class Druid : Archetype {
+  public class Druid : Archetype {
 
     private static Random random = new Random();
     public bool LastHitWasCrit;
@@ -19,6 +19,12 @@ namespace BoringRPG {
     public static Druid operator -(Druid druid, int amount)
     {
       druid.HP -= amount;
+      return druid;
+    }
+
+    public static Druid operator +(Druid druid, ConsumableItem item)
+    {
+      item.ApplyEffect(druid);
       return druid;
     }
 
