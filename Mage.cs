@@ -45,7 +45,6 @@ namespace BoringRPG {
     public static Mage operator +(Mage mage, CrazyCrit potion)
     {
       Random random = new Random();     
-
       mage.CritChance += potion.Value * random.Next(1, 15) / 100.0;
       return mage;
     }
