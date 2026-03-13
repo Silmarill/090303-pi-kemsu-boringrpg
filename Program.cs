@@ -7,26 +7,8 @@ namespace BoringRPG {
       string critText;
       int beforeHP, damage;
 
-      DummyClass artur = new DummyClass("Артур Пендрагон");
+      Hunter artur = new Hunter("Артур Пендрагон");
       Hunter cser = new Hunter("Красная линия");
-
-      if (artur)
-      {
-        Console.WriteLine($"{artur.Name} пока не умер!");
-      }
-      else
-      {
-        Console.WriteLine($"{artur.Name} живчик");
-      }
-
-      if (cser)
-      {
-        Console.WriteLine($"{cser.Name} живее всех живых!");
-      }
-      else
-      {
-        Console.WriteLine($"{cser.Name} на грани смерти!");
-      }
 
 
       Console.WriteLine($"НАЧАЛО БИТВЫ. Исходное состояние: \n" +
@@ -51,6 +33,15 @@ namespace BoringRPG {
       Console.WriteLine(artur.GetInfo());
       Console.ReadKey();
 
+      if (cser)
+      {
+        Console.WriteLine($"{cser.Name} хорошая форма");
+      }
+      else
+      {
+        Console.WriteLine($"{cser.Name} на грани смерти!");
+      }
+
       // ==================================================================
 
       Console.WriteLine($"\nВторой РАУНД.");
@@ -71,6 +62,15 @@ namespace BoringRPG {
       Console.WriteLine(artur.GetInfo());
       Console.ReadKey();
 
+      if (cser)
+      {
+        Console.WriteLine($"{cser.Name} хорошая форма");
+      }
+      else
+      {
+        Console.WriteLine($"{cser.Name} на грани смерти!");
+      }
+
       // ===================================================================
 
       Console.WriteLine($"\nТретий раунд.");
@@ -88,6 +88,16 @@ namespace BoringRPG {
       Console.WriteLine(cser.GetInfo());
       Console.WriteLine(artur.GetInfo());
       Console.ReadKey();
+
+      if (cser)
+      {
+        Console.WriteLine($"{cser.Name} хорошая форма");
+      }
+      else
+      {
+        Console.WriteLine($"{cser.Name} на грани смерти!");
+      }
+
 
     }
   }

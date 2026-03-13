@@ -9,14 +9,17 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace BoringRPG
 {
-  internal class Hunter : Archetype {
+  internal class Hunter : Archetype
+  {
     private static Random random = new Random();
     public bool LastHitWasCrit;
 
-    
-    public Hunter(string name, int hp, int mp, int ammo, int dmg, double crit) : base(name, 85, 20, 15, 25, 0.20) {
+
+    public Hunter(string name, int hp, int mp, int ammo, int dmg, double crit) : base(name, 85, 20, 15, 25, 0.20)
+    {
     }
-    public Hunter(string name) : base(name, 100, 50, 10, 20, 0.3) {
+    public Hunter(string name) : base(name, 100, 50, 10, 20, 0.3)
+    {
     }
 
     public static Hunter operator +(Hunter hunter, int amount)
@@ -30,7 +33,7 @@ namespace BoringRPG
       return hunter;
     }
 
-    public static bool operator true (Hunter hunter)
+    public static bool operator true(Hunter hunter)
     {
       return hunter.HP > 0;
     }
