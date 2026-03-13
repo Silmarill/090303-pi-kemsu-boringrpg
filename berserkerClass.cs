@@ -19,6 +19,10 @@ namespace BoringRPG {
         damage *= 2;
       }
 
+      if (LastHitWasCrit) {
+        HP -= damage;
+      }
+
       target.HP -= damage;
     }
     public override string GetInfo() {
