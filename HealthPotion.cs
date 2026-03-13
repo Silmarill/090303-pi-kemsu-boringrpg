@@ -1,7 +1,8 @@
-﻿
-namespace BoringRPG
+﻿namespace BoringRPG
 {
-  internal class HealthPotion
+  public class HealthPotion : ConsumableItem
   {
+    public HealthPotion(int value) : base(value) { }
   }
 }
+

@@ -1,7 +1,7 @@
 ﻿using System;
 
 namespace BoringRPG {
-  internal class Program {
+  public class Program {
     static void Main(string[] args) {
       string critText;
       int beforeHP, damage;
@@ -26,6 +26,30 @@ namespace BoringRPG {
       else {
         Console.WriteLine($"{artur.Name} умер (HP <= 0)");
       }
+      Console.WriteLine();
+
+      HealthPotion hp = new HealthPotion(50);
+      lancelot += hp;
+      Console.WriteLine("После HealthPotion(50):");
+      Console.WriteLine(lancelot.GetInfo());
+      Console.WriteLine();
+
+      AmmoPack ammo = new AmmoPack(10);
+      lancelot += ammo;
+      Console.WriteLine("После AmmoPack(10):");
+      Console.WriteLine(lancelot.GetInfo());
+      Console.WriteLine();
+
+      ManaPotion mana = new ManaPotion(100);
+      lancelot += mana;
+      Console.WriteLine("После ManaPotion(100):");
+      Console.WriteLine(lancelot.GetInfo());
+      Console.WriteLine();
+
+      FatBurger burger = new FatBurger(100);
+      lancelot += burger;
+      Console.WriteLine("После FatBurger:");
+      Console.WriteLine(lancelot.GetInfo());
       Console.WriteLine();
 
       Console.WriteLine($"{lancelot.Name} атакует {artur.Name}!");

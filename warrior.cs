@@ -2,7 +2,7 @@
 
 namespace BoringRPG
 {
-  internal class Warrior : Archetype
+  public class Warrior : Archetype
   {
     private static Random random = new Random();
     public bool LastHitWasCrit;
@@ -32,6 +32,31 @@ namespace BoringRPG
     public static bool operator false(Warrior warrior)
     {
       return warrior.HP <= 0;
+    }
+
+    public static Warrior operator +(Warrior warrior, HealthPotion potion)
+    {
+      warrior.HP += potion.Value;
+      return warrior;
+    }
+
+    public static Warrior operator +(Warrior warrior, ManaPotion potion)
+    {
+      warrior.MP += potion.Value;
+      return warrior;
+    }
+
+    public static Warrior operator +(Warrior warrior, AmmoPack pack)
+    {
+      warrior.Ammo += pack.Value;
+      return warrior;
+    }
+
+    public static Warrior operator +(Warrior warrior, FatBurger burger)
+    {
+      warrior.MP += 20;
+      warrior.Ammo += 20;
+      return warrior;
     }
 
     public override void Hit(Archetype target)

@@ -1,10 +1,10 @@
 ﻿namespace BoringRPG
 {
-  internal abstract class ConsumableItem
+  public abstract class ConsumableItem
   {
     public int Value;
 
-    protected ConsumableItem(int value)
+    public ConsumableItem(int value)
     {
       Value = value;
     }

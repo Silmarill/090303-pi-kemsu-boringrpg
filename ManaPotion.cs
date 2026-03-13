@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BoringRPG
+﻿namespace BoringRPG
 {
-  internal class ManaPotion
+  public class ManaPotion : ConsumableItem
   {
+    public ManaPotion (int value) : base(value) { }
   }
 }
