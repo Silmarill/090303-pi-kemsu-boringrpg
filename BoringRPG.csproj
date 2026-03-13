@@ -61,6 +61,7 @@
     <Compile Include="Archer.cs" />
     <Compile Include="Archetype.cs" />
     <Compile Include="DummyClass.cs" />
+    <Compile Include="Items.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

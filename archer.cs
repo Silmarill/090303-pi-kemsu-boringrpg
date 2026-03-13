@@ -6,12 +6,13 @@ namespace BoringRPG {
     //пример для работы со случайными числами
     private static Random random = new Random();
     public bool LastHitWasCrit;
-    public bool IsAlive => HP >0;
-    public Archer(string name, int hp, int mp, int ammo, int dmg,int heal, double crit) : base(name, 80, 30, 20, 20, 20, 0.25) {
+    public bool IsAlive => HP > 0;
+    public int Healing = 20;
+    public Archer(string name, int hp, int mp, int ammo, int dmg, double crit) : base(name, 80, 30, 20, 20, 0.25) {
       // HP=100, MP=50, Ammo=10, Damage=20, CritChance=0.3 (30%)
     }
     
-    public Archer (string name) : base(name, 80, 30, 20, 20, 20, 0.25) {
+    public Archer (string name) : base(name, 80, 30, 20, 20, 0.25) {
     }
 
     public static bool operator true (Archer archer) {
