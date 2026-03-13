@@ -5,8 +5,9 @@ namespace BoringRPG {
     static void Main(string[] args) {
       string critText;
       int beforeHP, damage;
+      int healing = 20;
       
-      archerClass lancelot = new archerClass("Ланселот Ловкий");
+      Archer lancelot = new Archer("Ланселот Ловкий");
       DummyClass artur = new DummyClass("Артур Пендрагон");
             
       Console.WriteLine($"НАЧАЛО БИТВЫ. Исходное состояние: \n" +
@@ -24,6 +25,7 @@ namespace BoringRPG {
       beforeHP = artur.HP;
       lancelot.Hit(artur);
       damage = beforeHP - artur.HP;
+      healing = beforeHP - artur.HP;
 
       critText = lancelot.LastHitWasCrit ? " - КРИТИЧЕСКИЙ УДАР!" : "";
 
@@ -35,8 +37,10 @@ namespace BoringRPG {
         Console.WriteLine($"{artur.Name} все еще держится\n");
       }
 
-      damage = beforeHP - artur.HP;
-                        
+      artur = artur + healing;
+      Console.WriteLine($"{artur.Name} пополняет здоровье + {healing} ХП\n");
+      
+            
       Console.WriteLine("ИТОГОВОЕ СОСТОЯНИЕ:");
       Console.WriteLine("======================");
       Console.WriteLine(lancelot.GetInfo());

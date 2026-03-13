@@ -58,7 +58,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="archer.cs" />
+    <Compile Include="Archer.cs" />
     <Compile Include="Archetype.cs" />
     <Compile Include="DummyClass.cs" />
     <Compile Include="Program.cs" />

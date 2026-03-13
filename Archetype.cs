@@ -10,14 +10,16 @@ namespace BoringRPG {
     public int Ammo;
     public int Damage;
     public double CritChance;
+    public int Healing;
 
-    protected Archetype(string name, int hp, int mp, int ammo, int dmg, double crit) {
+    protected Archetype(string name, int hp, int mp, int ammo, int dmg, int heal, double crit) {
       Name = name;
       HP = hp;
       MP = mp;
       Ammo = ammo;
       Damage = dmg;
       CritChance = crit;
+      Healing = heal;
     }
 
     public abstract void Hit(Archetype target);
