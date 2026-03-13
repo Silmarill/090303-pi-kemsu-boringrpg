@@ -6,7 +6,7 @@ namespace BoringRPG {
       string critText;
       int beforeHP, damage;
       
-      DummyClass lancelot = new DummyClass("Ланселот Ловкий");
+      Paladin lancelot = new Paladin("Ланселот Ловкий");
       DummyClass artur =    new DummyClass("Артур Пендрагон");
             
       Console.WriteLine($"НАЧАЛО БИТВЫ. Исходное состояние: \n" +
