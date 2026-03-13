@@ -5,21 +5,20 @@ namespace BoringRPG {
     static void Main(string[] args) {
       string critText;
       int beforeHP, damage;
-      
-      Hunter Hunter = new Hunter("Ланселот Ловкий");
-      Hunter artur =    new Hunter("Артур Пендрагон");
-            
+
+      DummyClass artur = new DummyClass("Артур Пендрагон");
+      Hunter cser = new Hunter("Красная линия");
+
       Console.WriteLine($"НАЧАЛО БИТВЫ. Исходное состояние: \n" +
                         $"==================\n" +
-                        $"{Hunter.GetInfo()}\n" +
+                        $"{cser.GetInfo()}\n" +
                         $"{artur.GetInfo()}\n");
 
-      Console.WriteLine($"\nВТОРОЙ РАУНД.");
 
-      Console.WriteLine($"{artur.Name} атакует {Hunter.Name}!");
+      Console.WriteLine($"{artur.Name} атакует {artur.Name}!");
 
-      beforeHP = Hunter.HP;
-      artur.Hit(Hunter);
+      beforeHP = artur.HP;
+      artur.Hit(artur);
       damage = beforeHP - artur.HP;
 
       critText = artur.LastHitWasCrit ? " - КРИТИЧЕСКИЙ УДАР!" : "";
@@ -28,29 +27,47 @@ namespace BoringRPG {
 
       Console.WriteLine("ИТОГОВОЕ СОСТОЯНИЕ:");
       Console.WriteLine("======================");
-      Console.WriteLine(Hunter.GetInfo());
+      Console.WriteLine(cser.GetInfo());
       Console.WriteLine(artur.GetInfo());
       Console.ReadKey();
 
-      Console.WriteLine($"\nТРЕТИЙ РАУНД.");
+      // ==================================================================
 
-      Console.WriteLine($"{Hunter.Name} атакует {artur.Name}!");
+      Console.WriteLine($"\nВторой РАУНД.");
+
+      Console.WriteLine($"{cser.Name} атакует {artur.Name}!");
 
       beforeHP = artur.HP;
-      Hunter.Hit(artur);
+      cser.Hit(artur);
       damage = beforeHP - artur.HP;
 
-      critText = Hunter.LastHitWasCrit ? " - КРИТИЧЕСКИЙ УДАР!" : "";
+      critText = cser.LastHitWasCrit ? " - КРИТИЧЕСКИЙ УДАР!" : "";
 
       Console.WriteLine($"Нанесено {damage} урона{critText}\n");
 
       Console.WriteLine("ИТОГОВОЕ СОСТОЯНИЕ:");
       Console.WriteLine("======================");
-      Console.WriteLine(Hunter.GetInfo());
+      Console.WriteLine(cser.GetInfo());
       Console.WriteLine(artur.GetInfo());
       Console.ReadKey();
 
+      // ===================================================================
 
+      Console.WriteLine($"\nТретий раунд.");
+
+      Console.WriteLine($"{artur.Name} атакует  {artur.Name}!");
+
+      beforeHP = artur.HP;
+      cser.Hit(artur);
+      damage = beforeHP - artur.HP;
+
+      critText = cser.LastHitWasCrit ? " - КРИТИЧЕСКИЙ УДАР!" : "";
+
+      Console.WriteLine("ИТОГОВОЕ СОСТОЯНИЕ:");
+      Console.WriteLine("======================");
+      Console.WriteLine(cser.GetInfo());
+      Console.WriteLine(artur.GetInfo());
+      Console.ReadKey();
 
     }
   }
