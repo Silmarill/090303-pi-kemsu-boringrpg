@@ -58,11 +58,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AmmoPack.cs" />
     <Compile Include="Archer.cs" />
     <Compile Include="Archetype.cs" />
     <Compile Include="ConsumableItem.cs" />
     <Compile Include="DummyClass.cs" />
     <Compile Include="Heal.cs" />
+    <Compile Include="MaliceInShooting.cs" />
+    <Compile Include="ManaPotion.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

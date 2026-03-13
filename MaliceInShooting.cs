@@ -6,14 +6,10 @@ using System.Threading.Tasks;
 
 namespace BoringRPG
 {
-  internal abstract class ConsumableItem
+  internal class MaliceInShooting : ConsumableItem
   {
-    public int Value;
-
-    public ConsumableItem(int value)
+    public MaliceInShooting(int value = 10) : base(value)
     {
-      Value = value;
     }
   }
-
 }

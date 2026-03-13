@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 
 namespace BoringRPG
 {
@@ -13,6 +14,10 @@ namespace BoringRPG
 
       DummyClass lancelot = new DummyClass("Lancelot the Nimble");
       Archer archer = new Archer("inkoromi21");
+      Heal healPotion = new Heal(30);
+      ManaPotion manaPotion = new ManaPotion(30);
+      AmmoPack ammoPack = new AmmoPack(5);
+      MaliceInShooting superAbility = new MaliceInShooting(30);
 
       randomEventmeaning = archer.RandomEvent(archer);
 
@@ -24,16 +29,29 @@ namespace BoringRPG
       if (randomEventmeaning > 0)
       {
         Console.WriteLine($"{archer.Name} finds a health potion! +{randomEventmeaning} HP");
+
       }
       else if (randomEventmeaning < 0)
 
       {
         Console.WriteLine($"{archer.Name} stepped into a trap! {randomEventmeaning} HP");
+
+        archer += healPotion;
+        Console.WriteLine($"{archer.Name} decided to use a health potion! HP = {archer.HP}\n");
+
+        archer += superAbility;
+        Console.WriteLine($"{archer.Name} was trapped and very angry! Damage = {archer.Damage} \n");
       }
       else
       {
         Console.WriteLine($"{archer.Name} calmly reached the enemy");
       }
+
+      archer += manaPotion;
+      Console.WriteLine($"{archer.Name} decided to drink a mana potion! MP = {archer.MP} \n");
+
+      archer += ammoPack;
+      Console.WriteLine($"{archer.Name} decided to use an additional set of arrows! Ammo = {archer.Ammo}\n");
 
       while (archer)
       {

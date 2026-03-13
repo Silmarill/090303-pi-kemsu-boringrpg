@@ -17,9 +17,27 @@ namespace BoringRPG
       return myArcher;
     }
 
-    public static Heal operator +(Archer myArcher, Heal poisonHP)
+    public static Archer operator +(Archer myArcher, Heal poisonHP)
     {
       myArcher.HP += poisonHP.Value;
+      return myArcher;
+    }
+    public static Archer operator +(Archer myArcher, ManaPotion poisonMP)
+    {
+      myArcher.MP += poisonMP.Value;
+      return myArcher;
+    }
+
+    public static Archer operator +(Archer myArcher, AmmoPack ammo)
+    {
+      myArcher.Ammo += ammo.Value;
+      return myArcher;
+    }
+
+    public static Archer operator +(Archer myArcher, MaliceInShooting damage)
+    {
+      myArcher.Damage += damage.Value;
+      return myArcher;
     }
 
     public static Archer operator -(Archer myArcher, int amount)
