@@ -58,20 +58,22 @@ namespace BoringRPG {
       Console.WriteLine(artur.GetInfo());
       Console.WriteLine(paladin.GetInfo());
 
-
-
       Console.WriteLine("\n=== DEMONSTRATION OF OPERATORS +, - AND TRUE/FALSE ===");
 
       paladin = paladin + 10;
       Console.WriteLine($"After +10 HP: {paladin.GetInfo()}");
+
       paladin = paladin - 10;
       Console.WriteLine($"After -10 HP: {paladin.GetInfo()}");
 
       if (paladin)
+      {
         Console.WriteLine($"{paladin.Name} is alive!");
+      }
       else
+      {
         Console.WriteLine($"{paladin.Name} is dead!");
-
+      }
       Console.ReadKey();
     }
   }
