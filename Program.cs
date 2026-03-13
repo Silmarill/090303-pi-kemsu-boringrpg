@@ -41,7 +41,7 @@ namespace BoringRPG {
 
       Console.WriteLine("Нанесён смертельный урон\n");
 
-      lancelot -= 1000;
+      lancelot -= 9999999;
 
       if (lancelot){
         Console.WriteLine($"{lancelot.Name} ещё живой\n");
