@@ -7,7 +7,7 @@ namespace BoringRPG {
       int beforeHP, damage;
       
       Warrior lancelot = new Warrior("Ланселот Ловкий");
-      Warrior artur =    new Warrior("Артур Пендрагон");
+      DummyClass artur =    new DummyClass("Артур Пендрагон");
             
       Console.WriteLine($"НАЧАЛО БИТВЫ. Исходное состояние: \n" +
                         $"==================\n" +
@@ -23,7 +23,11 @@ namespace BoringRPG {
       critText = lancelot.LastHitWasCrit ? " - КРИТИЧЕСКИЙ УДАР!" : "";
 
       Console.WriteLine($"Нанесено {damage} урона{critText}\n");
-                        
+
+      //ManaPotion potion = new ManaPorion(30);
+      //artur + potion;
+      //Console.WriteLine(artur.GetInfo());
+
       Console.WriteLine("ИТОГОВОЕ СОСТОЯНИЕ:");
       Console.WriteLine("======================");
       Console.WriteLine(lancelot.GetInfo());
