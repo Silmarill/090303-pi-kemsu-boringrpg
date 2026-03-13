@@ -26,11 +26,6 @@ namespace BoringRPG {
       return druid.HP <= 0;
     }
 
-    public static Druid operator+ (Druid druid, ConsumableItem item) {
-      item.ApplyEffect(druid);
-      return druid;
-    }
-
     public override void Hit(Archetype target) {
       int damage = Damage;
 

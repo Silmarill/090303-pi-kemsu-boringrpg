@@ -2,13 +2,10 @@ using System;
 
 namespace BoringRPG {
   internal abstract class ConsumableItem {
-    public int value { get; set; }
+    public int Value { get; protected set; }
 
-    public ConsumableItem(int inputValue) {
-      value = inputValue;
-    }
-
-    public abstract void ApplyEffect(Archetype target){
+    public ConsumableItem(int value) {
+      Value = value;
     }
   }
 }
