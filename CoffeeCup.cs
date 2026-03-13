@@ -1,9 +1,9 @@
 ﻿using System;
 
 namespace BoringRPG {
-  public class ManaPotion : ConsumableItem {
+  public class CoffeeCup : ConsumableItem {
 
-    public ManaPotion(int value) : base(value) {
+    public CoffeeCup (int value) : base (value) {
     }
 
     public override string GetEffectDescription() {
