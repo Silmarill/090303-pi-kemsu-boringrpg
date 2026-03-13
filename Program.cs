@@ -7,7 +7,7 @@ namespace BoringRPG {
       int beforeHP, damage;
       
       Cleric lancelot = new Cleric("Ланселот Ловкий");
-      Cleric artur = new Cleric("Артур Пендрагон");
+      DummyClass artur = new DummyClass("Артур Пендрагон");
       
       Console.WriteLine($"НАЧАЛО БИТВЫ. Исходное состояние: \n" +
                         $"==================\n" +
@@ -24,10 +24,54 @@ namespace BoringRPG {
 
       Console.WriteLine($"Нанесено {damage} урона{critText}\n");
       
-      Console.WriteLine("ИТОГОВОЕ СОСТОЯНИЕ:");
+      Console.WriteLine("ИТОГОВОЕ СОСТОЯНИЕ ПОСЛЕ АТАКИ:");
       Console.WriteLine("======================");
       Console.WriteLine(lancelot.GetInfo());
       Console.WriteLine(artur.GetInfo());
+      
+      Console.WriteLine("\n=== ДЕМОНСТРАЦИЯ ПЕРЕГРУЗКИ ОПЕРАТОРОВ + И - ===");
+      
+      Console.WriteLine($"\nТекущее HP Клерика: {lancelot.HP}/75");
+      
+      Console.WriteLine("\nПрименяем оператор + (лечение): lancelot = lancelot + 20");
+      lancelot = lancelot + 20;
+      Console.WriteLine($"HP после лечения: {lancelot.HP}/75");
+      
+      Console.WriteLine("\nПрименяем оператор - (получение урона): lancelot = lancelot - 30");
+      lancelot = lancelot - 30;
+      Console.WriteLine($"HP после получения урона: {lancelot.HP}/75");
+      
+      Console.WriteLine("\n=== ДЕМОНСТРАЦИЯ ПЕРЕГРУЗКИ ОПЕРАТОРОВ TRUE/FALSE ===");
+      
+      Console.WriteLine($"\nТекущее HP Клерика: {lancelot.HP}/75");
+      
+      if (lancelot) {
+        Console.WriteLine("Клерик жив (HP > 0) - оператор true вернул true");
+      } else {
+        Console.WriteLine("Клерик мертв (HP <= 0) - оператор true вернул false");
+      }
+      
+      Console.WriteLine("\nНаносим критический урон, чтобы убить Клерика:");
+      Console.WriteLine("lancelot = lancelot - 100");
+      lancelot = lancelot - 100;
+      Console.WriteLine($"HP после получения урона: {lancelot.HP}/75");
+      
+      if (lancelot) {
+        Console.WriteLine("Клерик жив (HP > 0)");
+      } else {
+        Console.WriteLine("Клерик мертв (HP <= 0) - оператор true вернул false");
+      }
+      
+      Console.WriteLine("\n=== ПРОВЕРКА LastHitWasCrit ===");
+      Console.WriteLine($"Был ли критический удар в прошлой атаке: {lancelot.LastHitWasCrit}");
+      
+      Console.WriteLine("\nНаносим несколько ударов для проверки критов:");
+      for (int i = 1; i <= 5; i++) {
+        Console.Write($"\nУдар {i}: ");
+        lancelot.Hit(artur);
+        Console.WriteLine($"Крит: {lancelot.LastHitWasCrit}");
+      }
+      
       Console.ReadKey();
     }
   }

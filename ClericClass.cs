@@ -1,7 +1,6 @@
 ﻿using System;
 
-namespace BoringRPG
-{
+namespace BoringRPG {
   internal class Cleric : Archetype {
     private static Random random = new Random();
     public bool LastHitWasCrit;
@@ -29,13 +28,20 @@ namespace BoringRPG
       return cleric;
     }
 
+    public static bool operator true(Cleric cleric) {
+      return cleric.HP > 0;
+    }
+
+    public static bool operator false(Cleric cleric) {
+      return cleric.HP <= 0;
+    }
+
     public override void Hit(Archetype target) {
       if (MP >= 10) {
         int damage = Damage;
         int targetHpBefore = target.HP;
 
         MP -= 10;
-
         LastHitWasCrit = random.NextDouble() < CritChance;
 
         if (LastHitWasCrit) {
@@ -57,13 +63,12 @@ namespace BoringRPG
         }
       } else {
         LastHitWasCrit = false;
-
         Console.WriteLine($"{Name} has insufficient MP to attack!");
       }
     }
 
     public override string GetInfo() {
-      return $"Cleric: {Name}: HP {HP}/75, MP {MP}/80, Ammo {Ammo}, Crit chance {CritChance * 100}%";
+      return $"{Name}: HP {HP}/75, MP {MP}/80, Ammo {Ammo}, Crit chance {CritChance * 100}%";
     }
   }
 }
