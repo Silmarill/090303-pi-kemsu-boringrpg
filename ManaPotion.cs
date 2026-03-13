@@ -5,9 +5,5 @@ namespace BoringRPG {
 
     public ManaPotion(int value) : base(value) {
     }
-
-    public override string GetEffectDescription() {
-      return $"Восстанавливает {Value} MP";
-    }
   }
 }

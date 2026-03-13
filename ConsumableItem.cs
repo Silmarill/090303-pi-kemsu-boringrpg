@@ -8,8 +8,5 @@ namespace BoringRPG {
     protected ConsumableItem(int value) {
       Value = value;
     }
-
-    public abstract string GetEffectDescription() {
-    }
   }
 }

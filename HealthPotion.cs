@@ -5,9 +5,5 @@ namespace BoringRPG {
 
     public HealthPotion(int value) : base(value) { 
     }
-
-    public override string GetEffectDescription() {
-      return $"Восстанавливает {Value} HP";
-    }     
   }
 }

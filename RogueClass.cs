@@ -26,7 +26,32 @@ namespace BoringRPG {
       return rogue.HP > 0;
     }
 
-    public static bool operator false(RogueClass rogue) {
+    public static RogueClass operator +(RogueClass rogue, HealthPotion potion) {
+      rogue.HP += potion.Value;
+      Console.WriteLine($"{rogue.Name} выпил зелье здоровья! +{potion.Value} HP");
+      return rogue;
+    }
+   
+    public static RogueClass operator +(RogueClass rogue, ManaPotion potion) {
+      rogue.MP += potion.Value;
+      Console.WriteLine($"{rogue.Name} выпил зелье маны! +{potion.Value} MP");
+      return rogue;
+    }
+
+    public static RogueClass operator +(RogueClass rogue, AmmoPack ammo) {
+      rogue.Ammo += ammo.Value;
+      Console.WriteLine($"{rogue.Name} подобрал патроны! +{ammo.Value} Ammo");
+      return rogue;
+    }
+
+    public static RogueClass operator +(RogueClass rogue, GoldApple apple) {
+      rogue.HP += apple.Value;
+      rogue.MP += apple.Value * 3;
+      Console.WriteLine($"{rogue.Name} съел золотое яблоко! +{apple.Value} +{apple.Value * 3}");
+      return rogue;
+    }
+
+        public static bool operator false(RogueClass rogue) {
       return rogue.HP <= 0;
     }
 
