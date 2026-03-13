@@ -18,14 +18,14 @@ namespace BoringRPG
                         $"{dummy.GetInfo()}\n");
 
       Console.WriteLine($"Здоровье до лечения: {berserker.HP}");
-      berserker += 20; 
-      Console.WriteLine($"Здоровье после лечения (+20): {berserker.HP}");
+      berserker += 20;
+      Console.WriteLine($"Здоровье после лечения: {berserker.HP}");
 
       Console.WriteLine($"Берсеркер {(berserker ? "жив" : "мёртв")}");
 
       Console.WriteLine($"\nЗдоровье до получения урона: {berserker.HP}");
-      berserker -= 30; 
-      Console.WriteLine($"Здоровье после получения урона (-30): {berserker.HP}");
+      berserker -= 30;
+      Console.WriteLine($"Здоровье после получения урона: {berserker.HP}");
 
       Console.WriteLine("\n=== БОЕВОЕ ВЗАИМОДЕЙСТВИЕ ===");
       Console.WriteLine($"{berserker.Name} атакует {dummy.Name}!");
