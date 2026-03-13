@@ -35,8 +35,9 @@ namespace BoringRPG {
     }
 
     public static bool operator false(Mage mage) {
-      return mage.HP < 0;
+      return mage.HP <= 0;
     }
+
 
     public override void Hit(Archetype target) {
       int damage = Damage;
