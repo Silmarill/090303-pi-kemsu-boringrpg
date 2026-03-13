@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace work {
+namespace BoringRPG {
   internal class Program {
     static void Main(string[] args) {
       string critText;

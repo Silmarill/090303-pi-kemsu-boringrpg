@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace work {
+namespace BoringRPG {
   internal abstract class Archetype {
 
     public string Name;

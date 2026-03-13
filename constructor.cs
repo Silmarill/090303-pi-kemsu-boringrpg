@@ -1,6 +1,6 @@
 ﻿//using System;
 
-//namespace work
+//namespace BoringRPG
 //{
 //  internal class DummyClass : Warrior
 //  {
