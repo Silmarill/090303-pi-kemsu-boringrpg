@@ -14,7 +14,14 @@ namespace BoringRPG {
       : base(name, 85, 20, 15, 25, 0.2) {
     }
 
-    public static Hunter operator +(Hunter man, int regain) {
+    public static bool operator true(Hunter hun1) {
+          return hun1.HP > 0;
+    }
+    public static bool operator false(Hunter hun1) {
+            return hun1.HP <= 0;
+        }
+
+        public static Hunter operator +(Hunter man, int regain) {
       int maxHP = 85;
 
       if (man.HP < maxHP) {
