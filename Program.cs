@@ -5,6 +5,7 @@ namespace BoringRPG {
     static void Main(string[] args) {
       string critText;
       int beforeHP, damage, hil;
+      bool isRun;
 
       DummyClass lancelot = new DummyClass("Ланселот Ловкий");
       Hunter killian = new Hunter("Киллиан - древнее зло");
@@ -45,13 +46,14 @@ namespace BoringRPG {
       hil = killian.HP - beforeHP;
 
       Console.WriteLine($"{killian.Name} лечится на {hil} \n");
-        
-
-      Console.WriteLine("ИТОГОВОЕ СОСТОЯНИЕ:");
-      Console.WriteLine("======================");
-      Console.WriteLine(lancelot.GetInfo());
-      Console.WriteLine(killian.GetInfo());
-      Console.ReadKey();
+      
+      if (killian) { 
+        Console.WriteLine("ИТОГОВОЕ СОСТОЯНИЕ:");
+        Console.WriteLine("======================");
+        Console.WriteLine(lancelot.GetInfo());
+        Console.WriteLine(killian.GetInfo());
+        Console.ReadKey();
+      }
 
     }
   }

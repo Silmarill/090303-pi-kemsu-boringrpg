@@ -19,7 +19,7 @@ namespace BoringRPG {
     }
     public static bool operator false(Hunter hun1) {
             return hun1.HP <= 0;
-        }
+    }
 
         public static Hunter operator +(Hunter man, int regain) {
       int maxHP = 85;
