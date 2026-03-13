@@ -23,5 +23,4 @@ namespace BoringRPG {
     public abstract void Hit(Archetype target);
     public abstract string GetInfo();
   }
-
 }
