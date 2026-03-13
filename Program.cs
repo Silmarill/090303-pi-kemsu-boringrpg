@@ -50,8 +50,6 @@ namespace BoringRPG {
 
       Console.WriteLine($"Damage {damage} dealt {critText}\n");
 
-
-
       Console.WriteLine("FINAL STATUS:");
       Console.WriteLine("======================");
       Console.WriteLine(lancelot.GetInfo());
