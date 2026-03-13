@@ -17,6 +17,11 @@ namespace BoringRPG
       return myArcher;
     }
 
+    public static Heal operator +(Archer myArcher, Heal poisonHP)
+    {
+      myArcher.HP += poisonHP.Value;
+    }
+
     public static Archer operator -(Archer myArcher, int amount)
     {
       myArcher.HP -= amount;
