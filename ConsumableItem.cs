@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BoringRPG
 {
-    internal class ConsumableItem
+    internal abstract class ConsumableItem
     {
         
     }
