@@ -60,7 +60,9 @@
   <ItemGroup>
     <Compile Include="Archetype.cs" />
     <Compile Include="ClericClass.cs" />
+    <Compile Include="ConsumableItem.cs" />
     <Compile Include="DummyClass.cs" />
+    <Compile Include="HealthPotion.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
