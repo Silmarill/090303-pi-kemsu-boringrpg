@@ -13,20 +13,17 @@ namespace BoringRPG {
                         $"==================\n" +
                         $"{berserker.GetInfo()}\n" +
                         $"{target.GetInfo()}\n");
-    
-      Console.WriteLine("=== ПЕРЕГРУЗКИ + И - ===\n");
-      
+
       Console.WriteLine($"HP до операций: {berserker.HP}");
       berserker = berserker + 20;
       Console.WriteLine($"После berserker + 20: {berserker.HP}");
       berserker = berserker - 15;
       Console.WriteLine($"После berserker - 15: {berserker.HP}\n");
 
-      Console.WriteLine("=== ПЕРЕГРУЗКИ true И false ===\n");
-
       if (berserker) {
         Console.WriteLine($"Берсерк жив! (HP: {berserker.HP} > 0)");
-      } else {
+      }
+      else {
         Console.WriteLine($"Берсерк мертв! (HP: {berserker.HP} <= 0)");
       }
 
@@ -36,15 +33,38 @@ namespace BoringRPG {
 
       if (berserker) {
         Console.WriteLine($"Берсерк жив! (HP: {berserker.HP} > 0)");
-      } else {
+      }
+      else {
         Console.WriteLine($"Берсерк мертв! (HP: {berserker.HP} <= 0)");
       }
 
       Console.WriteLine("\nВосстанавливаем HP для битвы...");
       berserker = berserker + 140;
       Console.WriteLine($"HP после восстановления: {berserker.HP}\n");
-      
-      Console.WriteLine("=== КОНЕЦ ДЕМОНСТРАЦИИ ===\n");
+
+      Console.WriteLine($"До расходников: HP {berserker.HP}, MP {berserker.MP}, Ammo {berserker.Ammo}\n");
+
+      HealthPotion healthPotion = new HealthPotion(50);
+      Console.WriteLine($"Используем: {healthPotion.GetDescription()}");
+      berserker += healthPotion;
+
+      ManaPotion manaPotion = new ManaPotion(30);
+      Console.WriteLine($"\nИспользуем: {manaPotion.GetDescription()}");
+      berserker += manaPotion;
+
+      AmmoPack ammoPack = new AmmoPack(15);
+      Console.WriteLine($"\nИспользуем: {ammoPack.GetDescription()}");
+      berserker += ammoPack;
+
+      Console.WriteLine($"\nПосле расходников: HP {berserker.HP}, MP {berserker.MP}, Ammo {berserker.Ammo}\n");
+
+      BugPotion bugPotion = new BugPotion();
+      Console.WriteLine($"Используем: {bugPotion.GetDescription()}");
+      Console.WriteLine($"До бага: HP {berserker.HP}, Урон {berserker.Damage}, Крит {berserker.CritChance * 100}%");
+
+      berserker++;
+
+      Console.WriteLine($"\nПосле бага: HP {berserker.HP}, Урон {berserker.Damage}, Крит {berserker.CritChance * 100}%");
 
       Console.WriteLine($"{berserker.Name} атакует {target.Name}!");
 
@@ -63,4 +83,4 @@ namespace BoringRPG {
       Console.ReadKey();
     }
   }
-} 
+}
