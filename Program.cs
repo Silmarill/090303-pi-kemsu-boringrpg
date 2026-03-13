@@ -61,17 +61,6 @@ namespace BoringRPG {
       } else {
         Console.WriteLine("Клерик мертв (HP <= 0) - оператор true вернул false");
       }
-      
-      Console.WriteLine("\n=== ПРОВЕРКА LastHitWasCrit ===");
-      Console.WriteLine($"Был ли критический удар в прошлой атаке: {lancelot.LastHitWasCrit}");
-      
-      Console.WriteLine("\nНаносим несколько ударов для проверки критов:");
-      for (int i = 1; i <= 5; i++) {
-        Console.Write($"\nУдар {i}: ");
-        lancelot.Hit(artur);
-        Console.WriteLine($"Крит: {lancelot.LastHitWasCrit}");
-      }
-      
       Console.ReadKey();
     }
   }
