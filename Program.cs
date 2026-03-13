@@ -1,11 +1,13 @@
 ﻿using System;
 
 namespace BoringRPG {
-  internal class Program {
-    static void Main(string[] args) {
+  internal class Program
+  {
+    static void Main(string[] args)
+    {
       string critText;
       int beforeHP, damage;
-      
+
       DummyClass lancelot = new DummyClass("Lancelot is clever");
       DummyClass artur = new DummyClass("Arthur Pendragon");
       Paladin paladin = new Paladin("Mateus Paladinov");
@@ -55,6 +57,21 @@ namespace BoringRPG {
       Console.WriteLine(lancelot.GetInfo());
       Console.WriteLine(artur.GetInfo());
       Console.WriteLine(paladin.GetInfo());
+
+
+
+      Console.WriteLine("\n=== DEMONSTRATION OF OPERATORS +, - AND TRUE/FALSE ===");
+
+      paladin = paladin + 10;
+      Console.WriteLine($"After +10 HP: {paladin.GetInfo()}");
+      paladin = paladin - 10;
+      Console.WriteLine($"After -10 HP: {paladin.GetInfo()}");
+
+      if (paladin)
+        Console.WriteLine($"{paladin.Name} is alive!");
+      else
+        Console.WriteLine($"{paladin.Name} is dead!");
+
       Console.ReadKey();
     }
   }
