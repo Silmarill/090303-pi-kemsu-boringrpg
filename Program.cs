@@ -8,8 +8,21 @@ namespace BoringRPG {
 
       DummyClass artur = new DummyClass("Артур Пендрагон");
       Mage skibidist = new Mage("Скибидист Вапапапич");
+      Console.WriteLine(skibidist.GetInfo());
 
-      Console.WriteLine($"НАЧАЛО БИТВЫ. " + $"ПЕРВЫЙ ХОД.\n"+
+      HealthPotion potion = new HealthPotion(30);
+      ManaPotion potion1 = new ManaPotion(45);
+      DamagePotion potion2 = new DamagePotion(50);
+      CrazyCrit artefact = new CrazyCrit(5);
+
+      skibidist += potion;
+      skibidist += potion1;
+      skibidist += potion2;
+      skibidist += artefact;
+
+      Console.WriteLine(skibidist.GetInfo());
+
+      /*Console.WriteLine($"НАЧАЛО БИТВЫ. " + $"ПЕРВЫЙ ХОД.\n"+
                         $" Исходное состояние: \n" +
                         $"==================\n" +
                         $"{skibidist.GetInfo()}\n" +
@@ -217,6 +230,7 @@ namespace BoringRPG {
 
       /////////////////////////////////////////
       ///
+      */
 
 
     }

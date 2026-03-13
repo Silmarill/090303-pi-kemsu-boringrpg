@@ -25,12 +25,32 @@ namespace BoringRPG {
       return mage;
     }
 
-    public static Mage operator +(Mage mage, int heal) {
-      mage.HP += heal;
+    public static Mage operator +(Mage mage, HealthPotion potion) {
+      mage.HP += potion.Value;
       return mage;
     }
 
-    public static bool operator true(Mage mage) {
+    public static Mage operator +(Mage mage, ManaPotion potion)
+    {
+      mage.MP += potion.Value;
+      return mage;
+    }
+
+    public static Mage operator +(Mage mage, DamagePotion potion)
+    {
+      mage.Damage += potion.Value;
+      return mage;
+    }
+
+    public static Mage operator +(Mage mage, CrazyCrit potion)
+    {
+      Random random = new Random();     
+
+      mage.CritChance += potion.Value * random.Next(1, 15) / 100.0;
+      return mage;
+    }
+
+        public static bool operator true(Mage mage) {
       return mage.HP > 0;
     }
 

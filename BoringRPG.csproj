@@ -59,8 +59,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Archetype.cs" />
+    <Compile Include="ConsumableItem.cs" />
+    <Compile Include="CrazyCrit.cs" />
+    <Compile Include="DamagePotion.cs" />
     <Compile Include="DummyClass.cs" />
+    <Compile Include="HealthPotion.cs" />
     <Compile Include="Mage.cs" />
+    <Compile Include="ManaPotion.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
