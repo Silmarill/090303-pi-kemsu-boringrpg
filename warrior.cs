@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Xml.Linq;
-using work;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace work
 {
