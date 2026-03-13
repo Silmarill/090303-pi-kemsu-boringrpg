@@ -58,6 +58,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AmmoPack.cs" />
     <Compile Include="Archetype.cs" />
     <Compile Include="CoffeeCup.cs" />
     <Compile Include="ConsumableItem.cs" />
