@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static BoringRPG.ConsumableItem;
 
 namespace BoringRPG {
   internal class Mage : Archetype {
@@ -47,8 +48,27 @@ namespace BoringRPG {
       return mage.HP <= 0;
     }
 
+    public static Mage operator +(Mage mage, HealthPotion potion)
+    {
+      mage.HP += potion.Value;
+      return mage;
+    }
+
+    public static Mage operator +(Mage mage, ManaPotion potion)
+    {
+     mage.MP += potion.Value;
+     Console.WriteLine($"{mage.Name} выпил зелье маны: +{potion.Value} MP");
+     return mage;
+    }
+
+    public static Mage operator +(Mage mage, AmmoPack ammo)
+    {
+    mage.Ammo += ammo.Value;
+    Console.WriteLine($"{mage.Name} подобрал патроны: +{ammo.Value} Ammo");
+    return mage;
+    }
     public override string GetInfo() {
-      return $"{Name} (Mage): HP {HP}, MP {MP}, Ammo {Ammo}, Crit Chance {CritChance * 100}%";
+    return $"{Name} (Mage): HP {HP}, MP {MP}, Ammo {Ammo}, Crit Chance {CritChance * 100}%";
     }
   }
 }

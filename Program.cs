@@ -1,10 +1,13 @@
 ﻿using System;
+using static BoringRPG.ConsumableItem;
 
 namespace BoringRPG {
   internal class Program {
     static void Main(string[] args) {
       string critText;
       int beforeHP, damage;
+      HealthPotion healthPotion = new HealthPotion(50);
+      ManaPotion manaPotion = new ManaPotion(50);
 
       Mage mage = new Mage("Маг");
       DummyClass artur = new DummyClass("Артур Пендрагон");
@@ -46,7 +49,15 @@ namespace BoringRPG {
       {
         Console.WriteLine($"{mage.Name} мертв.");
       }
-                
+
+      Console.WriteLine($"{mage.Name} выпил зелье здоровья: +{healthPotion.Value} HP");
+      mage += healthPotion;
+      Console.WriteLine(mage.GetInfo());
+
+      Console.WriteLine($"{mage.Name} выпил зелье маны: +{manaPotion.Value} MP");
+      mage += manaPotion;
+      Console.WriteLine(mage.GetInfo());
+      
       Console.ReadKey();
     }
   }
