@@ -2,6 +2,8 @@
 
 namespace BoringRPG {
   internal class Hunter : Archetype {
+     double critChance = 0.2;
+
 
     private static Random random = new Random();
     public bool LastHitWasCrit;
@@ -21,7 +23,7 @@ namespace BoringRPG {
             return hun1.HP <= 0;
     }
 
-        public static Hunter operator +(Hunter man, int regain) {
+    public static Hunter operator +(Hunter man, int regain) {
       int maxHP = 85;
 
       if (man.HP < maxHP) {
@@ -33,6 +35,20 @@ namespace BoringRPG {
       }
       return man;
 
+    }
+
+    public static Hunter operator +(Hunter hun, HealthPotion firstAidKit) {
+      hun.HP += firstAidKit.Value;
+      return hun;
+    }
+    public static Hunter operator +(Hunter hun, ManaPotion firstAidKit) {
+      hun.HP += firstAidKit.Value;
+      return hun;
+    }
+
+    public static Hunter operator +(Hunter hun, AmmoPack firstAidKit) {
+      hun.HP += firstAidKit.Value;
+      return hun;
     }
 
     public static Hunter operator -(Hunter man, int damage) {
@@ -54,14 +70,13 @@ namespace BoringRPG {
       int lostAmmo = 1;
       int damageBonus = 10;
       int critDamageBonus = 2;
-      double critСhanse = 0.2;
 
       int damage = Damage;
       if (this.Ammo > minAmmo) {
         this.Ammo -= lostAmmo;
       }
 
-      LastHitWasCrit = random.NextDouble() < critСhanse;
+      LastHitWasCrit = random.NextDouble() < critChance;
 
       if (this.HP < target.HP) {
         damage += damageBonus; 
