@@ -2,13 +2,11 @@
 
 namespace BoringRPG {
   public abstract class ConsumableItem {
-    public int Value { get; protected set; }
+    public int Value;
 
     public ConsumableItem(int value)
     {
       Value = value;
     }
-
-    public abstract void ApplyEffect(Archetype hero);
   }
 }

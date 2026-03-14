@@ -5,11 +5,5 @@ namespace BoringRPG {
     public HealthPotion(int value) : base(value)
     {
     }
-
-    public override void ApplyEffect(Archetype hero)
-    {
-      hero.HP += Value;
-      Console.WriteLine($" {hero.Name} восстанавливает {Value} здоровья!");
-    }
   }
 }

@@ -22,9 +22,24 @@ namespace BoringRPG {
       return druid;
     }
 
-    public static Druid operator +(Druid druid, ConsumableItem item)
+    public static Druid operator +(Druid druid, HealthPotion potion)
     {
-      item.ApplyEffect(druid);
+      druid.HP += potion.Value;
+      Console.WriteLine($" {druid.Name} восстанавливает {potion.Value} здоровья!");
+      return druid;
+    }
+
+    public static Druid operator +(Druid druid, ManaPotion potion)
+    {
+      druid.MP += potion.Value;
+      Console.WriteLine($" {druid.Name} восстанавливает {potion.Value} маны!");
+      return druid;
+    }
+
+    public static Druid operator +(Druid druid, AmmoPack pack)
+    {
+      druid.Ammo += pack.Value;
+      Console.WriteLine($" {druid.Name} получает {pack.Value} боеприпасов!");
       return druid;
     }
 
@@ -66,17 +81,11 @@ namespace BoringRPG {
       }
 
       target.HP -= baseDamage;
-
     }
 
     public override string GetInfo()
     {
       return $"{Name} (Druid): HP {HP}, MP {MP}, Ammo {Ammo}, Урон {Damage}, Шанс крита {CritChance * 100}%";
-
     }
   }
-}  
-
-
-
-
+}
