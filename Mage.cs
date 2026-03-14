@@ -11,7 +11,7 @@ namespace BoringRPG {
     public bool LastHitWasCrit;
 
     public Mage(string name, int hp, int mp, int ammo, int dmg, double crit) : base(name, 60, 100, 0, 35, 0.05) {
-      
+
     }
     public Mage(string name) : base(name, 60, 100, 0, 35, 0.05) {
 
@@ -48,27 +48,32 @@ namespace BoringRPG {
       return mage.HP <= 0;
     }
 
-    public static Mage operator +(Mage mage, HealthPotion potion)
-    {
-      mage.HP += potion.Value;
+    public static Mage operator +(Mage mage, ConsumableItem consumable) {
+      if (consumable is HealthPotion) {
+        mage.HP += consumable.Value;
+        Console.WriteLine($"{mage.Name} использовал зелье здоровья(+HP).\n");
+      }
+      else if (consumable is ManaPotion) {
+        mage.MP += consumable.Value;
+        Console.WriteLine($"{mage.Name} использовал зелье маны(-MP).\n");
+      }
+      else if (consumable is AmmoPack) {
+        mage.Ammo += consumable.Value;
+        Console.WriteLine($"{mage.Name} увеличил боезапас(+Ammo).\n");
+      }
+
       return mage;
     }
 
-    public static Mage operator +(Mage mage, ManaPotion potion)
-    {
-     mage.MP += potion.Value;
-     Console.WriteLine($"{mage.Name} выпил зелье маны: +{potion.Value} MP");
-     return mage;
-    }
-
-    public static Mage operator +(Mage mage, AmmoPack ammo)
-    {
-    mage.Ammo += ammo.Value;
-    Console.WriteLine($"{mage.Name} подобрал патроны: +{ammo.Value} Ammo");
-    return mage;
+    public static Mage operator -(Mage mage, ConsumableItem consumable) {
+      mage.HP -= consumable.Value;
+      mage.MP = 0;
+      mage.CritChance *= 5;
+      Console.WriteLine($"{mage.Name} активировал безумный артефакт(-HP, -MP, CritChance * 5).\n");
+      return mage;
     }
     public override string GetInfo() {
-    return $"{Name} (Mage): HP {HP}, MP {MP}, Ammo {Ammo}, Crit Chance {CritChance * 100}%";
+      return $"{Name} (Mage): HP {HP}, MP {MP}, Ammo {Ammo}, Crit Chance {CritChance * 100}%\n";
     }
   }
 }

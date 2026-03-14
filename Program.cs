@@ -6,8 +6,6 @@ namespace BoringRPG {
     static void Main(string[] args) {
       string critText;
       int beforeHP, damage;
-      HealthPotion healthPotion = new HealthPotion(50);
-      ManaPotion manaPotion = new ManaPotion(50);
 
       Mage mage = new Mage("Маг");
       DummyClass artur = new DummyClass("Артур Пендрагон");
@@ -35,29 +33,32 @@ namespace BoringRPG {
       mage += 10;
       Console.WriteLine($"Восстановлено 10 HP\n");
 
-      Console.WriteLine();
       Console.WriteLine("ИТОГОВОЕ СОСТОЯНИЕ:");
       Console.WriteLine("======================");
       Console.WriteLine(mage.GetInfo());
       Console.WriteLine(artur.GetInfo());
-      
-      if (mage)
-      {
-        Console.WriteLine($"{mage.Name} жив.");
-      }
-      else
-      {
-        Console.WriteLine($"{mage.Name} мертв.");
-      }
+      Console.WriteLine();
 
-      Console.WriteLine($"{mage.Name} выпил зелье здоровья: +{healthPotion.Value} HP");
-      mage += healthPotion;
-      Console.WriteLine(mage.GetInfo());
-
-      Console.WriteLine($"{mage.Name} выпил зелье маны: +{manaPotion.Value} MP");
+      if (mage) {
+        Console.WriteLine($"{mage.Name} жив.\n");
+      }
+      else {
+        Console.WriteLine($"{mage.Name} мертв.\n");
+      }
+      HealthPotion heartPotion = new HealthPotion(50);
+      mage += heartPotion;
+      ManaPotion manaPotion = new ManaPotion(20);
       mage += manaPotion;
+      AmmoPack ammoPack = new AmmoPack(10);
+      mage += ammoPack;
+
       Console.WriteLine(mage.GetInfo());
-      
+
+      CrazyArtifact artifact = new CrazyArtifact(50);
+      mage -= artifact;
+
+      Console.WriteLine(mage.GetInfo());
+
       Console.ReadKey();
     }
   }
