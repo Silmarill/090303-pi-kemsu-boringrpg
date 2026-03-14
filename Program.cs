@@ -1,7 +1,8 @@
 ﻿using System;
+using BoringRPG;
 
 namespace BoringRPG {
-  internal class Program {
+  public class Program {
     static void Main(string[] args)
     {
       string critText;
@@ -33,7 +34,26 @@ namespace BoringRPG {
       Console.WriteLine(shiYan.GetInfo());
       Console.WriteLine(jackieChan.GetInfo());
 
-      Console.WriteLine($"\n--- Демонстрация операторов ---");
+      Console.WriteLine($"\n--- Демонстрация расходников ---");
+
+      Console.WriteLine($"\n>>> Волшебные предметы:");
+      jackieChan += new HealthPotion(50);
+      shiYan += new ManaPotion(30);
+      shiYan += new AmmoPack(10);
+
+      Console.WriteLine("\nПосле использования волшебных предметов:");
+      Console.WriteLine(shiYan.GetInfo());
+      Console.WriteLine(jackieChan.GetInfo());
+
+      Console.WriteLine($"\n>>> Безумный предмет:");
+      FatBread bread = new FatBread(40);
+      jackieChan = jackieChan > bread;
+
+      Console.WriteLine("\nПосле хлеба:");
+      Console.WriteLine(shiYan.GetInfo());
+      Console.WriteLine(jackieChan.GetInfo());
+
+      Console.WriteLine($"\n--- Демонстрация других операторов ---");
       Console.WriteLine($"Здоровье {jackieChan.Name} до лечения: {jackieChan.HP}");
       jackieChan = jackieChan + 10;
       Console.WriteLine($"Здоровье {jackieChan.Name} после лечения (+10): {jackieChan.HP}");

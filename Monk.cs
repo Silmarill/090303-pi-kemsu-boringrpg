@@ -1,29 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BoringRPG {
-  internal class Monk : Archetype {
-    public int _hitCounter;
-    private static Random random = new Random();
+  public class Monk : Archetype {
     public bool LastHitWasCrit;
 
-    public Monk(string name) : base(name, 95, 0, 0, 22, 0.12)
-    {
-      _hitCounter = 0;
-    }
+    public Monk(string name) : base(name, 100, 50, 20, 15, 0.2) { }
 
-    public static Monk operator +(Monk monk, int pink)
+    public static Monk operator +(Monk monk, int healthAmount)
     {
-      monk.HP += pink;
+      monk.HP += healthAmount;
       return monk;
     }
 
-    public static Monk operator -(Monk monk, int pink)
+    public static Monk operator -(Monk monk, int damageAmount)
     {
-      monk.HP -= pink;
+      monk.HP -= damageAmount;
       return monk;
     }
 
@@ -37,29 +28,42 @@ namespace BoringRPG {
       return monk.HP <= 0;
     }
 
+    public static Monk operator +(Monk monk, HealthPotion potion)
+    {
+      monk.HP += potion.Value;
+      Console.WriteLine($" {monk.Name} выпил зелье здоровья! +{potion.Value} HP");
+      return monk;
+    }
+
+    public static Monk operator +(Monk monk, ManaPotion potion)
+    {
+      monk.MP += potion.Value;
+      Console.WriteLine($" {monk.Name} выпил зелье маны! +{potion.Value} MP");
+      return monk;
+    }
+
+    public static Monk operator +(Monk monk, AmmoPack ammo)
+    {
+      monk.Ammo += ammo.Value;
+      Console.WriteLine($" {monk.Name} подобрал патроны! +{ammo.Value} патронов");
+      return monk;
+    }
+
     public override void Hit(Archetype target)
     {
-      _hitCounter++;
-
+      Random rand = new Random();
       int damage = Damage;
+      LastHitWasCrit = rand.NextDouble() < CritChance;
 
-      LastHitWasCrit = random.NextDouble() < CritChance;
       if (LastHitWasCrit)
-      {
         damage *= 2;
-      }
-
-      if (_hitCounter % 3 == 0)
-      {
-        damage *= 2;
-      }
 
       target.HP -= damage;
     }
 
     public override string GetInfo()
     {
-      return $"{Name} (Monk): HP {HP}, MP {MP}, Ammo {Ammo}, Урон {Damage}, Шанс крита {CritChance * 100}%.";
+      return $"{Name}: HP {HP}, MP {MP}, Патроны {Ammo}, Урон {Damage}, Крит {CritChance * 100}%";
     }
   }
 }
