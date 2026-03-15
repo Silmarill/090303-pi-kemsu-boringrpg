@@ -8,8 +8,13 @@ namespace BoringRPG {
       
       DummyClass lancelot = new DummyClass("Ланселот Ловкий");
       Cleric danila = new Cleric("Даня");
+
+      HealthPotion healthPotion = new HealthPotion(1000);
+      ManaPotion manaPotion = new ManaPotion(1000);;
+      AmmoPack ammoPack = new AmmoPack(1000);
+      RagePie ragePie = new RagePie(1000);
       
-      Console.WriteLine($"НАЧАЛО БИТВЫ. Исходное состояние: \n" +
+      Console.WriteLine($"НАЧАЛО БИТВЫ. Состояние персонажей: \n" +
                         $"==================\n" +
                         $"{lancelot.GetInfo()}\n" +
                         $"{danila.GetInfo()}\n");
@@ -57,16 +62,17 @@ namespace BoringRPG {
       Console.WriteLine("Нанесён смертельный урон\n");
       danila -= 1000;
 
-      Console.WriteLine($"{danila.Name} использует лечебное зелье!\n");
-      danila += new HealthPotion(1000);
+      Console.WriteLine($"{danila.Name} использует лечебное зелье, здоровье восполнено!\n");
+      danila += healthPotion;
 
-      Console.WriteLine($"{danila.Name} использует зелье маны!\n");
-      danila += new ManaPotion(1000);
+      Console.WriteLine($"{danila.Name} использует зелье маны, мана восполнена!\n");
+      danila += manaPotion;
 
-      Console.WriteLine($"{danila.Name} использует комплект боеприпасов\n");
-      danila += new AmmoPack(1000);
+      Console.WriteLine($"{danila.Name} использует комплект боеприпасов, боеприпасы восполнены!\n");
+      danila += ammoPack;
 
-      
+      Console.WriteLine($"{danila.Name} использует пирог ярости, характеристики увеличены!\n");
+      danila += ragePie;
 
       if (danila) {
         Console.WriteLine($"{danila.Name} ещё живой\n");

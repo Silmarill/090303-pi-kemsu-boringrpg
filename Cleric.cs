@@ -44,6 +44,14 @@ namespace BoringRPG {
       return cleric;
     }
 
+    public static Cleric operator +(Cleric cleric, RagePie ragePie) {
+      cleric.Damage += ragePie.IncreaseAll;
+      cleric.HP += ragePie.IncreaseAll;
+      cleric.MP += ragePie.IncreaseAll;
+      cleric.Ammo += ragePie.IncreaseAll;
+      return cleric;
+    }
+
     public override void Hit(Archetype target) {
       if (MP >= 10) {
         MP -= 10;

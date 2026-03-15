@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace BoringRPG
 {
-    internal class ManaPotion : ConsumableItem
+  internal class ManaPotion : ConsumableItem
+  {
+    public int ManaRegen { get; set; }
+    public ManaPotion(int value) : base(value)
     {
-        public int ManaRegen { get; set; }
-        public ManaPotion(int value) : base(value)
-        {
-            ManaRegen = value;
-        }
+      ManaRegen = value;
     }
+  }
 }
