@@ -2,8 +2,11 @@
 
 namespace BoringRPG {
   internal class Hunter : Archetype {
-     double critChance = 0.2;
-
+    int maxHealth = 85;
+    int maxMana = 20;
+    int maxAmmo = 15;
+    double critChance = 0.2;
+    int isInvisible = 0;
 
     private static Random random = new Random();
     public bool LastHitWasCrit;
@@ -23,31 +26,44 @@ namespace BoringRPG {
             return hun1.HP <= 0;
     }
 
-    public static Hunter operator +(Hunter man, int regain) {
-      int maxHP = 85;
+    public static Hunter operator +(Hunter hun, int regain) {
 
-      if (man.HP < maxHP) {
-        man.HP = man.HP + regain;
-        if (man.HP > maxHP) {
-          man.HP = maxHP;
-          return man;
+      if (hun.HP < hun.maxHealth) {
+        hun.HP = hun.HP + regain;
+        if (hun.HP > hun.maxHealth) {
+          hun.HP = hun.maxHealth;
+          return hun;
         }
       }
-      return man;
+      return hun;
 
     }
 
     public static Hunter operator +(Hunter hun, HealthPotion firstAidKit) {
       hun.HP += firstAidKit.Value;
+      if (hun.HP > hun.maxHealth) {
+        hun.HP = hun.maxHealth;
+      }
       return hun;
     }
-    public static Hunter operator +(Hunter hun, ManaPotion firstAidKit) {
-      hun.HP += firstAidKit.Value;
+    public static Hunter operator +(Hunter hun, ManaPotion manaPotion) {
+      hun.MP += manaPotion.Value;
+      if (hun.MP > hun.maxMana) {
+        hun.MP = hun.maxMana;
+      }
       return hun;
     }
 
-    public static Hunter operator +(Hunter hun, AmmoPack firstAidKit) {
-      hun.HP += firstAidKit.Value;
+    public static Hunter operator +(Hunter hun, AmmoPack ammoPack) {
+      hun.Ammo += ammoPack.Value;
+      if (hun.Ammo > hun.maxAmmo) {
+        hun.Ammo = hun.maxAmmo;
+      }
+      return hun;
+    }
+
+    public static Hunter operator +(Hunter hun, InvisibilityPotion potion) {
+      hun.isInvisible += 1;
       return hun;
     }
 
@@ -67,6 +83,7 @@ namespace BoringRPG {
 
     public override void Hit(Archetype target) {
       int minAmmo = 0;
+      int minHp = 0;
       int lostAmmo = 1;
       int damageBonus = 10;
       int critDamageBonus = 2;
@@ -76,7 +93,12 @@ namespace BoringRPG {
         this.Ammo -= lostAmmo;
       }
 
-      LastHitWasCrit = random.NextDouble() < critChance;
+      if (isInvisible >= 1) {
+        LastHitWasCrit = true;
+        --isInvisible;
+      } else {
+        LastHitWasCrit = random.NextDouble() < critChance;
+      }
 
       if (this.HP < target.HP) {
         damage += damageBonus; 
@@ -87,12 +109,14 @@ namespace BoringRPG {
 
       target.HP -= damage;
 
+      if (target.HP < minHp) {
+        target.HP = minHp;
+      }
+
     }
 
     public override string GetInfo() {
-      return $"{Name} (Hunter): HP {HP}, MP {MP}, Ammo {Ammo}, Crit Chance: {CritChance * 100}%";
+      return $"{Name} (Hunter): HP {HP}, MP {MP}, Ammo {Ammo}, Crit Chance: {CritChance * 100}%, Invisible {isInvisible}";
     }
   }
-
 }
-
