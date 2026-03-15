@@ -24,7 +24,7 @@ namespace BoringRPG {
 
       Console.WriteLine($"Нанесено {damage} урона{critText}\n");
       
-      Console.WriteLine($"ИТОГОВОЕ СОСТОЯНИЕ:\n" +
+      Console.WriteLine($"СОСТОЯНИЕ ПЕРСОНАЖЕЙ:\n" +
                         $"======================\n" +
                         $"{lancelot.GetInfo()}\n" +
                         $"{danila.GetInfo()}");
@@ -55,8 +55,18 @@ namespace BoringRPG {
       }
 
       Console.WriteLine("Нанесён смертельный урон\n");
-
       danila -= 1000;
+
+      Console.WriteLine($"{danila.Name} использует лечебное зелье!\n");
+      danila += new HealthPotion(1000);
+
+      Console.WriteLine($"{danila.Name} использует зелье маны!\n");
+      danila += new ManaPotion(1000);
+
+      Console.WriteLine($"{danila.Name} использует комплект боеприпасов\n");
+      danila += new AmmoPack(1000);
+
+      
 
       if (danila) {
         Console.WriteLine($"{danila.Name} ещё живой\n");
@@ -65,6 +75,11 @@ namespace BoringRPG {
         Console.WriteLine($"{danila.Name} вернулся в объятия богини. " +
                           $"Его боевой дух будут помнить вечно\n");
       }
+
+      Console.WriteLine($"СОСТОЯНИЕ ПЕРСОНАЖЕЙ:\n" +
+                  $"======================\n" +
+                  $"{lancelot.GetInfo()}\n" +
+                  $"{danila.GetInfo()}");
 
       Console.Write("Нажмите любую клавишу, чтобы продолжить...");
       Console.ReadKey();

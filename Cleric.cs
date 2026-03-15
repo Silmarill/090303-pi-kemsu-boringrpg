@@ -29,6 +29,21 @@ namespace BoringRPG {
       return cleric.HP <= 0;
     }
 
+    public static Cleric operator +(Cleric cleric, HealthPotion healthPotion) {
+      cleric.HP += healthPotion.Heal;
+      return cleric;
+    }
+
+    public static Cleric operator +(Cleric cleric, ManaPotion manaPotion) {
+      cleric.MP += manaPotion.ManaRegen;
+      return cleric;
+    }
+
+    public static Cleric operator +(Cleric cleric, AmmoPack ammoPack) {
+      cleric.Ammo += ammoPack.AmmoRefill;
+      return cleric;
+    }
+
     public override void Hit(Archetype target) {
       if (MP >= 10) {
         MP -= 10;

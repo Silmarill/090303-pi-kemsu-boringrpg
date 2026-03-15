@@ -8,10 +8,10 @@ namespace BoringRPG
 {
     internal class AmmoPack : ConsumableItem
     {
-        public int Ammo { get; private set; }
-        public AmmoPack(int value, int ammo) : base(value)
+        public int AmmoRefill { get; set; }
+        public AmmoPack(int value) : base(value)
         {
-            Ammo = ammo;
+            AmmoRefill = value;
         }
     }
 }
