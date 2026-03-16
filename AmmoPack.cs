@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BoringRPG
 {
-  internal class AmmoPack
+  internal class AmmoPack : ConsumableItem
   {
+    public AmmoPack(int value = 10) : base(value)
+    {
+    }
   }
 }
