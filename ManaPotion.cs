@@ -8,7 +8,7 @@ namespace BoringRPG
 {
   internal class ManaPotion : ConsumableItem
   {
-    public ManaPotion(int value = 30) : base(value)
+    public ManaPotion(int value = 15) : base(value)
     {
     }
   }

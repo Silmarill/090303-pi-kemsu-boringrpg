@@ -2,7 +2,7 @@
 {
   internal class HealPotion : ConsumableItem
   {
-    public HealPotion (int value = 30) : base(value)
+    public HealPotion (int value = 20) : base(value)
     {
     }
   }
