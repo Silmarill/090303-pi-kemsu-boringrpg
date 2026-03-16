@@ -12,7 +12,7 @@ namespace BoringRPG {
       // HP=100, MP=50, Ammo=10, Damage=20, CritChance=0.3 (30%)
     }
     
-    public DummyClass(string name) : base(name, 100, 50, 10, 20, 0.3) {
+    public DummyClass(string name) : base(name, 100, 50, 10, 1000000, 0.3) {
     }
 
     public static bool operator true(DummyClass dummy) {

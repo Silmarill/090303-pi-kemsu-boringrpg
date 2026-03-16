@@ -29,29 +29,29 @@ namespace BoringRPG {
     }
     public static Archer operator + (Archer archer, HealthPotion point) { 
       archer.HP = Math.Min(archer.HP + point.Value, 100);
-      Console.WriteLine($"{archer.Name} пополнил здоровье зельем + {point.Value} HP");
+      Console.WriteLine($"\n{archer.Name} пополнил здоровье зельем + {point.Value} HP\n");
       return archer;
     }
 
     public static Archer operator + (Archer archer, ManaPoint point) { 
       archer.MP = Math.Min(archer.MP + point.Value, 50);
-      Console.WriteLine($"{archer.Name} пополнил ману зельем + {point.Value} MP");
+      Console.WriteLine($"\n{archer.Name} съел манго + {point.Value} MP\n");
       return archer;
     }
 
     public static Archer operator + (Archer archer, AmmoPack ammo) { 
       archer.Ammo += ammo.Value;
-      Console.WriteLine($"{archer.Name} взял стрелу + {ammo.Value} Ammo");
+      Console.WriteLine($"\n{archer.Name} взял стрелу + {ammo.Value} Ammo\n");
       return archer;
     }
     
     public static Archer operator + (Archer archer, LitEnergy taurine) { 
       archer.HP += taurine.Value * 2;
       archer.MP += taurine.Value;
-      Console.WriteLine($"{archer.Name} выпил Лит энерджи и набрался кондиций + {taurine.Value} + {taurine.Value * 2}");
+      Console.WriteLine($"\n{archer.Name} выпил Лит энерджи и набрался кондиций + {taurine.Value} MP + {taurine.Value * 2} HP\n");
       return archer;
     }
-    public static Archer operator- (Archer archer, int damage) {
+    public static Archer operator - (Archer archer, int damage) {
       archer.HP = Math.Max(archer.HP - damage,0);
       return archer;
     }
