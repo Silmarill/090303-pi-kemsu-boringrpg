@@ -18,6 +18,19 @@ namespace BoringRPG
       _skeletonBonus = 0;
     }
 
+    public static Nekromaster operator +(Nekromaster necromancer, HealPotion potion)
+    {
+      necromancer.HP += potion.Value;
+      Console.WriteLine($"{necromancer.Name} выпил зелье здоровья +{potion.Value} HP");
+      return necromancer;
+    }
+
+    public static Nekromaster operator +(Nekromaster necromancer, ManaPotion potion)
+    {
+      necromancer.MP += potion.Value;
+      Console.WriteLine($"{necromancer.Name} выпил зелье маны +{potion.Value} MP");
+      return necromancer;
+    }
     public static Nekromaster operator +(Nekromaster necromancer, int amount)
     {
       necromancer.HP += amount;

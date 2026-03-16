@@ -14,6 +14,17 @@ namespace BoringRPG
       DummyClass artur = new DummyClass("Артур Пендрагон");
       Nekromaster dungeonMaster = new Nekromaster("Данжен Мастер");
 
+
+      HealPotion healPotion = new HealPotion(25);
+      ManaPotion manaPotion = new ManaPotion(15);
+      AmmoPack ammoPack = new AmmoPack(30);
+
+      Console.WriteLine($"\nТекущее состояние некроманта:");
+      Console.WriteLine(dungeonMaster.GetInfo());
+
+      Console.WriteLine("\nНажмите любую клавишу для выхода...");
+      Console.ReadKey();
+
       Console.WriteLine($"НАЧАЛО БИТВЫ\n" + $"ПЕРВЫЙ РАУНД\n" +
                         $"Исходное состояние: \n" +
                         $"==================\n" +
@@ -27,9 +38,6 @@ namespace BoringRPG
       dungeonMaster.Hit(artur);
       damage = beforeHP - artur.HP;
 
-      HealPotion healPotion = new HealPotion(25);
-      ManaPotion manaPotion = new ManaPotion(15);
-      AmmoPack ammoPack = new AmmoPack(30);
       critText = dungeonMaster.LastHitWasCrit ? " - КРИТИЧЕСКИЙ УДАР!" : "";
 
       Console.WriteLine($"Нанесено {damage} урона{critText}\n");
@@ -54,6 +62,10 @@ namespace BoringRPG
 
       Console.WriteLine($"Нанесено {damage} урона{critText}\n");
 
+      Console.WriteLine($"\nИспользуем ManaPotion +{manaPotion.Value}:");
+      dungeonMaster += manaPotion;
+      Console.WriteLine(dungeonMaster.GetInfo());
+
       Console.WriteLine("ИТОГОВОЕ СОСТОЯНИЕ:");
       Console.WriteLine("======================");
       Console.WriteLine(dungeonMaster.GetInfo());
@@ -74,12 +86,15 @@ namespace BoringRPG
 
       Console.WriteLine($"Нанесено {damage} урона{critText}\n");
 
+      Console.WriteLine($"\nИспользуем HealthPotion +{healPotion.Value}:");
+      dungeonMaster += healPotion;
+      Console.WriteLine(dungeonMaster.GetInfo());
+
       Console.WriteLine("ИТОГОВОЕ СОСТОЯНИЕ:");
       Console.WriteLine("======================");
       Console.WriteLine(dungeonMaster.GetInfo());
       Console.WriteLine(artur.GetInfo());
       Console.ReadKey();
-
 
 
     }
