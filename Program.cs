@@ -1,5 +1,6 @@
 ﻿using System;
 using static System.Net.Mime.MediaTypeNames;
+using System.Text;
 
 namespace BoringRPG
 {
@@ -25,6 +26,9 @@ namespace BoringRPG
       beforeHP = artur.HP;
       dungeonMaster.Hit(artur);
       damage = beforeHP - artur.HP;
+
+      HealPotion healPotion = new HealPotion(30);
+      ManaPotion manaPotion = new ManaPotion(30);
 
       critText = dungeonMaster.LastHitWasCrit ? " - КРИТИЧЕСКИЙ УДАР!" : "";
 
