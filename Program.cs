@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net.Http.Headers;
 
 namespace BoringRPG {
   internal class Program
@@ -11,7 +12,29 @@ namespace BoringRPG {
       DummyClass lancelot = new DummyClass("Lancelot is clever");
       DummyClass artur = new DummyClass("Arthur Pendragon");
       Paladin paladin = new Paladin("Mateus Paladinov");
-      Console.WriteLine($"BEGINNING OF THE BATTLE. Initial state: \n" +
+
+      HealthPotion health = new HealthPotion(25);
+      ManaPotion mana = new ManaPotion(10);
+      AmmoPack ammo = new AmmoPack(10);
+      CrabSticks crab = new CrabSticks(10);
+
+      Console.WriteLine($"\nThe paladin found a crab stick under a stone and ate it +{crab.Value}:");
+      paladin += crab;
+      Console.WriteLine(paladin.GetInfo());
+
+      Console.WriteLine($"\nPaladin use Mana potion +{mana.Value}:");
+      paladin += mana;
+      Console.WriteLine(paladin.GetInfo());
+
+      Console.WriteLine($"\nPaladin use health potion +{health.Value}:");
+      paladin += health;
+      Console.WriteLine(paladin.GetInfo());
+
+      Console.WriteLine($"\nThe paladin picks up a box of ammunition, but why does he need it? +{ammo.Value}:");
+      paladin += ammo;
+      Console.WriteLine(paladin.GetInfo());
+
+      Console.WriteLine($"\nBEGINNING OF THE BATTLE. Initial state: \n" +
                         $"==================\n" +
                         $"{lancelot.GetInfo()}\n" +
                         $"{artur.GetInfo()}\n" +

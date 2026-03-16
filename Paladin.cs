@@ -10,6 +10,34 @@ namespace BoringRPG
       // HP=100, MP=40, Ammo=0, Damage=20, CritChance=0.10 (10%)
     }
 
+    public static Paladin operator +(Paladin paladin, HealthPotion health)
+    {
+      paladin.HP += health.Value;
+      Console.WriteLine($"{paladin.Name} drink a health potion +{health.Value} HP");
+      return paladin;
+    }
+
+    public static Paladin operator +(Paladin paladin, ManaPotion mana)
+    {
+      paladin.MP += mana.Value;
+      Console.WriteLine($"{paladin.Name} drink a mana potion +{mana.Value} MP");
+      return paladin;
+    }
+
+    public static Paladin operator +(Paladin paladin, AmmoPack ammo)
+    {
+      paladin.Ammo += ammo.Value;
+      Console.WriteLine($"{paladin.Name} take box with ammo +{ammo.Value} Ammo");
+      return paladin;
+    }
+
+    public static Paladin operator +(Paladin paladin, CrabSticks crab)
+    {
+      paladin.Damage += crab.Value;
+      Console.WriteLine($"{paladin.Name} eat CrabSticks +{crab.Value} Damage");
+      return paladin;
+    }
+
     public static Paladin operator +(Paladin paladin, int amount)
     {
       paladin.HP += amount;

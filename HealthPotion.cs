@@ -2,9 +2,9 @@
 
 namespace BoringRPG
 {
-  internal class HealPotion : ConsumableItem
+  internal class HealthPotion : ConsumableItem
   {
-    public HealPotion(int value = 25) : base(value)
+    public HealthPotion(int value = 25) : base(value)
     {
     }
   }
