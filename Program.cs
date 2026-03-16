@@ -15,15 +15,20 @@ namespace BoringRPG
       Nekromaster dungeonMaster = new Nekromaster("Данжен Мастер");
 
 
-      HealPotion healPotion = new HealPotion(25);
+      HealPotion healPotion = new HealPotion(20);
       ManaPotion manaPotion = new ManaPotion(15);
       AmmoPack ammoPack = new AmmoPack(30);
+      CocaCola coca = new CocaCola(5);
 
       Console.WriteLine($"\nТекущее состояние некроманта:");
       Console.WriteLine(dungeonMaster.GetInfo());
 
       Console.WriteLine("\nНажмите любую клавишу для выхода...");
       Console.ReadKey();
+
+      Console.WriteLine($"\nДанжен Мастер находит в кармане холодную колу и выпивает её +{coca.Value}:");
+      dungeonMaster +=coca;
+      Console.WriteLine(dungeonMaster.GetInfo());
 
       Console.WriteLine($"НАЧАЛО БИТВЫ\n" + $"ПЕРВЫЙ РАУНД\n" +
                         $"Исходное состояние: \n" +

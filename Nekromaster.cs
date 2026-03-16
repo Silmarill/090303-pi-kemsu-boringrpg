@@ -31,9 +31,13 @@ namespace BoringRPG
       Console.WriteLine($"{necromancer.Name} выпил зелье маны +{potion.Value} MP");
       return necromancer;
     }
-    public static Nekromaster operator +(Nekromaster necromancer, int amount)
+
+    public static Nekromaster operator +(Nekromaster necromancer, CocaCola coka)
     {
-      necromancer.HP += amount;
+      necromancer.HP += coka.Value;
+      necromancer.MP += coka.Value;
+      necromancer.Damage += coka.Value;
+      Console.WriteLine($"{necromancer.Name} выпил CocaCola +{coka.Value} HP, +{coka.Value} MP, +{coka.Value} Damage");
       return necromancer;
     }
 
