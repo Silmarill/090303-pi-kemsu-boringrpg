@@ -27,9 +27,9 @@ namespace BoringRPG
       dungeonMaster.Hit(artur);
       damage = beforeHP - artur.HP;
 
-      HealPotion healPotion = new HealPotion(30);
-      ManaPotion manaPotion = new ManaPotion(30);
-
+      HealPotion healPotion = new HealPotion(25);
+      ManaPotion manaPotion = new ManaPotion(15);
+      AmmoPack ammoPack = new AmmoPack(30);
       critText = dungeonMaster.LastHitWasCrit ? " - КРИТИЧЕСКИЙ УДАР!" : "";
 
       Console.WriteLine($"Нанесено {damage} урона{critText}\n");
