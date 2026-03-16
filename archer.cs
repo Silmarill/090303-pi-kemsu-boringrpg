@@ -27,7 +27,30 @@ namespace BoringRPG {
       archer.HP = Math.Min(archer.HP + healing, 100);
       return archer;
     }
+    public static Archer operator + (Archer archer, HealthPotion point) { 
+      archer.HP = Math.Min(archer.HP + point.Value, 100);
+      Console.WriteLine($"{archer.Name} пополнил здоровье зельем + {point.Value} HP");
+      return archer;
+    }
+
+    public static Archer operator + (Archer archer, ManaPoint point) { 
+      archer.MP = Math.Min(archer.MP + point.Value, 50);
+      Console.WriteLine($"{archer.Name} пополнил ману зельем + {point.Value} MP");
+      return archer;
+    }
+
+    public static Archer operator + (Archer archer, AmmoPack ammo) { 
+      archer.Ammo += ammo.Value;
+      Console.WriteLine($"{archer.Name} взял стрелу + {ammo.Value} Ammo");
+      return archer;
+    }
     
+    public static Archer operator + (Archer archer, LitEnergy taurine) { 
+      archer.HP += taurine.Value * 2;
+      archer.MP += taurine.Value;
+      Console.WriteLine($"{archer.Name} выпил Лит энерджи и набрался кондиций + {taurine.Value} + {taurine.Value * 2}");
+      return archer;
+    }
     public static Archer operator- (Archer archer, int damage) {
       archer.HP = Math.Max(archer.HP - damage,0);
       return archer;
