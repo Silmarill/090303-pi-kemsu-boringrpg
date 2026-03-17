@@ -61,10 +61,13 @@
     <Compile Include="Archetype.cs" />
     <Compile Include="ClericClass.cs" />
     <Compile Include="ConsumableItem.cs" />
+    <Compile Include="DivineTalisman.cs" />
     <Compile Include="DummyClass.cs" />
     <Compile Include="HealthPotion.cs" />
+    <Compile Include="ManaPotion.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StrengthPotion.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -3,64 +3,67 @@
 namespace BoringRPG {
   internal class Program {
     static void Main(string[] args) {
-      string critText;
-      int beforeHP, damage;
-      
-      Cleric lancelot = new Cleric("Ланселот Ловкий");
-      DummyClass artur = new DummyClass("Артур Пендрагон");
-      
-      Console.WriteLine($"НАЧАЛО БИТВЫ. Исходное состояние: \n" +
-                        $"==================\n" +
-                        $"{lancelot.GetInfo()}\n" +
-                        $"{artur.GetInfo()}\n");
-      
-      Console.WriteLine($"{lancelot.Name} атакует {artur.Name}!");
+      Console.WriteLine("=== СОЗДАНИЕ ГЕРОЕВ ===");
+      Cleric cleric = new Cleric("Амброзий");
+      DummyClass warrior = new DummyClass("Брунгильда");
 
-      beforeHP = artur.HP;
-      lancelot.Hit(artur);
-      damage = beforeHP - artur.HP;
+      Console.WriteLine(cleric.GetInfo());
+      Console.WriteLine(warrior.GetInfo());
 
-      critText = lancelot.LastHitWasCrit ? " - КРИТИЧЕСКИЙ УДАР!" : "";
+      Console.WriteLine("\n=== ДЕМОНСТРАЦИЯ ОБЫЧНЫХ ПРЕДМЕТОВ ===");
 
-      Console.WriteLine($"Нанесено {damage} урона{critText}\n");
-      
-      Console.WriteLine("ИТОГОВОЕ СОСТОЯНИЕ ПОСЛЕ АТАКИ:");
-      Console.WriteLine("======================");
-      Console.WriteLine(lancelot.GetInfo());
-      Console.WriteLine(artur.GetInfo());
-      
-      Console.WriteLine("\n=== ДЕМОНСТРАЦИЯ ПЕРЕГРУЗКИ ОПЕРАТОРОВ + И - ===");
-      
-      Console.WriteLine($"\nТекущее HP Клерика: {lancelot.HP}/75");
-      
-      Console.WriteLine("\nПрименяем оператор + (лечение): lancelot = lancelot + 20");
-      lancelot = lancelot + 20;
-      Console.WriteLine($"HP после лечения: {lancelot.HP}/75");
-      
-      Console.WriteLine("\nПрименяем оператор - (получение урона): lancelot = lancelot - 30");
-      lancelot = lancelot - 30;
-      Console.WriteLine($"HP после получения урона: {lancelot.HP}/75");
-      
+      HealthPotion healthPotion = new HealthPotion(30);
+      Console.WriteLine($"\nНайден предмет: {healthPotion.Name} - {healthPotion.GetDescription()}");
+      cleric = cleric + healthPotion;
+      Console.WriteLine(cleric.GetInfo());
+
+      ManaPotion manaPotion = new ManaPotion(25);
+      Console.WriteLine($"\nНайден предмет: {manaPotion.Name} - {manaPotion.GetDescription()}");
+      cleric = cleric + manaPotion;
+      Console.WriteLine(cleric.GetInfo());
+
+      StrengthPotion strengthPotion = new StrengthPotion(5);
+      Console.WriteLine($"\nНайден предмет: {strengthPotion.Name} - {strengthPotion.GetDescription()}");
+      warrior = warrior + strengthPotion;
+      cleric = cleric + strengthPotion;
+      Console.WriteLine(warrior.GetInfo());
+      Console.WriteLine(cleric.GetInfo());
+
+      Console.WriteLine("\n=== ДЕМОНСТРАЦИЯ БЕЗУМНОГО ПРЕДМЕТА (DIVINE TALISMAN) ===");
+
+      DivineTalisman talisman = new DivineTalisman(10);
+      Console.WriteLine($"\nНайден предмет: {talisman.Name} - {talisman.GetDescription()}");
+      Console.WriteLine($"Божественная энергия: {talisman.DivineCharge}");
+
+      Console.WriteLine("\n1. Благословение (+):");
+      cleric = cleric + talisman;
+      Console.WriteLine(cleric.GetInfo());
+
+      Console.WriteLine("\n2. Проклятие (-):");
+      warrior = warrior - talisman;
+      Console.WriteLine(warrior.GetInfo());
+
+      Console.WriteLine("\n3. Божественное вмешательство (*):");
+      Console.WriteLine("Пробуем первый раз:");
+      cleric = cleric * talisman;
+      Console.WriteLine(cleric.GetInfo());
+
+      Console.WriteLine("\nПробуем второй раз (энергии уже нет):");
+      cleric = cleric * talisman;
+      Console.WriteLine(cleric.GetInfo());
+
       Console.WriteLine("\n=== ДЕМОНСТРАЦИЯ ПЕРЕГРУЗКИ ОПЕРАТОРОВ TRUE/FALSE ===");
       
-      Console.WriteLine($"\nТекущее HP Клерика: {lancelot.HP}/75");
-      
-      if (lancelot) {
-        Console.WriteLine("Клерик жив (HP > 0) - оператор true вернул true");
+      if (cleric) {
+        Console.WriteLine("Клерик жив и готов к приключениям!");
       } else {
-        Console.WriteLine("Клерик мертв (HP <= 0) - оператор true вернул false");
+        Console.WriteLine("Клерик мертв...");
       }
-      
-      Console.WriteLine("\nНаносим критический урон, чтобы убить Клерика:");
-      Console.WriteLine("lancelot = lancelot - 100");
-      lancelot = lancelot - 100;
-      Console.WriteLine($"HP после получения урона: {lancelot.HP}/75");
-      
-      if (lancelot) {
-        Console.WriteLine("Клерик жив (HP > 0)");
-      } else {
-        Console.WriteLine("Клерик мертв (HP <= 0) - оператор true вернул false");
-      }
+
+      Console.WriteLine("\n=== ИТОГОВОЕ СОСТОЯНИЕ ГЕРОЕВ ===");
+      Console.WriteLine(cleric.GetInfo());
+      Console.WriteLine(warrior.GetInfo());
+
       Console.ReadKey();
     }
   }
