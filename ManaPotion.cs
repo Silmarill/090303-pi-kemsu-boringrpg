@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace BoringRPG {
-  internal class ManaPotion {
+  internal class ManaPotion : ConsumableItem {
+    public ManaPotion(int value) : base(value) {
+    }
   }
 }
