@@ -6,6 +6,8 @@ namespace BoringRPG {
     private int maxMana = 60;
     private int manaCost = 5; 
     private int hpThreshold = 45; 
+    private int damageBonus = 0; 
+    private double critBonus = 0; 
 
     private static Random random = new Random();
     public bool LastHitWasCrit;
@@ -32,19 +34,37 @@ namespace BoringRPG {
       return druid;
     }
 
-    public static Druid operator +(Druid druid, HealthPotion healthPotion) {
-      druid.HP += healthPotion.Value;
+    public static Druid operator +(Druid druid, HealthPotion potion) {
+      int oldHP = druid.HP;
+      druid.HP += potion.Value;
       if (druid.HP > druid.maxHealth) {
         druid.HP = druid.maxHealth;
       }
+      int healed = druid.HP - oldHP;
+      Console.WriteLine($"{druid.Name} выпил зелье здоровья и восстановил {healed} HP!");
       return druid;
     }
 
-    public static Druid operator +(Druid druid, ManaPotion manaPotion) {
-      druid.MP += manaPotion.Value;
+    public static Druid operator +(Druid druid, ManaPotion potion) {
+      int oldMP = druid.MP;
+      druid.MP += potion.Value;
       if (druid.MP > druid.maxMana) {
         druid.MP = druid.maxMana;
       }
+      int recovered = druid.MP - oldMP;
+      Console.WriteLine($"{druid.Name} выпил зелье маны и восстановил {recovered} MP!");
+      return druid;
+    }
+
+    public static Druid operator +(Druid druid, NaturePotion potion) {
+      druid.damageBonus += potion.Value;
+      Console.WriteLine($"{druid.Name} использовал зелье природы! Урон увеличен на {potion.Value} (текущий бонус: {druid.damageBonus})");
+      return druid;
+    }
+
+    public static Druid operator +(Druid druid, MoonBerry berry) {
+      druid.critBonus = berry.Value / 100.0; 
+      Console.WriteLine($"{druid.Name} съел лунную ягоду! Шанс крита временно увеличен на {berry.Value}%!");
       return druid;
     }
 
@@ -60,22 +80,35 @@ namespace BoringRPG {
       return druid;
     }
 
+    public static Druid operator *(Druid druid, MoonBerry berry) {
+      druid.damageBonus += 20;
+      Console.WriteLine($"{druid.Name} съел две лунные ягоды! Урон увеличен на 20!");
+      return druid;
+    }
+
     public override void Hit(Archetype target) {
       int minMana = 0;
       int minHp = 0;
 
-      int damage = this.Damage;
+      int damage = this.Damage + damageBonus;
+
+      double currentCritChance = CritChance + critBonus;
 
       if (this.MP >= manaCost) {
         this.MP -= manaCost;
 
         if (target.HP > hpThreshold) {
-          damage *= 2;
-          LastHitWasCrit = true; 
+          damage *= 2; 
+          LastHitWasCrit = true;
         }
         else {
-          LastHitWasCrit = false;
+          LastHitWasCrit = random.NextDouble() < currentCritChance;
+          if (LastHitWasCrit) {
+            damage *= 2; 
+          }
         }
+
+        Console.WriteLine($"{Name} атакует и наносит {damage} урона! (Крит: {LastHitWasCrit})");
 
         target.HP -= damage;
 
@@ -84,13 +117,14 @@ namespace BoringRPG {
         }
       }
       else {
+        Console.WriteLine($"{Name} не хватает маны для атаки! Нужно {manaCost} MP, а есть {MP}");
         LastHitWasCrit = false;
-        Console.WriteLine($"{Name} (Druid) Not enough mana to attack!");
       }
     }
 
     public override string GetInfo() {
-      return $"{Name} (Druid): HP {HP}/{maxHealth}, MP {MP}/{maxMana}, Damage {Damage}, Crit Chance: {CritChance * 100}%";
+      double totalCritChance = (CritChance + critBonus) * 100;
+      return $"{Name} (Druid): HP {HP}/{maxHealth}, MP {MP}/{maxMana}, Damage {Damage + damageBonus} (Base: {Damage} + Bonus: {damageBonus}), Crit Chance: {totalCritChance:F1}%";
     }
   }
 }
