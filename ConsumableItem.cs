@@ -5,6 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace BoringRPG {
-  internal class ConsumableItem {
+  internal abstract class ConsumableItem {
+    public int Value { get; set; }
+
+    public ConsumableItem(int value) {
+      Value = value;
+    }
   }
 }
