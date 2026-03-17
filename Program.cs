@@ -20,18 +20,21 @@ namespace BoringRPG {
                         $"==================\n" +
                         $"{druid.GetInfo()}\n" +
                         $"{artur.GetInfo()}\n" +
-                        $"\n=== ПЕРСОНАЖИ НАШЛИ ЗАЧАРОВАНЫЕ ПРЕДМЕТЫ ===\n" +
-                        $"====================");
+                        $"\n=== ПЕРСОНАЖИ НАШЛИ ЗАЧАРОВАНЫЕ ПРЕДМЕТЫ ===\n");
 
       // Use наших предметов
-      Console.WriteLine($"\n=== ИСПОЛЬЗОВАНИЕ ПРЕДМЕТОВ: ===");
+      Console.WriteLine($"\n=== ИСПОЛЬЗОВАНИЕ ПРЕДМЕТОВ: ===\n" +
+                        $"Паша техник хилиться на 30 HP!\n" +
+                        $"Артур Пендрагон восстанавливает + 20 MP\n" +
+                        $"Оба участника боя восстанавливают броню + 15 ARM");
+      
       druid += healthPotion;
       artur += manaPotion;
       druid += ammoPack;
+      artur += ammoPack;
 
-      Console.WriteLine($"\n=== БЕЗУМНЫЙ ПРЕДМЕТ: ===");
-      ++bugPotion;
-      druid += bugPotion;
+      Console.WriteLine($"\n=== АРТУР НАШЕЛ БЕЗУМНЫЙ ПРЕДМЕТ: ===\n" +
+                        $"Артур Педрагон сократил или восстановил свое HP на неизвестное значение!");
       artur += bugPotion;
 
       Console.WriteLine($"\n" + druid.GetInfo() + "\n" + artur.GetInfo() +
@@ -106,18 +109,16 @@ namespace BoringRPG {
 
           switch (itemType) {
             case 0:
-              druid += new HealthPotion(rand.Next(15, 30));
+              druid += healthPotion;
               break;
             case 1:
-              artur += new ManaPotion(rand.Next(10, 25));
+              artur += manaPotion;
               break;
             case 2:
-              druid += new AmmoPack(rand.Next(5, 15));
+              druid += ammoPack;
               break;
             case 3:
-              BugPotion randomBug = new BugPotion(rand.Next(10, 20));
-              ++randomBug;
-              artur += randomBug;
+              artur += bugPotion;
               break;
           }
         }

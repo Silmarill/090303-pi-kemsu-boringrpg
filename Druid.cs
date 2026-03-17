@@ -12,6 +12,26 @@ namespace BoringRPG {
       druid.HP += healing;
       return druid;
     }
+    public static Druid operator+ (Druid druid, ConsumableItem item) {
+      if (item is HealthPotion) {
+        druid.HP += item.value;
+      } else if (item is ManaPotion) {
+        druid.HP += item.value;
+      } else if (item is AmmoPack) {
+        druid.Ammo += item.value;
+      } else if (item is BugPotion) {
+        druid.HP += item.value;
+      } else if (item is BugPotion) {
+        int effect = random.Next(-item.value, item.value + 1);
+        druid.HP += effect;
+        if (effect >= 0) {
+          Console.WriteLine($"{druid.Name} выпил Огуречный россол и восстановил {effect} HP!");
+        } else {
+          Console.WriteLine($"{druid.Name} выпил Огуречный россол и получил {effect} урона!");
+        }
+      }
+        return druid;
+    }
 
     public static Druid operator- (Druid druid, int damage) {
       druid.HP -= damage;

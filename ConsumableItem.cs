@@ -2,10 +2,10 @@ using System;
 
 namespace BoringRPG {
   internal abstract class ConsumableItem {
-    public int Value { get; protected set; }
+    public int value { get; set; }
 
-    public ConsumableItem(int value) {
-      Value = value;
+    public ConsumableItem(int inputValue) {
+      value = inputValue;
     }
   }
 }
