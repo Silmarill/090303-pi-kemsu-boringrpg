@@ -7,15 +7,23 @@ namespace BoringRPG {
       string critText;
       int beforeHP, damage;
 
-      Hunter artur = new Hunter("Артур Пендрагон");
+      DummyClass artur = new DummyClass("Артур Пендрагон");
       Hunter cser = new Hunter("Красная линия");
+
+      HealthPotion helthPotion = new HealthPotion(10);
+      ManaPotion manaPotion = new ManaPotion(15);
+      AmmoPack ammoPack = new AmmoPack(15);
+      RagePotion rage = new RagePotion(50);
+
 
 
       Console.WriteLine($"НАЧАЛО БИТВЫ. Исходное состояние: \n" +
                         $"==================\n" +
                         $"{cser.GetInfo()}\n" +
                         $"{artur.GetInfo()}\n");
-
+      Console.WriteLine($"\n Красная линия подрубает рейдж +{rage.Value}:");
+      cser += rage;
+      Console.WriteLine(cser.GetInfo());
 
       Console.WriteLine($"{cser.Name} атакует {artur.Name}!");
 
@@ -56,6 +64,10 @@ namespace BoringRPG {
 
       Console.WriteLine($"Нанесено {damage} урона{critText}\n");
 
+      Console.WriteLine($"\nИспользуется мана +{manaPotion.Value}:");
+      cser += manaPotion;
+      Console.WriteLine(cser.GetInfo());
+
       Console.WriteLine("ИТОГОВОЕ СОСТОЯНИЕ:");
       Console.WriteLine("======================");
       Console.WriteLine(cser.GetInfo());
@@ -83,11 +95,17 @@ namespace BoringRPG {
 
       critText = cser.LastHitWasCrit ? " - КРИТИЧЕСКИЙ УДАР!" : "";
 
+      Console.WriteLine($"\nИспользуется мана +{helthPotion.Value}:");
+      cser += helthPotion;
+      Console.WriteLine(cser.GetInfo());
+
       Console.WriteLine("ИТОГОВОЕ СОСТОЯНИЕ:");
       Console.WriteLine("======================");
       Console.WriteLine(cser.GetInfo());
       Console.WriteLine(artur.GetInfo());
       Console.ReadKey();
+
+
 
       if (cser)
       {

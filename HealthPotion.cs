@@ -1,0 +1,15 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace BoringRPG
+{
+  internal class HealthPotion : ConsumableItem
+  {
+    public HealthPotion(int value = 10) : base(value)
+    {
+    }
+  }
+}
