@@ -16,11 +16,9 @@ namespace BoringRPG {
       if (item is HealthPotion) {
         druid.HP += item.value;
       } else if (item is ManaPotion) {
-        druid.HP += item.value;
+        druid.MP += item.value;
       } else if (item is AmmoPack) {
         druid.Ammo += item.value;
-      } else if (item is BugPotion) {
-        druid.HP += item.value;
       } else if (item is BugPotion) {
         int effect = random.Next(-item.value, item.value + 1);
         druid.HP += effect;

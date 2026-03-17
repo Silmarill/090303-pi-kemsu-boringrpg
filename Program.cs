@@ -33,7 +33,8 @@ namespace BoringRPG {
       druid += ammoPack;
       artur += ammoPack;
 
-      Console.WriteLine($"\n=== АРТУР НАШЕЛ БЕЗУМНЫЙ ПРЕДМЕТ: ===\n" +
+      Console.WriteLine($"\n" + druid.GetInfo() + "\n" + artur.GetInfo() + "\n" +
+                        $"\n=== АРТУР НАШЕЛ БЕЗУМНЫЙ ПРЕДМЕТ: ===\n" +
                         $"Артур Педрагон сократил или восстановил свое HP на неизвестное значение!");
       artur += bugPotion;
 
@@ -121,6 +122,7 @@ namespace BoringRPG {
               artur += bugPotion;
               break;
           }
+          Console.WriteLine($"\n" + druid.GetInfo() + "\n" + artur.GetInfo() + "\n");
         }
 
         ++round;
