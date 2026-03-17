@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace BoringRPG {
-  internal class MoonBerry {
+  internal class MoonBerry : ConsumableItem {
+    public MoonBerry(int value) : base(value) {
+    }
   }
 }
