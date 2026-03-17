@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace BoringRPG {
-  internal class HealthPotion {
+  internal class HealthPotion : ConsumableItem {
+    public HealthPotion(int value) : base(value) {
+    }
   }
 }
