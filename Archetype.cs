@@ -32,7 +32,6 @@ namespace BoringRPG {
     */
     public static Archetype operator *(Archetype hero, double caffeineLevel) {
       hero.CritChance *= caffeineLevel;
-      // Side effect
       hero.HP -= 10;
       return hero;
     }
