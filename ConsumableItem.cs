@@ -1,10 +1,12 @@
-﻿//using System;
-//using System.Collections.Generic;
+﻿using System;
 
-//namespace BoringRPG {
-//  internal abstract class ConsumableItem {
-//    public int value;
-//    protected ConsumableItem (int value) {
-//    }
-//  }
-//}
+namespace BoringRPG
+{
+  internal abstract class ConsumableItem
+  {
+    public int Value;
+    protected ConsumableItem(int value) {
+      Value = value;
+    }
+  }
+}

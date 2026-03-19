@@ -24,12 +24,21 @@ namespace BoringRPG {
       critText = lancelot.LastHitWasCrit ? " - КРИТИЧЕСКИЙ УДАР!" : "";
 
       Console.WriteLine($"Нанесено {damage} урона{critText}\n");
+      Console.WriteLine($"После атаки: {artur.GetInfo()}\n");
 
-      //HealthPotion potion = new HealthPotion(30);
-      //artur - potion;
+      Console.WriteLine($"{artur.Name} использует предметы");
+      HealthPotion healtPotion = new HealthPotion(20);
+      artur += healtPotion;
+      AmmoPack ammoPack = new AmmoPack(40);
+      artur += ammoPack;
+      Console.WriteLine($"После исользования: {artur.GetInfo()}\n");
 
-      //Console.WriteLine($"{artur.Name} использует зелье\n");
-      //Console.WriteLine($"{artur.GetInfo()}\n");
+      Console.WriteLine($"{lancelot.Name} использует предметы");
+      ManaPotion manaPotion = new ManaPotion(10);
+      lancelot += manaPotion;
+      EnergyDrink energyDrink = new EnergyDrink(50);
+      lancelot += energyDrink;
+      Console.WriteLine($"После исользования: {lancelot.GetInfo()}\n");
 
       Console.WriteLine("ИТОГОВОЕ СОСТОЯНИЕ:");
       Console.WriteLine("======================");
