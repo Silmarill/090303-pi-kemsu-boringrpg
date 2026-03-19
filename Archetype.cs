@@ -20,6 +20,23 @@ namespace BoringRPG {
       CritChance = crit;
     }
 
+    // Overload the + operator for applying any ConsumableItem
+    public static Archetype operator +(Archetype hero, ConsumableItem item) {
+      item.Apply(hero);
+      return hero;
+    }
+
+    /*
+    Insane Item: Coffee. Multiplies critical hit chance, but drains HP
+    The * operator is used here, as this represents an amplification rather than a simple addition
+    */
+    public static Archetype operator *(Archetype hero, double caffeineLevel) {
+      hero.CritChance *= caffeineLevel;
+      // Side effect
+      hero.HP -= 10;
+      return hero;
+    }
+
     public abstract void Hit(Archetype target);
     public abstract string GetInfo();
   }
