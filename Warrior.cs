@@ -9,14 +9,6 @@ namespace BoringRPG {
     public Warrior(string name) : base(name, 120, 20, 0, 25, 0.1) {
     }
 
-    //public static Warrior operator +() {
-      
-    //}
-
-    //public static Warrior operator -() {
-
-    //}
-
     public override void Hit(Archetype target) {
       int damage = Damage;
 
@@ -34,6 +26,10 @@ namespace BoringRPG {
       }
 
       target.HP -= damage;
+    }
+    public static Warrior operator -(Warrior attacker, Archetype target) {
+      attacker.Hit(target);
+      return attacker;
     }
 
     public override string GetInfo() {
