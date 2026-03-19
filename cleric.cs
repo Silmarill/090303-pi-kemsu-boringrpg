@@ -29,6 +29,23 @@ namespace BoringRPG
         public static bool operator false(Cleric cleric){
             return cleric.HP <= 0;
         }
+        public static Cleric operator +(Cleric cleric, HealthPotion healthPotion)
+        {
+            cleric.HP += healthPotion.Value;
+            return cleric;
+        }
+
+        public static Cleric operator +(Cleric cleric, ManaPotion manaPotion)
+        {
+            cleric.MP += manaPotion.Value;
+            return cleric;
+        }
+        public static Cleric operator +(Cleric cleric, CoolPotion coolPotion)
+        {
+            cleric.HP = coolPotion.Value;
+            cleric.Name = "Крутой " + cleric.Name + " в очках и инвалидной коляске ";
+            return cleric;
+        }
 
         public Cleric(string name) : base(name, 75, 80, 0, 15, 0.05)
         {
