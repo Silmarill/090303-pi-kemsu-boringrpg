@@ -43,7 +43,7 @@ namespace BoringRPG
         public static Cleric operator +(Cleric cleric, CoolPotion coolPotion)
         {
             cleric.HP = coolPotion.Value;
-            cleric.Name = "Крутой " + cleric.Name + " в очках и инвалидной коляске ";
+            cleric.Name = "Крутой " + cleric.Name + " в очках и инвалидной коляске";
             return cleric;
         }
 
