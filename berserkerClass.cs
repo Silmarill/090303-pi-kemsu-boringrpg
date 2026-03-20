@@ -12,7 +12,6 @@ namespace BoringRPG {
     }
 
     public BerserkerClass(string name) : base(name, 140, 0, 0, 30, 0.15) {
-      // HP=140, MP=0, Ammo=0, Damage=30, CritChance=0.15 (15%)
       maxHP = 140;
     }
 
@@ -29,7 +28,17 @@ namespace BoringRPG {
       target.HP -= damage;
     }
 
-    public override string GetInfo() {
+    public static Archetype operator +(Archetype hero, ConsumableItem item)
+    {
+      return hero;
+    }
+
+    public static Archetype operator *(Archetype hero, CoffeeCup cup)
+    {
+      return hero;
+    }
+
+      public override string GetInfo() {
       int rageBonus = (maxHP - HP) / 2;
       return Name + " (Berserker): HP " + HP + "/" + maxHP +
              ", MP " + MP + ", Ammo " + Ammo +

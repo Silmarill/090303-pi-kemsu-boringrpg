@@ -40,9 +40,6 @@ namespace BoringRPG {
     }
   }
 
-  // БЕЗУМНЫЙ ПРЕДМЕТ: CoffeeCup — умножает CritChance на Value.
-  // Используется через оператор *, потому что кофе УМНОЖАЕТ концентрацию.
-  // CoffeeCup(2) удвоит шанс крита. CoffeeCup(3) утроит. Осторожно с передозом.
   internal class CoffeeCup : ConsumableItem {
     public CoffeeCup(int multiplier) : base(multiplier) { }
 

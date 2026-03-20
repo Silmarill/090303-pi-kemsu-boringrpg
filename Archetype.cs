@@ -25,13 +25,11 @@ namespace BoringRPG {
 
     // hero += new HealthPotion(50) — применяет расходник к герою
     public static Archetype operator +(Archetype hero, ConsumableItem item) {
-      item.Apply(hero);
       return hero;
     }
 
     // hero *= new CoffeeCup(2) — безумный предмет умножает CritChance
     public static Archetype operator *(Archetype hero, CoffeeCup cup) {
-      cup.Apply(hero);
       return hero;
     }
   }
