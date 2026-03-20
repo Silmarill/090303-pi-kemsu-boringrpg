@@ -26,18 +26,15 @@ namespace BoringRPG {
       Console.WriteLine($"Нанесено {damage} урона{critText}\n");
       Console.WriteLine($"После атаки: {artur.GetInfo()}\n");
 
-      Console.WriteLine($"{artur.Name} использует предметы");
-      HealthPotion healtPotion = new HealthPotion(20);
-      artur += healtPotion;
-      AmmoPack ammoPack = new AmmoPack(40);
-      artur += ammoPack;
-      Console.WriteLine($"После исользования: {artur.GetInfo()}\n");
-
       Console.WriteLine($"{lancelot.Name} использует предметы");
+      HealthPotion healtPotion = new HealthPotion(20);
+      lancelot += healtPotion;
+      AmmoPack ammoPack = new AmmoPack(40);
+      lancelot += ammoPack;
       ManaPotion manaPotion = new ManaPotion(10);
       lancelot += manaPotion;
       EnergyDrink energyDrink = new EnergyDrink(50);
-      lancelot += energyDrink;
+      lancelot *= energyDrink;
       Console.WriteLine($"После исользования: {lancelot.GetInfo()}\n");
 
       Console.WriteLine("ИТОГОВОЕ СОСТОЯНИЕ:");

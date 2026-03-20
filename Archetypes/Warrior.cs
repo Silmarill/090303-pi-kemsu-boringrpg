@@ -1,0 +1,70 @@
+﻿using System;
+
+namespace BoringRPG {
+  internal class Warrior : Archetype {
+
+    private static Random random = new Random();
+    public bool LastHitWasCrit;
+
+    public Warrior(string name) : base(name, 120, 20, 0, 25, 0.1) {
+    }
+
+    public override void Hit(Archetype target) {
+      int damage = Damage;
+      bool HPislow;
+
+      if (HP <= 5) {
+        //HPislow = true;
+        return;
+      }
+      
+      //if (HPislow != true) {
+        HP -= 5;
+        damage = Damage + 5;
+        LastHitWasCrit = random.NextDouble() < CritChance;
+          if (LastHitWasCrit) {
+            damage *= 2;
+          }
+       //}
+      target.HP -= damage;
+    }
+
+    public static Warrior operator -(Warrior attacker, Archetype target) {
+      attacker.Hit(target);
+      return attacker;
+    }
+
+    public static Warrior operator +(Warrior hero, HealthPotion healtPotion) {
+      hero.HP += healtPotion.Value;
+      return hero;
+    }
+    public static Warrior operator +(Warrior hero, AmmoPack ammo) {
+      hero.Ammo += ammo.Value;
+      return hero;
+    }
+    public static Warrior operator +(Warrior hero, ManaPotion mana) {
+      hero.MP += mana.Value;
+      return hero;
+    }
+    public static Warrior operator *(Warrior hero, EnergyDrink energyDrink)
+    {
+      if (hero.MP >= energyDrink.Value)
+      {
+        hero.MP -= energyDrink.Value / 2;
+      }
+      else
+      {
+        int remainingCost;
+        remainingCost = energyDrink.Value - hero.MP;
+        hero.MP = 0;
+        hero.HP -= remainingCost;
+      }
+      hero.Damage += energyDrink.Value;
+      return hero;
+    }
+
+    public override string GetInfo() {
+      return $"{Name} (Warrior): HP {HP}, MP {MP}, Ammo {Ammo}, Шанс крита {CritChance * 100}%";
+    }
+  }
+}
