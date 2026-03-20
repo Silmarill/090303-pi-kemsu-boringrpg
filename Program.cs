@@ -10,56 +10,55 @@ namespace BoringRPG {
       DummyClass target = new DummyClass("Цель");
 
       Console.WriteLine($"НАЧАЛО БИТВЫ. Исходное состояние: \n" +
-                        $"==================\n" +
                         $"{berserker.GetInfo()}\n" +
                         $"{target.GetInfo()}\n");
 
       Console.WriteLine($"HP до операций: {berserker.HP}");
       berserker = berserker + 20;
-      Console.WriteLine($"После berserker + 20: {berserker.HP}");
+      Console.WriteLine($" + = {berserker.HP}");
       berserker = berserker - 15;
-      Console.WriteLine($"После berserker - 15: {berserker.HP}\n");
+      Console.WriteLine($" - = {berserker.HP}\n");
 
       if (berserker) {
-        Console.WriteLine($"Берсерк жив! (HP: {berserker.HP} > 0)");
+        Console.WriteLine($"Берсерк жив! ");
       }
       else {
-        Console.WriteLine($"Берсерк мертв! (HP: {berserker.HP} <= 0)");
+        Console.WriteLine($"Берсерк мертв! ");
       }
 
-      Console.WriteLine("\nУменьшаем HP до 0...");
+      Console.WriteLine("\nОбнуляем HP: ");
       berserker = berserker - berserker.HP;
-      Console.WriteLine($"HP после уменьшения: {berserker.HP}");
+      Console.WriteLine($"HP = {berserker.HP}");
 
       if (berserker) {
-        Console.WriteLine($"Берсерк жив! (HP: {berserker.HP} > 0)");
+        Console.WriteLine($"Берсерк жив! ");
       }
       else {
-        Console.WriteLine($"Берсерк мертв! (HP: {berserker.HP} <= 0)");
+        Console.WriteLine($"Берсерк мертв! ");
       }
 
-      Console.WriteLine("\nВосстанавливаем HP для битвы...");
+      Console.WriteLine("\nВосстанавливаем HP:");
       berserker = berserker + 140;
-      Console.WriteLine($"HP после восстановления: {berserker.HP}\n");
+      Console.WriteLine($"HP =  {berserker.HP}\n");
 
       Console.WriteLine($"До расходников: HP {berserker.HP}, MP {berserker.MP}, Ammo {berserker.Ammo}\n");
 
       HealthPotion healthPotion = new HealthPotion(50);
-      Console.WriteLine($"Используем: {healthPotion.GetDescription()}");
+      Console.WriteLine($" {healthPotion.GetDescription()}");
       berserker += healthPotion;
 
       ManaPotion manaPotion = new ManaPotion(30);
-      Console.WriteLine($"\nИспользуем: {manaPotion.GetDescription()}");
+      Console.WriteLine($"\n{manaPotion.GetDescription()}");
       berserker += manaPotion;
 
       AmmoPack ammoPack = new AmmoPack(15);
-      Console.WriteLine($"\nИспользуем: {ammoPack.GetDescription()}");
+      Console.WriteLine($"\n {ammoPack.GetDescription()}");
       berserker += ammoPack;
 
       Console.WriteLine($"\nПосле расходников: HP {berserker.HP}, MP {berserker.MP}, Ammo {berserker.Ammo}\n");
 
       BugPotion bugPotion = new BugPotion();
-      Console.WriteLine($"Используем: {bugPotion.GetDescription()}");
+      Console.WriteLine($" {bugPotion.GetDescription()}");
       Console.WriteLine($"До бага: HP {berserker.HP}, Урон {berserker.Damage}, Крит {berserker.CritChance * 100}%");
 
       berserker++;

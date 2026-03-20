@@ -2,8 +2,9 @@
 
 namespace BoringRPG {
   internal class Berserker : Archetype {
-    private static Random random = new Random();
+    private static Random _random = new Random();
     public bool LastHitWasCrit;
+    private const int MAX_HP = 140;
 
     public Berserker(string name, int hp, int mp, int ammo, int dmg, double crit)
       : base(name, hp, mp, ammo, dmg, crit) {
@@ -32,10 +33,10 @@ namespace BoringRPG {
     public override void Hit(Archetype target) {
       int damage = Damage;
 
-      int rageBonus = (140 - HP) / 2;
+      int rageBonus = (MAX_HP - HP) / 2;
       damage += rageBonus;
 
-      LastHitWasCrit = random.NextDouble() < CritChance;
+      LastHitWasCrit = _random.NextDouble() < CritChance;
       if (LastHitWasCrit) {
         damage *= 2;
       }
@@ -44,26 +45,41 @@ namespace BoringRPG {
     }
 
     public override string GetInfo() {
-      return $"{Name} (Berserker): HP {HP}/{140}, MP {MP}, Ammo {Ammo}, " +
+      return $"{Name} (Berserker): HP {HP}/{MAX_HP}, MP {MP}, Ammo {Ammo}, " +
              $"Урон {Damage}, Шанс крита {CritChance * 100}%, " +
-             $"Бонус ярости: {(140 - HP) / 2}";
+             $"Бонус ярости: {(MAX_HP - HP) / 2}";
     }
-    // ПЕРЕГРУЗКА 1: оператор + с разными предметами
+
     public static Berserker operator +(Berserker berserker, HealthPotion potion) {
-      berserker.HP += potion.Value;
-      Console.WriteLine($"❤️ {berserker.Name} +{potion.Value} HP");
+      int oldHP = berserker.HP;
+      int newHP = potion.ApplyTo(berserker.HP);
+
+
+      switch (newHP) {
+        case 140 when oldHP < 140:
+          Console.WriteLine($" {berserker.Name} достиг максимального HP (140)! Восстановлено {140 - oldHP} HP");
+          break;
+        case 140 when oldHP >= 140:
+          Console.WriteLine($" {berserker.Name} уже имеет максимальное HP (140)");
+          break;
+        default:
+          Console.WriteLine($" {berserker.Name} +{newHP - oldHP} HP (текущее HP: {newHP})");
+          break;
+      }
+
+      berserker.HP = newHP;
       return berserker;
     }
 
     public static Berserker operator +(Berserker berserker, ManaPotion potion) {
       berserker.MP += potion.Value;
-      Console.WriteLine($"💙 {berserker.Name} +{potion.Value} MP");
+      Console.WriteLine($" {berserker.Name} +{potion.Value} MP");
       return berserker;
     }
 
     public static Berserker operator +(Berserker berserker, AmmoPack ammo) {
       berserker.Ammo += ammo.Value;
-      Console.WriteLine($"🔫 {berserker.Name} +{ammo.Value} Ammo");
+      Console.WriteLine($" {berserker.Name} +{ammo.Value} Ammo");
       return berserker;
     }
 
@@ -72,24 +88,24 @@ namespace BoringRPG {
 
       switch (effect) {
         case 1:
-          berserker.HP += 20;
-          Console.WriteLine($"🍄 Баг: +20 HP! (теперь {berserker.HP})");
+          berserker.HP = Math.Min(berserker.HP + 20, MAX_HP); 
+          Console.WriteLine($" Баг: +20 HP! (теперь {berserker.HP})");
           break;
         case 2:
           berserker.Damage += 10;
-          Console.WriteLine($"⚡ Баг: +10 к урону! (теперь {berserker.Damage})");
+          Console.WriteLine($" Баг: +10 к урону! (теперь {berserker.Damage})");
           break;
         case 3:
           berserker.HP -= 15;
-          Console.WriteLine($"💔 Баг: -15 HP! (теперь {berserker.HP})");
+          Console.WriteLine($" Баг: -15 HP! (теперь {berserker.HP})");
           break;
         case 4:
           berserker.CritChance += 0.1;
-          Console.WriteLine($"🍀 Баг: +10% к криту! (теперь {berserker.CritChance * 100}%)");
+          Console.WriteLine($" Баг: +10% к криту! (теперь {berserker.CritChance * 100}%)");
           break;
       }
 
       return berserker;
     }
   }
-} 
+}
