@@ -4,11 +4,12 @@ namespace BoringRPG
 {
   class SoulLink : Skill
   {
-    public override void Use(Archetype dungeonMaster, Archetype artur)
+    public override void Use(Archetype caster, Archetype caster)
     {
-      int totalHP = dungeonMaster.HP + artur.HP;
-      dungeonMaster.HP = totalHP / 2;
-      artur.HP = totalHP / 2;
+      int totalHP;
+      totalHP = caster.HP + caster.HP;
+      caster.HP = totalHP / 2;
+      caster.HP = totalHP / 2;
     }
   }
 }
