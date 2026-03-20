@@ -23,7 +23,7 @@ namespace BoringRPG {
       return archer.HP <= 0;
     } 
 
-    public static Archer operator+ (Archer archer, int healing) {
+    public static Archer operator + (Archer archer, int healing) {
       archer.HP = Math.Min(archer.HP + healing, 100);
       return archer;
     }
