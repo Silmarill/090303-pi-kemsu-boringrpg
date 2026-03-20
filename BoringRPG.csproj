@@ -58,8 +58,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Consumables\AmmoPack.cs" />
     <Compile Include="Archetype.cs" />
+    <Compile Include="Consumables\CoffeeCup.cs" />
+    <Compile Include="Consumables\ConsumableItem.cs" />
     <Compile Include="DummyClass.cs" />
+    <Compile Include="Consumables\HealthPotion.cs" />
+    <Compile Include="Consumables\ManaPotion.cs" />
     <Compile Include="Paladin.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
