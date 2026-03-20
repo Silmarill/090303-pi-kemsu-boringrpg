@@ -30,25 +30,25 @@ namespace BoringRPG {
     }
 
     public static Cleric operator +(Cleric cleric, HealthPotion healthPotion) {
-      cleric.HP += healthPotion.Heal;
+      cleric.HP += healthPotion.Value;
       return cleric;
     }
 
     public static Cleric operator +(Cleric cleric, ManaPotion manaPotion) {
-      cleric.MP += manaPotion.ManaRegen;
+      cleric.MP += manaPotion.Value;
       return cleric;
     }
 
     public static Cleric operator +(Cleric cleric, AmmoPack ammoPack) {
-      cleric.Ammo += ammoPack.AmmoRefill;
+      cleric.Ammo += ammoPack.Value;
       return cleric;
     }
 
     public static Cleric operator +(Cleric cleric, RagePie ragePie) {
-      cleric.Damage += ragePie.IncreaseAll;
-      cleric.HP += ragePie.IncreaseAll;
-      cleric.MP += ragePie.IncreaseAll;
-      cleric.Ammo += ragePie.IncreaseAll;
+      cleric.Damage += ragePie.Value;
+      cleric.HP += ragePie.Value;
+      cleric.MP += ragePie.Value;
+      cleric.Ammo += ragePie.Value;
       return cleric;
     }
 
