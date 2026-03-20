@@ -59,6 +59,16 @@ namespace BoringRPG {
 
       Console.WriteLine(mage.GetInfo());
 
+      Skill skill = new LastStand();
+      mage.UseSkill(skill, artur);
+
+      Console.WriteLine(mage.GetInfo());
+
+      Skill skil = new ManaDrain();
+      mage.UseSkill(skil, artur);
+
+      Console.WriteLine(mage.GetInfo());
+
       Console.ReadKey();
     }
   }
