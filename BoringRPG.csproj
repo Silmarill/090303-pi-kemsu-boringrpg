@@ -60,6 +60,8 @@
   <ItemGroup>
     <Compile Include="AmmoPack.cs" />
     <Compile Include="Archetype.cs" />
+    <Compile Include="SoulLink.cs" />
+    <Compile Include="Skill.cs" />
     <Compile Include="FatBurger.cs" />
     <Compile Include="ConsumableItem.cs" />
     <Compile Include="DummyClass.cs" />

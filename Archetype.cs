@@ -3,12 +3,6 @@ using System.Collections.Generic;
 
 namespace BoringRPG {
 
-  abstract class Skill {
-    public string Name;
-
-    public abstract void Use(Archetype caster, Archetype target);
-  }
-
   internal abstract class Archetype {
 
     public string Name;
