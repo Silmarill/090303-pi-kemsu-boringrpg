@@ -57,7 +57,7 @@ namespace BoringRPG {
 
       // Используем BugPotion (безумный предмет)
       Console.WriteLine($"\nИспользуем BugPotion (безумный предмет!):");
-      necro %= bugPotion;
+      necro += bugPotion;
       Console.WriteLine(necro.GetInfo());
 
       Console.WriteLine("\nНажмите любую клавишу для выхода...");

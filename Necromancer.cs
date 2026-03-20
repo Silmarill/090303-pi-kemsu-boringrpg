@@ -19,28 +19,16 @@ namespace BoringRPG {
 
     public static Necromancer operator +(Necromancer necromancer, HealthPotion potion) {
       necromancer.HP += potion.Value;
-      Console.WriteLine($"{necromancer.Name} выпил зелье здоровья +{potion.Value} HP");
       return necromancer;
     }
 
     public static Necromancer operator +(Necromancer necromancer, ManaPotion potion) {
       necromancer.MP += potion.Value;
-      Console.WriteLine($"{necromancer.Name} выпил зелье маны +{potion.Value} MP");
       return necromancer;
     }
 
-    public static Necromancer operator %(Necromancer necromancer, BugPotion potion) {
-      // Багнутое зелье: лечит HP, но с вероятностью 50% отнимает ману
+    public static Necromancer operator +(Necromancer necromancer, BugPotion potion) {
       necromancer.HP += potion.Value;
-      Console.WriteLine($"{necromancer.Name} выпил багнутое зелье: +{potion.Value} HP?");
-
-      if (random.NextDouble() < 0.5) {
-        necromancer.MP -= potion.Value;
-        Console.WriteLine($"Баг сработал! {necromancer.Name} потерял {potion.Value} MP!");
-      } else {
-        Console.WriteLine($"Повезло! Мана не пострадала.");
-      }
-
       return necromancer;
     }
 
