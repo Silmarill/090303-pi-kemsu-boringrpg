@@ -2,7 +2,7 @@
 
 namespace BoringRPG
 {
-  internal class SoulLink : Skill
+  public class SoulLink : Skill
   {
     public SoulLink() : base("SoulLink") { }
 
