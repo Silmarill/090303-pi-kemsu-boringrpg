@@ -60,7 +60,9 @@
   <ItemGroup>
     <Compile Include="Archetype.cs" />
     <Compile Include="BugPotion.cs" />
+    <Compile Include="CoinOfFate.cs" />
     <Compile Include="ConsumableItem.cs" />
+    <Compile Include="DramaAction.cs" />
     <Compile Include="DummyClass.cs" />
     <Compile Include="HealthPotion.cs" />
     <Compile Include="ICanUseSkill.cs" />

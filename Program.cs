@@ -41,6 +41,10 @@ namespace BoringRPG {
       HealthPotion hpPotion = new HealthPotion(30);
       ManaPotion mpPotion = new ManaPotion(25);
       BugPotion bugPotion = new BugPotion(20);
+
+      Skill soulLink = new SoulLink();
+      Skill drama = new DramaAction();
+      Skill coin = new CoinOfFate();
   
       Console.WriteLine($"\nТекущее состояние некроманта:");
       Console.WriteLine(necro.GetInfo());
@@ -59,6 +63,27 @@ namespace BoringRPG {
       Console.WriteLine($"\nИспользуем BugPotion (безумный предмет!):");
       necro += bugPotion;
       Console.WriteLine(necro.GetInfo());
+
+      // 1. SoulLink - перераспределение HP
+      Console.WriteLine("\n--- Навык 1: SoulLink ---");
+      necro.UseSkill(soulLink, artur);
+      Console.WriteLine("\nПосле SoulLink:");
+      Console.WriteLine(necro.GetInfo());
+      Console.WriteLine(artur.GetInfo());
+
+      // 2. DramaAction - шуточный навык
+      Console.WriteLine("\n--- Навык 2: DramaAction ---");
+      artur.UseSkill(drama, necro);
+      Console.WriteLine("\nПосле DramaAction:");
+      Console.WriteLine(necro.GetInfo());
+      Console.WriteLine(artur.GetInfo());
+
+      // 3. CoinOfFate - рискованный навык
+      Console.WriteLine("\n--- Навык 3: CoinOfFate ---");
+      necro.UseSkill(coin, artur);
+      Console.WriteLine("\nПосле CoinOfFate:");
+      Console.WriteLine(necro.GetInfo());
+      Console.WriteLine(artur.GetInfo());
 
       Console.WriteLine("\nНажмите любую клавишу для выхода...");
       Console.ReadKey();
