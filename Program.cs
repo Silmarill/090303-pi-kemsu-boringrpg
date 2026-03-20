@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Xml.Linq;
 
 namespace BoringRPG {
   internal class Program {
@@ -7,7 +8,7 @@ namespace BoringRPG {
       int beforeHP, damage;
       
       Cleric lancelot = new Cleric("Чел");
-      DummyClass artur =    new DummyClass("Артур Пендрагон");
+      DummyClass artur =    new DummyClass("Артур Пирожков");
             
       Console.WriteLine($"НАЧАЛО БИТВЫ1. Исходное состояние: \n" +
                         $"==================\n" +
@@ -21,8 +22,12 @@ namespace BoringRPG {
       damage = beforeHP - artur.HP;
 
       HealthPotion healthPotion = new HealthPotion(100, "Зелье хп");
-      ManaPotion manaPotion = new ManaPotion(100, "Зелье Маны");;
+      ManaPotion manaPotion = new ManaPotion(100, "Зелье Маны");
       CoolPotion coolPotion = new CoolPotion(1, "Крутое зелье");
+
+      Skill lastStand = new LastStandSkill("Абузер", 10, artur);
+      Skill manaDrain = new ManaDrainSkill("Вор манки", 2, artur);
+      Skill chance = new ChanceSkill("РАНДОМЕР", 20, artur);
 
       critText = lancelot.LastHitWasCrit ? " - КРИТИЧЕСКИЙ УДАР!" : "";
 
@@ -35,19 +40,27 @@ namespace BoringRPG {
       lancelot += 100;
       Console.WriteLine($"Текущее ХП {lancelot.Name}: {lancelot.HP}\n");
 
-      Console.WriteLine("Проверка на хилки:");
+      Console.WriteLine("Проверка способок:");
 
-      Console.WriteLine($"Текущее ХП {lancelot.Name}: {lancelot.HP}\n");
-      lancelot += healthPotion;
-      Console.WriteLine($"выпил {healthPotion.Name} ХП теперь - {lancelot.HP}");
+      Console.WriteLine($"Текущее ХП {lancelot.Name}: {lancelot.HP}, DMG: {artur.Damage}\n");
+      lancelot.UseSkill(lastStand, artur);
+      Console.WriteLine($"{lancelot.Name} использовал {lastStand.Name} на {artur.Name}.ХП {lancelot.Name} теперь - {lancelot.HP}");
 
       Console.WriteLine($"Текущее МП {lancelot.Name}: {lancelot.MP}\n");
-      lancelot += manaPotion;
-      Console.WriteLine($"выпил {manaPotion.Name} МП теперь - {lancelot.MP}");
+      artur.UseSkill(manaDrain, lancelot);
+      Console.WriteLine($"{artur.Name} использовал {manaDrain.Name} на {lancelot.Name}. МП {artur.Name} теперь - {artur.MP}");
+      Console.WriteLine($"Текущее МП {lancelot.Name}: {lancelot.MP}\n");
 
-      Console.WriteLine($"Текущее ХП {lancelot.Name}: {lancelot.HP}\n");
-      lancelot += coolPotion;
-      Console.WriteLine($"выпил {coolPotion.Name} ХП {lancelot.Name} теперь - {lancelot.HP}");
+      Console.WriteLine($"Состояние: \n" +
+                        $"==================\n" +
+                        $"{lancelot.GetInfo()}\n" +
+                        $"{artur.GetInfo()}\n");
+      lancelot.UseSkill(chance, artur);
+      Console.WriteLine($"{lancelot.Name} использовал {chance.Name} на {artur.Name}. все рандоминизированно!!!!!");
+      Console.WriteLine($"Состояние: \n" +
+                        $"==================\n" +
+                        $"{lancelot.GetInfo()}\n" +
+                        $"{artur.GetInfo()}\n");
 
       Console.Write("Нажмите любую клавишу, чтобы продолжить.");
       Console.ReadKey();

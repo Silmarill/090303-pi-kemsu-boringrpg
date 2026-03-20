@@ -2,8 +2,7 @@
 
 namespace BoringRPG
 {
-    internal class Cleric : Archetype
-    {
+    internal class Cleric : Archetype, ICanUseSkill {
 
 
         private static Random random = new Random();
@@ -51,7 +50,8 @@ namespace BoringRPG
         {
         }
 
-        public override void Hit(Archetype target){
+        public override void Hit(Archetype target)
+        {
             int damage = Damage;
             /*int mp = MP;
             int hp = HP;*/
@@ -75,11 +75,13 @@ namespace BoringRPG
             {
                 HP += 10;
             }
-
+        }
+        public void UseSkill(Skill skill, Archetype target){
+            skill.Use(this, target);
         }
 
         public override string GetInfo(){
-            return $"{Name} (Хилятор3000): HP {HP}, MP {MP}, Ammo {Ammo}, Шанс крита {CritChance * 100}, Удары стоят 10 MP - при убийстве цели восстанавливает 10 HP%";
+            return $"{Name} (Хилятор3000): HP {HP}, MP {MP}, Ammo {Ammo}, DMG {Damage}, Шанс крита {CritChance * 100}, Удары стоят 10 MP - при убийстве цели восстанавливает 10 HP%";
         }
     }
 }
