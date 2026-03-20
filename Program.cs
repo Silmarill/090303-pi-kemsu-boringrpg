@@ -1,8 +1,20 @@
 ﻿using System;
+using System.Diagnostics.Eventing.Reader;
 using System.Text;
 
 namespace BoringRPG
 {
+  public string AliveOrDie(Archetype person)
+  {
+    if (person.HP <= 0)
+    {
+      return "survaide";
+    }
+    else
+    {
+      return "die";
+    }
+  }
   internal class Program
   {
     static void Main(string[] args)
@@ -58,13 +70,7 @@ namespace BoringRPG
 
       while (archer)
       {
-        if (lancelot.HP <= 0)
-        {
-          Console.WriteLine("\nGAME END!\n" + "======================");
-          Console.WriteLine($"{archer.Name} wins!");
-
-          break;
-        }
+        
 
         Console.WriteLine($"\nROUND {roundNumber}:\n" + "======================");
 
@@ -80,6 +86,15 @@ namespace BoringRPG
 
         lancelot.UseSkill(soulLink, archer);
         lancelot.UseSkill(coinOfFate, archer);
+
+        if (lancelot.HP <= 0)
+        {
+          Console.WriteLine("\nGAME END!\n" + "======================");
+          Console.WriteLine($"{lancelot.Name} wins!");
+
+          break;
+        }
+
         lancelot.UseSkill(complimentEnemy, archer);
 
         if (archer.HP <= 0)
@@ -111,6 +126,24 @@ namespace BoringRPG
 
         archer.UseSkill(soulLink, lancelot);
         archer.UseSkill(coinOfFate, lancelot);
+
+        if (lancelot.HP <= 0)
+        {
+          Console.WriteLine("\nGAME END!\n" + "======================");
+          Console.WriteLine($"{lancelot.Name} wins!");
+
+          break;
+        }
+
+        if (archer.HP <= 0)
+        {
+          Console.WriteLine("\nGAME END!\n" + "======================");
+          Console.WriteLine($"{lancelot.Name} wins!");
+
+          break;
+        }
+
+
         archer.UseSkill(complimentEnemy, lancelot);
 
         Console.WriteLine("FINAL STATE:");

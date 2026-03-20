@@ -91,9 +91,9 @@ namespace BoringRPG
       int CritChangeMultiplier;
 
       CritChangeMultiplier = 2;
-      damageMultiplier = 3;
+      damageMultiplier = 10;
 
-      target.Damage *= damageMultiplier;
+      target.Damage += damageMultiplier;
       target.CritChance *= CritChangeMultiplier;
 
       Console.WriteLine($"{target.Name} receives an improvement to critical chance and damage\n");
