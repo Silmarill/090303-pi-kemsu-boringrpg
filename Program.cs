@@ -16,9 +16,9 @@ namespace BoringRPG {
                         $"{shiYan.GetInfo()}\n" +
                         $"{jackieChan.GetInfo()}\n");
 
-      for (int i = 1; i <= 4; i++)
+      for (int index = 1; index <= 4; ++index)
       {
-        Console.WriteLine($"\n--- Раунд {i} ---");
+        Console.WriteLine($"\n--- Раунд {index} ---");
         Console.WriteLine($"{shiYan.Name} атакует {jackieChan.Name}!");
 
         beforeHP = jackieChan.HP;

@@ -31,21 +31,18 @@ namespace BoringRPG {
     public static Monk operator +(Monk monk, HealthPotion potion)
     {
       monk.HP += potion.Value;
-      Console.WriteLine($" {monk.Name} выпил зелье здоровья! +{potion.Value} HP");
       return monk;
     }
 
     public static Monk operator +(Monk monk, ManaPotion potion)
     {
       monk.MP += potion.Value;
-      Console.WriteLine($" {monk.Name} выпил зелье маны! +{potion.Value} MP");
       return monk;
     }
 
     public static Monk operator +(Monk monk, AmmoPack ammo)
     {
       monk.Ammo += ammo.Value;
-      Console.WriteLine($" {monk.Name} подобрал патроны! +{ammo.Value} патронов");
       return monk;
     }
 
