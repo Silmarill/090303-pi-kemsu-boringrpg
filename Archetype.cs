@@ -3,10 +3,6 @@ using System.Collections.Generic;
 
 namespace BoringRPG {
 
-  interface ICanUseSkill {
-    void UseSkill(Skill skill);
-  }
-
   abstract class Skill {
     public string Name;
 

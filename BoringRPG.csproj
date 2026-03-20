@@ -64,6 +64,7 @@
     <Compile Include="ConsumableItem.cs" />
     <Compile Include="DummyClass.cs" />
     <Compile Include="Heal.cs" />
+    <Compile Include="ICanUseSkill.cs" />
     <Compile Include="ManaRestore.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
