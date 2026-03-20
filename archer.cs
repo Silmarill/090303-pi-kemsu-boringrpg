@@ -15,7 +15,7 @@ namespace BoringRPG {
     public Archer (string name) : base(name, 80, 30, 20, 20, 0.25) {
     }
 
-    public void UseSkill(ICanUseSkill skill, Archetype target) { 
+    public void Use (Skill skill, Archetype target) { 
       skill.Use(this, target);
     }
     public static bool operator true (Archer archer) {

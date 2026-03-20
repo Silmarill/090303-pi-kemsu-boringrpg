@@ -19,7 +19,26 @@ namespace BoringRPG {
       AmmoPack ammoPack = new AmmoPack(42);
       LitEnergy litEnergy = new LitEnergy(500);
 
-      if (lancelot.IsAlive) { 
+			Console.Clear();
+			Console.WriteLine("=== скиллы ===");
+
+			Skill soulLink = new SoulLink();
+			Skill manaDrain = new ManaDrain();
+			Skill dramaAction = new DramaAction();
+
+			Console.WriteLine("\n=== Используем SoulLink ===");
+			lancelot.Use(soulLink, artur);
+
+			Console.WriteLine("\n=== Использует ManaDrain ===");
+			artur.Use(manaDrain, lancelot);
+
+			Console.WriteLine("\n=== Применяем - DramaAction ===");
+			lancelot.Use(dramaAction, artur);
+
+			Console.WriteLine($"\n=== СОСТОЯНИЕ ПОСЛЕ НАВЫКОВ ===\n" +
+												$"{lancelot.GetInfo()}\n{artur.GetInfo()}\n");
+
+			if (lancelot.IsAlive) { 
         Console.WriteLine($"{lancelot.Name} готов к бою");
       } else { 
         Console.WriteLine($"{lancelot.Name} не может сражаться");
