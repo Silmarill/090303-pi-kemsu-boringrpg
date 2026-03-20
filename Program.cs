@@ -10,14 +10,14 @@ namespace BoringRPG {
       DummyClass artur =    new DummyClass("Артур Пендрагон");
       BerserkerClass berserk = new BerserkerClass("Berserker");
 
-      Console.WriteLine("НАЧАЛО БИТВЫ. Исходное состояние: \n" +
-                        "==================\n" +
-                        lancelot.GetInfo() + "\n" +
-                        artur.GetInfo() + "\n" +
-                        berserk.GetInfo() + "\n");
+      Console.WriteLine($"НАЧАЛО БИТВЫ. Исходное состояние: \n" +
+                               $"==================\n" +
+                               $"{lancelot.GetInfo()}\n" +
+                               $"{artur.GetInfo()}\n" +
+                               $"{berserk.GetInfo()}\n");
 
-      Console.WriteLine(lancelot.Name + " атакует " + artur.Name + "!");
-      Console.WriteLine(berserk.Name + " атакует " + lancelot.Name);
+      Console.WriteLine($"{lancelot.Name} атакует {artur.Name}!");
+      Console.WriteLine($"{berserk.Name} атакует {lancelot.Name}");
 
       beforeHP = artur.HP;
       lancelot.Hit(artur);
@@ -68,6 +68,10 @@ namespace BoringRPG {
       Console.WriteLine("После CoffeeCup(3): " + lancelot.GetInfo());
       Console.WriteLine("(тройной эспрессо. Руки дрожат, но крит-шанс утроен.)");
 
+
+      interface ICanUseSkill {
+        void UseSkill()
+      }
       Console.ReadKey();
     }
   }
