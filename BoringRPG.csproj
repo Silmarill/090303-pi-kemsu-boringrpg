@@ -66,6 +66,7 @@
     <Compile Include="FatBurger.cs" />
     <Compile Include="HealthPotion.cs" />
     <Compile Include="ICanUseSkill.cs" />
+    <Compile Include="ManaDrain.cs" />
     <Compile Include="ManaPotion.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

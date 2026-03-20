@@ -2,7 +2,7 @@
 
 namespace BoringRPG {
   public class Program {
-    static void Main(string[] args) {
+    static void Main() {
       string critText;
       int beforeHP, damage;
       
@@ -15,9 +15,9 @@ namespace BoringRPG {
                         $"{artur.GetInfo()}\n");
 
       Console.WriteLine($"\nЗдоровье {artur.Name} до лечения: {artur.HP}");
-      artur = artur + 20;
+      artur += 20;
       Console.WriteLine($"Здоровье {artur.Name} после лечения (+20): {artur.HP}");
-      artur = artur - 10;
+      artur -= 10;
       Console.WriteLine($"Здоровье {artur.Name} после урона (-10): {artur.HP}");
 
       if (artur) {
