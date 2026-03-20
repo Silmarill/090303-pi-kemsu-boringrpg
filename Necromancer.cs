@@ -1,7 +1,7 @@
 ﻿using System;
 
 namespace BoringRPG {
-  internal class Necromancer : Archetype {
+  internal class Necromancer : Archetype, ICanUseSkill {
 
     //пример для работы со случайными числами
     private static Random random = new Random();
@@ -15,6 +15,10 @@ namespace BoringRPG {
 
     public Necromancer(string name) : base(name, 55, 90, 0, 30, 0.1) {
       _skeletonBonus = 0;
+    }
+
+    public void UseSkill(Skill skill, Archetype target) {
+      skill.Use(this, target);
     }
 
     public static Necromancer operator +(Necromancer necromancer, HealthPotion potion) {
