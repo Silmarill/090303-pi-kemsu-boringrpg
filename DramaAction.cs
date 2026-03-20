@@ -19,9 +19,7 @@ namespace BoringRPG {
         string oldName = target.Name;
         target.Name = "Побежденный" + oldName;
         Console.WriteLine($"{oldName} переименован в {target.Name}");
-      }
-
-      if (chance < secondChancePoint) { 
+      } else if (chance < secondChancePoint) { 
         string oldName = caster.Name;
         caster.Name = "Легендарный" + oldName;
         Console.WriteLine($"{oldName} переименован в {caster.Name}");

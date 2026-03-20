@@ -60,6 +60,7 @@
   <ItemGroup>
     <Compile Include="AmmoPack.cs" />
     <Compile Include="Archetype.cs" />
+    <Compile Include="CoinOfFate.cs" />
     <Compile Include="DramaAction.cs" />
     <Compile Include="GoldApple.cs" />
     <Compile Include="ConsumableItem.cs" />
