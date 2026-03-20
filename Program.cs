@@ -48,6 +48,29 @@ namespace BoringRPG {
       cleric = cleric * talisman;
       Console.WriteLine(cleric.GetInfo());
 
+      Console.WriteLine("\n=== DEMONSTRATION OF SKILLS ===");
+      
+      Console.WriteLine("\n--- SKILL 1: SOUL LINK ---");
+      Skill soulLink = new SoulLink();
+      cleric.UseSkill(soulLink, warrior);
+      Console.WriteLine($"\nAfter Soul Link:");
+      Console.WriteLine(cleric.GetInfo());
+      Console.WriteLine(warrior.GetInfo());
+
+      Console.WriteLine("\n--- SKILL 2: DRAMA ACTION ---");
+      Skill drama = new DramaAction();
+      warrior.UseSkill(drama, cleric);
+      Console.WriteLine($"\nAfter Drama Action:");
+      Console.WriteLine(cleric.GetInfo());
+      Console.WriteLine(warrior.GetInfo());
+
+      Console.WriteLine("\n--- SKILL 3: COIN OF FATE ---");
+      Skill coin = new CoinOfFate();
+      cleric.UseSkill(coin, warrior);
+      Console.WriteLine($"\nAfter Coin of Fate:");
+      Console.WriteLine(cleric.GetInfo());
+      Console.WriteLine(warrior.GetInfo());
+
       Console.WriteLine("\n=== DEMONSTRATION OF TRUE/FALSE OPERATORS ===");
       
       if (cleric) {

@@ -46,7 +46,6 @@ namespace BoringRPG {
         hero.HP = 75;
       }
 
-      Console.WriteLine($"{hero.Name} uses {potion.Name} and restores {potion.Value} HP!");
       return hero;
     }
 
@@ -58,7 +57,6 @@ namespace BoringRPG {
         hero.MP = 80;
       }
 
-      Console.WriteLine($"{hero.Name} uses {potion.Name} and restores {potion.Value} MP!");
       return hero;
     }
 
@@ -66,7 +64,6 @@ namespace BoringRPG {
     public static Cleric operator +(Cleric hero, StrengthPotion potion) {
       hero.Damage += potion.Value;
 
-      Console.WriteLine($"{hero.Name} uses {potion.Name} and gains {potion.Value} damage!");
       return hero;
     }
 
