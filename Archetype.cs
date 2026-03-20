@@ -2,6 +2,17 @@
 using System.Collections.Generic;
 
 namespace BoringRPG {
+
+  interface ICanUseSkill {
+    void UseSkill(Skill skill);
+  }
+
+  abstract class Skill {
+    public string Name;
+
+    public abstract void Use(Archetype caster, Archetype target);
+  }
+
   internal abstract class Archetype {
 
     public string Name;
@@ -23,5 +34,4 @@ namespace BoringRPG {
     public abstract void Hit(Archetype target);
     public abstract string GetInfo();
   }
-
 }

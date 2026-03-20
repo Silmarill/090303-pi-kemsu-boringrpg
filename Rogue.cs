@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 
 namespace BoringRPG {
   internal class Rogue : Archetype {
-    public Rogue(string name, int HP, int MP, int ammo, int dmg, double crit) : base(name, 70, 20, 10, 30, 0.30) {
+    public Rogue(string name, int hp, int mp, int ammo, int dmg, double crit) : base(name, 70, 20, 10, 30, 0.30) {
     }
 
     public Rogue(string name) : base(name, 70, 20, 10, 30, 0.30) {
@@ -12,14 +12,8 @@ namespace BoringRPG {
 
     public override void Hit(Archetype target) {
       int damage = Damage;
-
-      if (Ammo < 0) {
-        damage /= 2;
-      } else {
-        Ammo -= 1;
-      }
-      target.HP -= damage;
     }
+
     public static Rogue operator +(Rogue rogue, int health) {
       rogue.HP += health;
       return rogue;
@@ -30,12 +24,29 @@ namespace BoringRPG {
       return rogue;
     }
 
-
-
     public override string GetInfo() {
-      return $"{Name} (Hero): HP {HP}, MP {MP}, Ammo {Ammo}, Шанс крита {CritChance * 100}%";
+      return $"{Name} (Dummy): HP {HP}, MP {MP}, Ammo {Ammo}, Шанс крита {CritChance * 100}%";
     }
 
+    public static Rogue operator +(Rogue rogue, Heal potion) {
+      rogue.HP += potion.value;
+      return rogue;
+    }
 
+    public static Rogue operator +(Rogue rogue, ManaRestore potion) {
+      rogue.MP += potion.value;
+      return rogue;
+    }
+
+    public static Rogue operator +(Rogue rogue, AmmoPack potion) {
+      rogue.Ammo += potion.value;
+      return rogue;
+    }
+
+    public static Rogue operator -(Rogue rogue, FatBurger potion) {
+      rogue.HP -= potion.value;
+      rogue.Damage += potion.value;
+      return rogue;
+    }
   }
 }

@@ -1,48 +1,34 @@
 ﻿using System;
+
 namespace BoringRPG {
-
   internal class Program {
-
     static void Main(string[] args) {
       string critText;
-      int beforeHPArtur, beforeHPLancelot, damageL, damageT;
+      int beforeHP, damage;
 
-      DummyClass lancelot = new DummyClass("Ланселот Ловкий");
-      DummyClass artur = new DummyClass("Артур Пендрагон");
+      Heal hPotion = new Heal(42);
+      ManaRestore mPotion = new ManaRestore(42);
+      AmmoPack aPotion = new AmmoPack(5);
+      FatBurger burger = new FatBurger(100);
       Rogue torfin = new Rogue("Торфин Безопасный");
 
+      
+            
       Console.WriteLine($"НАЧАЛО БИТВЫ. Исходное состояние: \n" +
-                        $"==================\n" +
-                        $"{lancelot.GetInfo()}\n" +
-                        $"{artur.GetInfo()}\n" +
                         $"{torfin.GetInfo()}\n");
+           
+      Console.WriteLine($"\n{torfin.Name} хилится на {hPotion.value}");
+      Console.WriteLine($"\n{torfin.Name} хилит ману на {hPotion.value}");
+      Console.WriteLine($"\n{torfin.Name} Взял {aPotion.value} патронов");
+      Console.WriteLine($"\n{torfin.Name} После хила решил перекусить и потолстел на -{burger.value}, но при этом увеличил свой урон {burger.value}");
 
-      Console.WriteLine($"{lancelot.Name} атакует {artur.Name}!");
-      Console.WriteLine($"{lancelot.Name} атакует {torfin.Name}!");
-
-
-      beforeHPArtur = artur.HP;
-      beforeHPLancelot = lancelot.HP;
-      torfin += 4;
-
-      lancelot.Hit(torfin);
-      lancelot.Hit(artur);
-      torfin.Hit(lancelot);
-
-      damageL = beforeHPArtur - artur.HP;
-      damageT = beforeHPLancelot - lancelot.HP;
-
-      Console.WriteLine($"\n{torfin.Name} хилится на 4 хп");
-
-      critText = lancelot.LastHitWasCrit ? " - КРИТИЧЕСКИЙ УДАР!" : "";
-
-      Console.WriteLine($"\nНанесено {damageT} урона");
-      Console.WriteLine($"\nНанесено {damageL} урона{critText}\n");
-
+      torfin += hPotion;
+      torfin += mPotion;
+      torfin += aPotion;
+      torfin -= burger;
+                       
       Console.WriteLine("ИТОГОВОЕ СОСТОЯНИЕ:");
       Console.WriteLine("======================");
-      Console.WriteLine(lancelot.GetInfo());
-      Console.WriteLine(artur.GetInfo());
       Console.WriteLine(torfin.GetInfo());
       Console.ReadKey();
     }
