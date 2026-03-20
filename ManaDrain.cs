@@ -1,12 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BoringRPG
 {
-  internal class ManaDrain
+  class ManaDrain : Skill
   {
+    public override void Use(Archetype caster, Archetype target)
+    {
+      int drainAmount;
+      drainAmount = Math.Min(20, target.MP);
+      if (drainAmount > 0)
+      {
+        target.MP -= drainAmount;
+        caster.MP += drainAmount;
+      }
+      else
+      {
+        Console.WriteLine($" У {target.Name} нет маны");
+      }
+    }
   }
 }

@@ -4,7 +4,7 @@ namespace BoringRPG
 {
   class SoulLink : Skill
   {
-    public override void Use(Archetype caster, Archetype caster)
+    public override void Use(Archetype caster, Archetype target)
     {
       int totalHP;
       totalHP = caster.HP + caster.HP;
