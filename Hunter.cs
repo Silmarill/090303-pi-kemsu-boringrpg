@@ -23,8 +23,9 @@ namespace BoringRPG {
 
     public void UseSkill(Skill skill, Hunter hun)
     {
-      skill.Use(Hunter)
+            skill.Use(this, hun);
     }
+    
 
     public static bool operator true(Hunter hun1) {
           return hun1.HP > 0;
