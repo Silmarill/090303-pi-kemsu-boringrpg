@@ -5,10 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace BoringRPG {
-  public abstract class ConsumableItem {
-    public int Value;
-    public ConsumableItem(int value) {
-      Value = value;
+  public class ManaPotion : ConsumableItem {
+    public ManaPotion(int value) : base(value) {
     }
   }
 }

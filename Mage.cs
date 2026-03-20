@@ -48,20 +48,21 @@ namespace BoringRPG {
       return mage.HP <= 0;
     }
 
-    public static Mage operator +(Mage mage, ConsumableItem consumable) {
-      if (consumable is HealthPotion) {
-        mage.HP += consumable.Value;
-        Console.WriteLine($"{mage.Name} использовал зелье здоровья(+HP).\n");
-      }
-      else if (consumable is ManaPotion) {
-        mage.MP += consumable.Value;
-        Console.WriteLine($"{mage.Name} использовал зелье маны(-MP).\n");
-      }
-      else if (consumable is AmmoPack) {
-        mage.Ammo += consumable.Value;
-        Console.WriteLine($"{mage.Name} увеличил боезапас(+Ammo).\n");
-      }
+    public static Mage operator +(Mage mage, HealthPotion potion) {
+      mage.HP += potion.Value;
+      Console.WriteLine($"{mage.Name} использовал зелье здоровья (+HP).\n");
+      return mage;
+    }
 
+    public static Mage operator +(Mage mage, ManaPotion potion) {
+      mage.MP += potion.Value;
+      Console.WriteLine($"{mage.Name} использовал зелье маны (+MP).\n");
+      return mage;
+    }
+
+    public static Mage operator +(Mage mage, AmmoPack ammo) {
+      mage.Ammo += ammo.Value;
+      Console.WriteLine($"{mage.Name} увеличил боезапас (+Ammo).\n");
       return mage;
     }
 
