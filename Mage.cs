@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BoringRPG;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 using static BoringRPG.ConsumableItem;
 
 namespace BoringRPG {
-  internal class Mage : Archetype {
+  internal class Mage : Archetype, ICanUseSkill {
     private static Random random = new Random();
     public bool LastHitWasCrit;
 
@@ -77,4 +78,8 @@ namespace BoringRPG {
       return $"{Name} (Mage): HP {HP}, MP {MP}, Ammo {Ammo}, Crit Chance {CritChance * 100}%\n";
     }
   }
+}
+
+interface ICanUseSkill {
+    void UseSkill(ICanUseSkill skill, Archetype target);
 }
