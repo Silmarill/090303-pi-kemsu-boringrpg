@@ -26,7 +26,7 @@ namespace BoringRPG
       Console.WriteLine("\nНажмите любую клавишу для выхода...");
       Console.ReadKey();
 
-      Console.WriteLine($"\nДанжен Мастер находит в кармане холодную колу и выпивает её +{coca.Value}:");
+      Console.WriteLine($"\nДанжен Мастер находит в кармане холодную колу и выпивает 1её +{coca.Value}:");
       dungeonMaster +=coca;
       Console.WriteLine(dungeonMaster.GetInfo());
 
