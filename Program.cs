@@ -43,6 +43,11 @@ namespace BoringRPG {
       Console.WriteLine(skibidist.GetInfo());
       Console.WriteLine(artur.GetInfo());
 
+      artur.UseSkill(drama, skibidist);
+      Console.WriteLine("\nDramaAction by artur");
+      Console.WriteLine(skibidist.GetInfo());
+      Console.WriteLine(artur.GetInfo());
+
 
 
 

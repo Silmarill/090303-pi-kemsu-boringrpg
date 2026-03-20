@@ -5,6 +5,21 @@ VisualStudioVersion = 17.4.33122.133
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoringRPG", "BoringRPG.csproj", "{8832E3CC-285F-4407-9F68-F9C82A6111A6}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Consumables", "Consumables", "{03F97548-8D2F-4700-A1FA-67A599725335}"
+	ProjectSection(SolutionItems) = preProject
+		CrazyCrit.cs = CrazyCrit.cs
+		DamagePotion.cs = DamagePotion.cs
+		HealthPotion.cs = HealthPotion.cs
+		ManaPotion.cs = ManaPotion.cs
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Skills", "Skills", "{75F38B3C-3779-4689-9880-DB3155043992}"
+	ProjectSection(SolutionItems) = preProject
+		DramaAction.cs = DramaAction.cs
+		ManaDrain.cs = ManaDrain.cs
+		SoulLink.cs = SoulLink.cs
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
