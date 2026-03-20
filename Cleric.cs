@@ -1,7 +1,7 @@
 ﻿using System;
 
 namespace BoringRPG {
-  internal class Cleric : Archetype {
+  internal class Cleric : Archetype, ICanUseSkill {
     private static Random random = new Random();
     public bool LastHitWasCrit;
 
