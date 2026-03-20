@@ -2,7 +2,7 @@
 
 namespace BoringRPG
 {
-  public class Warrior : Archetype
+  public class Warrior : Archetype, ICanUseSkill
   {
     private static Random random = new Random();
     public bool LastHitWasCrit;
@@ -57,6 +57,11 @@ namespace BoringRPG
       warrior.MP += 20;
       warrior.Ammo += 20;
       return warrior;
+    }
+
+    public void UseSkill(Skill skill, Archetype target)
+    {
+      Skill.Use(this, target);
     }
 
     public override void Hit(Archetype target)
