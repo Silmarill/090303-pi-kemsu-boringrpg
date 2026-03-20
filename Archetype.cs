@@ -19,7 +19,7 @@ namespace BoringRPG {
       Damage = dmg;
       CritChance = crit;
     }
-
+        
     public abstract void Hit(Archetype target);
     public abstract string GetInfo();
   }
