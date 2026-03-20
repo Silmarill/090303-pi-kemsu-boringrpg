@@ -8,5 +8,5 @@ namespace BoringRPG {
     {
       target.MP += Value;
     }
-    }
+  }
 }
