@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BoringRPG.skills;
+using System;
 using System.Runtime.ConstrainedExecution;
 
 namespace BoringRPG {

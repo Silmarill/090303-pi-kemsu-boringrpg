@@ -8,8 +8,6 @@ namespace BoringRPG
 {
   internal class ConsumableItem
   {
-    public abstract class ConsumableItem
-    {
       public int Value;
 
       public ConsumableItem(int value)
@@ -17,5 +15,4 @@ namespace BoringRPG
         Value = value;
       }
     }
-  }
 }

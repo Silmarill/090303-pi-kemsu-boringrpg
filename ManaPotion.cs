@@ -11,5 +11,7 @@ namespace BoringRPG
     public ManaPotion(int value = 50) : base(value)
     {
     }
+
+    public int Value;
   }
 }

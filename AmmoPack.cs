@@ -11,5 +11,7 @@ namespace BoringRPG
     public AmmoPack(int value = 15) : base(value)
     {
     }
+
+    public int Value;
   }
 }

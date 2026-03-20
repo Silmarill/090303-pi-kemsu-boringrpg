@@ -64,10 +64,13 @@
     <Compile Include="DummyClass.cs" />
     <Compile Include="HealthPotion.cs" />
     <Compile Include="Hunter.cs" />
+    <Compile Include="ICanUserSkill.cs" />
+    <Compile Include="ICanUseSkill.cs" />
     <Compile Include="ManaPotion.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RagePotion.cs" />
+    <Compile Include="Skill.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

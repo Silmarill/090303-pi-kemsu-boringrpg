@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Channels;
 using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using static System.Net.Mime.MediaTypeNames;
 
-namespace BoringRPG
+namespace BoringRPG.skills
 {
-  internal class Hunter : Archetype
+  internal class Hunter : Archetype, ICanUseSkill
   {
     private static Random random = new Random();
     public bool LastHitWasCrit;
@@ -21,6 +22,56 @@ namespace BoringRPG
     public Hunter(string name) : base(name, 100, 50, 10, 20, 0.3)
     {
     }
+
+    public static Hunter operator +(Hunter cser, HealthPotion medKitstart)
+    {
+      cser.HP += medKitstart.Value;
+      return cser;
+    }
+
+    public static Hunter operator +(Hunter cser, ManaPotion manaKitstart)
+    {
+      cser.HP += manaKitstart.Value;
+      return cser;
+    }
+
+    public static Hunter operator +(Hunter cser, AmmoPack ammoKitstart)
+    {
+      cser.HP += ammoKitstart.Value;
+      return cser;
+    }
+
+    public static Hunter operator +(Hunter cser, RagePotion rageKitstart)
+    {
+      cser.HP += rageKitstart.Value;
+      return cser;
+    }
+
+    public static Hunter operator -(Hunter cser, HealthPotion medKitstart)
+    {
+      cser.HP -= medKitstart.Value;
+      return cser;
+    }
+
+    public static Hunter operator -(Hunter cser, ManaPotion manaKitstart)
+    {
+      cser.HP -= manaKitstart.Value;
+      return cser;
+    }
+
+    public static Hunter operator -(Hunter cser, AmmoPack ammoKitstart)
+    {
+      cser.HP -= ammoKitstart.Value;
+      return cser;
+    }
+
+    public static Hunter operator -(Hunter cser, RagePotion rageKitstart)
+    {
+      cser.HP -= rageKitstart.Value;
+      return cser;
+    }
+
+
 
     public static Hunter operator +(Hunter hunter, int amount)
     {

@@ -11,5 +11,7 @@ namespace BoringRPG
     public HealthPotion(int value = 10) : base(value)
     {
     }
+
+    public int Value;
   }
 }
