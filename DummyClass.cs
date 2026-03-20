@@ -1,11 +1,16 @@
 ﻿using System;
 
 namespace BoringRPG {
-  public class DummyClass : Archetype {
+  public class DummyClass : Archetype, ICanUseSkill {
     private static Random random = new Random();
     public bool LastHitWasCrit;
 
     public DummyClass(string name) : base(name, 100, 50, 10, 20, 0.3) {
+    }
+
+    // Реализация интерфейса ICanUseSkill
+    public void UseSkill(Skill skill, Archetype target) {
+      skill.Use(this, target);
     }
 
     // Перегрузка операторов с int

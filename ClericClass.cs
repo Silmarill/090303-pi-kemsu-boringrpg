@@ -1,11 +1,16 @@
 ﻿using System;
 
 namespace BoringRPG {
-  public class Cleric : Archetype {
+  public class Cleric : Archetype, ICanUseSkill {
     private static Random random = new Random();
     public bool LastHitWasCrit;
 
     public Cleric(string name) : base(name, 75, 80, 0, 15, 0.05) {
+    }
+
+    // Реализация интерфейса ICanUseSkill
+    public void UseSkill(Skill skill, Archetype target) {
+      skill.Use(this, target);
     }
 
     // Перегрузка операторов с int
@@ -46,6 +51,7 @@ namespace BoringRPG {
         hero.HP = 75;
       }
 
+      Console.WriteLine($"{hero.Name} uses {potion.Name} and restores {potion.Value} HP!");
       return hero;
     }
 
@@ -57,6 +63,7 @@ namespace BoringRPG {
         hero.MP = 80;
       }
 
+      Console.WriteLine($"{hero.Name} uses {potion.Name} and restores {potion.Value} MP!");
       return hero;
     }
 
@@ -64,6 +71,7 @@ namespace BoringRPG {
     public static Cleric operator +(Cleric hero, StrengthPotion potion) {
       hero.Damage += potion.Value;
 
+      Console.WriteLine($"{hero.Name} uses {potion.Name} and gains {potion.Value} damage!");
       return hero;
     }
 
