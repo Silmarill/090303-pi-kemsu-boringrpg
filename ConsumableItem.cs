@@ -1,7 +1,6 @@
 ﻿using System;
 
-namespace BoringRPG
-{
+namespace BoringRPG {
   internal abstract class ConsumableItem {
     public int Value;
     protected ConsumableItem(int value) {

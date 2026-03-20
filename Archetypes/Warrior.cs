@@ -11,21 +11,19 @@ namespace BoringRPG {
 
     public override void Hit(Archetype target) {
       int damage = Damage;
-      bool HPislow;
+      bool HPislow = false;
 
       if (HP <= 5) {
-        //HPislow = true;
-        return;
+        HPislow = true;
       }
-      
-      //if (HPislow != true) {
+      if (HPislow != false){
         HP -= 5;
         damage = Damage + 5;
-        LastHitWasCrit = random.NextDouble() < CritChance;
-          if (LastHitWasCrit) {
-            damage *= 2;
-          }
-       //}
+      }
+      LastHitWasCrit = random.NextDouble() < CritChance;
+      if (LastHitWasCrit) {
+        damage *= 2;
+      }
       target.HP -= damage;
     }
 
