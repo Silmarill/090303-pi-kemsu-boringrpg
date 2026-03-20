@@ -16,39 +16,31 @@ namespace BoringRPG
 
     public static Berserker operator +(Berserker berserker, ManaPotion potion)
     {
-      Console.WriteLine($"Использовано: {potion.GetDescription()}");
       berserker.MP += potion.Value;
-      Console.WriteLine($"Мана: {berserker.MP} MP\n");
       return berserker;
     }
 
     public static Berserker operator +(Berserker berserker, AmmoPack ammo)
     {
-      Console.WriteLine($"Использовано: {ammo.GetDescription()}");
       berserker.Ammo += ammo.Value;
-      Console.WriteLine($"Патроны: {berserker.Ammo}\n");
       return berserker;
     }
 
     public static Berserker operator +(Berserker berserker, BerserkerElixir elixir)
     {
-      Console.WriteLine($"Использовано: {elixir.GetDescription()}");
       berserker.HP -= 20;
       berserker.Damage += 15;
-      Console.WriteLine($"HP: {berserker.HP}/{berserker.maxHP}");
-      Console.WriteLine($"Урон: {berserker.Damage}\n");
       return berserker;
     }
 
-    public static Berserker operator *(Berserker berserker, CrazyPotion potion)
+    public static Berserker operator +(Berserker berserker, CrazyPotion potion)
     {
-      Console.WriteLine($"Использовано: {potion.GetDescription()}");
       berserker.HP += potion.Value;
       if (berserker.HP > berserker.maxHP)
+      {
         berserker.HP = berserker.maxHP;
+      }
       berserker.Damage += 20;
-      Console.WriteLine($"HP: {berserker.HP}/{berserker.maxHP}");
-      Console.WriteLine($"Урон: {berserker.Damage}\n");
       return berserker;
     }
 
@@ -56,7 +48,9 @@ namespace BoringRPG
     {
       berserker.HP += amount;
       if (berserker.HP > berserker.maxHP)
+      {
         berserker.HP = berserker.maxHP;
+      }
       return berserker;
     }
 
@@ -64,7 +58,9 @@ namespace BoringRPG
     {
       berserker.HP -= amount;
       if (berserker.HP < 0)
+      {
         berserker.HP = 0;
+      }
       return berserker;
     }
 
@@ -80,9 +76,11 @@ namespace BoringRPG
 
     public override void Hit(Archetype target)
     {
-      int damage = Damage;
+      int damage;
+      damage = Damage;
 
-      int rageBonus = (maxHP - HP) / 2;
+      int rageBonus;
+      rageBonus = (maxHP - HP) / 2;
       damage += rageBonus;
 
       LastHitWasCrit = random.NextDouble() < CritChance;
@@ -92,8 +90,10 @@ namespace BoringRPG
         damage *= 2;
       }
 
-      if (target is Berserker berserkerTarget)
+      Berserker berserkerTarget;
+      if (target is Berserker)
       {
+        berserkerTarget = (Berserker)target;
         berserkerTarget -= damage;
       }
       else
@@ -104,7 +104,15 @@ namespace BoringRPG
 
     public override string GetInfo()
     {
-      string status = this ? "Жив" : "Повержен";
+      string status;
+      if (this)
+      {
+        status = "Жив";
+      }
+      else
+      {
+        status = "Повержен";
+      }
       return $"{Name} (Berserker): HP {HP}/{maxHP}, MP {MP}, Ammo {Ammo}, Урон {Damage}, Шанс крита {CritChance * 100}%, Статус: {status}";
     }
   }

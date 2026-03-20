@@ -4,13 +4,11 @@ namespace BoringRPG
 {
   internal abstract class ConsumableItem
   {
-    public int Value { get; protected set; }
+    public int Value;
 
     protected ConsumableItem(int value)
     {
       Value = value;
     }
-
-    public abstract string GetDescription();
   }
 }

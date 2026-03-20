@@ -7,10 +7,5 @@ namespace BoringRPG
     public AmmoPack() : base(7)
     {
     }
-
-    public override string GetDescription()
-    {
-      return $"Ящик с патронами: +{Value} Ammo";
-    }
   }
 }

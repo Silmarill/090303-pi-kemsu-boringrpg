@@ -6,14 +6,13 @@ namespace BoringRPG
   {
     static void Main(string[] args)
     {
-      Console.WriteLine("СИСТЕМА ПРЕДМЕТОВ:");
+      Console.WriteLine("СИСТЕМА ПРЕДМЕТОВ\n");
 
       Berserker berserker = new Berserker("Конан-варвар");
       Console.WriteLine("Начальное состояние:");
       Console.WriteLine(berserker.GetInfo());
-      Console.WriteLine(new string('-', 50));
 
-      Console.WriteLine("ОБЫЧНЫЕ ПРЕДМЕТЫ:");
+      Console.WriteLine("\nОБЫЧНЫЕ ПРЕДМЕТЫ");
 
       ManaPotion manaPotion = new ManaPotion();
       berserker += manaPotion;
@@ -24,11 +23,11 @@ namespace BoringRPG
       BerserkerElixir elixir = new BerserkerElixir();
       berserker += elixir;
 
-      Console.WriteLine("БЕЗУМНЫЙ ПРЕДМЕТ:");
+      Console.WriteLine("\nБЕЗУМНЫЙ ПРЕДМЕТ");
       CrazyPotion crazyPotion = new CrazyPotion();
-      berserker *= crazyPotion;
+      berserker += crazyPotion;
 
-      Console.WriteLine("ИТОГОВОЕ СОСТОЯНИЕ:");
+      Console.WriteLine("\nИТОГОВОЕ СОСТОЯНИЕ");
       Console.WriteLine(berserker.GetInfo());
 
       Console.ReadKey();
