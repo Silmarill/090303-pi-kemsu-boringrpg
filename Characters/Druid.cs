@@ -1,7 +1,7 @@
 using System;
 
 namespace BoringRPG {
-  internal class Druid : Archetype {
+  internal class Druid : Archetype, ICanUseSkill {
     private static Random random = new Random();
     public bool LastHitWasCrit;
 
@@ -12,23 +12,26 @@ namespace BoringRPG {
       druid.HP += healing;
       return druid;
     }
-    public static Druid operator+ (Druid druid, ConsumableItem item) {
-      if (item is HealthPotion) {
-        druid.HP += item.value;
-      } else if (item is ManaPotion) {
-        druid.MP += item.value;
-      } else if (item is AmmoPack) {
-        druid.Ammo += item.value;
-      } else if (item is BugPotion) {
-        int effect = random.Next(-item.value, item.value + 1);
-        druid.HP += effect;
-        if (effect >= 0) {
-          Console.WriteLine($"{druid.Name} выпил Огуречный россол и восстановил {effect} HP!");
-        } else {
-          Console.WriteLine($"{druid.Name} выпил Огуречный россол и получил {effect} урона!");
-        }
-      }
-        return druid;
+
+    public static Druid operator+ (Druid druid, HealthPotion item) {
+      druid.HP += item.value;
+      return druid;
+    }
+
+    public static Druid operator+ (Druid druid, ManaPotion item) {
+      druid.MP += item.value;
+      return druid;
+    }
+
+    public static Druid operator+ (Druid druid, AmmoPack item) {
+      druid.Ammo += item.value;
+      return druid;
+    }
+
+    public static Druid operator+ (Druid druid, BugPotion item) {
+      int effect = random.Next(-item.value, item.value + 1);
+      druid.HP += effect;
+      return druid;
     }
 
     public static Druid operator- (Druid druid, int damage) {
@@ -42,6 +45,10 @@ namespace BoringRPG {
 
     public static bool operator false(Druid druid) {
       return druid.HP <= 0;
+    }
+
+    public void Use (Skill skill, Archetype target) {
+      skill.Use(this, target);
     }
 
     public override void Hit(Archetype target) {

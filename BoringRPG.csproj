@@ -69,7 +69,11 @@
     <Compile Include="Potions\ManaPotion.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Skils\DramaAction.cs" />
     <Compile Include="Skils\ICanUseSkill.cs" />
+    <Compile Include="Skils\ManaDrain.cs" />
+    <Compile Include="Skils\Skill.cs" />
+    <Compile Include="Skils\SoulLink.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

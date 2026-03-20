@@ -43,6 +43,25 @@ namespace BoringRPG {
       Console.ReadKey();
       Console.Clear();
 
+      Console.Clear();
+      Console.WriteLine("=== Демонстрация скилов ===");
+
+      Skill soulLink = new SoulLink();
+      Skill manaDrain = new ManaDrain();
+      Skill dramaAction = new DramaAction();
+
+      Console.WriteLine("\n=== Применяем - SoulLink ===");
+      druid.Use (soulLink, artur);
+
+      Console.WriteLine("\n=== Применяем - ManaDrain ===");
+      artur.Use (manaDrain, druid);
+
+      Console.WriteLine("\n=== Применяем - DramaAction ===");
+      druid.Use (dramaAction, artur);
+
+      Console.WriteLine($"\n=== СОСТОЯНИЕ ПОСЛЕ НАВЫКОВ ===\n" +
+                        $"{druid.GetInfo()}\n + { artur.GetInfo()}\n");
+
       // Бой пока оба живы
       while (druid.HP > 0 | artur.HP > 0) {
         Console.WriteLine($"\n$=== РАУНД {round} ===$");
