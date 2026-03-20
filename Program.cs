@@ -52,6 +52,21 @@ namespace BoringRPG {
       Console.WriteLine(lancelot.GetInfo());
       Console.WriteLine();
 
+      Skill soulLink = new SoulLink();
+      Skill manaDrain = new ManaDrain();
+
+      Console.WriteLine("SoulLink");
+      Console.WriteLine($"HP Ланселота: {lancelot.HP}, HP Артура: {artur.HP}");
+      lancelot.UseSkill(soulLink, artur);
+      Console.WriteLine($"HP Ланселота: {lancelot.HP}, HP Артура: {artur.HP}");
+      Console.WriteLine();
+
+      Console.WriteLine("ManaDrain");
+      Console.WriteLine($"MP Ланселота: {lancelot.MP}, MP Артура: {artur.MP}");
+      lancelot.UseSkill(manaDrain, artur);
+      Console.WriteLine($"MP Ланселота: {lancelot.MP}, MP Артура: {artur.MP}");
+      Console.WriteLine();
+
       Console.WriteLine($"{lancelot.Name} атакует {artur.Name}!");
 
       beforeHP = artur.HP;

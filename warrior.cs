@@ -61,7 +61,7 @@ namespace BoringRPG
 
     public void UseSkill(Skill skill, Archetype target)
     {
-      Skill.Use(this, target);
+      skill.Use(this, target);
     }
 
     public override void Hit(Archetype target)
