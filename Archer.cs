@@ -1,14 +1,20 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 
 namespace BoringRPG
 {
-  internal class Archer : Archetype
+  internal class Archer : Archetype, ISkill
   {
     private static Random random = new Random();
     public bool lastHitWasCrit;
 
     public Archer(string name, int hp = 80, int mp = 30, int ammo = 20, int dmg = 20, double crit = 0.25) : base(name, hp, mp, ammo, dmg, crit)
     {
+    }
+
+    public void UseSkill(Skill skill, Archetype target)
+    {
+      skill.Use(this, target);
     }
 
     public static Archer operator +(Archer myArcher, int amount)

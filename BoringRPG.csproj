@@ -64,6 +64,7 @@
     <Compile Include="ConsumableItem.cs" />
     <Compile Include="DummyClass.cs" />
     <Compile Include="Heal.cs" />
+    <Compile Include="InterfaceSkill.cs" />
     <Compile Include="MaliceInShooting.cs" />
     <Compile Include="ManaPotion.cs" />
     <Compile Include="Program.cs" />

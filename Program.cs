@@ -18,6 +18,9 @@ namespace BoringRPG
       ManaPotion manaPotion = new ManaPotion(30);
       AmmoPack ammoPack = new AmmoPack(5);
       MaliceInShooting superAbility = new MaliceInShooting(30);
+      Skill soulLink = new SoulLink();
+      Skill coinOfFate = new CoinOfFate();
+      Skill complimentEnemy = new ComplimentEnemy();
 
       randomEventmeaning = archer.RandomEvent(archer);
 
@@ -75,6 +78,10 @@ namespace BoringRPG
 
         Console.WriteLine($"Damage dealt {damageLancelot} {critTextLancelot}\n");
 
+        lancelot.UseSkill(soulLink, archer);
+        lancelot.UseSkill(coinOfFate, archer);
+        lancelot.UseSkill(complimentEnemy, archer);
+
         if (archer.HP <= 0)
         {
           Console.WriteLine("\nGAME END!\n" + "======================");
@@ -101,6 +108,10 @@ namespace BoringRPG
         critTextInkoromi = archer.lastHitWasCrit ? " - CRITICAL HIT!" : "";
 
         Console.WriteLine($"Damage dealt {damageInkoromi} {critTextInkoromi}\n");
+
+        archer.UseSkill(soulLink, lancelot);
+        archer.UseSkill(coinOfFate, lancelot);
+        archer.UseSkill(complimentEnemy, lancelot);
 
         Console.WriteLine("FINAL STATE:");
         Console.WriteLine("======================");
