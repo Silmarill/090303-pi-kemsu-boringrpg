@@ -12,11 +12,12 @@ namespace BoringRPG
         {
             Random random = new Random();
             double chance;
-            chance = random.Next(1, 101);
+            chance = random.Next(0, 11);
+            //chance = 4;
 
-            if (chance == 30)
+            if (chance == 3)
             {
-                random.Next(0, 1);
+                chance = random.Next(0, 1);
 
                 if (chance == 0)
                 {
@@ -36,7 +37,7 @@ namespace BoringRPG
 
             }
 
-            if (chance == 40)
+            if (chance == 4)
             {
                 Console.WriteLine($"{caster.Name} дарит розу {target.Name}");
             }

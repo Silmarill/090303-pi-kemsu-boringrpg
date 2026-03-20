@@ -62,12 +62,17 @@
     <Compile Include="ConsumableItem.cs" />
     <Compile Include="CrazyCrit.cs" />
     <Compile Include="DamagePotion.cs" />
+    <Compile Include="DramaAction.cs" />
     <Compile Include="DummyClass.cs" />
     <Compile Include="HealthPotion.cs" />
+    <Compile Include="ICanUseSkill.cs" />
     <Compile Include="Mage.cs" />
+    <Compile Include="ManaDrain.cs" />
     <Compile Include="ManaPotion.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Skill.cs" />
+    <Compile Include="SoulLink.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

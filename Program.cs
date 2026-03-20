@@ -9,23 +9,41 @@ namespace BoringRPG {
       DummyClass artur = new DummyClass("Артур Пендрагон");
       Mage skibidist = new Mage("Скибидист Вапапапич");
       Console.WriteLine(skibidist.GetInfo());
+      Console.WriteLine(artur.GetInfo());
 
+      
       HealthPotion potion = new HealthPotion(30);
       ManaPotion potion1 = new ManaPotion(45);
       DamagePotion potion2 = new DamagePotion(50);
       CrazyCrit artefact = new CrazyCrit(5);
       DramaAction drama = new DramaAction();
+      SoulLink soul = new SoulLink();
+      ManaDrain manadr = new ManaDrain();
 
+      /*
       skibidist += potion;
       skibidist += potion1;
       skibidist += potion2;
       skibidist += artefact;
 
       Console.WriteLine(skibidist.GetInfo());
-
+      */
       skibidist.UseSkill(drama, artur);
+      Console.WriteLine("\nDramaAction");
       Console.WriteLine(skibidist.GetInfo());
       Console.WriteLine(artur.GetInfo());
+
+      skibidist.UseSkill(soul, artur);
+      Console.WriteLine("\nSoulLink");
+      Console.WriteLine(skibidist.GetInfo());
+      Console.WriteLine(artur.GetInfo());
+
+      skibidist.UseSkill(manadr, artur);
+      Console.WriteLine("\nManaDrain");
+      Console.WriteLine(skibidist.GetInfo());
+      Console.WriteLine(artur.GetInfo());
+
+
 
 
             /*Console.WriteLine($"НАЧАЛО БИТВЫ. " + $"ПЕРВЫЙ ХОД.\n"+
