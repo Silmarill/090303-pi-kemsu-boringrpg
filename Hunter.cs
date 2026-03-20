@@ -1,7 +1,9 @@
-﻿using System;
+﻿using BoringRPG.Skills;
+using System;
 
 namespace BoringRPG {
-  internal class Hunter : Archetype {
+  internal class Hunter : Archetype, ICanUseSkill
+    {
     int maxHealth = 85;
     int maxMana = 20;
     int maxAmmo = 15;
@@ -17,6 +19,11 @@ namespace BoringRPG {
 
     public Hunter(string name) 
       : base(name, 85, 20, 15, 25, 0.2) {
+    }
+
+    public void UseSkill(Skill skill, Hunter hun)
+    {
+      skill.Use(Hunter)
     }
 
     public static bool operator true(Hunter hun1) {
