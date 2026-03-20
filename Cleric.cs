@@ -76,5 +76,10 @@ namespace BoringRPG {
     public override string GetInfo() {
       return $"{Name} (Cleric): HP {HP}, MP {MP}, Ammo {Ammo}, Шанс крита {CritChance * 100}%";
     }
+
+    public interface ICanUseSkill
+    {
+      
+    }
   }
 }
