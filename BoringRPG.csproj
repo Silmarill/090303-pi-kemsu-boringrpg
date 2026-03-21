@@ -69,7 +69,7 @@
     <Compile Include="Skills\InterfaceSkill.cs" />
     <Compile Include="Potions\MaliceInShooting.cs" />
     <Compile Include="Potions\ManaPotion.cs" />
-    <Compile Include="Hero\Program.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Skills\SoulLink.cs" />
   </ItemGroup>
