@@ -19,8 +19,14 @@ namespace BoringRPG {
       ManaPotion manaPotion = new ManaPotion(10);
       AmmoPack ammoPack = new AmmoPack(5);
       GoldApple goldApple = new GoldApple(10);
+
+      Skill dramaAction = new DramaAction();
+      Skill coinOfFate = new CoinOfFate();
+      Skill soulLink = new SoulLink();
       
       rapfael += ammoPack;
+
+      rapfael.UseSkill(dramaAction, lancelot);
 
       Console.WriteLine($"{rapfael.Name} атакует {lancelot.Name}!");
 
@@ -50,6 +56,8 @@ namespace BoringRPG {
       lancelot += healthPotion;
       lancelot += manaPotion;
 
+      lancelot.UseSkill(soulLink, rapfael);
+
       Console.WriteLine($"{lancelot.Name} атакует {rapfael.Name}!");
       beforeHP = rapfael.HP;
       lancelot.Hit(rapfael);
@@ -75,13 +83,40 @@ namespace BoringRPG {
       }
 
       rapfael += goldApple;
-                        
-      Console.WriteLine("ИТОГОВОЕ СОСТОЯНИЕ:\n" +
+
+      rapfael.UseSkill(coinOfFate, lancelot);
+
+      if (rapfael.HP > 0 && lancelot.HP <= 0) {
+
+        Console.WriteLine("ИТОГОВОЕ СОСТОЯНИЕ:\n" +
+                        "======================\n" +
+                        $"{lancelot.GetInfo()}\n" +
+                        $"{rapfael.GetInfo()}\n\n" +
+                        $"{lancelot.Name} выбывает!\n\n" +
+                        $"Поздравляем {rapfael.Name} с победой!\n");
+
+        return;
+
+      } else if (lancelot.HP > 0 && rapfael.HP <= 0) {
+
+        Console.WriteLine("ИТОГОВОЕ СОСТОЯНИЕ:\n" +
+                        "======================\n" +
+                        $"{lancelot.GetInfo()}\n" +
+                        $"{rapfael.GetInfo()}\n\n" +
+                        $"{rapfael.Name} выбывает!\n\n" +
+                        $"Поздравляем {lancelot.Name} с победой!\n");
+
+        return;
+
+      } else {
+
+        Console.WriteLine("ИТОГОВОЕ СОСТОЯНИЕ:\n" +
                         "======================\n" +
                         $"{lancelot.GetInfo()}\n" +
                         $"{rapfael.GetInfo()}\n\n");
 
-      Console.WriteLine("БОЙ ОКОНЧЕН НИЧЬЕЙ!");
+        Console.WriteLine("БОЙ ОКОНЧЕН НИЧЬЕЙ!");
+      }
     }
   }
 }

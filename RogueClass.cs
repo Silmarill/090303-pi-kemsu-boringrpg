@@ -1,7 +1,7 @@
 ﻿using System;
 
 namespace BoringRPG {
-  internal class RogueClass : Archetype {
+  internal class RogueClass : Archetype, ICanUseSkill {
 
     private static Random random = new Random();
     public bool LastHitWasCrit;
@@ -51,8 +51,12 @@ namespace BoringRPG {
       return rogue;
     }
 
-        public static bool operator false(RogueClass rogue) {
+    public static bool operator false(RogueClass rogue) {
       return rogue.HP <= 0;
+    }
+
+    public void UseSkill(Skill skill, Archetype target) {
+      skill.Use(this, target);
     }
 
     public override void Hit(Archetype target) {

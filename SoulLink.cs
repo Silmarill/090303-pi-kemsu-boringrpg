@@ -10,7 +10,7 @@ namespace BoringRPG {
     }
 
     public override void Use(Archetype caster, Archetype target) {
-      Console.WriteLine($"{caster.Name} использует навык {Name} на {target.Name}");
+      Console.WriteLine($"\n{caster.Name} использует навык {Name} на {target.Name}");
 
       totalHP = caster.HP + target.HP;
       sharedHP = totalHP / 2;

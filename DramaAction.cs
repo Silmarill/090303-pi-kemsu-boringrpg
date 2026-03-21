@@ -10,8 +10,8 @@ namespace BoringRPG {
     public DramaAction() : base("DramaAction") { 
     }
 
-    public overrise void Use(Archetype caster, Archetype target) {
-      Console.WriteLine($"{caster.Name} использует навык {Name} на {target.Name}");
+    public override void Use(Archetype caster, Archetype target) {
+      Console.WriteLine($"\n{caster.Name} использует навык {Name} на {target.Name}");
 
       chance = random.Next(100);
 
