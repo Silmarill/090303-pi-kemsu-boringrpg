@@ -12,19 +12,23 @@ namespace BoringRPG {
       FatBurger burger = new FatBurger(100);
       Rogue torfin = new Rogue("Торфин Безопасный");
       DummyClass killer = new DummyClass("Скрытный убийца");
-      
-            
+
       Console.WriteLine($"НАЧАЛО БИТВЫ. Исходное состояние: \n" +
-                        $"{torfin.GetInfo()}\n");
+                        $"{torfin.GetInfo()}\n" + $"{killer.GetInfo()}\n");
+
+      killer.Hit(torfin);
+      Console.WriteLine($"Убийца наносит Торфину {killer.Damage} урона и у Торфина остаётся {torfin.HP} хп");
            
       Console.WriteLine($"\n{torfin.Name} хилится на {hPotion.value}");
-      Console.WriteLine($"\n{torfin.Name} хилит ману на {hPotion.value}");
-      Console.WriteLine($"\n{torfin.Name} Взял {aPotion.value} патронов");
-      Console.WriteLine($"\n{torfin.Name} После хила решил перекусить и потолстел на -{burger.value}, но при этом увеличил свой урон {burger.value}");
-
       torfin += hPotion;
+
+      Console.WriteLine($"\n{torfin.Name} хилит ману на {hPotion.value}");
       torfin += mPotion;
+
+      Console.WriteLine($"\n{torfin.Name} Взял {aPotion.value} патронов");
       torfin += aPotion;
+
+      Console.WriteLine($"\n{torfin.Name} После хила решил перекусить и потолстел на -{burger.value}, но при этом увеличил свой урон {burger.value}");
       torfin -= burger;
                        
       Console.WriteLine("ИТОГОВОЕ СОСТОЯНИЕ:");
