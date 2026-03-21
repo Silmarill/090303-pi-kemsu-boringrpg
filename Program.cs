@@ -14,6 +14,7 @@ namespace BoringRPG {
       DummyClass killer = new DummyClass("Скрытный убийца");
       Skill soulLink = new SoulLink();
       Skill manaDrain = new ManaDrain();
+      Skill giveUp = new GiveUp();
 
       Console.WriteLine($"НАЧАЛО БИТВЫ. Исходное состояние: \n" +
                         $"{torfin.GetInfo()}\n" + $"{killer.GetInfo()}\n");
@@ -40,7 +41,10 @@ namespace BoringRPG {
       Console.WriteLine($"Торфина решил, что раз ему не нужна мана, то и его сопернику она ни к чему, поэтому применил ManaDrain");
       torfin.UseSkill(manaDrain, killer);
       Console.WriteLine();
-      
+
+      Console.WriteLine($"Даже когда у Торфина преимущество он не уверен в своей победе, а потому решает избрать самый безопасный способ окончания битвы и использует свой коронный приём GiveUp");
+      torfin.UseSkill(giveUp, torfin);
+      Console.WriteLine();
       
       Console.WriteLine("ИТОГОВОЕ СОСТОЯНИЕ:");
       Console.WriteLine("======================");
