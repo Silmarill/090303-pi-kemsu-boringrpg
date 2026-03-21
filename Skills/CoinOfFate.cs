@@ -18,18 +18,20 @@ namespace BoringRPG
     public override void Use(Archetype caster, Archetype target)
     {
       int ChangeRandom;
+      int SelfHarmProbability = 3;
+      int TargetHarmProbability = 7;
 
-      ChangeRandom = random.Next(1, 11);
+    ChangeRandom = random.Next(1, 11);
 
       Console.WriteLine($"{caster.Name} is using {Name} on {target.Name}!\n");
 
-      if (ChangeRandom <= 3)
+      if (ChangeRandom <= SelfHarmProbability)
       {
         caster.HP = 0;
         Console.WriteLine($"{caster.Name} lost his health!\n");
       }
 
-      else if (ChangeRandom > 3 && ChangeRandom < 7)
+      else if (ChangeRandom > SelfHarmProbability && ChangeRandom < TargetHarmProbability)
       {
         target.HP = 0;
         Console.WriteLine($"{target.Name} lost his health!\n");
