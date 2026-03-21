@@ -25,49 +25,28 @@ namespace BoringRPG {
 
       Console.WriteLine($"Нанесено {damage} урона{critText}\n");
 
-      Console.WriteLine($"{artur.Name} ранит {mage.Name}.");
-      mage -= 5;
-      Console.WriteLine($"Нанесено 5 урона\n");
-
-      Console.WriteLine($"{mage.Name} восстанавливает здоровье.");
-      mage += 10;
-      Console.WriteLine($"Восстановлено 10 HP\n");
-
       Console.WriteLine("ИТОГОВОЕ СОСТОЯНИЕ:");
       Console.WriteLine("======================");
       Console.WriteLine(mage.GetInfo());
       Console.WriteLine(artur.GetInfo());
       Console.WriteLine();
 
-      if (mage) {
-        Console.WriteLine($"{mage.Name} жив.\n");
-      }
-      else {
-        Console.WriteLine($"{mage.Name} мертв.\n");
-      }
-      HealthPotion heartPotion = new HealthPotion(50);
-      mage += heartPotion;
-      ManaPotion manaPotion = new ManaPotion(20);
-      mage += manaPotion;
-      AmmoPack ammoPack = new AmmoPack(10);
-      mage += ammoPack;
+      Skill lastStand = new LastStand();
+      mage.UseSkill(lastStand, artur);
 
       Console.WriteLine(mage.GetInfo());
 
-      CrazyArtifact artifact = new CrazyArtifact(50);
-      mage -= artifact;
+      Skill manaDrain = new ManaDrain();
+      mage.UseSkill(manaDrain, artur);
 
       Console.WriteLine(mage.GetInfo());
+      Console.WriteLine(artur.GetInfo());
 
-      Skill skill = new LastStand();
-      mage.UseSkill(skill, artur);
-
-      Console.WriteLine(mage.GetInfo());
-
-      Skill skil = new ManaDrain();
-      mage.UseSkill(skil, artur);
+      Skill destinyShuffle = new DestinyShuffle();
+      mage.UseSkill(destinyShuffle, artur);
 
       Console.WriteLine(mage.GetInfo());
+      Console.WriteLine(artur.GetInfo());
 
       Console.ReadKey();
     }

@@ -78,7 +78,6 @@ namespace BoringRPG {
       return $"{Name} (Mage): HP {HP}, MP {MP}, Ammo {Ammo}, Crit Chance {CritChance * 100}%\n";
     }
 
-
     public void UseSkill(Skill skill, Archetype target) {
       skill.Use(this, target);
     }
