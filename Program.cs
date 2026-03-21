@@ -13,6 +13,7 @@ namespace BoringRPG {
       Rogue torfin = new Rogue("Торфин Безопасный");
       DummyClass killer = new DummyClass("Скрытный убийца");
       Skill soulLink = new SoulLink();
+      Skill manaDrain = new ManaDrain();
 
       Console.WriteLine($"НАЧАЛО БИТВЫ. Исходное состояние: \n" +
                         $"{torfin.GetInfo()}\n" + $"{killer.GetInfo()}\n");
@@ -34,7 +35,13 @@ namespace BoringRPG {
 
       Console.WriteLine($"Чтобы не проиграть, Торфин использует способность SoulLink и уравнивает своё хп с хп противника\n");
       torfin.UseSkill(soulLink, killer);
-                       
+      Console.WriteLine();
+
+      Console.WriteLine($"Торфина решил, что раз ему не нужна мана, то и его сопернику она ни к чему, поэтому применил ManaDrain");
+      torfin.UseSkill(manaDrain, killer);
+      Console.WriteLine();
+      
+      
       Console.WriteLine("ИТОГОВОЕ СОСТОЯНИЕ:");
       Console.WriteLine("======================");
       Console.WriteLine(torfin.GetInfo());
