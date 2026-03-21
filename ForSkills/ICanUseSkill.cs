@@ -6,6 +6,6 @@ using System.Threading.Tasks;
 
 namespace BoringRPG {
   interface ICanUseSkill {
-    void UseSkill(Skill skill);
+    void UseSkill(Skill skill, Archetype target);
   }
 }

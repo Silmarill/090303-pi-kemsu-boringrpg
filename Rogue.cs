@@ -3,11 +3,15 @@ using System.ComponentModel;
 using System.Runtime.InteropServices;
 
 namespace BoringRPG {
-  internal class Rogue : Archetype {
+  internal class Rogue : Archetype, ICanUseSkill {
     public Rogue(string name, int hp, int mp, int ammo, int dmg, double crit) : base(name, 70, 20, 10, 30, 0.30) {
     }
 
     public Rogue(string name) : base(name, 70, 20, 10, 30, 0.30) {
+    }
+
+    public void UseSkill(Skill skill, Archetype target) {
+      skill.Use(this, target);
     }
 
     public override void Hit(Archetype target) {

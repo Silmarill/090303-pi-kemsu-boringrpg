@@ -11,7 +11,7 @@ namespace BoringRPG {
       AmmoPack aPotion = new AmmoPack(5);
       FatBurger burger = new FatBurger(100);
       Rogue torfin = new Rogue("Торфин Безопасный");
-
+      DummyClass killer = new DummyClass("Скрытный убийца");
       
             
       Console.WriteLine($"НАЧАЛО БИТВЫ. Исходное состояние: \n" +

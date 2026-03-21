@@ -58,16 +58,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AmmoPack.cs" />
+    <Compile Include="ForConsumable\AmmoPack.cs" />
     <Compile Include="Archetype.cs" />
-    <Compile Include="SoulLink.cs" />
-    <Compile Include="Skill.cs" />
-    <Compile Include="FatBurger.cs" />
-    <Compile Include="ConsumableItem.cs" />
+    <Compile Include="ForSkills\SoulLink.cs" />
+    <Compile Include="ForSkills\Skill.cs" />
+    <Compile Include="ForConsumable\FatBurger.cs" />
+    <Compile Include="ForConsumable\ConsumableItem.cs" />
     <Compile Include="DummyClass.cs" />
-    <Compile Include="Heal.cs" />
-    <Compile Include="ICanUseSkill.cs" />
-    <Compile Include="ManaRestore.cs" />
+    <Compile Include="ForConsumable\Heal.cs" />
+    <Compile Include="ForSkills\ICanUseSkill.cs" />
+    <Compile Include="ForConsumable\ManaRestore.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rogue.cs" />
