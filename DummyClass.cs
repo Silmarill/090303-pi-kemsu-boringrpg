@@ -3,7 +3,7 @@
 namespace BoringRPG {
   internal class DummyClass : Archetype {
 
-    //пример для работы со случайными числами
+    // example for using random
     private static Random random = new Random();
     public bool LastHitWasCrit;
 
@@ -17,7 +17,7 @@ namespace BoringRPG {
     public override void Hit(Archetype target) {
       int damage = Damage;
       
-      // Метод NextDouble() - возвращает double в диапазоне [0.0; 1.0)
+      // Method NextDouble() - return double in range [0.0; 1.0)
       LastHitWasCrit = random.NextDouble() < CritChance;
       
       if (LastHitWasCrit) {
