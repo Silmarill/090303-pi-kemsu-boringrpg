@@ -1,4 +1,5 @@
 ﻿using System;
+using static BoringRPG.ConsumableItem;
 
 namespace BoringRPG {
   internal class Program {
@@ -13,58 +14,6 @@ namespace BoringRPG {
                         $"{berserker.GetInfo()}\n" +
                         $"{target.GetInfo()}\n");
 
-      Console.WriteLine($"HP до операций: {berserker.HP}");
-      berserker = berserker + 20;
-      Console.WriteLine($" + = {berserker.HP}");
-      berserker = berserker - 15;
-      Console.WriteLine($" - = {berserker.HP}\n");
-
-      if (berserker) {
-        Console.WriteLine($"Берсерк жив! ");
-      }
-      else {
-        Console.WriteLine($"Берсерк мертв! ");
-      }
-
-      Console.WriteLine("\nОбнуляем HP: ");
-      berserker = berserker - berserker.HP;
-      Console.WriteLine($"HP = {berserker.HP}");
-
-      if (berserker) {
-        Console.WriteLine($"Берсерк жив! ");
-      }
-      else {
-        Console.WriteLine($"Берсерк мертв! ");
-      }
-
-      Console.WriteLine("\nВосстанавливаем HP:");
-      berserker = berserker + 140;
-      Console.WriteLine($"HP =  {berserker.HP}\n");
-
-      Console.WriteLine($"До расходников: HP {berserker.HP}, MP {berserker.MP}, Ammo {berserker.Ammo}\n");
-
-      HealthPotion healthPotion = new HealthPotion(50);
-      Console.WriteLine($" {healthPotion.GetDescription()}");
-      berserker += healthPotion;
-
-      ManaPotion manaPotion = new ManaPotion(30);
-      Console.WriteLine($"\n{manaPotion.GetDescription()}");
-      berserker += manaPotion;
-
-      AmmoPack ammoPack = new AmmoPack(15);
-      Console.WriteLine($"\n {ammoPack.GetDescription()}");
-      berserker += ammoPack;
-
-      Console.WriteLine($"\nПосле расходников: HP {berserker.HP}, MP {berserker.MP}, Ammo {berserker.Ammo}\n");
-
-      BugPotion bugPotion = new BugPotion();
-      Console.WriteLine($" {bugPotion.GetDescription()}");
-      Console.WriteLine($"До бага: HP {berserker.HP}, Урон {berserker.Damage}, Крит {berserker.CritChance * 100}%");
-
-      berserker++;
-
-      Console.WriteLine($"\nПосле бага: HP {berserker.HP}, Урон {berserker.Damage}, Крит {berserker.CritChance * 100}%");
-
       Console.WriteLine($"{berserker.Name} атакует {target.Name}!");
 
       beforeHP = target.HP;
@@ -75,10 +24,47 @@ namespace BoringRPG {
 
       Console.WriteLine($"Нанесено {damage} урона{critText}\n");
 
-      Console.WriteLine("ИТОГОВОЕ СОСТОЯНИЕ:");
+      Console.WriteLine($"{target.Name} ранит {berserker.Name}.");
+      berserker -= 15;
+      Console.WriteLine($"Нанесено 15 урона");
+      Console.WriteLine($"{berserker.Name}: HP {berserker.HP}\n");
+
+      Console.WriteLine($"{berserker.Name} восстанавливает здоровье.");
+      berserker += 20;
+      Console.WriteLine($"Восстановлено 20 HP");
+      Console.WriteLine($"{berserker.Name}: HP {berserker.HP}\n");
+
+      Console.WriteLine("ИТОГОВОЕ СОСТОЯНИЕ ПОСЛЕ БОЯ:");
       Console.WriteLine("======================");
       Console.WriteLine(berserker.GetInfo());
       Console.WriteLine(target.GetInfo());
+      Console.WriteLine();
+
+      if (berserker) {
+        Console.WriteLine($"{berserker.Name} жив.\n");
+      }
+      else {
+        Console.WriteLine($"{berserker.Name} мертв.\n");
+      }
+
+      Console.WriteLine("ИСПОЛЬЗОВАНИЕ РАСХОДНИКОВ:");
+
+      HealthPotion healthPotion = new HealthPotion(50);
+      berserker += healthPotion;
+      Console.WriteLine($"{berserker.Name}: HP {berserker.HP}, MP {berserker.MP}, Ammo {berserker.Ammo}, Крит {berserker.CritChance * 100}%\n");
+
+      ManaPotion manaPotion = new ManaPotion(30);
+      berserker += manaPotion;
+      Console.WriteLine($"{berserker.Name}: HP {berserker.HP}, MP {berserker.MP}, Ammo {berserker.Ammo}, Крит {berserker.CritChance * 100}%\n");
+
+      AmmoPack ammoPack = new AmmoPack(15);
+      berserker += ammoPack;
+      Console.WriteLine($"{berserker.Name}: HP {berserker.HP}, MP {berserker.MP}, Ammo {berserker.Ammo}, Крит {berserker.CritChance * 100}%\n");
+
+      CritPotion critPotion = new CritPotion(5);
+      berserker += critPotion;
+      Console.WriteLine($"{berserker.Name}: HP {berserker.HP}, MP {berserker.MP}, Ammo {berserker.Ammo}, Крит {berserker.CritChance * 100}%\n");
+
       Console.ReadKey();
     }
   }

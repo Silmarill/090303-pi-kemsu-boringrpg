@@ -58,14 +58,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AmmoPack.cs" />
+    <Compile Include="Items\AmmoPack.cs" />
     <Compile Include="Archetype.cs" />
-    <Compile Include="Berserker.cs" />
-    <Compile Include="BugPotion.cs" />
+    <Compile Include="Bersercer.cs" />
     <Compile Include="ConsumableItem.cs" />
-    <Compile Include="HealthPotion.cs" />
+    <Compile Include="Items\CritPotion.cs" />
     <Compile Include="DummyClass.cs" />
-    <Compile Include="ManaPotion.cs" />
+    <Compile Include="Items\HealthPotion.cs" />
+    <Compile Include="Items\ManaPotion.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
