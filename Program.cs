@@ -1,27 +1,39 @@
-﻿using System;
+﻿using BoringRPG.Skills;
+using System;
 
 namespace BoringRPG {
   internal class Program {
     static void Main(string[] args) {
       var artur = new Necromancer("Artur");
-      Console.WriteLine("before using items:");
-      Console.WriteLine(artur.GetInfo());
+      var dummy = new DummyClass("Dummy");
 
-      // Standard items are used via the + operator
-      artur = (Necromancer)(artur + new HealthPotion(50));
-      artur = (Necromancer)(artur + new ManaPotion(30));
+      Console.WriteLine("Before Fight\n" +
+        $"{artur.GetInfo()}" +
+        $"{dummy.GetInfo()}"
+        );
 
-      /*
-      A Mad Item (Coffee) is consumed via the * operator
-      Critical hit chance is multiplied by 1.5x, at the cost of 10 HP
-      */
-      artur = (Necromancer)(artur * 1.5);
+      Console.WriteLine("\n!!! FIGHT !!! >:)\n");
 
-      Console.WriteLine("\nAfter using items (Potions + Coffee):");
-      // In the Necromancer's GetInfo, the critical hit chance should be displayed for better clarity
-      Console.WriteLine($"{artur.GetInfo()}, Crit Chance: {artur.CritChance:P0}");
+      // Init skills
+      Skill soulLink = new SoulLink();
+      Skill drama = new DramaAction();
+      Skill coin = new CoinOfFate();
 
-      Console.WriteLine("\nTest complete. Press any key...");
+      // SoulLink
+      artur.UseSkill(soulLink, dummy);
+
+      // DramaAction
+      dummy.UseSkill(drama, artur);
+
+      // CoinOfFate
+      artur.UseSkill(coin, dummy);
+
+      Console.WriteLine("\nAfter skill using\n\n" +
+      $"{artur.GetInfo()}" +
+      $"{dummy.GetInfo()}"
+      );
+
+      Console.WriteLine("\nTest is over. Press any button...");
       Console.ReadKey();
     }
   }
