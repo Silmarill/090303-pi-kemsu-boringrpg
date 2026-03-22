@@ -6,7 +6,7 @@ namespace BoringRPG {
   internal class Program {
     static void Main(string[] args) {
       string critText;
-      int beforeHP, damage;
+      int beforeHP, damage, hill, hilAmmo;
 
       DummyClass artur = new DummyClass("Артур Пендрагон");
       Hunter cser = new Hunter("Красная линия");
@@ -15,6 +15,16 @@ namespace BoringRPG {
       ManaPotion manaPotion = new ManaPotion(15);
       AmmoPack ammoPack = new AmmoPack(15);
       RagePotion rage = new RagePotion(50);
+
+      Console.WriteLine($"{cser.Name} использует зелье невидимости.\n");
+      RagePotion newPotion = new RagePotion(1);
+      cser += newPotion;
+
+      Console.WriteLine($"Нынешнее состояние: \n" +
+                         $"==================\n" +
+                         $"{artur.GetInfo()}\n" +
+                         $"{cser.GetInfo()}\n");
+      Console.WriteLine($"{cser.Name} атакует {artur.Name}!");
 
 
 
