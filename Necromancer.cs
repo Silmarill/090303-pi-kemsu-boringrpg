@@ -1,12 +1,19 @@
 ﻿using System;
 
 namespace BoringRPG {
-  internal class Necromancer : Archetype {
+  internal class Necromancer : Archetype, ICanUseSkill {
 
     // Field for storing the bonus from skeletons
     private int skeletonBonus = 0;
 
     public Necromancer(string name) : base(name, 55, 90, 0, 30, 0.1) {
+    }
+
+    // ICanUseSkill interface realisation
+    public void UseSkill(Skill skill, Archetype target) {
+
+      // Use the skill
+      skill.Use(this, target);
     }
 
     // Overload "!"
