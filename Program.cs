@@ -8,11 +8,11 @@ namespace BoringRPG {
       var dummy = new DummyClass("Dummy");
 
       Console.WriteLine("Before Fight\n" +
-        $"{artur.GetInfo()}" +
-        $"{dummy.GetInfo()}"
+        $"{artur.GetInfo()}\n" +
+        $"{dummy.GetInfo()}\n"
         );
 
-      Console.WriteLine("\n!!! FIGHT !!! >:)\n");
+      Console.WriteLine("!!! FIGHT !!! >:)\n");
 
       // Init skills
       Skill soulLink = new SoulLink();
@@ -29,11 +29,11 @@ namespace BoringRPG {
       artur.UseSkill(coin, dummy);
 
       Console.WriteLine("\nAfter skill using\n\n" +
-      $"{artur.GetInfo()}" +
-      $"{dummy.GetInfo()}"
+      $"{artur.GetInfo()}\n" +
+      $"{dummy.GetInfo()}\n"
       );
 
-      Console.WriteLine("\nTest is over. Press any button...");
+      Console.WriteLine("Test is over. Press any button...");
       Console.ReadKey();
     }
   }

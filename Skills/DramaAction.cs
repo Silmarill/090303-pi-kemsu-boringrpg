@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 // A humorous skill that changes character names
 namespace BoringRPG {
@@ -29,7 +25,7 @@ namespace BoringRPG {
         target.Name = "Trolled " + target.Name;
         Console.WriteLine($"The enemy trolled! Now he is called {target.Name}. XD");
       }
-      
+
       // 30% rename caster
       else if (roll <= 60) {
         caster.Name = "Bruh " + caster.Name;

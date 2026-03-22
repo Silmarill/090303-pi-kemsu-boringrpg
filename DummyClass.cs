@@ -1,7 +1,7 @@
 ﻿using System;
 
 namespace BoringRPG {
-  internal class DummyClass : Archetype, ICanUseSkill{
+  internal class DummyClass : Archetype, ICanUseSkill {
 
     // example for using random
     private static Random random = new Random();
@@ -21,10 +21,10 @@ namespace BoringRPG {
 
     public override void Hit(Archetype target) {
       int damage = Damage;
-      
+
       // Method NextDouble() - return double in range [0.0; 1.0)
       LastHitWasCrit = random.NextDouble() < CritChance;
-      
+
       if (LastHitWasCrit) {
         damage *= 2;
       }
