@@ -1,5 +1,6 @@
 ﻿using System;
 using static BoringRPG.ConsumableItem;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace BoringRPG {
   internal class Program {
@@ -8,7 +9,7 @@ namespace BoringRPG {
       int beforeHP, damage;
 
       Berserker berserker = new Berserker("Берсерк");
-      DummyClass target = new DummyClass("Цель");
+      target target = new target("Цель");
 
       Console.WriteLine($"НАЧАЛО БИТВЫ. Исходное состояние: \n" +
                         $"{berserker.GetInfo()}\n" +
@@ -64,6 +65,21 @@ namespace BoringRPG {
       CritPotion critPotion = new CritPotion(5);
       berserker += critPotion;
       Console.WriteLine($"{berserker.Name}: HP {berserker.HP}, MP {berserker.MP}, Ammo {berserker.Ammo}, Крит {berserker.CritChance * 100}%\n");
+
+      Skill lastStand = new LastStand();
+      berserker.UseSkill(lastStand, target);
+
+      Console.WriteLine(berserker.GetInfo());
+
+      Skill soulLink = new SoulLink();
+      berserker.UseSkill(soulLink, target);
+      Console.WriteLine(berserker.GetInfo());
+      Console.WriteLine(target.GetInfo());
+
+      Skill taunt = new Taunt();
+      berserker.UseSkill(taunt, target);
+      Console.WriteLine(berserker.GetInfo());
+      Console.WriteLine(target.GetInfo());
 
       Console.ReadKey();
     }

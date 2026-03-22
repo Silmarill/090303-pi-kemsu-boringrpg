@@ -1,10 +1,11 @@
-﻿using System;
+﻿using BoringRPG;
+using System;
 using System.Security.AccessControl;
 using System.Xml.Linq;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace BoringRPG {
-  internal class Berserker : Archetype {
+  internal class Berserker : Archetype, ICanUseSkill {
     private static Random random = new Random();
     public bool LastHitWasCrit;
 
@@ -98,6 +99,10 @@ namespace BoringRPG {
 
     public override string GetInfo() {
       return $"{Name} (Berserker): HP {HP}, MP {MP}, Ammo {Ammo}, Crit Chance {CritChance * 100}%\n";
+    }
+
+    public void UseSkill(Skill skill, Archetype target) {
+      skill.Use(this, target);
     }
   }
 }
