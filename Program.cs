@@ -3,11 +3,11 @@
 namespace BoringRPG {
   internal class Program {
     static void Main(string[] args) {
-      var artur = new Necromancer("Артур");
-      Console.WriteLine("ДО ПРИМЕНЕНИЯ ПРЕДМЕТОВ:");
+      var artur = new Necromancer("Artur");
+      Console.WriteLine("before using items:");
       Console.WriteLine(artur.GetInfo());
 
-      // Используются стандартные предметы через оператор +
+      // Standard items are used via the + operator
       artur = (Necromancer)(artur + new HealthPotion(50));
       artur = (Necromancer)(artur + new ManaPotion(30));
 
@@ -17,11 +17,11 @@ namespace BoringRPG {
       */
       artur = (Necromancer)(artur * 1.5);
 
-      Console.WriteLine("\nПОСЛЕ ПРИМЕНЕНИЯ ПРЕДМЕТОВ (Зелья + Кофе):");
+      Console.WriteLine("\nAfter using items (Potions + Coffee):");
       // In the Necromancer's GetInfo, the critical hit chance should be displayed for better clarity
-      Console.WriteLine($"{artur.GetInfo()}, Шанс крита: {artur.CritChance:P0}");
+      Console.WriteLine($"{artur.GetInfo()}, Crit Chance: {artur.CritChance:P0}");
 
-      Console.WriteLine("\nТест завершен. Нажми любую клавишу...");
+      Console.WriteLine("\nTest complete. Press any key...");
       Console.ReadKey();
     }
   }
