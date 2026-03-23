@@ -4,7 +4,7 @@ namespace BoringRPG
 {
     internal class LastStand : Skill
     {
-        public LastStand()
+        public LastStand(string name, int mana) : base(name, mana)
         {    
         }
 

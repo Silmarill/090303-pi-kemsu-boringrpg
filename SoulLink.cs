@@ -6,7 +6,7 @@ namespace BoringRPG
     {   
         int resultCast = 0;
 
-        public SoulLink()
+        public SoulLink(string name, int mana) : base(name, mana)
         {
         }
 
