@@ -13,6 +13,7 @@ namespace BoringRPG {
       ManaPotion manaPotion = new ManaPotion(1000);;
       AmmoPack ammoPack = new AmmoPack(1000);
       RagePie ragePie = new RagePie(1000);
+      Skill skill = new SoulLink();
       
       Console.WriteLine($"НАЧАЛО БИТВЫ. Состояние персонажей: \n" +
                         $"==================\n" +
@@ -20,7 +21,9 @@ namespace BoringRPG {
                         $"{danila.GetInfo()}\n");
            
       Console.WriteLine($"{danila.Name} атакует {lancelot.Name}!");
-        
+
+      danila.UseSkill(skill, lancelot);
+/*
       beforeHP = lancelot.HP;
       danila.Hit(lancelot);
       damage = beforeHP - lancelot.HP;
@@ -28,7 +31,6 @@ namespace BoringRPG {
       critText = danila.LastHitWasCrit ? " - КРИТИЧЕСКИЙ УДАР!" : "";
 
       Console.WriteLine($"Нанесено {damage} урона{critText}\n");
-      
       Console.WriteLine($"СОСТОЯНИЕ ПЕРСОНАЖЕЙ:\n" +
                         $"======================\n" +
                         $"{lancelot.GetInfo()}\n" +
@@ -47,7 +49,6 @@ namespace BoringRPG {
       danila += 100;
 
       Console.WriteLine($"Текущее ХП {danila.Name}: {danila.HP}\n");
-
       Console.WriteLine("Проверка на живучесть:");
 
       // перегрузка операторов true/false
@@ -81,7 +82,7 @@ namespace BoringRPG {
         Console.WriteLine($"{danila.Name} вернулся в объятия богини. " +
                           $"Его боевой дух будут помнить вечно\n");
       }
-
+*/
       Console.WriteLine($"СОСТОЯНИЕ ПЕРСОНАЖЕЙ:\n" +
                   $"======================\n" +
                   $"{lancelot.GetInfo()}\n" +

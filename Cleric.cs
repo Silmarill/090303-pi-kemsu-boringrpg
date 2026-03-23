@@ -52,6 +52,11 @@ namespace BoringRPG {
       return cleric;
     }
 
+    public void UseSkill(Skill skill, Archetype target)
+    {
+      skill.Use(this, target);
+    }
+
     public override void Hit(Archetype target) {
       if (MP >= 10) {
         MP -= 10;

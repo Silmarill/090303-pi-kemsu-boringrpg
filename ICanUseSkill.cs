@@ -6,7 +6,4 @@ namespace BoringRPG
     {
       public void UseSkill(Skill skill, Archetype target);
     }
-
-
-
 }
