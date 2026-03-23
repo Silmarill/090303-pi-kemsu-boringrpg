@@ -51,7 +51,6 @@ namespace BoringRPG {
       monk.HP += bread.Value;
       monk.MP = Math.Max(0, monk.MP - 10);
       monk.Ammo = Math.Max(0, monk.Ammo - 5);
-      Console.WriteLine($" {monk.Name} ate bread! +{bread.Value} HP, but -10 MP, -5 ammo");
       return monk;
     }
 

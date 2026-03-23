@@ -47,6 +47,8 @@ namespace BoringRPG {
 
       Console.WriteLine($"\n>>> Безумный предмет:");
       FatBread bread = new FatBread(40);
+
+      Console.WriteLine($"{jackieChan.Name} съел хлеб! +{bread.Value} HP, но -10 MP, -5 патронов");
       jackieChan = jackieChan + bread;
 
       Console.WriteLine("\nПосле хлеба:");
