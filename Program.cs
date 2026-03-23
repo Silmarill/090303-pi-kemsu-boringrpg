@@ -17,6 +17,7 @@ namespace BoringRPG {
       Skill soulLink = new SoulLink("Джин Ранкандел", 20);
       Skill lastStand = new LastStand("Кирито", 10);
       Skill manaDrain = new ManaDrain("Сун Джин Ву", 50);
+      Skill destinyShuffle = new DestinyShuffle("Широн", 99);
 
       Console.WriteLine($"НАЧАЛО БИТВЫ. Состояние персонажей: \n" +
                         $"==================\n" +
@@ -28,6 +29,7 @@ namespace BoringRPG {
       danila.UseSkill(soulLink, lancelot);
       danila.UseSkill(lastStand, lancelot);
       danila.UseSkill(manaDrain, lancelot);
+      danila.UseSkill(destinyShuffle, lancelot);
 /*
       beforeHP = lancelot.HP;
       danila.Hit(lancelot);

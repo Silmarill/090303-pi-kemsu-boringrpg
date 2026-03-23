@@ -1,7 +1,7 @@
 ﻿using System;
 
 namespace BoringRPG {
-  internal class DummyClass : Archetype {
+  internal class DummyClass : Archetype, ICanUseSkill {
 
     //пример для работы со случайными числами
     private static Random random = new Random();
@@ -12,6 +12,11 @@ namespace BoringRPG {
     }
 
     public DummyClass(string name) : base(name, 100, 50, 10, 20, 0.3) {
+    }
+
+    public void UseSkill(Skill skill, Archetype target)
+    {
+      skill.Use(this, target);
     }
 
     public override void Hit(Archetype target) {
