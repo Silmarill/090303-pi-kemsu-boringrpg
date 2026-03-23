@@ -47,7 +47,7 @@ namespace BoringRPG {
 
       Console.WriteLine($"\n>>> Безумный предмет:");
       FatBread bread = new FatBread(40);
-      jackieChan = jackieChan > bread;
+      jackieChan = jackieChan + bread;
 
       Console.WriteLine("\nПосле хлеба:");
       Console.WriteLine(shiYan.GetInfo());

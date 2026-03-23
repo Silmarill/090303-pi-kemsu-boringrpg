@@ -46,6 +46,15 @@ namespace BoringRPG {
       return monk;
     }
 
+    public static Monk operator +(Monk monk, FatBread bread)
+    {
+      monk.HP += bread.Value;
+      monk.MP = Math.Max(0, monk.MP - 10);
+      monk.Ammo = Math.Max(0, monk.Ammo - 5);
+      Console.WriteLine($" {monk.Name} ate bread! +{bread.Value} HP, but -10 MP, -5 ammo");
+      return monk;
+    }
+
     public override void Hit(Archetype target)
     {
       Random rand = new Random();
@@ -60,7 +69,7 @@ namespace BoringRPG {
 
     public override string GetInfo()
     {
-      return $"{Name}: HP {HP}, MP {MP}, Патроны {Ammo}, Урон {Damage}, Крит {CritChance * 100}%";
+      return $"{Name}: HP {HP}, MP {MP}, Ammo {Ammo}, Damage {Damage}, Crit {CritChance * 100}%";
     }
   }
 }
