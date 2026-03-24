@@ -41,10 +41,12 @@ namespace BoringRPG
       ++energyDrink;
       wrappedAmogus = wrappedAmogus + energyDrink;
 
-      Console.WriteLine("\n----- СОСТОЯНИЕ ПОСЛЕ ПРЕДМЕТОВ -----");
-      Console.WriteLine(lancelot.GetInfo());
-      Console.WriteLine(amogus.GetInfo());
-      Console.WriteLine("\n----- ПРОДОЛЖЕНИЕ БИТВЫ -----");
+      Console.WriteLine(
+        "\n----- СОСТОЯНИЕ ПОСЛЕ ПРЕДМЕТОВ -----" +
+        "\n" + lancelot.GetInfo() + "" +
+        "\n" + amogus.GetInfo() + "" +
+        "\n\n----- ПРОДОЛЖЕНИЕ БИТВЫ -----"
+        );
 
       Console.WriteLine("Амогус находит аптечку и лечится!");
       amogus = amogus + healPackage;
@@ -55,10 +57,12 @@ namespace BoringRPG
         return;
       }
 
-      Console.WriteLine($"НАЧАЛО БИТВЫ. Исходное состояние: \n" +
-                                $"==================\n" +
-                                $"{lancelot.GetInfo()}\n" +
-                                $"{amogus.GetInfo()}\n");
+      Console.WriteLine(
+        "НАЧАЛО БИТВЫ. Исходное состояние: " +
+        "\n==================" +
+        "\n{lancelot.GetInfo()}" +
+        "\n{amogus.GetInfo()}\n"
+        );
 
       Console.WriteLine($"{amogus.Name} атакует {lancelot.Name}");
 
@@ -70,8 +74,7 @@ namespace BoringRPG
 
       Console.WriteLine($"Нанесено {damage} урона{critText}\n");
 
-      int counterDamage;
-      counterDamage = 10;
+      int counterDamage = 10;
 
       if (lancelot.HP > 0)
       {
@@ -79,10 +82,59 @@ namespace BoringRPG
         amogus = amogus - counterDamage;
       }
 
-      Console.WriteLine("ИТОГОВОЕ СОСТОЯНИЕ:");
-      Console.WriteLine("======================");
-      Console.WriteLine(lancelot.GetInfo());
-      Console.WriteLine(amogus.GetInfo());
+      Console.WriteLine(
+        "ИТОГОВОЕ СОСТОЯНИЕ:" +
+        "\n======================" +
+        "\n" + lancelot.GetInfo() + "" +
+        "\n" + amogus.GetInfo()
+        );
+
+      Console.WriteLine(
+        "\n\n===== ДЕМОНСТРАЦИЯ НАВЫКОВ =====" +
+        "\nТекущее состояние персонажей:" +
+        "\n" + lancelot.GetInfo() + "" +
+        "\n" + amogus.GetInfo()
+        );
+
+      SoulLink soulLink = new SoulLink();
+      Taunt taunt = new Taunt();
+      CoinOfFate coin = new CoinOfFate();
+
+      Console.WriteLine(
+        "\n1. Применяем SoulLink:" +
+        "\n   " + amogus.Name + 
+        " связывает свою жизнь с " + 
+        lancelot.Name
+        );
+      amogus.UseSkill(soulLink, lancelot);
+      Console.WriteLine(
+        "   После SoulLink:" +
+        "\n   " + lancelot.Name + 
+        ": HP " + lancelot.HP + 
+        "\n   " + amogus.Name + 
+        ": HP " + amogus.HP
+        );
+
+      Console.WriteLine(
+        "\n2. Применяем Taunt:" +
+        "\n   " + amogus.Name + 
+        " насмехается над " + lancelot.Name
+        );
+      amogus.UseSkill(taunt, lancelot);
+
+      Console.WriteLine(
+        "\n3. Применяем CoinOfFate:" +
+        "\n   " + amogus.Name + 
+        " подбрасывает монетку судьбы над " + lancelot.Name
+        );
+      amogus.UseSkill(coin, lancelot);
+
+      Console.WriteLine(
+        "\n===== ИТОГОВОЕ СОСТОЯНИЕ ПОСЛЕ НАВЫКОВ =====" +
+        "\n" + lancelot.GetInfo() + 
+        "\n" + amogus.GetInfo()
+        );
+
       Console.ReadKey();
     }
   }

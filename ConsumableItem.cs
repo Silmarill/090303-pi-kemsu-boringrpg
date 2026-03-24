@@ -58,13 +58,13 @@ namespace BoringRPG
       target.Damage += Value / 2;
       target.HP -= Value / 3;
 
-      Console.WriteLine($"⚡ {target.Name} выпил энергетик! Урон увеличен на {Value / 2}, но потеряно {Value / 3} HP!");
+      Console.WriteLine($"{target.Name} выпил энергетик! Урон увеличен на {Value / 2}, но потеряно {Value / 3} HP!");
     }
 
     public static EnergyDrink operator ++(EnergyDrink drink)
     {
       drink.Value *= 2;
-      Console.WriteLine($"☢️ Энергетик стал еще крепче! Теперь его величина {drink.Value}");
+      Console.WriteLine($"Энергетик стал еще крепче! Теперь его величина {drink.Value}");
       return drink;
     }
   }
