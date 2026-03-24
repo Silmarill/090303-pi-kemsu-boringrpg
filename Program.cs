@@ -54,6 +54,7 @@ namespace BoringRPG {
 
       Skill soulLink = new SoulLink();
       Skill manaDrain = new ManaDrain();
+      Skill drama = new DramaAction();
 
       Console.WriteLine("SoulLink");
       Console.WriteLine($"HP Ланселота: {lancelot.HP}, HP Артура: {artur.HP}");
@@ -65,6 +66,10 @@ namespace BoringRPG {
       Console.WriteLine($"MP Ланселота: {lancelot.MP}, MP Артура: {artur.MP}");
       lancelot.UseSkill(manaDrain, artur);
       Console.WriteLine($"MP Ланселота: {lancelot.MP}, MP Артура: {artur.MP}");
+      Console.WriteLine();
+
+      Console.WriteLine("DramaAction");
+      lancelot.UseSkill(drama, artur);
       Console.WriteLine();
 
       Console.WriteLine($"{lancelot.Name} атакует {artur.Name}!");

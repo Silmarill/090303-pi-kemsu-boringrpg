@@ -62,6 +62,7 @@
     <Compile Include="Archetype.cs" />
     <Compile Include="constructor.cs" />
     <Compile Include="ConsumableItem.cs" />
+    <Compile Include="DramaAction.cs" />
     <Compile Include="DummyClass.cs" />
     <Compile Include="FatBurger.cs" />
     <Compile Include="HealthPotion.cs" />
