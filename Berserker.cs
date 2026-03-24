@@ -1,10 +1,11 @@
 ﻿using System;
+using BoringRPG.Items;
+using BoringRPG.Skills;
 
 namespace BoringRPG
 {
-  internal class Berserker : Archetype
+  internal class Berserker : Archetype, ICanUseSkill
   {
-
     public static Random random = new Random();
     public bool LastHitWasCrit;
     private readonly int maxHP;
@@ -12,6 +13,11 @@ namespace BoringRPG
     public Berserker(string name) : base(name, 140, 0, 0, 30, 0.15)
     {
       maxHP = 140;
+    }
+
+    public void UseSkill(Skill skill, Archetype target)
+    {
+      skill.Use(this, target);
     }
 
     public static Berserker operator +(Berserker berserker, ManaPotion potion)
@@ -76,11 +82,8 @@ namespace BoringRPG
 
     public override void Hit(Archetype target)
     {
-      int damage;
-      damage = Damage;
-
-      int rageBonus;
-      rageBonus = (maxHP - HP) / 2;
+      int damage = Damage;
+      int rageBonus = (maxHP - HP) / 2;
       damage += rageBonus;
 
       LastHitWasCrit = random.NextDouble() < CritChance;

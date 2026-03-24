@@ -62,12 +62,17 @@
     <Compile Include="Archetype.cs" />
     <Compile Include="Berserker.cs" />
     <Compile Include="BerserkerElixir.cs" />
+    <Compile Include="CoinOfFate.cs" />
     <Compile Include="ConsumableItem.cs" />
     <Compile Include="CrazyPotion.cs" />
+    <Compile Include="DramaAction.cs" />
     <Compile Include="DummyClass.cs" />
+    <Compile Include="ICanUseSkill.cs" />
     <Compile Include="ManaPotion.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Skill.cs" />
+    <Compile Include="SoulLink.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
