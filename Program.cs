@@ -23,10 +23,10 @@ namespace BoringRPG
       Skill destinyShuffle = new DestinyShuffle("Широн", 99);
 
       Console.WriteLine($"Битва началась! Состояние персонажей:\n" +
-                        $"==================\n" +
+                        $"=====================================\n" +
                         $"{lancelot.GetInfo()}\n" +
                         $"{danila.GetInfo()}\n" +
-                        $"{danila.Name} атакует {lancelot.Name}!");
+                        $"\n{danila.Name} атакует {lancelot.Name}!");
 
       danila.UseSkill(soulLink, lancelot);
       danila.UseSkill(lastStand, lancelot);
@@ -40,22 +40,22 @@ namespace BoringRPG
       critText = danila.LastHitWasCrit ? " - КРИТИЧЕСКИЙ УДАР!" : "";
 
       Console.WriteLine($"Нанесено {damage} урона{critText}\n" +
-                        $"Состояние персонажей:\n" +
-                        $"======================\n" +
+                        $"\nСостояние персонажей:\n" +
+                        $"=====================\n" +
                         $"{lancelot.GetInfo()}\n" +
                         $"{danila.GetInfo()}\n" +
-                        $"Обнаружено внешнее вмешательство!\n" +
-                        $"ХП {danila.Name} уменьшено на 10\n");
+                        $"\nОбнаружено внешнее вмешательство!\n" +
+                        $"ХП {danila.Name} уменьшено на 10");
       
       danila -= 10;
 
       Console.WriteLine($"Текущее ХП {danila.Name}: {danila.HP}\n" +
-                        $"ХП {danila.Name} увеличено на 100:\n");
+                        $"\nХП {danila.Name} увеличено на 100");
 
       danila += 100;
 
       Console.WriteLine($"Текущее ХП {danila.Name}: {danila.HP}\n" +
-                        $"Проверка на живучесть:");
+                        $"\nПроверка на живучесть:");
 
       if (danila)
       {
@@ -93,9 +93,9 @@ namespace BoringRPG
       }
 
       Console.WriteLine($"Битва окончена. Состояние персонажей:\n" +
-                        $"======================\n" +
+                        $"=====================================\n" +
                         $"{lancelot.GetInfo()}\n" +
-                        $"{danila.GetInfo()}" +
+                        $"{danila.GetInfo()}\n" +
                         $"Нажмите любую клавишу, чтобы продолжить...");
 
       Console.ReadKey();
