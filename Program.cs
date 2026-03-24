@@ -17,27 +17,34 @@ namespace BoringRPG
       AmmoPack ammoPack = new AmmoPack(1000);
       RagePie ragePie = new RagePie(1000);
 
-      Skill soulLink = new SoulLink("Джин Ранкандел", 20);
-      Skill lastStand = new LastStand("Кирито", 10);
-      Skill manaDrain = new ManaDrain("Сон Джин Ву", 50);
-      Skill destinyShuffle = new DestinyShuffle("Широн", 99);
+      Skill soulLink = new SoulLink("Связь души", 20);
+      Skill lastStand = new LastStand("Последний бой", 10);
+      Skill manaDrain = new ManaDrain("Истощение маны", 50);
+      Skill destinyShuffle = new DestinyShuffle("Неотвратимая судьба", 99);
 
       Console.WriteLine($"Битва началась! Состояние персонажей:\n" +
                         $"=====================================\n" +
                         $"{lancelot.GetInfo()}\n" +
                         $"{danila.GetInfo()}\n" +
-                        $"\n{danila.Name} атакует {lancelot.Name}!");
-
-      danila.UseSkill(soulLink, lancelot);
-      danila.UseSkill(lastStand, lancelot);
-      danila.UseSkill(manaDrain, lancelot);
-      danila.UseSkill(destinyShuffle, lancelot);
+                        $"\n{danila.Name} атакует {lancelot.Name}!\n");
 
       beforeHP = lancelot.HP;
       danila.Hit(lancelot);
       damage = beforeHP - lancelot.HP;
 
       critText = danila.LastHitWasCrit ? " - КРИТИЧЕСКИЙ УДАР!" : "";
+
+      Console.WriteLine($"{danila.Name} использует скилл {soulLink.Name}\n");
+      danila.UseSkill(soulLink, lancelot);
+
+      Console.WriteLine($"{lancelot.Name} использует скилл {lastStand.Name}\n");
+      lancelot.UseSkill(lastStand, danila);
+
+      Console.WriteLine($"{danila.Name} использует скилл {manaDrain.Name}\n");
+      danila.UseSkill(manaDrain, lancelot);
+
+      Console.WriteLine($"{lancelot.Name} использует скилл {destinyShuffle.Name}\n");
+      lancelot.UseSkill(destinyShuffle, danila);
 
       Console.WriteLine($"Нанесено {damage} урона{critText}\n" +
                         $"\nСостояние персонажей:\n" +
