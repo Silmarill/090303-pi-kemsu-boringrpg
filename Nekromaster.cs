@@ -57,6 +57,11 @@ namespace BoringRPG
       return necromancer.HP <= 0;
     }
 
+    public void UseSkill(Skill skill, Archetype target)
+    {
+      skill.Use(this, target);
+    }
+
     public override void Hit(Archetype target)
     {
       if (MP < 15)

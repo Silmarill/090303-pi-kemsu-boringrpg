@@ -20,6 +20,10 @@ namespace BoringRPG
       AmmoPack ammoPack = new AmmoPack(30);
       CocaCola coca = new CocaCola(5);
 
+      Skill soulLink = new SoulLink();
+      Skill manaDrain = new ManaDrain();
+      Skill сoCaCoLaAaAa = new CoCaCoLaAaAa();
+
       Console.WriteLine($"\nТекущее состояние некроманта:");
       Console.WriteLine(dungeonMaster.GetInfo());
 
@@ -47,6 +51,12 @@ namespace BoringRPG
 
       Console.WriteLine($"Нанесено {damage} урона{critText}\n");
 
+      Console.WriteLine("SoulLink");
+      Console.WriteLine($"HP Данденмастера: {dungeonMaster.HP}, HP Артура: {artur.HP}");
+      dungeonMaster.UseSkill(soulLink, artur);
+      Console.WriteLine($"HP Данденмастера: {dungeonMaster.HP}, HP Артура: {artur.HP}");
+      Console.WriteLine();
+
       Console.WriteLine("ИТОГОВОЕ СОСТОЯНИЕ:");
       Console.WriteLine("======================");
       Console.WriteLine(dungeonMaster.GetInfo());
@@ -54,6 +64,12 @@ namespace BoringRPG
       Console.ReadKey();
 
       /////////////////////////////////////////
+
+      Console.WriteLine("ManaDrain");
+      Console.WriteLine($"MP Данденмастера: {dungeonMaster.MP}, MP Артура: {artur.MP}");
+      dungeonMaster.UseSkill(manaDrain, artur);
+      Console.WriteLine($"MP Данденмастера: {dungeonMaster.MP}, MP Артура: {artur.MP}");
+      Console.WriteLine();
 
       Console.WriteLine($"\nВТОРОЙ РАУНД.");
 
@@ -94,6 +110,11 @@ namespace BoringRPG
       Console.WriteLine($"\nИспользуем HealthPotion +{healPotion.Value}:");
       dungeonMaster += healPotion;
       Console.WriteLine(dungeonMaster.GetInfo());
+
+
+      Console.WriteLine("сoCaCoLaAaAa");
+      dungeonMaster.UseSkill(сoCaCoLaAaAa, artur);
+      Console.WriteLine();
 
       Console.WriteLine("ИТОГОВОЕ СОСТОЯНИЕ:");
       Console.WriteLine("======================");
