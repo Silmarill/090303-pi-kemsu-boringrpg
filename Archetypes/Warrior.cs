@@ -16,7 +16,7 @@ namespace BoringRPG {
       if (HP <= 5) {
         HPislow = true;
       }
-      if (HPislow != false){
+      if (HPislow == false){
         HP -= 5;
         damage = Damage + 5;
       }
