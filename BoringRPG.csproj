@@ -60,10 +60,10 @@
   <ItemGroup>
     <Compile Include="Archetype.cs" />
     <Compile Include="ConsumableItems\AmmoPack.cs" />
-    <Compile Include="InvisibilityPotion.cs" />
-    <Compile Include="ManaPotion.cs" />
-    <Compile Include="HealthPotion.cs" />
-    <Compile Include="ConsumableItem.cs" />
+    <Compile Include="ConsumableItems\InvisibilityPotion.cs" />
+    <Compile Include="ConsumableItems\ManaPotion.cs" />
+    <Compile Include="ConsumableItems\HealthPotion.cs" />
+    <Compile Include="ConsumableItems\ConsumableItem.cs" />
     <Compile Include="Hunter.cs" />
     <Compile Include="DummyClass.cs" />
     <Compile Include="Program.cs" />

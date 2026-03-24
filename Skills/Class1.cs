@@ -5,9 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace BoringRPG.Skills {
-  abstract class Skill {
-    public string Name;
-
-    public abstract void Use(Archetype caster, Archetype target);
+  internal class Class1 {
   }
 }

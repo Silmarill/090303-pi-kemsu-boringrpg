@@ -2,8 +2,7 @@
 using System;
 
 namespace BoringRPG {
-  internal class Hunter : Archetype, ICanUseSkill
-    {
+  internal class Hunter : Archetype, ICanUseSkill {
     int maxHealth = 85;
     int maxMana = 20;
     int maxAmmo = 15;
@@ -14,24 +13,23 @@ namespace BoringRPG {
     public bool LastHitWasCrit;
 
     protected Hunter(string name, int hp, int mp, int ammo, int dmg, double crit)
-        : base(name, 85, 20, 15, 25, 0.2) { 
+        : base(name, 85, 20, 15, 25, 0.2) {
     }
 
-    public Hunter(string name) 
+    public Hunter(string name)
       : base(name, 85, 20, 15, 25, 0.2) {
     }
 
-    public void UseSkill(Skill skill, Hunter hun)
-    {
-            skill.Use(this, hun);
+    public void UseSkill(Skill skill, Archetype hun) {
+      skill.Use(this, hun);
     }
-    
+
 
     public static bool operator true(Hunter hun1) {
-          return hun1.HP > 0;
+      return hun1.HP > 0;
     }
     public static bool operator false(Hunter hun1) {
-            return hun1.HP <= 0;
+      return hun1.HP <= 0;
     }
 
     public static Hunter operator +(Hunter hun, int regain) {
@@ -109,7 +107,7 @@ namespace BoringRPG {
       }
 
       if (this.HP < target.HP) {
-        damage += damageBonus; 
+        damage += damageBonus;
       }
       if (LastHitWasCrit) {
         damage *= critDamageBonus;
