@@ -1,6 +1,9 @@
-﻿namespace BoringRPG
+﻿using BoringRPG.Skills;
+
+namespace BoringRPG
 {
-  internal interface ICanUseSkill
+  interface ICanUseSkill
   {
+    void UseSkill(Skill skill, Archetype target);
   }
 }

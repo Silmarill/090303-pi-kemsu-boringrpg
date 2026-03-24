@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BoringRPG.Skills;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Remoting.Channels;
@@ -10,7 +11,7 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace BoringRPG.skills
 {
-  internal class Hunter : Archetype, ICanUseSkill
+  internal class Hunter : Archetype 
   {
     private static Random random = new Random();
     public bool LastHitWasCrit;
@@ -92,6 +93,11 @@ namespace BoringRPG.skills
     public static bool operator false(Hunter hunter)
     {
       return hunter.HP <= 0;
+    }
+
+    public void UseSkill(Skill skill, Archetype target)
+    {
+      skill.Use(this, target);
     }
 
     public override void Hit(Archetype target)

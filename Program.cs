@@ -1,10 +1,14 @@
 ﻿using BoringRPG.skills;
+using BoringRPG.Skills;
 using System;
 using System.Runtime.ConstrainedExecution;
 
-namespace BoringRPG {
-  internal class Program {
-    static void Main(string[] args) {
+namespace BoringRPG
+{
+  internal class Program
+  {
+    static void Main(string[] args)
+    {
       string critText;
       int beforeHP, damage, hill, hilAmmo;
 
@@ -15,6 +19,10 @@ namespace BoringRPG {
       ManaPotion manaPotion = new ManaPotion(15);
       AmmoPack ammoPack = new AmmoPack(15);
       RagePotion rage = new RagePotion(50);
+
+      Skill extreme = new Extreme();
+      Skill manaDrain = new ManaDrain();
+      Skill limonLime = new LimonLime();
 
       Console.WriteLine($"{cser.Name} использует зелье невидимости.\n");
       RagePotion newPotion = new RagePotion(1);
@@ -46,11 +54,23 @@ namespace BoringRPG {
 
       Console.WriteLine($"Нанесено {damage} урона{critText}\n");
 
+      Console.WriteLine("Extreme");
+      Console.WriteLine($"HP красная линия: {cser.HP}, HP Артура: {artur.HP}");
+      cser.UseSkill(extreme, artur);
+      Console.WriteLine($"HP красная линия: {cser.HP}, HP Артура: {artur.HP}");
+      Console.WriteLine();
+
       Console.WriteLine("ИТОГОВОЕ СОСТОЯНИЕ:");
       Console.WriteLine("======================");
       Console.WriteLine(cser.GetInfo());
       Console.WriteLine(artur.GetInfo());
       Console.ReadKey();
+
+      Console.WriteLine("ManaDrain");
+      Console.WriteLine($"MP красная линия: {cser.MP}, MP Артура: {artur.MP}");
+      cser.UseSkill(manaDrain, artur);
+      Console.WriteLine($"MP красная линия: {cser.MP}, MP Артура: {artur.MP}");
+      Console.WriteLine();
 
       if (cser)
       {
@@ -115,6 +135,10 @@ namespace BoringRPG {
       Console.WriteLine(cser.GetInfo());
       Console.WriteLine(artur.GetInfo());
       Console.ReadKey();
+
+      Console.WriteLine("limonnnnnLimeeeee");
+      cser.UseSkill(limonLime, artur);
+      Console.WriteLine();
 
 
 
