@@ -13,6 +13,10 @@ namespace BoringRPG {
       DummyClass artur = new DummyClass("Arthur Pendragon");
       Paladin paladin = new Paladin("Mateus Paladinov");
 
+      Skill soulLink = new SoulLink();
+      Skill manaDrain = new ManaDrain();
+      Skill Nuggets = new Nuggets();
+
       HealthPotion health = new HealthPotion(25);
       ManaPotion mana = new ManaPotion(10);
       AmmoPack ammo = new AmmoPack(10);
@@ -40,6 +44,23 @@ namespace BoringRPG {
                         $"{artur.GetInfo()}\n" +
                         $"{paladin.GetInfo()}\n");
 
+      Console.WriteLine("SoulLink");
+      Console.WriteLine($"HP Mateus Paladinov: {paladin.HP}, HP Arthur: {artur.HP}");
+      paladin.UseSkill(soulLink, artur);
+      Console.WriteLine($"HP Mateus Paladinov: {paladin.HP}, HP Arthur: {artur.HP}");
+      Console.WriteLine();
+
+      Console.WriteLine("ManaDrain");
+      Console.WriteLine($"MP Mateus Paladinov: {paladin.MP}, MP Arthur: {artur.MP}");
+      paladin.UseSkill(manaDrain, artur);
+      Console.WriteLine($"MP Mateus Paladinov: {paladin.MP}, MP Arthur: {artur.MP}");
+      Console.WriteLine();
+
+      Console.WriteLine("Nuggets");
+      Console.WriteLine($"HP Mateus Paladinov: {paladin.HP}, HP Arthur: {artur.HP}");
+      paladin.UseSkill(Nuggets, artur);
+      Console.WriteLine($"HP Mateus Paladinov: {paladin.HP}, HP Arthur: {artur.HP}");
+      Console.WriteLine();
 
       Console.WriteLine($"{lancelot.Name} attacks {artur.Name}!");
 
