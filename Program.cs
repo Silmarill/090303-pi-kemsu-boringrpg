@@ -1,8 +1,11 @@
 ﻿using System;
 
-namespace BoringRPG {
-  internal class Program {
-    static void Main(string[] args) {
+namespace BoringRPG
+{
+  internal class Program
+  {
+    static void Main(string[] args)
+    {
       string critText;
       int beforeHP, damage;
       
@@ -25,11 +28,6 @@ namespace BoringRPG {
                         $"{danila.GetInfo()}\n" +
                         $"{danila.Name} атакует {lancelot.Name}!");
 
-      Console.WriteLine($"danila Ammo: {danila.Ammo}, CritChance: {danila.CritChance}, Damage: {danila.Damage}, HP: {danila.HP}, MP: {danila.MP}");
-      Console.WriteLine($"lancelot Ammo: {lancelot.Ammo}, CritChance: {lancelot.CritChance}, Damage: {lancelot.Damage}, HP: {lancelot.HP}, MP: {lancelot.MP}");
-
-      Console.WriteLine($"{danila.Name} атакует {lancelot.Name}!");
-
       danila.UseSkill(soulLink, lancelot);
       danila.UseSkill(lastStand, lancelot);
       danila.UseSkill(manaDrain, lancelot);
@@ -41,13 +39,12 @@ namespace BoringRPG {
 
       critText = danila.LastHitWasCrit ? " - КРИТИЧЕСКИЙ УДАР!" : "";
 
-      Console.WriteLine($"Нанесено {damage} урона{critText}\n");
-      Console.WriteLine($"Состояние персонажей:\n" +
+      Console.WriteLine($"Нанесено {damage} урона{critText}\n" +
+                        $"Состояние персонажей:\n" +
                         $"======================\n" +
                         $"{lancelot.GetInfo()}\n" +
-                        $"{danila.GetInfo()}");
-
-      Console.WriteLine($"Обнаружено внешнее вмешательство!\n" +
+                        $"{danila.GetInfo()}\n" +
+                        $"Обнаружено внешнее вмешательство!\n" +
                         $"ХП {danila.Name} уменьшено на 10\n");
       
       danila -= 10;
@@ -57,13 +54,15 @@ namespace BoringRPG {
 
       danila += 100;
 
-      Console.WriteLine($"Текущее ХП {danila.Name}: {danila.HP}\n");
-      Console.WriteLine("Проверка на живучесть:");
+      Console.WriteLine($"Текущее ХП {danila.Name}: {danila.HP}\n" +
+                        $"Проверка на живучесть:");
 
-      if (danila) {
+      if (danila)
+      {
         Console.WriteLine($"{danila.Name} ещё живой\n");
       }
-      else {
+      else
+      {
         Console.WriteLine($"{danila.Name} вернулся в объятия богини. " +
                           $"Его боевой дух будут помнить вечно\n");
       }
@@ -83,10 +82,12 @@ namespace BoringRPG {
       Console.WriteLine($"{danila.Name} использует пирог ярости, характеристики увеличены!\n");
       danila += ragePie;
 
-      if (danila) {
+      if (danila)
+      {
         Console.WriteLine($"{danila.Name} ещё живой\n");
       }
-      else {
+      else
+      {
         Console.WriteLine($"{danila.Name} вернулся в объятия богини. " +
                           $"Его боевой дух будут помнить вечно\n");
       }
@@ -94,9 +95,9 @@ namespace BoringRPG {
       Console.WriteLine($"Битва окончена. Состояние персонажей:\n" +
                         $"======================\n" +
                         $"{lancelot.GetInfo()}\n" +
-                        $"{danila.GetInfo()}");
+                        $"{danila.GetInfo()}" +
+                        $"Нажмите любую клавишу, чтобы продолжить...");
 
-      Console.Write("Нажмите любую клавишу, чтобы продолжить...");
       Console.ReadKey();
     }
   }

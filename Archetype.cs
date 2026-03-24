@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace BoringRPG {
-  internal abstract class Archetype {
-
+namespace BoringRPG
+{
+  internal abstract class Archetype
+  {
     public string Name;
     public int HP;
     public int MP;
@@ -11,7 +12,8 @@ namespace BoringRPG {
     public int Damage;
     public double CritChance;
 
-    protected Archetype(string name, int hp, int mp, int ammo, int dmg, double crit) {
+    protected Archetype(string name, int hp, int mp, int ammo, int dmg, double crit)
+    {
       Name = name;
       HP = hp;
       MP = mp;
@@ -23,5 +25,4 @@ namespace BoringRPG {
     public abstract void Hit(Archetype target);
     public abstract string GetInfo();
   }
-
 }
