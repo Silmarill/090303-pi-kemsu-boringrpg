@@ -1,13 +1,17 @@
-﻿using System;
+﻿using BoringRPG.Skills;
+using System;
+using System.Collections.Generic;
 
 namespace BoringRPG {
   internal class Program {
+
     static void Main(string[] args) {
       string critText;
       int beforeHP,beforeAmmo, damage, hil, hilAmmo;
 
       DummyClass lancelot = new DummyClass("Ланселот Ловкий");
       Hunter killian = new Hunter("Киллиан - древнее зло");
+      Skill heheha = new ContemptForEnemies();
 
       Console.WriteLine($"НАЧАЛО БИТВЫ. Исходное состояние: \n" +
                         $"==================\n" +
@@ -23,6 +27,7 @@ namespace BoringRPG {
                          $"{lancelot.GetInfo()}\n" +
                          $"{killian.GetInfo()}\n");
 
+      killian.UseSkill(heheha, lancelot);
       Console.WriteLine($"{killian.Name} атакует {lancelot.Name}!");
 
       beforeHP = lancelot.HP;

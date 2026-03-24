@@ -17,23 +17,30 @@ namespace BoringRPG.Skills {
 
     public override void Use(Archetype caster, Archetype target) {
 
+      Console.WriteLine($"{caster.Name} использует пассивный навык - презрение к врагам");
+
       int basicPercentage = 100;
       int gainPercentage = 110;
       int percentageReduction = 90;
-
-      caster.HP = caster.HP / basicPercentage * gainPercentage;
-      caster.MP = caster.MP / basicPercentage * gainPercentage;
-      caster.Ammo = caster.Ammo / basicPercentage * gainPercentage;
-      caster.Damage = caster.Damage / basicPercentage * gainPercentage;
-      caster.CritChance = caster.CritChance / basicPercentage * gainPercentage;
-
       if (random.NextDouble() < chanceRidicule) {
-        Console.WriteLine($"{caster.Name} насмехается над {target.Name} ");
+        
+        caster.HP += ((target.HP / basicPercentage * gainPercentage) - target.HP);
+        double casterMP = caster.MP + (((double)target.MP / basicPercentage * gainPercentage) - target.MP);
+        caster.MP = (int)casterMP;
+        caster.Ammo += ((target.Ammo / basicPercentage * gainPercentage) - target.Ammo);
+        caster.Damage += ((target.Damage / basicPercentage * gainPercentage) - target.Damage);
+        caster.CritChance += ((target.CritChance / basicPercentage * gainPercentage) - target.CritChance);
+
         target.HP = target.HP / basicPercentage * percentageReduction;
         target.MP = target.MP / basicPercentage * percentageReduction;
         target.Ammo = target.Ammo / basicPercentage * percentageReduction;
         target.Damage = target.Damage / basicPercentage * percentageReduction;
         target.CritChance = target.CritChance / basicPercentage * percentageReduction;
+
+        Console.WriteLine($"{caster.Name} насмехается над {target.Name}!!!\n" +
+                          $"{caster.Name} украл 10% характеристик {target.Name}!!!");
+      } else {
+        Console.WriteLine($"{target.Name} игнорирует насмешки {caster.Name}");
       }
     }
   }
