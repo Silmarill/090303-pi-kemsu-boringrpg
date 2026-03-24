@@ -5,7 +5,7 @@ namespace BoringRPG
     internal class DestinyShuffle : Skill
     {
 
-        private static Random randomParameters = new Random();
+        private static Random randomStats = new Random();
 
         public DestinyShuffle(string name, int mana) : base(name, mana)
         {
@@ -15,27 +15,25 @@ namespace BoringRPG
         {
             double[] statsCaster = { caster.Ammo, caster.CritChance, caster.Damage, caster.HP, caster.MP };
             double[] statsTarget = { target.Ammo, target.CritChance, target.Damage, target.HP, target.MP };
+            int[] indexStatCaster = { 0, 1, 2, 3, 4};
+            int[] indexStatTarget = { 0, 1, 2, 3, 4};
 
-            /*double[] randomParamCaster = randomParameters.GetItems(parametersCaster, 3);
-            double[] randomParamTarget = randomParameters.GetItems(parametersTarget, 3);
-
-            int randomRND;*/
-
+            double temp;
             int indexCaster;
             int indexTarget;
-            double temp;
 
-            for (int randomIteration = 0; randomIteration < 3; ++randomIteration)
+            // Перемешивание массивов для выбора первых трёх индексов
+            randomStats.Shuffle(indexStatCaster);
+            randomStats.Shuffle(indexStatTarget);
+
+            for (int randomIndex = 0; randomIndex < 3; ++randomIndex)
             {
-                indexCaster = randomParameters.Next(0, 5);
-                indexTarget = randomParameters.Next(0, 5);
+                indexCaster = indexStatCaster[randomIndex];
+                indexTarget = indexStatTarget[randomIndex];
 
                 temp = statsCaster[indexCaster];
                 statsCaster[indexCaster] = statsTarget[indexTarget];
                 statsTarget[indexTarget] = temp;
-
-                /*parametersCaster[randomRND] = randomParamTarget[randomRND];
-                parametersTarget[randomRND] = randomParamCaster[randomRND];*/
             }
 
             caster.Ammo = (int)statsCaster[0];
