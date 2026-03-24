@@ -37,17 +37,16 @@ namespace BoringRPG
             }
 
             caster.Ammo = (int)statsCaster[0];
-            caster.CritChance = statsCaster[1];
+            caster.CritChance = (double)statsCaster[1];
             caster.Damage = (int)statsCaster[2];
             caster.HP = (int)statsCaster[3];
             caster.MP = (int)statsCaster[4];
 
             target.Ammo = (int)statsTarget[0];
-            target.CritChance = statsTarget[1];
+            target.CritChance = (double)statsTarget[1];
             target.Damage = (int)statsTarget[2];
             target.HP = (int)statsTarget[3];
             target.MP = (int)statsTarget[4];
-
         }
     }
 }

@@ -19,27 +19,22 @@ namespace BoringRPG {
       Skill manaDrain = new ManaDrain("Сон Джин Ву", 50);
       Skill destinyShuffle = new DestinyShuffle("Широн", 99);
 
-      /*Console.WriteLine($"Битва началась! Состояние персонажей:\n" +
+      Console.WriteLine($"Битва началась! Состояние персонажей:\n" +
                         $"==================\n" +
                         $"{lancelot.GetInfo()}\n" +
-                        $"{danila.GetInfo()}\n");*/
-      Console.WriteLine($"Битва началась! Состояние персонажей:");
+                        $"{danila.GetInfo()}\n" +
+                        $"{danila.Name} атакует {lancelot.Name}!");
+
       Console.WriteLine($"danila Ammo: {danila.Ammo}, CritChance: {danila.CritChance}, Damage: {danila.Damage}, HP: {danila.HP}, MP: {danila.MP}");
       Console.WriteLine($"lancelot Ammo: {lancelot.Ammo}, CritChance: {lancelot.CritChance}, Damage: {lancelot.Damage}, HP: {lancelot.HP}, MP: {lancelot.MP}");
 
-           
       Console.WriteLine($"{danila.Name} атакует {lancelot.Name}!");
 
-      /*danila.UseSkill(soulLink, lancelot);
+      danila.UseSkill(soulLink, lancelot);
       danila.UseSkill(lastStand, lancelot);
       danila.UseSkill(manaDrain, lancelot);
-      */
       danila.UseSkill(destinyShuffle, lancelot);
 
-      Console.WriteLine($"danila Ammo: {danila.Ammo}, CritChance: {danila.CritChance}, Damage: {danila.Damage}, HP: {danila.HP}, MP: {danila.MP}");
-      Console.WriteLine($"lancelot Ammo: {lancelot.Ammo}, CritChance: {lancelot.CritChance}, Damage: {lancelot.Damage}, HP: {lancelot.HP}, MP: {lancelot.MP}");
-
-/*
       beforeHP = lancelot.HP;
       danila.Hit(lancelot);
       damage = beforeHP - lancelot.HP;
@@ -95,7 +90,6 @@ namespace BoringRPG {
         Console.WriteLine($"{danila.Name} вернулся в объятия богини. " +
                           $"Его боевой дух будут помнить вечно\n");
       }
-*/
 
       Console.WriteLine($"Битва окончена. Состояние персонажей:\n" +
                         $"======================\n" +
