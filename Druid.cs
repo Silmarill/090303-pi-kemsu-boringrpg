@@ -1,21 +1,29 @@
 ﻿using System;
 
 namespace BoringRPG {
-  internal class Druid : Archetype {
+  internal class Druid : Archetype, ICanUseSkill {
+    // Максимальные значения из таблицы
     private int maxHealth = 90;
     private int maxMana = 60;
-    private int manaCost = 5; 
-    private int hpThreshold = 45; 
-    private int damageBonus = 0; 
-    private double critBonus = 0; 
+    private int manaCost = 5; // Стоимость атаки в мане
+    private int hpThreshold = 45; // Порог HP для удвоения урона
+    private int damageBonus = 0; // Бонус к урону от зелий
+    private double critBonus = 0; // Бонус к криту от зелий
 
     private static Random random = new Random();
     public bool LastHitWasCrit;
 
+    // Конструктор с параметрами из таблицы
     public Druid(string name)
         : base(name, 90, 60, 0, 20, 0.10) {
     }
 
+    // Реализация интерфейса ICanUseSkill
+    public void UseSkill(Skill skill, Archetype target) {
+      skill.Use(this, target);
+    }
+
+    // Перегрузка оператора true/false для проверки жив ли герой
     public static bool operator true(Druid druid) {
       return druid.HP > 0;
     }
@@ -24,6 +32,7 @@ namespace BoringRPG {
       return druid.HP <= 0;
     }
 
+    // Перегрузка оператора + для лечения (целое число)
     public static Druid operator +(Druid druid, int regain) {
       if (druid.HP < druid.maxHealth) {
         druid.HP = druid.HP + regain;
@@ -34,6 +43,7 @@ namespace BoringRPG {
       return druid;
     }
 
+    // Перегрузка оператора + для зелья здоровья
     public static Druid operator +(Druid druid, HealthPotion potion) {
       int oldHP = druid.HP;
       druid.HP += potion.Value;
@@ -45,6 +55,7 @@ namespace BoringRPG {
       return druid;
     }
 
+    // Перегрузка оператора + для зелья маны
     public static Druid operator +(Druid druid, ManaPotion potion) {
       int oldMP = druid.MP;
       druid.MP += potion.Value;
@@ -56,18 +67,21 @@ namespace BoringRPG {
       return druid;
     }
 
+    // Перегрузка оператора + для зелья природы (увеличивает урон)
     public static Druid operator +(Druid druid, NaturePotion potion) {
       druid.damageBonus += potion.Value;
       Console.WriteLine($"{druid.Name} использовал зелье природы! Урон увеличен на {potion.Value} (текущий бонус: {druid.damageBonus})");
       return druid;
     }
 
+    // Перегрузка оператора + для лунной ягоды (увеличивает шанс крита)
     public static Druid operator +(Druid druid, MoonBerry berry) {
-      druid.critBonus = berry.Value / 100.0; 
+      druid.critBonus = berry.Value / 100.0;
       Console.WriteLine($"{druid.Name} съел лунную ягоду! Шанс крита временно увеличен на {berry.Value}%!");
       return druid;
     }
 
+    // Перегрузка оператора - для получения урона
     public static Druid operator -(Druid druid, int damage) {
       int minHP = 0;
 
@@ -80,31 +94,31 @@ namespace BoringRPG {
       return druid;
     }
 
+    // Перегрузка оператора * для комбо-эффекта
     public static Druid operator *(Druid druid, MoonBerry berry) {
       druid.damageBonus += 20;
       Console.WriteLine($"{druid.Name} съел две лунные ягоды! Урон увеличен на 20!");
       return druid;
     }
 
+    // Реализация метода атаки с учетом бонусов
     public override void Hit(Archetype target) {
-      int minMana = 0;
       int minHp = 0;
 
       int damage = this.Damage + damageBonus;
-
       double currentCritChance = CritChance + critBonus;
 
       if (this.MP >= manaCost) {
         this.MP -= manaCost;
 
         if (target.HP > hpThreshold) {
-          damage *= 2; 
+          damage *= 2;
           LastHitWasCrit = true;
         }
         else {
           LastHitWasCrit = random.NextDouble() < currentCritChance;
           if (LastHitWasCrit) {
-            damage *= 2; 
+            damage *= 2;
           }
         }
 
@@ -122,6 +136,7 @@ namespace BoringRPG {
       }
     }
 
+    // Реализация метода получения информации о герое
     public override string GetInfo() {
       double totalCritChance = (CritChance + critBonus) * 100;
       return $"{Name} (Druid): HP {HP}/{maxHealth}, MP {MP}/{maxMana}, Damage {Damage + damageBonus} (Base: {Damage} + Bonus: {damageBonus}), Crit Chance: {totalCritChance:F1}%";
