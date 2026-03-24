@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 
 namespace BoringRPG {
-  public abstract class Archetype {
-
+  public abstract class Archetype : ICanUseSkill {
     public string Name;
     public int HP;
     public int MP;
@@ -11,7 +10,8 @@ namespace BoringRPG {
     public int Damage;
     public double CritChance;
 
-    public Archetype(string name, int hp, int mp, int ammo, int dmg, double crit) {
+    public Archetype(string name, int hp, int mp, int ammo, int dmg, double crit)
+    {
       Name = name;
       HP = hp;
       MP = mp;
@@ -22,6 +22,22 @@ namespace BoringRPG {
 
     public abstract void Hit(Archetype target);
     public abstract string GetInfo();
-  }
 
+    public void UseSkill(Skill skill, Archetype target)
+    {
+      if (skill == null)
+      {
+        Console.WriteLine("Нельзя использовать пустой навык.");
+        return;
+      }
+
+      if (target == null)
+      {
+        Console.WriteLine("Нельзя применить навык на пустую цель.");
+        return;
+      }
+
+      skill.Use(this, target);
+    }
+  }
 }

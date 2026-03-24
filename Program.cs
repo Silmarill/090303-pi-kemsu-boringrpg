@@ -6,17 +6,47 @@ namespace BoringRPG {
     static void Main(string[] args)
     {
       string critText;
-      int beforeHP, damage;
+      int beforeHP;
+      int damage;
 
-      Monk shiYan = new Monk("Ши Янь");
-      Monk jackieChan = new Monk("Джеки Чан");
+      int maxRounds;
+      int healthPotionValue;
+      int manaPotionValue;
+      int ammoPackValue;
+      int breadValue;
+      int breadMpPenalty;
+      int breadAmmoPenalty;
+      int healAmount;
+      int damageAmount;
+      int soulLinkHp1;
+      int soulLinkHp2;
+      int tauntCritMultiplier;
+
+      Monk shiYan;
+      Monk jackieChan;
+
+      maxRounds = 4;
+      healthPotionValue = 50;
+      manaPotionValue = 30;
+      ammoPackValue = 10;
+      breadValue = 40;
+      breadMpPenalty = 10;
+      breadAmmoPenalty = 5;
+      healAmount = 10;
+      damageAmount = 5;
+      soulLinkHp1 = 80;
+      soulLinkHp2 = 20;
+      tauntCritMultiplier = 100;
+
+      shiYan = new Monk("Ши Янь");
+      jackieChan = new Monk("Джеки Чан");
 
       Console.WriteLine($"НАЧАЛО БИТВЫ. Исходное состояние: \n" +
                         $"==================\n" +
                         $"{shiYan.GetInfo()}\n" +
                         $"{jackieChan.GetInfo()}\n");
 
-      for (int index = 1; index <= 4; ++index)
+      for (int index = 1; index <= maxRounds; ++index)
       {
         Console.WriteLine($"\n--- Раунд {index} ---");
         Console.WriteLine($"{shiYan.Name} атакует {jackieChan.Name}!");
@@ -37,18 +67,20 @@ namespace BoringRPG {
       Console.WriteLine($"\n--- Демонстрация расходников ---");
 
       Console.WriteLine($"\n>>> Волшебные предметы:");
-      jackieChan += new HealthPotion(50);
-      shiYan += new ManaPotion(30);
-      shiYan += new AmmoPack(10);
+      jackieChan = jackieChan + new HealthPotion(healthPotionValue);
+      shiYan = shiYan + new ManaPotion(manaPotionValue);
+      shiYan = shiYan + new AmmoPack(ammoPackValue);
 
       Console.WriteLine("\nПосле использования волшебных предметов:");
       Console.WriteLine(shiYan.GetInfo());
       Console.WriteLine(jackieChan.GetInfo());
 
       Console.WriteLine($"\n>>> Безумный предмет:");
-      FatBread bread = new FatBread(40);
+      FatBread bread;
 
-      Console.WriteLine($"{jackieChan.Name} съел хлеб! +{bread.Value} HP, но -10 MP, -5 патронов");
+      bread = new FatBread(breadValue);
+
+      Console.WriteLine($"{jackieChan.Name} съел хлеб! +{bread.Value} HP, но -{breadMpPenalty} MP, -{breadAmmoPenalty} патронов");
       jackieChan = jackieChan + bread;
 
       Console.WriteLine("\nПосле хлеба:");
@@ -57,10 +89,10 @@ namespace BoringRPG {
 
       Console.WriteLine($"\n--- Демонстрация других операторов ---");
       Console.WriteLine($"Здоровье {jackieChan.Name} до лечения: {jackieChan.HP}");
-      jackieChan = jackieChan + 10;
-      Console.WriteLine($"Здоровье {jackieChan.Name} после лечения (+10): {jackieChan.HP}");
-      jackieChan = jackieChan - 5;
-      Console.WriteLine($"Здоровье {jackieChan.Name} после урона (-5): {jackieChan.HP}");
+      jackieChan = jackieChan + healAmount;
+      Console.WriteLine($"Здоровье {jackieChan.Name} после лечения (+{healAmount}): {jackieChan.HP}");
+      jackieChan = jackieChan - damageAmount;
+      Console.WriteLine($"Здоровье {jackieChan.Name} после урона (-{damageAmount}): {jackieChan.HP}");
 
       if (jackieChan)
       {
@@ -70,6 +102,37 @@ namespace BoringRPG {
       {
         Console.WriteLine($"{jackieChan.Name} повержен (HP <= 0).");
       }
+
+      Console.WriteLine("\n\n--- Демонстрация навыков ---");
+
+      Skill soulLinkSkill;
+      Skill tauntSkill;
+      Skill dramaSkill;
+
+      soulLinkSkill = new SoulLink();
+      tauntSkill = new Taunt();
+      dramaSkill = new DramaAction();
+
+      Console.WriteLine("\n--- Применяем навык Soul Link ---");
+      shiYan.HP = soulLinkHp1;
+      jackieChan.HP = soulLinkHp2;
+      Console.WriteLine($"До использования: {shiYan.Name} HP = {shiYan.HP}, {jackieChan.Name} HP = {jackieChan.HP}");
+      shiYan.UseSkill(soulLinkSkill, jackieChan);
+      Console.WriteLine($"После использования: {shiYan.Name} HP = {shiYan.HP}, {jackieChan.Name} HP = {jackieChan.HP}");
+
+      Console.WriteLine("\n--- Применяем навык Taunt ---");
+      Console.WriteLine($"До использования: Шанс крита {jackieChan.Name} = {jackieChan.CritChance * tauntCritMultiplier}%");
+      shiYan.UseSkill(tauntSkill, jackieChan);
+      Console.WriteLine($"После использования: Шанс крита {jackieChan.Name} = {jackieChan.CritChance * tauntCritMultiplier}%");
+
+      Console.WriteLine("\n--- Применяем навык Drama Action (несколько раз) ---");
+      jackieChan.UseSkill(dramaSkill, shiYan);
+      jackieChan.UseSkill(dramaSkill, shiYan);
+      jackieChan.UseSkill(dramaSkill, shiYan);
+
+      Console.WriteLine("\nФинальное состояние после навыков:");
+      Console.WriteLine(shiYan.GetInfo());
+      Console.WriteLine(jackieChan.GetInfo());
 
       Console.ReadKey();
     }
