@@ -59,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Archetype.cs" />
+    <Compile Include="ICanUseSkille.cs" />
     <Compile Include="items\ConsumableItem.cs" />
     <Compile Include="Druid.cs" />
     <Compile Include="DummyClass.cs" />
@@ -68,6 +69,10 @@
     <Compile Include="items\NaturePotion.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Skills\DramaAction.cs" />
+    <Compile Include="Skills\ManaDrain.cs" />
+    <Compile Include="Skills\Skill.cs" />
+    <Compile Include="Skills\SoulLink.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -84,8 +89,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Skills\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
