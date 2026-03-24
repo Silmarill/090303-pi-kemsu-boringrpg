@@ -60,19 +60,19 @@
   <ItemGroup>
     <Compile Include="AmmoPack.cs" />
     <Compile Include="Archetype.cs" />
+    <Compile Include="CoinOfFate.cs" />
     <Compile Include="ConsumableItem.cs" />
     <Compile Include="DoubleEspresso.cs" />
     <Compile Include="Druid.cs" />
     <Compile Include="DummyClass.cs" />
-    <Compile Include="FireballSkill.cs" />
-    <Compile Include="HealSkill.cs" />
     <Compile Include="HealthPotion.cs" />
     <Compile Include="ICanUseSkill.cs" />
     <Compile Include="ManaPotion.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Skill.cs" />
-    <Compile Include="StrengthenSkill.cs" />
+    <Compile Include="SoulLink.cs" />
+    <Compile Include="Taunt.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

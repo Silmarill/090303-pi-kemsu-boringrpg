@@ -1,13 +1,18 @@
 ﻿using System;
+using BoringRPG.Interfaces;
+using BoringRPG.Skills;
 
 namespace BoringRPG {
-  public class Druid : Archetype {
-
-    private static Random random = new Random();
+  public class Druid : Archetype, ICanUseSkill {
+    public static Random random = new Random();
     public bool LastHitWasCrit;
 
     public Druid(string name) : base(name, 90, 60, 0, 20, 0.10)
     {
+    }
+    public void UseSkill(Skill skill, ICanUseSkill target)
+    {
+      skill.Use(this, target);
     }
 
     public static Druid operator +(Druid druid, int amount)

@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace BoringRPG {
-  internal class ICanUseSkill {
+namespace BoringRPG.Interfaces {
+  public interface ICanUseSkill {
+    void UseSkill(Skill skill, ICanUseSkill target);
   }
 }
