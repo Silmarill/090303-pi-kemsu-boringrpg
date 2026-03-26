@@ -1,12 +1,16 @@
 ﻿using System;
 
 namespace BoringRPG {
-  internal class Warrior : Archetype {
+  internal class Warrior : Archetype, ICanUseSkill {
 
     private static Random random = new Random();
     public bool LastHitWasCrit;
 
     public Warrior(string name) : base(name, 120, 20, 0, 25, 0.1) {
+    }
+
+    public void UseSkill(Skill skill, Archetype target) {
+      skill.Use(this, target);
     }
 
     public override void Hit(Archetype target) {
@@ -27,11 +31,25 @@ namespace BoringRPG {
       target.HP -= damage;
     }
 
+    public static Warrior operator +(Warrior hero, int value) {
+      hero.HP += value;
+      return hero;
+    }
+    public static Warrior operator -(Warrior hero, int value) {
+      hero.HP -= value;
+      return hero;
+    }
+    public static bool operator true(Warrior hero) {
+      return hero.HP > 0;
+    }
+    public static bool operator false(Warrior hero) {
+      return hero.HP <= 0;
+    }
+
     public static Warrior operator -(Warrior attacker, Archetype target) {
       attacker.Hit(target);
       return attacker;
     }
-
     public static Warrior operator +(Warrior hero, HealthPotion healtPotion) {
       hero.HP += healtPotion.Value;
       return hero;
@@ -44,14 +62,11 @@ namespace BoringRPG {
       hero.MP += mana.Value;
       return hero;
     }
-    public static Warrior operator *(Warrior hero, EnergyDrink energyDrink)
-    {
-      if (hero.MP >= energyDrink.Value)
-      {
+    public static Warrior operator *(Warrior hero, EnergyDrink energyDrink) {
+      if (hero.MP >= energyDrink.Value) {
         hero.MP -= energyDrink.Value / 2;
       }
-      else
-      {
+      else {
         int remainingCost;
         remainingCost = energyDrink.Value - hero.MP;
         hero.MP = 0;

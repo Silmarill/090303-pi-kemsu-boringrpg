@@ -59,13 +59,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Archetype.cs" />
-    <Compile Include="ConsumableItems\AmmoPack..cs" />
+    <Compile Include="SkillsAndItem\AmmoPack..cs" />
     <Compile Include="ICanUseSkill .cs" />
     <Compile Include="Skill.cs" />
-    <Compile Include="Skills\Taunt.cs" />
-    <Compile Include="ConsumableItems\EnergyDrink.cs" />
-    <Compile Include="ConsumableItems\ManaPotion.cs" />
-    <Compile Include="ConsumableItems\HealthPotion.cs" />
+    <Compile Include="SkillsAndItem\ComplimentEnemy.cs" />
+    <Compile Include="SkillsAndItem\LastStand.cs" />
+    <Compile Include="SkillsAndItem\Taunt.cs" />
+    <Compile Include="SkillsAndItem\EnergyDrink.cs" />
+    <Compile Include="SkillsAndItem\ManaPotion.cs" />
+    <Compile Include="SkillsAndItem\HealthPotion.cs" />
     <Compile Include="ConsumableItem.cs" />
     <Compile Include="Archetypes\Warrior.cs" />
     <Compile Include="Archetypes\DummyClass.cs" />
