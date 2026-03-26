@@ -6,6 +6,7 @@ namespace BoringRPG.Skills {
     }
 
     public override void Use(Archetype caster, Archetype target) {
+
       int resultHP = caster.HP + target.HP;
       int newHP = resultHP / 2;
 

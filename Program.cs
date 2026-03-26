@@ -11,7 +11,7 @@ namespace BoringRPG {
 
       DummyClass lancelot = new DummyClass("Ланселот Ловкий");
       Hunter killian = new Hunter("Киллиан - древнее зло");
-      Skill heheha = new ContemptForEnemies();
+      Skill heheha = new Mockery(1);
 
       Console.WriteLine($"НАЧАЛО БИТВЫ. Исходное состояние: \n" +
                         $"==================\n" +
