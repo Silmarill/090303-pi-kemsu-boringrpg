@@ -10,14 +10,14 @@ namespace BoringRPG {
       DummyClass artur =    new DummyClass("Артур Пендрагон");
       BerserkerClass berserk = new BerserkerClass("Berserker");
 
-      Console.WriteLine($"НАЧАЛО БИТВЫ. Исходное состояние: \n" +
-                        $"==================\n" +
-                        $"{lancelot.GetInfo()}\n" +
-                        $"{artur.GetInfo()}\n" +
-                        $"{berserk.GetInfo()}\n");
+      Console.WriteLine("НАЧАЛО БИТВЫ. Исходное состояние: \n" +
+                        "==================\n" +
+                        lancelot.GetInfo() + "\n" +
+                        artur.GetInfo() + "\n" +
+                        berserk.GetInfo() + "\n");
 
-      Console.WriteLine($"{lancelot.Name} атакует {artur.Name}!");
-      Console.WriteLine($"{berserk.Name} атакует {lancelot.Name}");
+      Console.WriteLine(lancelot.Name + " атакует " + artur.Name + "!");
+      Console.WriteLine(berserk.Name + " атакует " + lancelot.Name);
 
       beforeHP = artur.HP;
       lancelot.Hit(artur);
@@ -28,22 +28,22 @@ namespace BoringRPG {
       damage = beforeHP - lancelot.HP;
 
       critText = lancelot.LastHitWasCrit ? " - критический удар!" : "";
-
       Console.WriteLine("Нанесено " + damage + " урона" + critText + "\n");
 
-      Console.WriteLine($"ИТОГОВОЕ СОСТОЯНИЕ: \n" +
-                        $"======================\n" +
-                        $"{lancelot.GetInfo()}\n" +
-                        $"{artur.GetInfo()}\n" +
-                        $"======================\n" +
-                        $"{lancelot.GetInfo()}\n" +
-                        $"{berserk.GetInfo()}\n");
+      Console.WriteLine("ИТОГОВОЕ СОСТОЯНИЕ:\n" +
+                        "======================\n" +
+                        lancelot.GetInfo() + "\n" +
+                        artur.GetInfo() + "\n" +
+                        "======================\n" +
+                        lancelot.GetInfo() + "\n" +
+                        berserk.GetInfo() + "\n");
 
-      // Этап 2: Демонстрация расходников
-
-      Console.WriteLine($"\n==========================================\n" +
-                        $"ПРИВАЛ. Время расходников.\n" +
-                        $"==========================================\n");
+      // ======================================================
+      // ЭТАП 2: Демонстрация расходников
+      // ======================================================
+      Console.WriteLine("\n==========================================");
+      Console.WriteLine("ПРИВАЛ. Время расходников.");
+      Console.WriteLine("==========================================\n");
 
       Archetype target;
 
@@ -65,13 +65,41 @@ namespace BoringRPG {
       Console.WriteLine("До: " + lancelot.GetInfo());
       target = lancelot;
       target *= new CoffeeCup(3);
-      Console.WriteLine($"После CoffeeCup(3): " + lancelot.GetInfo());
-      Console.WriteLine($"(тройной эспрессо. Руки дрожат, но крит-шанс утроен.)");
+      Console.WriteLine("После CoffeeCup(3): " + lancelot.GetInfo());
+      Console.WriteLine("(тройной эспрессо. Руки дрожат, но крит-шанс утроен.)\n");
 
+      // ======================================================
+      // ЭТАП 3: Демонстрация навыков
+      // ======================================================
+      Console.WriteLine("\n==========================================");
+      Console.WriteLine("ЭТАП 3: НАВЫКИ");
+      Console.WriteLine("==========================================\n");
 
-      interface ICanUseSkill {
-            void UseSkill(Skill skill, Archetype target);
-      }
+      // SoulLink — уравнивает HP между героями
+      Console.WriteLine("--- SoulLink ---");
+      Console.WriteLine("До: " + lancelot.GetInfo());
+      Console.WriteLine("До: " + artur.GetInfo());
+      Skill soulLink = new SoulLink();
+      lancelot.UseSkill(soulLink, artur);
+      Console.WriteLine("После: " + lancelot.GetInfo());
+      Console.WriteLine("После: " + artur.GetInfo() + "\n");
+
+      // Taunt — снижает крит-шанс противника на 50%
+      Console.WriteLine("--- Taunt ---");
+      Console.WriteLine("До: " + berserk.GetInfo());
+      Taunt taunt = new Taunt();
+      lancelot.UseSkill(taunt, berserk);
+      Console.WriteLine("После Taunt: " + berserk.GetInfo());
+      taunt.Restore(berserk);
+      Console.WriteLine("После восстановления: " + berserk.GetInfo() + "\n");
+
+      // DramaAction — случайный эффект (может переименовать или вывести фразу)
+      Console.WriteLine("--- DramaAction (x3 броска) ---");
+      Skill drama = new DramaAction();
+      artur.UseSkill(drama, lancelot);
+      artur.UseSkill(drama, lancelot);
+      artur.UseSkill(drama, lancelot);
+
       Console.ReadKey();
     }
   }
