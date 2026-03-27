@@ -9,6 +9,7 @@ namespace BoringRPG {
     private static Random random = new Random();
 
     public CoinOfFate() : base("CoinOfFate") { }
+    string result = $"\n{caster.Name} использует {Name} на {target.Name}!";
 
     public override void Use(Archetype caster, Archetype target) {
       Console.WriteLine($"\n{caster.Name} использует {Name} на {target.Name}!");
@@ -17,10 +18,10 @@ namespace BoringRPG {
 
       if (chance < 30) { 
         target.HP = 0;
-        Console.WriteLine($" Несчастный случай! {target.Name} погибает!");
+        result += $"\nНесчастный случай! {target.Name} погибает!";
       } else if (chance < 60) { 
         caster.HP = 0;
-         Console.WriteLine($"Судьба жестока! {caster.Name} погибает!");
+        result += $"\nСудьба жестока! {caster.Name} погибает!";
       } else { 
         Console.WriteLine($"Ничего не произошло. Повезло!");
       }

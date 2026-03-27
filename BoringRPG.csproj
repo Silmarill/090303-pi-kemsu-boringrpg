@@ -59,18 +59,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Archetype.cs" />
-    <Compile Include="BugPotion.cs" />
-    <Compile Include="CoinOfFate.cs" />
+    <Compile Include="Utils\BugPotion.cs" />
+    <Compile Include="Utils\CoinOfFate.cs" />
     <Compile Include="ConsumableItem.cs" />
-    <Compile Include="DramaAction.cs" />
+    <Compile Include="Utils\DramaAction.cs" />
     <Compile Include="DummyClass.cs" />
-    <Compile Include="HealthPotion.cs" />
-    <Compile Include="ICanUseSkill.cs" />
-    <Compile Include="ManaPotion.cs" />
+    <Compile Include="Utils\HealthPotion.cs" />
+    <Compile Include="Utils\ICanUseSkill.cs" />
+    <Compile Include="Utils\ManaPotion.cs" />
     <Compile Include="Necromancer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Skill.cs" />
+    <Compile Include="Utils\Skill.cs" />
     <Compile Include="SoulLink.cs" />
   </ItemGroup>
   <ItemGroup>

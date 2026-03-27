@@ -9,7 +9,7 @@ namespace BoringRPG {
     public string Name;
     
     public Skill(string name) {
-            Name = name;
+      Name = name;
     }
     public abstract void Use(Archetype caster, Archetype target); 
   }
