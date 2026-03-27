@@ -62,10 +62,10 @@
     <Compile Include="Archer.cs" />
     <Compile Include="Archetype.cs" />
     <Compile Include="ConsumableItem.cs" />
-    <Compile Include="DramaAction.cs" />
+    <Compile Include="Skills\DramaAction.cs" />
     <Compile Include="DummyClass.cs" />
     <Compile Include="Consumable\HealthPotion.cs" />
-    <Compile Include="ICanUseSkill.cs" />
+    <Compile Include="Skills\ICanUseSkill.cs" />
     <Compile Include="Consumable\LitEnergy.cs" />
     <Compile Include="Skills\ManaDrain.cs" />
     <Compile Include="Consumable\ManaPotion.cs" />

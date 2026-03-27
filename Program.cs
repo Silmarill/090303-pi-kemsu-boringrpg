@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Xml.Linq;
 
 namespace BoringRPG {
   internal class Program {
@@ -28,6 +29,7 @@ namespace BoringRPG {
 
 			Console.WriteLine("\n=== Используем SoulLink ===");
 			lancelot.Use(soulLink, artur);
+			Console.WriteLine($"{lancelot.Name} использует {soulLink.Name}: Теперь у {lancelot.Name} {lancelot.HP} HP, у {artur.Name} {artur.HP} HP.");
 
 			Console.WriteLine("\n=== Использует ManaDrain ===");
 			artur.Use(manaDrain, lancelot);
