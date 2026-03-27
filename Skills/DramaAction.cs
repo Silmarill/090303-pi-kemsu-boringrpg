@@ -20,23 +20,23 @@ namespace BoringRPG {
         caster.Name = target.Name;
         target.Name = tempName;
 
-        result += "КРИТИЧЕСКАЯ ДРАМА! Герои обменялись именами!";
+        result += "КРИТИЧЕСКАЯ ДРАМА! Герои обменялись именами!\n";
       }
       // 30% переименование цели
       else if (roll <= 30) {
         target.Name = "Тролль-" + target.Name;
-        result += $"Враг затроллен! Теперь он {target.Name}.";
+        result += $"Враг затроллен! Теперь он {target.Name}.\n";
       }
 
       // 30% переименование заклинателя
       else if (roll <= 60) {
         caster.Name = "Вонючка-" + caster.Name;
-        result += $"Кастер попытался затроллить {target.Name}, но у него... Флип-карта??? Заклинатель теперь называется {caster.Name}.";
+        result += $"Кастер попытался затроллить {target.Name}, но у него... Флип-карта??? Заклинатель теперь называется {caster.Name}.\n";
       }
 
       // 39% ничего не происходит
       else {
-        result += $"[{caster.Name}] столкнулся с 'Техническими шоколадками'";
+        result += $"[{caster.Name}] столкнулся с 'Техническими шоколадками'.\n";
       }
 
       return result;

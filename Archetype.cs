@@ -34,7 +34,7 @@
     }
 
     // Абстрактный метод для нанесения удара по цели
-    public abstract void Hit(Archetype target);
+    public abstract string Hit(Archetype target);
     // Абстрактный метод для получения информации о персонаже
     public abstract string GetInfo();
   }

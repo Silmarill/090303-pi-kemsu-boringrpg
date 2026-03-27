@@ -13,22 +13,22 @@ namespace BoringRPG {
 
     // Логика навыка
     public override string Use(Archetype caster, Archetype target) {
-      string result = $"\n[{caster.Name}] подкидывает {Name}...";
+      string result = $"\n[{caster.Name}] подкидывает {Name}...\n";
       int roll = random.Next(1, 101);
 
       // 30% - Враг умирает
       if (roll <= 30) {
         target.HP = 0;
-        result += $"Решка! [{target.Name}] мгновенно умирает!";
+        result += $"Решка! [{target.Name}] мгновенно умирает!\n";
       }
       // 60% - Заклинатель умирает
       else if (roll <= 60) {
         caster.HP = 0;
-        result += $"Орёл! [{caster.Name}] мгновенно умирает!";
+        result += $"Орёл! [{caster.Name}] мгновенно умирает!\n";
       }
       // 30% - Ничего не происходит (на самом деле, это выглядит очень неожиданно)
       else {
-        result += $"{Name} упала на ребро. Ничего не случилось, но все удивлены...";
+        result += $"{Name} упала на ребро. Ничего не случилось, но все удивлены...\n";
       }
 
       return result;

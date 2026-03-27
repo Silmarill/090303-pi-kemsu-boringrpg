@@ -64,7 +64,6 @@
     <Compile Include="Necromancer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Items\StandardItems.cs" />
     <Compile Include="Skills\CoinOfFate.cs" />
     <Compile Include="Skills\DramaAction.cs" />
     <Compile Include="Skills\ICanUseSkill.cs" />

@@ -21,7 +21,8 @@ namespace BoringRPG {
       return skill.Use(this, target);
     }
 
-    public override void Hit(Archetype target) {
+    public override string Hit(Archetype target) {
+      string result = "";
       int damage = Damage;
 
       // Метод NextDouble() - Возвращает вещественное число в диапазоне от 0.0 до 1.0
@@ -30,14 +31,19 @@ namespace BoringRPG {
       // Если удар критический, то наносится двойной урон
       if (LastHitWasCrit) {
         damage *= 2;
+        result = $"КРИТИЧЕСКИЙ УДАР! {Name} влетает с двух ног и наносит {damage} урона по {target.Name}!\n";
+      } else {
+        result = $"{Name} наносит стандартный удар: {damage} урона по {target.Name}.\n";
       }
 
       target.HP -= damage;
+
+      return result;
     }
 
     // Переопределение метода GetInfo для отображения информации о персонаже
     public override string GetInfo() {
-      return $"{Name} (Груша): Здоровье {HP}, Мана {MP}, Аммуниция {Ammo}, Шанс крита {CritChance * 100}%";
+      return $"{Name} (Груша): Здоровье {HP}, Мана {MP}, Аммуниция {Ammo}, Шанс крита {CritChance * 100}%.\n";
     }
   }
 }

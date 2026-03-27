@@ -44,7 +44,8 @@ namespace BoringRPG {
       return hero;
     }
 
-    public override void Hit(Archetype target) {
+    public override string Hit(Archetype target) {
+      string result = "";
       // Если маны достаточно для использования навыка, то условие выполняется
       if (MP >= 15) {
         MP -= 15;
@@ -58,19 +59,21 @@ namespace BoringRPG {
         // Если урон нанесён, призыв нового скелета (+5 к следующему инстансу)
         if (target.HP < hpBefore) {
           skeletonBonus += 5;
-          Console.WriteLine($"{Name} бьёт магией! Был вызван скелет..");
+          result += $"{Name} бьёт магией! Был вызван скелет...\n";
         }
       }
       // Если маны мало, она наносит обычный урон
       else {
         target.HP -= Damage;
-        Console.WriteLine($"{Name}: Маны недостаточно! Удары стандартным посохом.");
+        result += $"{Name}: Маны недостаточно! Удары стандартным посохом.\n";
       }
+
+      return result;
     }
 
     // Переопределение GetInfo для отображения информации о герое
     public override string GetInfo() {
-      return $"{Name} (Necromancer): HP {HP}, MP {MP}, Скелетный бонус +{skeletonBonus}, Текущий магический урон {Damage + skeletonBonus}";
+      return $"{Name} (Necromancer): HP {HP}, MP {MP}, Скелетный бонус +{skeletonBonus}, Текущий магический урон {Damage + skeletonBonus}.\n";
     }
   }
 }
