@@ -1,7 +1,8 @@
 ﻿using System;
+using BoringRPG.Models;
 
-namespace BoringRPG {
+namespace BoringRPG.Skills {
   public interface ICanUseSkill {
-    void UseSkill(Skill skill, Archetype target);
+    string UseSkill(Skill skill, Archetype target);
   }
 }

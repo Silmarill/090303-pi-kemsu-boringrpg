@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BoringRPG {
+namespace BoringRPG.Items {
   public abstract class ConsumableItem {
     public int Value;
 

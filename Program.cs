@@ -1,5 +1,7 @@
 ﻿using System;
-using BoringRPG;
+using BoringRPG.Models;
+using BoringRPG.Items;
+using BoringRPG.Skills;
 
 namespace BoringRPG {
   public class Program {
@@ -8,6 +10,7 @@ namespace BoringRPG {
       string critText;
       int beforeHP;
       int damage;
+      string skillResult;
 
       int maxRounds;
       int healthPotionValue;
@@ -20,7 +23,8 @@ namespace BoringRPG {
       int damageAmount;
       int soulLinkHp1;
       int soulLinkHp2;
-      int tauntCritMultiplier;
+      int critMultiplier;
+      int dramaActionRepeatCount;
 
       Monk shiYan;
       Monk jackieChan;
@@ -36,7 +40,8 @@ namespace BoringRPG {
       damageAmount = 5;
       soulLinkHp1 = 80;
       soulLinkHp2 = 20;
-      tauntCritMultiplier = 100;
+      critMultiplier = 100;
+      dramaActionRepeatCount = 3;
 
       shiYan = new Monk("Ши Янь");
       jackieChan = new Monk("Джеки Чан");
@@ -46,9 +51,9 @@ namespace BoringRPG {
                         $"{shiYan.GetInfo()}\n" +
                         $"{jackieChan.GetInfo()}\n");
 
-      for (int index = 1; index <= maxRounds; ++index)
+      for (int roundIndex = 1; roundIndex <= maxRounds; ++roundIndex)
       {
-        Console.WriteLine($"\n--- Раунд {index} ---");
+        Console.WriteLine($"\n--- Раунд {roundIndex} ---");
         Console.WriteLine($"{shiYan.Name} атакует {jackieChan.Name}!");
 
         beforeHP = jackieChan.HP;
@@ -117,18 +122,23 @@ namespace BoringRPG {
       shiYan.HP = soulLinkHp1;
       jackieChan.HP = soulLinkHp2;
       Console.WriteLine($"До использования: {shiYan.Name} HP = {shiYan.HP}, {jackieChan.Name} HP = {jackieChan.HP}");
-      shiYan.UseSkill(soulLinkSkill, jackieChan);
+      skillResult = shiYan.UseSkill(soulLinkSkill, jackieChan);
+      Console.WriteLine(skillResult);
       Console.WriteLine($"После использования: {shiYan.Name} HP = {shiYan.HP}, {jackieChan.Name} HP = {jackieChan.HP}");
 
       Console.WriteLine("\n--- Применяем навык Taunt ---");
-      Console.WriteLine($"До использования: Шанс крита {jackieChan.Name} = {jackieChan.CritChance * tauntCritMultiplier}%");
-      shiYan.UseSkill(tauntSkill, jackieChan);
-      Console.WriteLine($"После использования: Шанс крита {jackieChan.Name} = {jackieChan.CritChance * tauntCritMultiplier}%");
+      Console.WriteLine($"До использования: Шанс крита {jackieChan.Name} = {jackieChan.CritChance * critMultiplier}%");
+      skillResult = shiYan.UseSkill(tauntSkill, jackieChan);
+      Console.WriteLine(skillResult);
+      Console.WriteLine($"После использования: Шанс крита {jackieChan.Name} = {jackieChan.CritChance * critMultiplier}%");
 
       Console.WriteLine("\n--- Применяем навык Drama Action (несколько раз) ---");
-      jackieChan.UseSkill(dramaSkill, shiYan);
-      jackieChan.UseSkill(dramaSkill, shiYan);
-      jackieChan.UseSkill(dramaSkill, shiYan);
+
+      for (int actionIndex = 0; actionIndex < dramaActionRepeatCount; ++actionIndex)
+      {
+        skillResult = jackieChan.UseSkill(dramaSkill, shiYan);
+        Console.WriteLine(skillResult);
+      }
 
       Console.WriteLine("\nФинальное состояние после навыков:");
       Console.WriteLine(shiYan.GetInfo());

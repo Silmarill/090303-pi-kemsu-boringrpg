@@ -1,6 +1,8 @@
 ﻿using System;
+using BoringRPG.Models;
+using BoringRPG.Items;
 
-namespace BoringRPG {
+namespace BoringRPG.Models {
   public class Monk : Archetype {
     public bool LastHitWasCrit;
 

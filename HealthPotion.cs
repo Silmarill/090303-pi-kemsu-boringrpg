@@ -1,7 +1,9 @@
 ﻿using System;
 
-namespace BoringRPG {
+namespace BoringRPG.Items {
   public class HealthPotion : ConsumableItem {
-    public HealthPotion(int value) : base(value) { }
+    public HealthPotion(int value) : base(value)
+    {
+    }
   }
 }

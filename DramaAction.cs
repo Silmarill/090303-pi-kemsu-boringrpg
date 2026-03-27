@@ -1,6 +1,7 @@
 ﻿using System;
+using BoringRPG.Models;
 
-namespace BoringRPG {
+namespace BoringRPG.Skills {
   public class DramaAction : Skill {
     public int RenameTargetChance;
     public int RenameSelfChance;
@@ -26,13 +27,12 @@ namespace BoringRPG {
       RandomGenerator = new Random();
     }
 
-    public override void Use(Archetype caster, Archetype target)
+    public override string Use(Archetype caster, Archetype target)
     {
       int randomValue;
+      string result;
 
       randomValue = RandomGenerator.Next(MinRandomValue, MaxRandomValue);
-
-      Console.WriteLine($"{caster.Name} использует {Name}!");
 
       if (randomValue <= RenameTargetChance)
       {
@@ -40,7 +40,7 @@ namespace BoringRPG {
 
         oldName = target.Name;
         target.Name = DefeatedLegendary;
-        Console.WriteLine($"Драматичный поворот! {oldName} теперь называется '{target.Name}'!");
+        result = $"{caster.Name} использует {Name}!\nДраматичный поворот! {oldName} теперь называется '{target.Name}'!";
       }
       else if (randomValue <= RenameTargetChance + RenameSelfChance)
       {
@@ -48,12 +48,14 @@ namespace BoringRPG {
 
         oldName = caster.Name;
         caster.Name = LegendaryDefeated;
-        Console.WriteLine($"Драматичный поворот! {oldName} теперь называется '{caster.Name}'!");
+        result = $"{caster.Name} использует {Name}!\nДраматичный поворот! {oldName} теперь называется '{caster.Name}'!";
       }
       else
       {
-        Console.WriteLine($"{caster.Name} дарит розу {target.Name}. Как восхетительно!");
+        result = $"{caster.Name} использует {Name}!\n{caster.Name} дарит розу {target.Name}. Как мило!";
       }
+
+      return result;
     }
   }
 }

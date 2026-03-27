@@ -1,9 +1,9 @@
 ﻿using System;
+using BoringRPG.Models;
 
-namespace BoringRPG {
+namespace BoringRPG.Skills {
   public abstract class Skill {
     public string Name;
-
-    public abstract void Use(Archetype caster, Archetype target);
+    public abstract string Use(Archetype caster, Archetype target);
   }
 }

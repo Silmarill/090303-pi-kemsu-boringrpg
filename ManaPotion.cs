@@ -1,7 +1,9 @@
 ﻿using System;
 
-namespace BoringRPG {
+namespace BoringRPG.Items {
   public class ManaPotion : ConsumableItem {
-    public ManaPotion(int value) : base(value) { }
+    public ManaPotion(int value) : base(value)
+    {
+    }
   }
 }

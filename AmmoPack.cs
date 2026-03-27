@@ -1,7 +1,9 @@
 ﻿using System;
 
-namespace BoringRPG {
+namespace BoringRPG.Items {
   public class AmmoPack : ConsumableItem {
-    public AmmoPack(int value) : base(value) { }
+    public AmmoPack(int value) : base(value)
+    {
+    }
   }
 }

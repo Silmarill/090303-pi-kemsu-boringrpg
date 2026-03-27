@@ -1,7 +1,9 @@
 ﻿using System;
 
-namespace BoringRPG {
+namespace BoringRPG.Items {
   public class FatBread : ConsumableItem {
-    public FatBread(int value) : base(value) { }
+    public FatBread(int value) : base(value)
+    {
+    }
   }
 }

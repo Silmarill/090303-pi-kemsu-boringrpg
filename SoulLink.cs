@@ -1,6 +1,7 @@
 ﻿using System;
+using BoringRPG.Models;
 
-namespace BoringRPG {
+namespace BoringRPG.Skills {
   public class SoulLink : Skill {
     public int HealthDivider;
 
@@ -10,7 +11,7 @@ namespace BoringRPG {
       HealthDivider = 2;
     }
 
-    public override void Use(Archetype caster, Archetype target)
+    public override string Use(Archetype caster, Archetype target)
     {
       int totalHealth;
       int newHealth;
@@ -21,8 +22,7 @@ namespace BoringRPG {
       caster.HP = newHealth;
       target.HP = newHealth;
 
-      Console.WriteLine($"{caster.Name} использует {Name}!");
-      Console.WriteLine($"Здоровье {caster.Name} и {target.Name} стало одинаковым: {newHealth} HP.");
+      return $"{caster.Name} использует {Name}!\nЗдоровье {caster.Name} и {target.Name} стало одинаковым: {newHealth} HP.";
     }
   }
 }
