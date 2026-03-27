@@ -8,7 +8,6 @@ namespace BoringRPG {
   class  GiveUp : Skill {
     
     public override void Use(Archetype caster, Archetype target) {
-      Console.WriteLine($"{caster.Name} сдаётся с позором");
       caster.HP -= caster.HP;
     }
   }

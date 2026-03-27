@@ -36,14 +36,17 @@ namespace BoringRPG {
 
       Console.WriteLine($"Чтобы не проиграть, Торфин использует способность SoulLink и уравнивает своё хп с хп противника\n");
       torfin.UseSkill(soulLink, killer);
+      Console.WriteLine($"Торфин Использует SoulLink на скрытный убийца");
       Console.WriteLine();
 
       Console.WriteLine($"Торфина решил, что раз ему не нужна мана, то и его сопернику она ни к чему, поэтому применил ManaDrain");
       torfin.UseSkill(manaDrain, killer);
+      Console.WriteLine($"Торфин Использует ManaDrain на скрытный убийца");
       Console.WriteLine();
 
       Console.WriteLine($"Даже когда у Торфина преимущество он не уверен в своей победе, а потому решает избрать самый безопасный способ окончания битвы и использует свой коронный приём GiveUp");
       torfin.UseSkill(giveUp, torfin);
+      Console.WriteLine($"Торфин сдаётся с позором");
       Console.WriteLine();
       
       Console.WriteLine("ИТОГОВОЕ СОСТОЯНИЕ:");
