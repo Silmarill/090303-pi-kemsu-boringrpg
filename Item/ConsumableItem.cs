@@ -4,7 +4,7 @@ namespace BoringRPG
 {
   internal abstract class ConsumableItem
   {
-    public int Value { get; set; }
+    public int Value;
   
     public ConsumableItem(int value)
     {
