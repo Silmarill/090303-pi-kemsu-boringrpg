@@ -58,7 +58,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ICanUseSkill.cs" />
+    <Compile Include="Skills\ICanUseSkill.cs" />
     <Compile Include="Items\AmmoPack.cs" />
     <Compile Include="Archetype.cs" />
     <Compile Include="Bersercer.cs" />
@@ -70,7 +70,7 @@
     <Compile Include="Skills\LastStand.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Skill.cs" />
+    <Compile Include="Skills\Skill.cs" />
     <Compile Include="Skills\SoulLink.cs" />
     <Compile Include="Skills\Taunt.cs" />
   </ItemGroup>

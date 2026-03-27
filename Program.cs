@@ -68,16 +68,19 @@ namespace BoringRPG {
 
       Skill lastStand = new LastStand();
       berserker.UseSkill(lastStand, target);
+      Console.WriteLine($"{berserker.Name} использует LastStand! HP = урону противника + 1 ({berserker.HP:F1} HP).");
 
       Console.WriteLine(berserker.GetInfo());
 
       Skill soulLink = new SoulLink();
       berserker.UseSkill(soulLink, target);
+      Console.WriteLine($"{berserker.Name} связывает души с {target.Name}!");
       Console.WriteLine(berserker.GetInfo());
       Console.WriteLine(target.GetInfo());
 
       Skill taunt = new Taunt();
       berserker.UseSkill(taunt, target);
+      Console.WriteLine($"{berserker.Name} насмехается над {target.Name}! Критический шанс {target.Name} уменьшен с до {target.CritChance:P0}.");
       Console.WriteLine(berserker.GetInfo());
       Console.WriteLine(target.GetInfo());
 

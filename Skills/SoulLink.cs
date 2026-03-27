@@ -12,8 +12,6 @@ namespace BoringRPG {
 
       caster.HP = newHp;
       target.HP = newHp;
-
-      Console.WriteLine($"{caster.Name} связывает души с {target.Name}! У обоих теперь {newHp:F1} HP.");
     }
   }
 }
