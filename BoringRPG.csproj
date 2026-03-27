@@ -59,7 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Archetype.cs" />
-    <Compile Include="ICanUseSkille.cs" />
+    <Compile Include="Skills\ICanUseSkill.cs" />
     <Compile Include="items\ConsumableItem.cs" />
     <Compile Include="Druid.cs" />
     <Compile Include="DummyClass.cs" />
