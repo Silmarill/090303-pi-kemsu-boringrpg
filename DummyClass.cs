@@ -15,8 +15,8 @@ namespace BoringRPG {
     }
 
     // ICanUseSkill interface realisation
-    public void UseSkill(Skill skill, Archetype target) {
-      skill.Use(this, target);
+    public string UseSkill(Skill skill, Archetype target) {
+      return skill.Use(this, target);
     }
 
     public override void Hit(Archetype target) {

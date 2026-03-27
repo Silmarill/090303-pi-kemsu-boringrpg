@@ -12,24 +12,26 @@ namespace BoringRPG {
     }
 
     // Skill logic
-    public override void Use(Archetype caster, Archetype target) {
-      Console.WriteLine($"\n[{caster.Name}] flip {Name}...");
+    public override string Use(Archetype caster, Archetype target) {
+      string result = $"\n[{caster.Name}] flip {Name}...";
       int roll = random.Next(1, 101);
 
       // 30% - Enemy dies
       if (roll <= 30) {
         target.HP = 0;
-        Console.WriteLine($"Tails! [{target.Name}] dies instantly!");
+        result += $"Tails! [{target.Name}] dies instantly!";
       }
       // 60% - Caster dies
       else if (roll <= 60) {
         caster.HP = 0;
-        Console.WriteLine($"Eagle! [{caster.Name}] dies instantly!");
+        result += $"Eagle! [{caster.Name}] dies instantly!";
       }
       // 30% - Nothing happens (actually, in reality, that would look very surprising)
       else {
-        Console.WriteLine($"The coin landed on its edge. Nothing happened.");
+        result += $"The coin landed on its edge. Nothing happened.";
       }
+
+      return result;
     }
   }
 }

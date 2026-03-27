@@ -4,36 +4,39 @@ using System;
 namespace BoringRPG {
   internal class Program {
     static void Main(string[] args) {
-      var artur = new Necromancer("Artur");
-      var dummy = new DummyClass("Dummy");
+      var artur = new Necromancer("Артур");
+      var dummy = new DummyClass("Груша");
 
-      Console.WriteLine("Before Fight\n" +
+      Console.WriteLine("Перед боем\n" +
         $"{artur.GetInfo()}\n" +
         $"{dummy.GetInfo()}\n"
         );
 
-      Console.WriteLine("!!! FIGHT !!! >:)\n");
+      Console.WriteLine("!!! Бой !!! >:)\n");
 
-      // Init skills
+      // Инициализация навыков
       Skill soulLink = new SoulLink();
       Skill drama = new DramaAction();
       Skill coin = new CoinOfFate();
 
-      // SoulLink
-      artur.UseSkill(soulLink, dummy);
+      // Связь душ
+      Console.WriteLine(artur.UseSkill(soulLink, dummy));
+      Console.WriteLine("--------------------------------");
 
-      // DramaAction
-      dummy.UseSkill(drama, artur);
+      // Драма
+      Console.WriteLine(dummy.UseSkill(drama, artur));
+      Console.WriteLine("--------------------------------");
 
-      // CoinOfFate
-      artur.UseSkill(coin, dummy);
+      // Монета судьбы
+      Console.WriteLine(artur.UseSkill(coin, dummy));
+      Console.WriteLine("--------------------------------");
 
-      Console.WriteLine("\nAfter skill using\n\n" +
+      Console.WriteLine("\nПосле использования навыка\n\n" +
       $"{artur.GetInfo()}\n" +
       $"{dummy.GetInfo()}\n"
       );
 
-      Console.WriteLine("Test is over. Press any button...");
+      Console.WriteLine("Тест окончен. Нажмите любую кнопку...");
       Console.ReadKey();
     }
   }

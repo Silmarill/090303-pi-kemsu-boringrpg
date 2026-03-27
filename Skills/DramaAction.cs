@@ -9,8 +9,8 @@ namespace BoringRPG {
       Name = "Drama Action";
     }
 
-    public override void Use(Archetype caster, Archetype target) {
-      Console.WriteLine($"\n[{caster.Name}] cast {Name}!");
+    public override string Use(Archetype caster, Archetype target) {
+      string result = $"[{caster.Name}] кастует {Name}!\n";
       int roll = random.Next(1, 101);
 
       // Swap names with a 1% chance
@@ -18,24 +18,27 @@ namespace BoringRPG {
         string tempName = caster.Name;
         caster.Name = target.Name;
         target.Name = tempName;
-        Console.WriteLine("NO WAY! The characters mixed up their roles and swapped names!");
+
+        result += "КРИТИЧЕСКАЯ ДРАМА! Герои обменялись именами!";
       }
       // 30% rename target
       else if (roll <= 30) {
         target.Name = "Trolled " + target.Name;
-        Console.WriteLine($"The enemy trolled! Now he is called {target.Name}. XD");
+        result += $"Враг затроллен! Теперь он {target.Name}.";
       }
 
       // 30% rename caster
       else if (roll <= 60) {
         caster.Name = "Bruh " + caster.Name;
-        Console.WriteLine($"Caster tried to troll {target.Name}, but the target had a... Flip-card??? The caster is now named {caster.Name}.");
+        result += $"Caster tried to troll {target.Name}, but the target had a... Flip-card??? The caster is now named {caster.Name}.";
       }
 
       // 39% Show message
       else {
-        Console.WriteLine($"\n[{caster.Name}] got 'Технические шоколадки'. [{target.Name}] confused.");
+        result += $"[{caster.Name}] столкнулся с 'Техническими шоколадками'";
       }
+
+      return result;
     }
   }
 }

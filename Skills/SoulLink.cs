@@ -7,17 +7,20 @@ namespace BoringRPG.Skills {
     }
 
     // This skill links the life forces of the caster and the target, equalizing their HP
-    public override void Use(Archetype caster, Archetype target) {
-      Console.WriteLine($"\n[{caster.Name}] use {Name} on [{target.Name}]!");
+    public override string Use(Archetype caster, Archetype target) {
+      string result = $"\n[{caster.Name}] use {Name} on [{target.Name}]!";
+      int totalHP;
 
       // Calculate the average HP and set it for both caster and target
-      int totalHP = caster.HP + target.HP;
+      totalHP = caster.HP + target.HP;
 
       // If either HP is zero, we can't link souls, so we just return
       caster.HP = totalHP / 2;
       target.HP = totalHP / 2;
 
-      Console.WriteLine($"Life forces equalized! Now both have {caster.HP} HP.");
+      result += $"Life forces equalized! Now both have {caster.HP} HP.";
+
+      return result;
     }
   }
 }
