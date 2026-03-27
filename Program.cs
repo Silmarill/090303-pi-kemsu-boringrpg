@@ -38,12 +38,7 @@ namespace BoringRPG {
                         lancelot.GetInfo() + "\n" +
                         berserk.GetInfo() + "\n");
 
-      // ======================================================
-      // ЭТАП 2: Демонстрация расходников
-      // ======================================================
-      Console.WriteLine("\n==========================================");
-      Console.WriteLine("ПРИВАЛ. Время расходников.");
-      Console.WriteLine("==========================================\n");
+      Console.WriteLine("ЭТАП 2: РАСХОДНИКИ");
 
       Archetype target;
 
@@ -68,14 +63,9 @@ namespace BoringRPG {
       Console.WriteLine("После CoffeeCup(3): " + lancelot.GetInfo());
       Console.WriteLine("(тройной эспрессо. Руки дрожат, но крит-шанс утроен.)\n");
 
-      // ======================================================
-      // ЭТАП 3: Демонстрация навыков
-      // ======================================================
-      Console.WriteLine("\n==========================================");
       Console.WriteLine("ЭТАП 3: НАВЫКИ");
-      Console.WriteLine("==========================================\n");
 
-      // SoulLink — уравнивает HP между героями
+      // SoulLink: уравнивает HP между героями
       Console.WriteLine("--- SoulLink ---");
       Console.WriteLine("До: " + lancelot.GetInfo());
       Console.WriteLine("До: " + artur.GetInfo());
@@ -84,7 +74,7 @@ namespace BoringRPG {
       Console.WriteLine("После: " + lancelot.GetInfo());
       Console.WriteLine("После: " + artur.GetInfo() + "\n");
 
-      // Taunt — снижает крит-шанс противника на 50%
+      // Taunt: снижает крит-шанс противника на 50%
       Console.WriteLine("--- Taunt ---");
       Console.WriteLine("До: " + berserk.GetInfo());
       Taunt taunt = new Taunt();
@@ -93,7 +83,7 @@ namespace BoringRPG {
       taunt.Restore(berserk);
       Console.WriteLine("После восстановления: " + berserk.GetInfo() + "\n");
 
-      // DramaAction — случайный эффект (может переименовать или вывести фразу)
+      // DramaAction: случайный эффект
       Console.WriteLine("--- DramaAction (x3 броска) ---");
       Skill drama = new DramaAction();
       artur.UseSkill(drama, lancelot);
