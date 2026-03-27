@@ -17,7 +17,7 @@ namespace BoringRPG {
     public override void Hit(Archetype target) {
       int damage = Damage;
       
-      // Метод NextDouble() - возвращает double в диапазоне [0.0; 1.0)
+      // Метод NextDouble() возвращает double в диапазоне [0.0; 1.0)
       LastHitWasCrit = random.NextDouble() < CritChance;
       
       if (LastHitWasCrit) {
