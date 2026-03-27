@@ -6,7 +6,7 @@
       Value = value;
     }
 
-    // A method that will modify the characteristics of a specific hero
+    // Метод, который изменяет характеристики конкретного героя
     public abstract void Apply(Archetype hero);
   }
 }
