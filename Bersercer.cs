@@ -72,31 +72,6 @@ namespace BoringRPG {
       return berserker;
     }
 
-    public static Berserker operator ++(Berserker berserker) {
-      int effect = random.Next(1, 5);
-
-      switch (effect) {
-        case 1:
-          berserker.HP += 20;
-          Console.WriteLine($"{berserker.Name} получил баг: +20 HP!\n");
-          break;
-        case 2:
-          berserker.Damage += 10;
-          Console.WriteLine($"{berserker.Name} получил баг: +10 к урону!\n");
-          break;
-        case 3:
-          berserker.HP -= 15;
-          Console.WriteLine($"{berserker.Name} получил баг: -15 HP!\n");
-          break;
-        case 4:
-          berserker.CritChance += 0.1;
-          Console.WriteLine($"{berserker.Name} получил баг: +10% к шансу крита!\n");
-          break;
-      }
-
-      return berserker;
-    }
-
     public override string GetInfo() {
       return $"{Name} (Berserker): HP {HP}, MP {MP}, Ammo {Ammo}, Crit Chance {CritChance * 100}%\n";
     }
