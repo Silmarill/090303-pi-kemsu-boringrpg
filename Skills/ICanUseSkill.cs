@@ -1,4 +1,4 @@
-﻿// An interface, that will allow heroes to use skills
+﻿// Интерфейс, позволяющий героям использовать навыки
 namespace BoringRPG {
   internal interface ICanUseSkill {
     string UseSkill(Skill skill, Archetype target);

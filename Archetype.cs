@@ -17,15 +17,15 @@
       CritChance = crit;
     }
 
-    // Overload the + operator for applying any ConsumableItem
+    // Перегрузка оператора + для применение любого ConsumableItem
     public static Archetype operator +(Archetype hero, ConsumableItem item) {
       item.Apply(hero);
       return hero;
     }
 
     /*
-    Insane Item: Coffee. Multiplies critical hit chance, but drains HP
-    The * operator is used here, as this represents an amplification rather than a simple addition
+      Безумный предмет: кофе. Умножает шанс критического попадания, но истощает здоровье
+      Здесь используется оператор *, так как он представляет собой усиление, а не простое сложение
     */
     public static Archetype operator *(Archetype hero, double caffeineLevel) {
       hero.CritChance *= caffeineLevel;
@@ -33,7 +33,9 @@
       return hero;
     }
 
+    // Абстрактный метод для нанесения удара по цели
     public abstract void Hit(Archetype target);
+    // Абстрактный метод для получения информации о персонаже
     public abstract string GetInfo();
   }
 

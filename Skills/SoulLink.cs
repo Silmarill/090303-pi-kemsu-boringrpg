@@ -3,22 +3,22 @@
 namespace BoringRPG.Skills {
   internal class SoulLink : Skill {
     public SoulLink() {
-      Name = "Soul Link";
+      Name = "Связь душ";
     }
 
-    // This skill links the life forces of the caster and the target, equalizing their HP
+    // Этот навык связывает жизненные силы заклинателя и цели, уравняя их Здоровья
     public override string Use(Archetype caster, Archetype target) {
-      string result = $"\n[{caster.Name}] use {Name} on [{target.Name}]!";
+      string result = $"\n[{caster.Name}] использует {Name} на [{target.Name}]!";
       int totalHP;
 
-      // Calculate the average HP and set it for both caster and target
+      // Рассчёт среднего Здоровья и присвоение его для заклинателя и цели
       totalHP = caster.HP + target.HP;
 
-      // If either HP is zero, we can't link souls, so we just return
+      // Если Здоровье у любого из героев равен нулю, Связь душ не сработает
       caster.HP = totalHP / 2;
       target.HP = totalHP / 2;
 
-      result += $"Life forces equalized! Now both have {caster.HP} HP.";
+      result += $"Жизненные силы уравнялись! Теперь у обоих героев по {caster.HP} Здоровья.";
 
       return result;
     }

@@ -3,73 +3,74 @@
 namespace BoringRPG {
   internal class Necromancer : Archetype, ICanUseSkill {
 
-    // Field for storing the bonus from skeletons
+    // Поле для хранения бонуса от скелетов
     private int skeletonBonus = 0;
 
     public Necromancer(string name) : base(name, 55, 90, 0, 30, 0.1) {
     }
 
-    // ICanUseSkill interface realisation
-    public void UseSkill(Skill skill, Archetype target) {
+    // Реализация интерфейса ICanUseSkill
+    public string UseSkill(Skill skill, Archetype target) {
 
-      // Use the skill
-      skill.Use(this, target);
+      // Использование навыка
+      return skill.Use(this, target);
     }
 
-    // Overload "!"
+    // Перегрузка "!"
     public static bool operator !(Necromancer hero) {
-      // true (dead), if HP <= 0
+      // true (смерть), если Здоровье <= 0
       return hero.HP <= 0;
     }
 
-    // Does hero alive? (HP > 0)
+    // Герой жив? (Здоровья > 0)
     public static bool operator true(Necromancer hero) {
       return hero.HP > 0;
     }
 
-    // Does hero dead (HP <= 0)
+    // Герой мёртв? (Здоровья <= 0)
     public static bool operator false(Necromancer hero) {
       return hero.HP <= 0;
     }
 
-    // Overload (+ HP)
+    // Перегрузка (+ Здоровье)
     public static Necromancer operator +(Necromancer hero, int amount) {
       hero.HP += amount;
       return hero;
     }
 
-    // Overload (- HP)
+    // Перегрузка (- Здоровье)
     public static Necromancer operator -(Necromancer hero, int amount) {
       hero.HP -= amount;
       return hero;
     }
 
     public override void Hit(Archetype target) {
-      // If mana is enough
+      // Если маны достаточно для использования навыка, то условие выполняется
       if (MP >= 15) {
         MP -= 15;
 
-        // Damage = default damage + bonus from skeletons
+        // Урон = стандартный урон + бонус от скелетов
         int currentDamage = Damage + skeletonBonus;
         int hpBefore = target.HP;
 
         target.HP -= currentDamage;
 
-        // If damage is dealt, summon a new skeleton (+5 to the next instance)
+        // Если урон нанесён, призыв нового скелета (+5 к следующему инстансу)
         if (target.HP < hpBefore) {
           skeletonBonus += 5;
-          Console.WriteLine($"{Name} strikes with magic! A skeleton has been summoned..");
+          Console.WriteLine($"{Name} бьёт магией! Был вызван скелет..");
         }
       }
-      // If mana is low, it deals normal damage
+      // Если маны мало, она наносит обычный урон
       else {
         target.HP -= Damage;
-        Console.WriteLine($"{Name}: Not enough mana! Strike with a standard staff.");
+        Console.WriteLine($"{Name}: Маны недостаточно! Удары стандартным посохом.");
       }
     }
 
+    // Переопределение GetInfo для отображения информации о герое
     public override string GetInfo() {
-      return $"{Name} (Necromancer): HP {HP}, MP {MP}, Skeleton Bonus +{skeletonBonus}, Current Magic Damage {Damage + skeletonBonus}";
+      return $"{Name} (Necromancer): HP {HP}, MP {MP}, Скелетный бонус +{skeletonBonus}, Текущий магический урон {Damage + skeletonBonus}";
     }
   }
 }
