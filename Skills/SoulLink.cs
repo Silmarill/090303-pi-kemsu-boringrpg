@@ -12,8 +12,6 @@ namespace BoringRPG {
 
 			caster.HP = half;
 			target.HP = half + remainder; 
-
-			Console.WriteLine($"{caster.Name} использует {Name}: Теперь у {caster.Name} {caster.HP} HP, у {target.Name} {target.HP} HP.");
 		}
 	}
 }

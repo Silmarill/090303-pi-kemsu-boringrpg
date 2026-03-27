@@ -33,12 +33,23 @@ namespace BoringRPG {
 
 			Console.WriteLine("\n=== Использует ManaDrain ===");
 			artur.Use(manaDrain, lancelot);
+      int manaDrained = Math.Min(10, lancelot.MP);
+			Console.WriteLine($"{artur.Name} использует {manaDrain.Name} и забирает {manaDrained} MP у {lancelot.Name}. Теперь у {artur.Name} {artur.MP} MP, у {lancelot.Name} {lancelot.MP} MP.");
 
 			Console.WriteLine("\n=== Применяем - DramaAction ===");
 			lancelot.Use(dramaAction, artur);
+      Random rnd = new Random();
+      int chance = rnd.Next(100);
 
-			Console.WriteLine($"\n=== СОСТОЯНИЕ ПОСЛЕ НАВЫКОВ ===\n" +
-												$"{lancelot.GetInfo()}\n{artur.GetInfo()}\n");
+      if (chance < 30) {
+        Console.WriteLine($"{lancelot.Name} использует {dramaAction.Name}: {artur.Name} теперь его зовут \"{artur.Name}\"!");
+      } else if (chance < 60) {
+        Console.WriteLine($"{lancelot.Name} использует {dramaAction.Name}: теперь его зовут \"{lancelot.Name}\"!");
+      } else {
+        Console.WriteLine($"{lancelot.Name} дарит розу {artur.Name}");
+      }
+				Console.WriteLine($"\n=== СОСТОЯНИЕ ПОСЛЕ НАВЫКОВ ===\n" +
+                        $"{lancelot.GetInfo()}\n{artur.GetInfo()}\n");
 
 			if (lancelot.IsAlive) { 
         Console.WriteLine($"{lancelot.Name} готов к бою");
