@@ -48,6 +48,7 @@ namespace BoringRPG {
       } else {
         Console.WriteLine($"{lancelot.Name} дарит розу {artur.Name}");
       }
+
 				Console.WriteLine($"\n=== СОСТОЯНИЕ ПОСЛЕ НАВЫКОВ ===\n" +
                         $"{lancelot.GetInfo()}\n{artur.GetInfo()}\n");
 
