@@ -17,8 +17,6 @@ namespace BoringRPG {
 
       target.MP -= drainValue;
       caster.MP += drainValue;
-
-      Console.WriteLine($"{caster.Name} использовал ManaDrain. {target.Name} потерял {drainValue} MP.\n");
     }
   }
 }
