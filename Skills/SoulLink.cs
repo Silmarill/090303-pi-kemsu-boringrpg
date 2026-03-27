@@ -20,14 +20,10 @@ namespace BoringRPG
 
       healthDivider = 2;
 
-      Console.WriteLine($"{caster.Name} using {Name} in {target.Name}!\n");
-
       generalHealth = caster.HP + target.HP;
 
       caster.HP = generalHealth / healthDivider;
       target.HP = generalHealth / healthDivider;
-
-      Console.WriteLine($"health {caster.Name} = {caster.HP},health {target.Name} = {caster.HP}!\n");
     }
   }
 }

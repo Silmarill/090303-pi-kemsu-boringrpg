@@ -66,7 +66,7 @@
     <Compile Include="Potions\Heal.cs" />
     <Compile Include="Skills\CoinOfFate.cs" />
     <Compile Include="Skills\ComplimentEnemy.cs" />
-    <Compile Include="Skills\InterfaceSkill.cs" />
+    <Compile Include="Skills\ISkill.cs" />
     <Compile Include="Potions\MaliceInShooting.cs" />
     <Compile Include="Potions\ManaPotion.cs" />
     <Compile Include="Program.cs" />

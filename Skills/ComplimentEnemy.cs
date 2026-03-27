@@ -23,9 +23,6 @@ namespace BoringRPG
 
       target.Damage += damageMultiplier;
       target.CritChance *= CritChangeMultiplier;
-
-      Console.WriteLine($"{target.Name} receives an improvement to critical chance and damage\n");
-      Console.WriteLine($"Damage {target.Name} = {target.Damage}, critical chance = {target.CritChance}!\n");
     }
   }
 }
