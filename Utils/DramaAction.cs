@@ -11,20 +11,14 @@ namespace BoringRPG
     public DramaAction() : base("DramaAction") { }
 
     public override void Use(Archetype caster, Archetype target) {
-      Console.WriteLine($"\n{caster.Name} использует {Name} на {target.Name}!");
+      int chance = _random.Next(100);
 
-      int chance = _random.Next(100); 
-
-      if (chance < 30) { 
+      if (chance < 30) {
         string oldName = target.Name;
         target.Name = "Побеждённый " + oldName;
-        Console.WriteLine($"{oldName} теперь называется {target.Name}!");
-      } else if (chance < 60) { 
+      } else if (chance < 60) {
         string oldName = caster.Name;
         caster.Name = "Легендарный " + oldName;
-        Console.WriteLine($"{oldName} теперь называется {caster.Name}!");
-      } else { 
-        Console.WriteLine($" {caster.Name} дарит розу {target.Name}!");
       }
     }
   }

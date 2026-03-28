@@ -64,24 +64,53 @@ namespace BoringRPG {
       necro += bugPotion;
       Console.WriteLine(necro.GetInfo());
 
-      // 1. SoulLink - перераспределение HP
+      // 1. SoulLink
       Console.WriteLine("\n--- Навык 1: SoulLink ---");
+      Console.WriteLine($"{necro.Name} использует SoulLink на {artur.Name}!");
+            
+      int beforeHpNecro = necro.HP;
+      int beforeHpArtur = artur.HP;
+            
       necro.UseSkill(soulLink, artur);
-      Console.WriteLine("\nПосле SoulLink:");
-      Console.WriteLine(necro.GetInfo());
-      Console.WriteLine(artur.GetInfo());
+            
+      Console.WriteLine($"   HP {necro.Name}: {beforeHpNecro} → {necro.HP}");
+      Console.WriteLine($"   HP {artur.Name}: {beforeHpArtur} → {artur.HP}");
 
-      // 2. DramaAction - шуточный навык
+      // 2. DramaAction
       Console.WriteLine("\n--- Навык 2: DramaAction ---");
+      Console.WriteLine($"{artur.Name} использует DramaAction на {necro.Name}!");
+            
+      string oldNecroName = necro.Name;
+      string oldArturName = artur.Name;
+            
       artur.UseSkill(drama, necro);
-      Console.WriteLine("\nПосле DramaAction:");
-      Console.WriteLine(necro.GetInfo());
-      Console.WriteLine(artur.GetInfo());
+            
+      if (necro.Name != oldNecroName) {
+        Console.WriteLine($"   {oldNecroName} теперь называется {necro.Name}!");
+      } else if (artur.Name != oldArturName) {
+        Console.WriteLine($"   {oldArturName} теперь называется {artur.Name}!");
+      } else {
+        Console.WriteLine($"   {artur.Name} дарит розу {necro.Name}!");
+      }
 
-      // 3. CoinOfFate - рискованный навык
+      // 3. CoinOfFate
       Console.WriteLine("\n--- Навык 3: CoinOfFate ---");
+      Console.WriteLine($"{necro.Name} использует CoinOfFate на {artur.Name}!");
+            
+      beforeHpNecro = necro.HP;
+      beforeHpArtur = artur.HP;
+            
       necro.UseSkill(coin, artur);
-      Console.WriteLine("\nПосле CoinOfFate:");
+            
+      if (necro.HP == 0 && beforeHpNecro > 0) {
+        Console.WriteLine($"Несчастный случай! {necro.Name} погибает!");
+      } else if (artur.HP == 0 && beforeHpArtur > 0) {
+        Console.WriteLine($"Судьба жестока! {artur.Name} погибает!");
+      } else {
+        Console.WriteLine($"Ничего не произошло. Повезло!");
+      }
+
+      Console.WriteLine("\n=== ИТОГОВОЕ СОСТОЯНИЕ ===");
       Console.WriteLine(necro.GetInfo());
       Console.WriteLine(artur.GetInfo());
 
