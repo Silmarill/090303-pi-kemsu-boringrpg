@@ -5,7 +5,7 @@ using System.Runtime.ConstrainedExecution;
 
 namespace BoringRPG
 {
-  internal class Program
+  class Program
   {
     static void Main(string[] args)
     {
