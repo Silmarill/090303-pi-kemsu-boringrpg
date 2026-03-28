@@ -1,5 +1,5 @@
 ﻿using System;
-using BoringRPG.Interfaces;
+using BoringRPG.Skills.Interfaces;
 
 namespace BoringRPG {
   public abstract class Skill {
@@ -12,7 +12,7 @@ namespace BoringRPG {
       ManaCost = manaCost;
     }
 
-    public abstract void Use(ICanUseSkill user, ICanUseSkill target);
+    public abstract string Use(Archetype user, Archetype target);
 
     public bool Chance(int percent)
     {

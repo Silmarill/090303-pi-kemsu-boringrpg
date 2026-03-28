@@ -1,5 +1,5 @@
 ﻿using System;
-using BoringRPG.Interfaces;
+using BoringRPG.Skills.Interfaces;
 
 namespace BoringRPG.Skills {
   public class CoinOfFateSkill : Skill {
@@ -9,43 +9,38 @@ namespace BoringRPG.Skills {
     {
     }
 
-    public override void Use(ICanUseSkill user, ICanUseSkill target)
+    public override string Use(Archetype user, Archetype target)
     {
-      Druid druidUser = user as Druid;
-      Druid druidTarget = target as Druid;
+      int roll;
+      string result;
 
-      if (druidUser == null || druidTarget == null)
+      if (user.MP < ManaCost)
       {
-        Console.WriteLine("Ошибка: цель не является друидом!");
-        return;
+        return $"Не хватает маны для {Name}!";
       }
 
-      if (druidUser.MP < ManaCost)
-      {
-        Console.WriteLine($"Не хватает маны для {Name}!");
-        return;
-      }
+      user.MP -= ManaCost;
 
-      druidUser.MP -= ManaCost;
+      result = $"{user.Name} подбрасывает {Name}!\n";
 
-      Console.WriteLine($"{druidUser.Name} подбрасывает {Name}!");
-
-      int roll = random.Next(100);
+      roll = random.Next(100);
 
       if (roll < 30)
       {
-        druidTarget.HP = 0;
-        Console.WriteLine($"💀 {druidTarget.Name} умирает! 💀");
+        target.HP = 0;
+        result += $" {target.Name} умирает! ";
       }
       else if (roll < 60)
       {
-        druidUser.HP = 0;
-        Console.WriteLine($"💀 {druidUser.Name} умирает! 💀");
+        user.HP = 0;
+        result += $" {user.Name} умирает! ";
       }
       else
       {
-        Console.WriteLine($"🍀 Ничего не произошло! 🍀");
+        result += $" Ничего не произошло! ";
       }
+
+      return result;
     }
   }
 }

@@ -1,5 +1,5 @@
 ﻿using System;
-using BoringRPG.Interfaces;
+using BoringRPG.Skills.Interfaces;
 
 namespace BoringRPG.Skills {
   public class SoulLinkSkill : Skill {
@@ -7,35 +7,32 @@ namespace BoringRPG.Skills {
     {
     }
 
-    public override void Use(ICanUseSkill user, ICanUseSkill target)
+    public override string Use(Archetype user, Archetype target)
     {
-      Druid druidUser = user as Druid;
-      Druid druidTarget = target as Druid;
+      int totalHP;
+      int newHP;
+      string oldUserHP;
+      string oldTargetHP;
 
-      if (druidUser == null || druidTarget == null)
+      if (user.MP < ManaCost)
       {
-        Console.WriteLine("Ошибка: цель не является друидом!");
-        return;
+        return $"Не хватает маны для {Name}!";
       }
 
-      if (druidUser.MP < ManaCost)
-      {
-        Console.WriteLine($"Не хватает маны для {Name}!");
-        return;
-      }
+      user.MP -= ManaCost;
 
-      druidUser.MP -= ManaCost;
+      totalHP = user.HP + target.HP;
+      newHP = totalHP / 2;
 
-      int totalHP = druidUser.HP + druidTarget.HP;
-      int newHP = totalHP / 2;
+      oldUserHP = $"{user.Name} HP={user.HP}";
+      oldTargetHP = $"{target.Name} HP={target.HP}";
 
-      Console.WriteLine($"{druidUser.Name} использует {Name} на {druidTarget.Name}!");
-      Console.WriteLine($"Было: {druidUser.Name} HP={druidUser.HP}, {druidTarget.Name} HP={druidTarget.HP}");
+      user.HP = newHP;
+      target.HP = newHP;
 
-      druidUser.HP = newHP;
-      druidTarget.HP = newHP;
-
-      Console.WriteLine($"Стало: {druidUser.Name} HP={druidUser.HP}, {druidTarget.Name} HP={druidTarget.HP}");
+      return $"{user.Name} использует {Name} на {target.Name}!\n" +
+             $"Было: {oldUserHP}, {oldTargetHP}\n" +
+             $"Стало: {user.Name} HP={user.HP}, {target.Name} HP={target.HP}";
     }
   }
 }

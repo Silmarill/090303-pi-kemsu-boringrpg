@@ -1,5 +1,5 @@
 ﻿using System;
-using BoringRPG.Interfaces;
+using BoringRPG.Skills.Interfaces;
 
 namespace BoringRPG.Skills {
   public class TauntSkill : Skill {
@@ -7,29 +7,22 @@ namespace BoringRPG.Skills {
     {
     }
 
-    public override void Use(ICanUseSkill user, ICanUseSkill target)
+    public override string Use(Archetype user, Archetype target)
     {
-      Druid druidUser = user as Druid;
-      Druid druidTarget = target as Druid;
+      double oldCrit;
 
-      if (druidUser == null || druidTarget == null)
+      if (user.MP < ManaCost)
       {
-        Console.WriteLine("Ошибка: цель не является друидом!");
-        return;
+        return $"Не хватает маны для {Name}!";
       }
 
-      if (druidUser.MP < ManaCost)
-      {
-        Console.WriteLine($"Не хватает маны для {Name}!");
-        return;
-      }
+      user.MP -= ManaCost;
 
-      druidUser.MP -= ManaCost;
+      oldCrit = target.CritChance;
+      target.CritChance = target.CritChance / 2;
 
-      Console.WriteLine($"{druidUser.Name} использует {Name} на {druidTarget.Name}!");
-      Console.WriteLine($"{druidTarget.Name} был спровоцирован! Шанс крита уменьшен на 50%");
-
-      druidTarget.CritChance = druidTarget.CritChance / 2;
+      return $"{user.Name} использует {Name} на {target.Name}!\n" +
+             $"{target.Name} был спровоцирован! Шанс крита уменьшен с {oldCrit * 100}% до {target.CritChance * 100}%";
     }
   }
 }

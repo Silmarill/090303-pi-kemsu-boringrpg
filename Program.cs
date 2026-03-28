@@ -1,5 +1,4 @@
 ﻿using System;
-using BoringRPG.Interfaces;
 using BoringRPG.Skills;
 
 namespace BoringRPG {
@@ -52,20 +51,27 @@ namespace BoringRPG {
 
       HealthPotion healthPotion = new HealthPotion(30);
       cedric += healthPotion;
+      Console.WriteLine($" {cedric.Name} восстанавливает {healthPotion.Value} здоровья!");
       Console.WriteLine(cedric.GetInfo());
 
       ManaPotion manaPotion = new ManaPotion(20);
       cedric += manaPotion;
+      Console.WriteLine($" {cedric.Name} восстанавливает {manaPotion.Value} маны!");
       Console.WriteLine(cedric.GetInfo());
 
       AmmoPack ammoPack = new AmmoPack(15);
       cedric += ammoPack;
+      Console.WriteLine($" {cedric.Name} получает {ammoPack.Value} боеприпасов!");
       Console.WriteLine(cedric.GetInfo());
 
       Console.WriteLine();
 
       DoubleEspresso espresso = new DoubleEspresso(10);
-      if (cedric > espresso) { }
+      if (cedric > espresso)
+      {
+        Console.WriteLine($" {cedric.Name} выпил двойной эспрессо! Урон +{espresso.Value}, " +
+                         $"здоровье -{espresso.Value / 2}, мана +{espresso.Value / 2}");
+      }
       Console.WriteLine(cedric.GetInfo());
 
       Console.WriteLine("\nНажмите любую клавишу для выхода...");

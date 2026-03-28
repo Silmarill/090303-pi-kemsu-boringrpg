@@ -1,18 +1,14 @@
 ﻿using System;
-using BoringRPG.Interfaces;
+using BoringRPG.Skills.Interfaces;
 using BoringRPG.Skills;
 
 namespace BoringRPG {
-  public class Druid : Archetype, ICanUseSkill {
+  public class Druid : Archetype {
     public static Random random = new Random();
     public bool LastHitWasCrit;
 
     public Druid(string name) : base(name, 90, 60, 0, 20, 0.10)
     {
-    }
-    public void UseSkill(Skill skill, ICanUseSkill target)
-    {
-      skill.Use(this, target);
     }
 
     public static Druid operator +(Druid druid, int amount)
@@ -30,22 +26,32 @@ namespace BoringRPG {
     public static Druid operator +(Druid druid, HealthPotion potion)
     {
       druid.HP += potion.Value;
-      Console.WriteLine($" {druid.Name} восстанавливает {potion.Value} здоровья!");
       return druid;
     }
 
     public static Druid operator +(Druid druid, ManaPotion potion)
     {
       druid.MP += potion.Value;
-      Console.WriteLine($" {druid.Name} восстанавливает {potion.Value} маны!");
       return druid;
     }
 
     public static Druid operator +(Druid druid, AmmoPack pack)
     {
       druid.Ammo += pack.Value;
-      Console.WriteLine($" {druid.Name} получает {pack.Value} боеприпасов!");
       return druid;
+    }
+
+    public static bool operator >(Druid druid, DoubleEspresso coffee)
+    {
+      druid.Damage += coffee.Value;
+      druid.HP -= coffee.Value / 2;
+      druid.MP += coffee.Value / 2;
+      return true;
+    }
+
+    public static bool operator <(Druid druid, DoubleEspresso coffee)
+    {
+      return false;
     }
 
     public static bool operator true(Druid druid)
