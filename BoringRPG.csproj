@@ -59,14 +59,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Archetype.cs" />
-    <Compile Include="Utils\BugPotion.cs" />
+    <Compile Include="Items\BugPotion.cs" />
     <Compile Include="Utils\CoinOfFate.cs" />
-    <Compile Include="ConsumableItem.cs" />
+    <Compile Include="Items\ConsumableItem.cs" />
     <Compile Include="Utils\DramaAction.cs" />
     <Compile Include="DummyClass.cs" />
-    <Compile Include="Utils\HealthPotion.cs" />
+    <Compile Include="Items\HealthPotion.cs" />
     <Compile Include="Utils\ICanUseSkill.cs" />
-    <Compile Include="Utils\ManaPotion.cs" />
+    <Compile Include="Items\ManaPotion.cs" />
     <Compile Include="Necromancer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
