@@ -69,8 +69,7 @@ namespace BoringRPG {
       DoubleEspresso espresso = new DoubleEspresso(10);
       if (cedric > espresso)
       {
-        Console.WriteLine($" {cedric.Name} выпил двойной эспрессо! Урон +{espresso.Value}, " +
-                         $"здоровье -{espresso.Value / 2}, мана +{espresso.Value / 2}");
+        Console.WriteLine($" {cedric.Name} выпил двойной эспрессо! Урон + {espresso.Value}, " + $"здоровье - {espresso.Value / 2}, мана + {espresso.Value / 2}");
       }
       Console.WriteLine(cedric.GetInfo());
 
