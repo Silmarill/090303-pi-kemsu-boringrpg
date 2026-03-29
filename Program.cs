@@ -25,8 +25,20 @@ namespace BoringRPG {
       Skill soulLink = new SoulLink();
       
       rapfael += ammoPack;
-
+      Console.WriteLine($"\n{rapfael.Name} подобрал патроны! +{ammoPack.Value} Ammo\n");
+      
+      string oldRapfaelsName = rapfael.Name;
+      string oldLancelotsName = lancelot.Name;
+      Console.WriteLine($"\n{rapfael.Name} использует навык {dramaAction.Name} на {lancelot.Name}");
       rapfael.UseSkill(dramaAction, lancelot);
+
+      if (oldRapfaelsName == rapfael.Name && oldLancelotsName != lancelot.Name) {
+        Console.WriteLine($"{oldLancelotsName} переименован в {lancelot.Name}");
+      } else if (oldLancelotsName == lancelot.Name && oldRapfaelsName != rapfael.Name) {
+        Console.WriteLine($"{oldRapfaelsName} переименован в {rapfael.Name}");
+      } else {
+        Console.WriteLine($"{rapfael.Name} дарит розу {lancelot.Name}");
+      }
 
       Console.WriteLine($"{rapfael.Name} атакует {lancelot.Name}!");
 
@@ -54,9 +66,16 @@ namespace BoringRPG {
       }
 
       lancelot += healthPotion;
-      lancelot += manaPotion;
+      Console.WriteLine($"\n{lancelot.Name} выпил зелье здоровья! +{healthPotion.Value} HP\n");
 
+      lancelot += manaPotion;
+      Console.WriteLine($"\n{lancelot.Name} выпил зелье маны! +{manaPotion.Value} MP\n");
+      
+      int totalHP;
+      Console.WriteLine($"\n{lancelot.Name} использует навык {soulLink.Name} на {rapfael.Name}");
+      totalHP = lancelot.HP + rapfael.HP;
       lancelot.UseSkill(soulLink, rapfael);
+      Console.WriteLine($"Общее здоровье {totalHP} ушло поровну каждому");
 
       Console.WriteLine($"{lancelot.Name} атакует {rapfael.Name}!");
       beforeHP = rapfael.HP;
@@ -83,8 +102,20 @@ namespace BoringRPG {
       }
 
       rapfael += goldApple;
+      Console.WriteLine($"\n{rapfael.Name} съел золотое яблоко! +{goldApple.Value} +{goldApple.Value * 3}\n");
 
+      Console.WriteLine($"\n{rapfael.Name} подбрасывает Монету судьбы! :О");
       rapfael.UseSkill(coinOfFate, lancelot);
+
+      if (lancelot.HP == 0) {
+        Console.WriteLine($"Монета решила, что {lancelot.Name} умрет!" +
+                          $"\n{lancelot.Name} умирает . . .");
+      } else if (rapfael.HP == 0) {
+        Console.WriteLine($"Монета решила, что {rapfael.Name} умрет!" +
+                          $"\n{rapfael.Name} умирает . . .");
+      } else {
+        Console.WriteLine("Ничего не произошло: монета упала ребром!");
+      }
 
       if (rapfael.HP > 0 && lancelot.HP <= 0) {
 
