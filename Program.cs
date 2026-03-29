@@ -4,8 +4,8 @@ namespace BoringRPG {
   public class Program {
     static void Main() {
       string critText;
-      int beforeHP, damage;
-      
+      int beforeHP, beforeMP, damage;
+
       Warrior lancelot = new Warrior("Ланселот Ловкий");
       Warrior artur = new Warrior("Артур Пендрагон");
             
@@ -59,13 +59,15 @@ namespace BoringRPG {
       Console.WriteLine("SoulLink");
       Console.WriteLine($"HP Ланселота: {lancelot.HP}, HP Артура: {artur.HP}");
       lancelot.UseSkill(soulLink, artur);
-      Console.WriteLine($"HP Ланселота: {lancelot.HP}, HP Артура: {artur.HP}");
+      Console.WriteLine($"HP после SoulLink: {lancelot.HP}, HP Артура: {artur.HP}");
       Console.WriteLine();
 
       Console.WriteLine("ManaDrain");
       Console.WriteLine($"MP Ланселота: {lancelot.MP}, MP Артура: {artur.MP}");
+      beforeMP = lancelot.MP;
       lancelot.UseSkill(manaDrain, artur);
-      Console.WriteLine($"MP Ланселота: {lancelot.MP}, MP Артура: {artur.MP}");
+      Console.WriteLine($"Ланселот высасывает {lancelot.MP - beforeMP} MP у Артура");
+      Console.WriteLine($"MP после ManaDrain: {lancelot.MP}, MP Артура: {artur.MP}");
       Console.WriteLine();
 
       Console.WriteLine("DramaAction");

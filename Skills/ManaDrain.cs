@@ -13,7 +13,6 @@ namespace BoringRPG
       drainAmount = target.MP / 2;
       target.MP -= drainAmount;
       caster.MP += drainAmount;
-      Console.WriteLine($"{caster.Name} забирает {drainAmount} MP у {target.Name}");
     }
   }
 }

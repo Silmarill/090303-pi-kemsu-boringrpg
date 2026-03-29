@@ -13,7 +13,6 @@ namespace BoringRPG
       totalHP = caster.HP + target.HP;
       caster.HP = totalHP / 2;
       target.HP = totalHP / 2;
-      Console.WriteLine($"{caster.Name} и {target.Name} связали души. HP стало {totalHP / 2}");
     }
   }
 }
