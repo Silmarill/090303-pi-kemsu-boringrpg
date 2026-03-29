@@ -13,10 +13,6 @@ namespace BoringRPG
         target.MP -= drainAmount;
         caster.MP += drainAmount;
       }
-      else
-      {
-        Console.WriteLine($" {target.Name} has no mana");
-      }
     }
   }
 }

@@ -14,11 +14,6 @@ namespace BoringRPG
       {
         target.HP -= drainAmount;
         caster.HP += drainAmount;
-        Console.WriteLine($"{caster.Name} restored {drainAmount} HP from {target.Name}!");
-      }
-      else
-      {
-        Console.WriteLine($" Failed! {target.Name} does not have enough health");
       }
     }
   }
