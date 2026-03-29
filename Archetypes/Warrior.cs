@@ -62,7 +62,7 @@ namespace BoringRPG {
       hero.MP += mana.Value;
       return hero;
     }
-    public static Warrior operator *(Warrior hero, EnergyDrink energyDrink) {
+    public static Warrior operator +(Warrior hero, EnergyDrink energyDrink) {
       if (hero.MP >= energyDrink.Value) {
         hero.MP -= energyDrink.Value / 2;
       }

@@ -34,7 +34,7 @@ namespace BoringRPG {
       ManaPotion manaPotion = new ManaPotion(10);
       lancelot += manaPotion;
       EnergyDrink energyDrink = new EnergyDrink(50);
-      lancelot *= energyDrink;
+      lancelot += energyDrink;
       Console.WriteLine($"После исользования: {lancelot.GetInfo()}\n");
 
       Console.WriteLine($"{lancelot.Name} использует навыки");
