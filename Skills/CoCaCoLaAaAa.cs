@@ -16,10 +16,6 @@ namespace BoringRPG
         target.MP -= drainAmount;
         caster.MP += drainAmount;
       }
-      else
-      {
-        Console.WriteLine($" Неудача! У {target.Name} недостаточно маны");
-      }
     }
   }
 }
