@@ -2,7 +2,7 @@
 
 namespace BoringRPG
 {
-  internal class Nekromaster : Archetype
+  internal class Nekromaster : Archetype, ICanUseSkill
   {
     private static Random random = new Random();
     private int _skeletonBonus;

@@ -18,7 +18,7 @@ namespace BoringRPG
       }
       else
       {
-        Console.WriteLine($"❌ Неудача! У {target.Name} недостаточно маны");
+        Console.WriteLine($" Неудача! У {target.Name} недостаточно маны");
       }
     }
   }

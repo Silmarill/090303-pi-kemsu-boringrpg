@@ -57,6 +57,10 @@ namespace BoringRPG
       Console.WriteLine($"HP Данденмастера: {dungeonMaster.HP}, HP Артура: {artur.HP}");
       Console.WriteLine();
 
+      Console.WriteLine("сoCaCoLaAaAa");
+      artur.UseSkill(сoCaCoLaAaAa, dungeonMaster);
+      Console.WriteLine();
+
       Console.WriteLine("ИТОГОВОЕ СОСТОЯНИЕ:");
       Console.WriteLine("======================");
       Console.WriteLine(dungeonMaster.GetInfo());
@@ -66,9 +70,15 @@ namespace BoringRPG
       /////////////////////////////////////////
 
       Console.WriteLine("ManaDrain");
-      Console.WriteLine($"MP Данденмастера: {dungeonMaster.MP}, MP Артура: {artur.MP}");
-      dungeonMaster.UseSkill(manaDrain, artur);
-      Console.WriteLine($"MP Данденмастера: {dungeonMaster.MP}, MP Артура: {artur.MP}");
+      Console.WriteLine($"MP Данденмастера: {artur.MP}, MP Артура: {dungeonMaster.MP}");
+      artur.UseSkill(manaDrain, dungeonMaster);
+      Console.WriteLine($"MP Данденмастера: {artur.MP}, MP Артура: {dungeonMaster.MP}");
+      Console.WriteLine();
+
+      Console.WriteLine("SoulLink");
+      Console.WriteLine($"HP Данденмастера: {dungeonMaster.HP}, HP Артура: {artur.HP}");
+      dungeonMaster.UseSkill(soulLink, artur);
+      Console.WriteLine($"HP Данденмастера: {dungeonMaster.HP}, HP Артура: {artur.HP}");
       Console.WriteLine();
 
       Console.WriteLine($"\nВТОРОЙ РАУНД.");
@@ -114,6 +124,12 @@ namespace BoringRPG
 
       Console.WriteLine("сoCaCoLaAaAa");
       dungeonMaster.UseSkill(сoCaCoLaAaAa, artur);
+      Console.WriteLine();
+
+      Console.WriteLine("SoulLink");
+      Console.WriteLine($"HP Данденмастера: {artur.HP}, HP Артура: {dungeonMaster.HP}");
+      artur.UseSkill(soulLink, dungeonMaster);
+      Console.WriteLine($"HP Данденмастера: {artur.HP}, HP Артура: {dungeonMaster.HP}");
       Console.WriteLine();
 
       Console.WriteLine("ИТОГОВОЕ СОСТОЯНИЕ:");

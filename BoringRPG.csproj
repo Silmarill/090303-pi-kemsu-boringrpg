@@ -58,21 +58,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AmmoPack.cs" />
-    <Compile Include="Archetype.cs" />
-    <Compile Include="CocaCola.cs" />
-    <Compile Include="CoCaCoLaAaAa.cs" />
-    <Compile Include="ConsumableItem.cs" />
-    <Compile Include="DummyClass.cs" />
-    <Compile Include="HealPotion.cs" />
-    <Compile Include="ICanUseSkill.cs" />
-    <Compile Include="ManaDrain.cs" />
-    <Compile Include="ManaPotion.cs" />
-    <Compile Include="Nekromaster.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Potion\AmmoPack.cs" />
+    <Compile Include="Hero\Archetype.cs" />
+    <Compile Include="Potion\CocaCola.cs" />
+    <Compile Include="Skills\CoCaCoLaAaAa.cs" />
+    <Compile Include="Potion\ConsumableItem.cs" />
+    <Compile Include="Hero\DummyClass.cs" />
+    <Compile Include="Potion\HealPotion.cs" />
+    <Compile Include="Skills\ICanUseSkill.cs" />
+    <Compile Include="Skills\ManaDrain.cs" />
+    <Compile Include="Potion\ManaPotion.cs" />
+    <Compile Include="Hero\Nekromaster.cs" />
+    <Compile Include="Hero\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Skill.cs" />
-    <Compile Include="SoulLink.cs" />
+    <Compile Include="Skills\Skill.cs" />
+    <Compile Include="Skills\SoulLink.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
