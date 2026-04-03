@@ -23,16 +23,6 @@
       return hero;
     }
 
-    /*
-      Безумный предмет: кофе. Умножает шанс критического попадания, но истощает здоровье
-      Здесь используется оператор *, так как он представляет собой усиление, а не простое сложение
-    */
-    public static Archetype operator *(Archetype hero, double caffeineLevel) {
-      hero.CritChance *= caffeineLevel;
-      hero.HP -= 10;
-      return hero;
-    }
-
     // Абстрактный метод для нанесения удара по цели
     public abstract string Hit(Archetype target);
     // Абстрактный метод для получения информации о персонаже
