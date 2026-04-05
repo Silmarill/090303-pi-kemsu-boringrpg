@@ -17,10 +17,10 @@
       CritChance = crit;
     }
 
-    // Перегрузка оператора + для применение любого ConsumableItem
-    public static Archetype operator +(Archetype hero, ConsumableItem item) {
-      item.Apply(hero);
-      return hero;
+    // virtual сделал просто чтобы было больше пространства для использования предметов
+    public virtual void UseItem(ConsumableItem item) {
+      // Герой применяет предмет на себе
+      item.Apply(this);
     }
 
     // Абстрактный метод для нанесения удара по цели
@@ -28,5 +28,4 @@
     // Абстрактный метод для получения информации о персонаже
     public abstract string GetInfo();
   }
-
 }
