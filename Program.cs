@@ -16,11 +16,11 @@ namespace BoringRPG {
         $"{dummy.GetInfo()}\n"
         );
 
-      Console.WriteLine("!!! Бой !!! >:)\n");
+      Console.WriteLine("Раунд начался!\n");
 
       // Использование кофе
       Console.WriteLine($"{artur} использует кофе!");
-      artur = (Necromancer)(artur + espresso);
+      artur.UseItem(espresso);
 
       // Инициализация навыков
       Skill soulLink = new SoulLink();
