@@ -7,5 +7,11 @@ namespace BoringRPG
     public CrabSticks(int value = 10) : base(value)
     {
     }
+
+    public static CrabSticks operator ++(CrabSticks crab)
+    {
+      crab.Value++;
+      return crab;
+    }
   }
 }

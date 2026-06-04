@@ -2,7 +2,7 @@
 
 namespace BoringRPG
 {
-  internal class Paladin : Archetype
+  internal class Paladin : Archetype, ICanUseSkill
   {
     private static Random random = new Random();
     public Paladin(string name) : base(name, 100, 40, 0, 20, 0.10)
@@ -42,18 +42,8 @@ namespace BoringRPG
 
     public static Paladin operator -(Paladin paladin, int amount)
     {
-      paladin.HP -= amount;
+      paladin.HP = Math.Max(0, paladin.HP - amount);
       return paladin;
-    }
-
-    public static bool operator true(Paladin paladin)
-    {
-      return paladin.HP > 0;
-    }
-
-    public static bool operator false(Paladin paladin)
-    {
-      return paladin.HP <= 0;
     }
 
     public void UseSkill(Skill skill, Archetype target)
@@ -67,32 +57,17 @@ namespace BoringRPG
 
       if (MP >= 10)
       {
-        MP -= 10;
+        MP = Math.Max(0, MP - 10);
         damage += 5;
-
-        LastHitWasCrit = random.NextDouble() < CritChance;
-        if (LastHitWasCrit)
-        {
-          damage *= 2;
-        }
-      }
-      else
-      {
-        LastHitWasCrit = random.NextDouble() < CritChance;
-        if (LastHitWasCrit)
-        {
-          damage *= 2;
-        }
       }
 
-      if (target is Paladin paladinTarget)
+      LastHitWasCrit = random.NextDouble() < CritChance;
+      if (LastHitWasCrit)
       {
-        paladinTarget -= damage;
+        damage *= 2;
       }
-      else
-      {
-        target.HP -= damage;
-      }
+
+      target.HP = Math.Max(0, target.HP - damage);
     }
 
     public override string GetInfo()

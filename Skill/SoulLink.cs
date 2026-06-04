@@ -6,10 +6,9 @@ namespace BoringRPG
   {
     public override void Use(Archetype caster, Archetype target)
     {
-      int totalHP;
-      totalHP = caster.HP + caster.HP;
-      caster.HP = totalHP / 2;
-      caster.HP = totalHP / 2;
+      int averageHP = (caster.HP + target.HP) / 2;
+      caster.HP = averageHP;
+      target.HP = averageHP;
     }
   }
 }

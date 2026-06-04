@@ -1,21 +1,18 @@
 ﻿using System;
-using System.Net.Http.Headers;
 
 namespace BoringRPG {
   internal class Program
   {
     static void Main(string[] args)
     {
-      string critText;
-      int beforeHP, damage;
-
       DummyClass lancelot = new DummyClass("Lancelot is clever");
       DummyClass artur = new DummyClass("Arthur Pendragon");
       Paladin paladin = new Paladin("Mateus Paladinov");
+      ICanUseSkill skillCaster = paladin;
 
       Skill soulLink = new SoulLink();
       Skill manaDrain = new ManaDrain();
-      Skill Nuggets = new Nuggets();
+      Skill nuggets = new Nuggets();
 
       HealthPotion health = new HealthPotion(25);
       ManaPotion mana = new ManaPotion(10);
@@ -46,29 +43,28 @@ namespace BoringRPG {
 
       Console.WriteLine("SoulLink");
       Console.WriteLine($"HP Mateus Paladinov: {paladin.HP}, HP Arthur: {artur.HP}");
-      paladin.UseSkill(soulLink, artur);
+      skillCaster.UseSkill(soulLink, artur);
       Console.WriteLine($"HP Mateus Paladinov: {paladin.HP}, HP Arthur: {artur.HP}");
       Console.WriteLine();
 
       Console.WriteLine("ManaDrain");
       Console.WriteLine($"MP Mateus Paladinov: {paladin.MP}, MP Arthur: {artur.MP}");
-      paladin.UseSkill(manaDrain, artur);
+      skillCaster.UseSkill(manaDrain, artur);
       Console.WriteLine($"MP Mateus Paladinov: {paladin.MP}, MP Arthur: {artur.MP}");
       Console.WriteLine();
 
       Console.WriteLine("Nuggets");
       Console.WriteLine($"HP Mateus Paladinov: {paladin.HP}, HP Arthur: {artur.HP}");
-      paladin.UseSkill(Nuggets, artur);
+      skillCaster.UseSkill(nuggets, artur);
       Console.WriteLine($"HP Mateus Paladinov: {paladin.HP}, HP Arthur: {artur.HP}");
       Console.WriteLine();
 
       Console.WriteLine($"{lancelot.Name} attacks {artur.Name}!");
 
-      beforeHP = artur.HP;
+      int beforeHP = artur.HP;
       lancelot.Hit(artur);
-      damage = beforeHP - artur.HP;
-
-      critText = lancelot.LastHitWasCrit ? "- CRITICAL HIT!" : "";
+      int damage = beforeHP - artur.HP;
+      string critText = lancelot.LastHitWasCrit ? "- CRITICAL HIT!" : "";
 
       Console.WriteLine($"Damage {damage} dealt {critText}\n");
 
@@ -78,7 +74,6 @@ namespace BoringRPG {
       beforeHP = lancelot.HP;
       paladin.Hit(lancelot);
       damage = beforeHP - lancelot.HP;
-
       critText = paladin.LastHitWasCrit ? "- CRITICAL HIT!" : "";
 
       Console.WriteLine($"Damage {damage} dealt {critText}\n");
@@ -89,7 +84,6 @@ namespace BoringRPG {
       beforeHP = paladin.HP;
       artur.Hit(paladin);
       damage = beforeHP - paladin.HP;
-
       critText = artur.LastHitWasCrit ? "- CRITICAL HIT!" : "";
 
       Console.WriteLine($"Damage {damage} dealt {critText}\n");
@@ -100,7 +94,7 @@ namespace BoringRPG {
       Console.WriteLine(artur.GetInfo());
       Console.WriteLine(paladin.GetInfo());
 
-      Console.WriteLine("\n=== DEMONSTRATION OF OPERATORS +, - AND TRUE/FALSE ===");
+      Console.WriteLine("\n=== DEMONSTRATION OF OPERATORS +, - AND ++ ===");
 
       paladin = paladin + 10;
       Console.WriteLine($"After +10 HP: {paladin.GetInfo()}");
@@ -108,14 +102,12 @@ namespace BoringRPG {
       paladin = paladin - 10;
       Console.WriteLine($"After -10 HP: {paladin.GetInfo()}");
 
-      if (paladin)
-      {
-        Console.WriteLine($"{paladin.Name} is alive!");
-      }
-      else
-      {
-        Console.WriteLine($"{paladin.Name} is dead!");
-      }
+      CrabSticks strongerCrab = new CrabSticks(5);
+      strongerCrab = ++strongerCrab;
+      Console.WriteLine($"Crab sticks strengthened (++): bonus +{strongerCrab.Value}");
+      paladin += strongerCrab;
+      Console.WriteLine($"After ++ crab sticks: {paladin.GetInfo()}");
+
       Console.ReadKey();
     }
   }

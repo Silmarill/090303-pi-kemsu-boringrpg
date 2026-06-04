@@ -10,7 +10,7 @@ namespace BoringRPG
       drainAmount = Math.Min(20, target.MP);
       if (drainAmount > 0)
       {
-        target.MP -= drainAmount;
+        target.MP = Math.Max(0, target.MP - drainAmount);
         caster.MP += drainAmount;
       }
     }
