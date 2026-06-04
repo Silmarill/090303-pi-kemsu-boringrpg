@@ -46,31 +46,6 @@ namespace BoringRPG {
       attacker.Hit(target);
       return attacker;
     }
-    public static Warrior operator +(Warrior hero, HealthPotion healtPotion) {
-      hero.HP += healtPotion.Value;
-      return hero;
-    }
-    public static Warrior operator +(Warrior hero, AmmoPack ammo) {
-      hero.Ammo += ammo.Value;
-      return hero;
-    }
-    public static Warrior operator +(Warrior hero, ManaPotion mana) {
-      hero.MP += mana.Value;
-      return hero;
-    }
-    public static Warrior operator +(Warrior hero, EnergyDrink energyDrink) {
-      if (hero.MP >= energyDrink.Value) {
-        hero.MP -= energyDrink.Value / 2;
-      }
-      else {
-        int remainingCost;
-        remainingCost = energyDrink.Value - hero.MP;
-        hero.MP = 0;
-        hero.HP -= remainingCost;
-      }
-      hero.Damage += energyDrink.Value;
-      return hero;
-    }
 
     public override string GetInfo() {
       return $"{Name} (Warrior): HP {HP}, MP {MP}, Ammo {Ammo}, Шанс крита {CritChance * 100}%";

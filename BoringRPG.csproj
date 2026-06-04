@@ -59,11 +59,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Archetype.cs" />
-    <Compile Include="Item\AmmoPack..cs" />
-    <Compile Include="Item\EnergyDrink.cs" />
-    <Compile Include="Item\ManaPotion.cs" />
-    <Compile Include="Item\HealthPotion.cs" />
-    <Compile Include="ConsumableItem.cs" />
     <Compile Include="Archetypes\Warrior.cs" />
     <Compile Include="Archetypes\DummyClass.cs" />
     <Compile Include="Program.cs" />
