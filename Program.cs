@@ -37,15 +37,6 @@ namespace BoringRPG {
       lancelot += energyDrink;
       Console.WriteLine($"После исользования: {lancelot.GetInfo()}\n");
 
-      Console.WriteLine($"{lancelot.Name} использует навыки");
-      Skill taunt = new Taunt();
-      lancelot.UseSkill(taunt, artur);
-      Skill lastStand = new LastStand();
-      lancelot.UseSkill(lastStand, artur);
-      Skill complimentEnemy = new ComplimentEnemy();
-      lancelot.UseSkill(complimentEnemy, artur);
-      Console.WriteLine(artur.GetInfo());
-
       Console.WriteLine("ИТОГОВОЕ СОСТОЯНИЕ:");
       Console.WriteLine("======================");
       Console.WriteLine(lancelot.GetInfo());

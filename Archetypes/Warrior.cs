@@ -1,16 +1,12 @@
 ﻿using System;
 
 namespace BoringRPG {
-  internal class Warrior : Archetype, ICanUseSkill {
+  internal class Warrior : Archetype {
 
     private static Random random = new Random();
     public bool LastHitWasCrit;
 
     public Warrior(string name) : base(name, 120, 20, 0, 25, 0.1) {
-    }
-
-    public void UseSkill(Skill skill, Archetype target) {
-      skill.Use(this, target);
     }
 
     public override void Hit(Archetype target) {

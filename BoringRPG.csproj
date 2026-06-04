@@ -60,11 +60,6 @@
   <ItemGroup>
     <Compile Include="Archetype.cs" />
     <Compile Include="Item\AmmoPack..cs" />
-    <Compile Include="Skills\ICanUseSkill .cs" />
-    <Compile Include="Skill.cs" />
-    <Compile Include="Skills\ComplimentEnemy.cs" />
-    <Compile Include="Skills\LastStand.cs" />
-    <Compile Include="Skills\Taunt.cs" />
     <Compile Include="Item\EnergyDrink.cs" />
     <Compile Include="Item\ManaPotion.cs" />
     <Compile Include="Item\HealthPotion.cs" />
